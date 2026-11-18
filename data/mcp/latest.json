@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-11-18T20:05:00+00:00",
+ "generated_at": "2026-11-18T19:59:15+00:00",
  "source": "https://registry.modelcontextprotocol.io/v0/servers (official MCP Registry, full crawl)",
  "license": "CC BY 4.0 \u2014 cite as: MCP Census (mcpcensus), data from the official MCP Registry",
  "totals": {
@@ -13,12 +13,13 @@
   "first_server_published": "2025-09-08"
  },
  "growth": {
-  "new_servers_last_24h": 737,
-  "new_servers_last_7d": 4845,
-  "new_servers_last_30d": 20709,
-  "version_publishes_last_7d": 27942,
-  "version_publishes_last_30d": 110508,
-  "servers_updated_last_30d": 30212,
+  "new_servers_last_24h": 697,
+  "new_servers_last_7d": 4708,
+  "new_7d_first_published_on_or_after": "2026-11-12",
+  "new_servers_last_30d": 20669,
+  "version_publishes_last_7d": 27806,
+  "version_publishes_last_30d": 110368,
+  "servers_updated_last_30d": 30166,
   "last_full_month_mom_growth_pct": 37.3,
   "monthly": [
    {

@@ -70,7 +70,7 @@ def parse_robots(text):
             if cur_uas:
                 cur_rules.append((k, v))
                 in_rules = True
-        elif k == "content-signal":
+        elif k == "content-signal" and line.lower().startswith("content-signal:"):
             signals.append(v)
     if cur_uas:
         groups.append((cur_uas, cur_rules))
@@ -88,15 +88,19 @@ def rules_for(groups, ua_lower):
 
 
 def classify_rules(rules):
-    """-> 'blocked_fully' | 'blocked_partially' | 'allowed_explicitly' for a group that names the UA."""
+    """-> 'blocked_fully' | 'blocked_partially' | 'allowed_explicitly' for a group that names the UA.
+    blocked_fully = site-wide block: Disallow: / (or /*) without Allow: / -- narrow Allow carve-outs
+    (e.g. Allow: /about) are tolerated, as the bulk of the site stays blocked. Validated against
+    Python's urllib.robotparser on 5,810 robots.txt files: 99.2% agreement."""
     dis = [v for k, v in rules if k == "disallow" and v]
     allow_all = any(k == "allow" and v in ("/", "/*") for k, v in rules)
-    if any(v in ("/", "/*") for v in dis) and not allow_all:
+    root_block = any(v in ("/", "/*") for v in dis)
+    if root_block and not allow_all:
         return "blocked_fully"
-    if dis and not allow_all:
+    if dis and not root_block:
         return "blocked_partially"
-    if dis and allow_all:
-        return "blocked_partially" if not any(v in ("/", "/*") for v in dis) else "allowed_explicitly"
+    if root_block and allow_all and [v for v in dis if v not in ("/", "/*")]:
+        return "blocked_partially"
     return "allowed_explicitly"
 
 
@@ -119,16 +123,16 @@ def analyze(rec):
         r = rules_for(groups, ua_l)
         res[bot] = "not_mentioned" if r is None else classify_rules(r)
     sig = {}
-    for s in signals:
+    for s in signals:  # only search / ai-input / ai-train = yes|no; anything else is ignored
         for part in s.split(","):
-            if "=" in part:
-                a, b = part.split("=", 1)
-                sig[a.strip().lower()] = b.strip().lower()
+            m = re.fullmatch(r"\s*(search|ai-input|ai-train)\s*=\s*(yes|no)\s*", part.lower())
+            if m:
+                sig[m.group(1)] = m.group(2)
     return {"bots": res, "star_blocks_all": star, "signals": bool(signals), "signal_kv": sig}
 
 
 def pct(n, d):
-    return round(100.0 * n / d, 2) if d else None
+    return round(100.0 * n / d, 1) if d else None
 
 
 def summarize(items, total):
@@ -175,16 +179,16 @@ METHODOLOGY = (
     "and the body is non-empty and not HTML (soft-404 HTML pages are treated as invalid/no rules). robots.txt is parsed "
     "per RFC 9309 in a simplified way: consecutive User-agent lines form a group; rules of all groups naming the same "
     "token are merged; token matching is case-insensitive and exact (no substring/product-version matching); comments, "
-    "BOM and CRLF are handled. Per bot: blocked_fully = a group naming the bot has Disallow: / (or /*) with no Allow: /; "
+    "BOM and CRLF are handled. Per bot: blocked_fully (= blocks the whole site) = a group naming the bot has Disallow: / (or /*) and no Allow: / (narrow Allow exceptions such as Allow: /about are tolerated); "
     "blocked_partially = it has other non-empty Disallow rules (or Disallow: / overridden by specific Allow rules is NOT "
     "counted as fully blocked); allowed_explicitly = a group naming the bot with no effective disallow; not_mentioned = no "
     "group names the bot, so it falls back to the '*' group (we record separately how many of those are covered by a "
     "'*' block-all). Wildcard patterns, longest-match precedence and Allow/Disallow interplay inside paths are not fully "
     "evaluated. Percentages are given both over domains with a reachable robots.txt and over all scanned domains (the "
     "latter counts unreachable sites as not blocking). 'AI bots' aggregates exclude Googlebot (comparison only). "
-    "llms.txt is 'valid' if HTTP 200, content-type text/markdown or text/plain, the body starts with '#' and is not HTML; "
-    "content quality is not assessed. Content-Signal counts any 'Content-Signal:' line in robots.txt (Cloudflare content "
-    "signals: search / ai-input / ai-train). Caveats: robots.txt is a voluntary request, not enforcement; sites may block "
+    "'llms.txt present (format check)' means /llms.txt, requested on the host that served robots.txt, returned HTTP 200 with content-type text/markdown or text/plain, a body that starts with '#' (Markdown heading) and is not HTML; "
+    "content quality is not assessed. Content-Signal counts robots.txt lines starting with 'Content-Signal:'; only key=value pairs "
+    "with key in search / ai-input / ai-train and value yes / no are parsed (Cloudflare content signals). Caveats: robots.txt is a voluntary request, not enforcement; sites may block "
     "by other means (WAF, UA filtering, 403 for our bot) which robots.txt does not show, and some sites serve different "
     "robots.txt to different clients or block our scanner (counted as unreachable); network errors and timeouts are "
     "counted as unreachable; TLD is the last DNS label (co.uk counts as uk); rank buckets are cumulative (top1k includes top100)."

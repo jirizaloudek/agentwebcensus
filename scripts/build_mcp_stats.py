@@ -92,6 +92,8 @@ cum, run = [], 0
 for m in sorted(monthly):
     run += monthly[m]; cum.append({"month": m, "new": monthly[m], "cumulative": run})
 def new_since(days): return sum(1 for d in first_pub.values() if (now - d).days < days)
+since7 = (now.date() - dt.timedelta(days=6)).isoformat()  # rolling 7 UTC calendar days incl. today
+new_7d = sum(1 for d in first_pub.values() if d.date().isoformat() >= since7)
 ver_last = lambda days: sum(1 for r in recs if (now - ts(meta(r)["publishedAt"])).days < days)
 updated_30 = sum(1 for r in L if (now - ts(meta(r)["updatedAt"])).days < 30)
 
@@ -113,7 +115,7 @@ stats = {
     "first_server_published": first_seen.date().isoformat(),
   },
   "growth": {
-    "new_servers_last_24h": new_since(1), "new_servers_last_7d": new_since(7), "new_servers_last_30d": new_since(30),
+    "new_servers_last_24h": new_since(1), "new_servers_last_7d": new_7d, "new_7d_first_published_on_or_after": since7, "new_servers_last_30d": new_since(30),
     "version_publishes_last_7d": ver_last(7), "version_publishes_last_30d": ver_last(30),
     "servers_updated_last_30d": updated_30, "last_full_month_mom_growth_pct": mom,
     "monthly": cum,
@@ -158,9 +160,9 @@ rows.sort(key=lambda x: x["updated"], reverse=True)
 json.dump(rows, open(f"{OUT}/servers.json", "w"), separators=(",", ":"))
 json.dump(stats, open(f"{OUT}/latest.json", "w"), indent=1)
 hist = f"{OUT}/history.csv"
-row = [now.date().isoformat(), n, len(recs), status.get("active", 0), has_remote, has_pkg, len(ns), new_since(7)]
+row = [now.date().isoformat(), n, len(recs), status.get("active", 0), has_remote, has_pkg, len(ns), new_7d]
 new = not os.path.exists(hist)
 lines = open(hist).read().splitlines() if not new else ["date,servers,version_records,active,remote,package,namespaces,new_7d"]
 lines = [l for l in lines if not l.startswith(row[0])] + [",".join(map(str, row))]
 open(hist, "w").write("\n".join(lines) + "\n")
-print(json.dumps(stats["totals"]), json.dumps(stats["growth"]["new_servers_last_7d"]))
+print(json.dumps(stats["totals"]), json.dumps(new_7d))

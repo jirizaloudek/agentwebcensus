@@ -1,0 +1,6 @@
+data/raw/
+__pycache__/
+*.tmp
+data/web/raw.jsonl
+data/mcp/servers.json
+site/

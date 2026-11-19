@@ -68,9 +68,12 @@ jobs:
         run: |
           git config user.name "agent-web-census-bot"
           git config user.email "actions@users.noreply.github.com"
-          # Bot owns data/: rebase-free update that never merges JSON line-by-line.
+          # Commit ONLY files this workflow generates (never `git add data`: that would delete/revert
+          # data files pushed after this run's checkout). Rebase-free, never merges JSON line-by-line.
+          GEN="data/mcp/latest.json data/mcp/history.csv data/web/latest.json data/web/history.csv data/web/domains.json data/web/tranco_meta.json data/health/latest.json data/health/servers.json data/health/history.csv data/indexnow_state.json"
+          mkdir -p /tmp/gen && for f in $GEN; do [ -e "$f" ] && mkdir -p "/tmp/gen/$(dirname $f)" && cp "$f" "/tmp/gen/$f"; done
           git fetch -q origin main
-          git reset -q --mixed origin/main
-          git add data
+          git reset -q --hard origin/main
+          for f in $GEN; do [ -e "/tmp/gen/$f" ] && mkdir -p "$(dirname $f)" && cp "/tmp/gen/$f" "$f" && git add "$f"; done
           git diff --cached --quiet || git commit -m "data: daily update $(date -u +%F)"
           git push origin HEAD:main

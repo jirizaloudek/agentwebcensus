@@ -32,7 +32,8 @@ def page(path, title, desc, body, updated, jsonld=None):
     """path like '/mcp/' -> site/mcp/index.html"""
     url = BASE_URL + path
     beacon = (f'<script defer src="https://static.cloudflareinsights.com/beacon.min.js" data-cf-beacon=\'{{"token": "{CF_BEACON}"}}\'></script>' if CF_BEACON else "")
-    ld = f'<script type="application/ld+json">{json.dumps(jsonld).replace('</', '<\\/')}</script>' if jsonld else ""
+    ldj = json.dumps(jsonld).replace("</", "<\\/") if jsonld else ""
+    ld = f'<script type="application/ld+json">{ldj}</script>' if jsonld else ""
     doc = f"""<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
 <title>{e(title)}</title><meta name="description" content="{e(desc)}"><link rel="canonical" href="{url}">
 <meta property="og:title" content="{e(title)}"><meta property="og:description" content="{e(desc)}"><meta property="og:type" content="article">

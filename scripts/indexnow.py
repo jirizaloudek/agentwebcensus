@@ -12,6 +12,7 @@ def main():
     if "--key-only" in sys.argv: return
     old = json.load(open(STATE)) if os.path.exists(STATE) else {}
     new, changed = {}, []
+    CAP = 10000  # max URLs submitted per run; the rest go next run
     for root, _, files in os.walk(OUT):
         for f in files:
             if f != "index.html": continue
@@ -21,8 +22,17 @@ def main():
             h = hashlib.sha1(open(p, "rb").read()).hexdigest()[:16]
             new[path] = h
             if old.get(path) != h: changed.append(BASE_URL + path)
+    # non-/mcp/server/ pages first, so the long tail never starves important pages
+    changed.sort(key=lambda u: u.startswith(BASE_URL + "/mcp/server/"))  # stable
+    todo, deferred = changed[:CAP], changed[CAP:]
     if "--dry" in sys.argv:
-        print("changed:", len(changed)); return
+        print("changed:", len(changed), "| would submit:", len(todo), "| deferred:", len(deferred)); return
+    # state: new hashes only for submitted URLs or unchanged ones; deferred keep their old hash so they count as changed next run
+    for u in deferred:
+        pth = u[len(BASE_URL):]
+        if pth in old: new[pth] = old[pth]
+        else: new.pop(pth, None)
+    changed = todo
     host = BASE_URL.split("//", 1)[1].split("/")[0]
     for i in range(0, len(changed), 9000):
         body = json.dumps({"host": host, "key": KEY, "keyLocation": f"{BASE_URL}/{KEY}.txt", "urlList": changed[i:i+9000]}).encode()

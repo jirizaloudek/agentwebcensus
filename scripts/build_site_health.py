@@ -42,7 +42,7 @@ def build(H, servers_health, upd, day):
 <h2>Protocol versions</h2><p class="meta">Version the server answered with when our client requested <code>2025-06-18</code>. Per the MCP spec a server replies with the requested version if it supports it, so this shows how many servers support 2025-06-18 versus fall back to an older (or newer) version — not each server’s newest supported version.</p>{table(['protocolVersion returned', 'Servers'], [[k, v] for k, v in pv], (1,)) if pv else ''}
 <h2>Biggest hosts</h2>{table(['Host', 'Servers checked', 'Working (no auth)'], hosts, (1, 2))}
 <p class="meta">Top 20 hosts by number of registry servers checked; percentage is of that host’s servers.</p>
-<p><a href="/mcp/health/working/">List of working servers →</a></p>
+<p><a href="/mcp/health/working/">List of working servers →</a> · <a href="/mcp/servers/">Status page for every checked server (A–Z) →</a></p>
 <h2 id="methodology">Methodology and caveats</h2><p class="meta">{e(H['methodology'])}</p>
 <p>Data: <a href="/data/health-latest.json">health-latest.json</a> · <a href="/data/health-servers.json">health-servers.json</a></p>"""
     page("/mcp/health/", f"Do remote MCP servers actually work? ({mon}): {ok['pct_of_checked']}% answer, {au['pct_of_checked']}% need auth",

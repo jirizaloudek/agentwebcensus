@@ -141,6 +141,9 @@ sub_page("/mcp/remote/", "Remote (hosted) MCP servers", [s for s in SV if s["rem
 if os.path.exists("data/health/latest.json"):
     import build_site_health
     build_site_health.build(json.load(open("data/health/latest.json")), json.load(open("data/health/servers.json")), upd, day)
+    if os.path.exists("data/health/servers.json"):
+        import build_site_servers
+        build_site_servers.build(json.load(open("data/health/servers.json")), SV if os.path.exists("data/mcp/servers.json") else [], upd, day)
 
 # ---------- reports (static analyses) ----------
 if os.path.exists("data/reports/mcp-health-2026-11.json"):

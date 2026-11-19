@@ -32,18 +32,21 @@ def page(path, title, desc, body, updated, jsonld=None):
     """path like '/mcp/' -> site/mcp/index.html"""
     url = BASE_URL + path
     beacon = (f'<script defer src="https://static.cloudflareinsights.com/beacon.min.js" data-cf-beacon=\'{{"token": "{CF_BEACON}"}}\'></script>' if CF_BEACON else "")
-    ld = f'<script type="application/ld+json">{json.dumps(jsonld)}</script>' if jsonld else ""
+    ld = f'<script type="application/ld+json">{json.dumps(jsonld).replace('</', '<\\/')}</script>' if jsonld else ""
     doc = f"""<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
 <title>{e(title)}</title><meta name="description" content="{e(desc)}"><link rel="canonical" href="{url}">
 <meta property="og:title" content="{e(title)}"><meta property="og:description" content="{e(desc)}"><meta property="og:type" content="article">
 <meta name="robots" content="index,follow,max-snippet:-1"><link rel="alternate" type="text/plain" href="{BASE_URL}/llms.txt" title="llms.txt">
-<style>{CSS}</style>{ld}</head><body>
+<link rel="stylesheet" href="/style.css">{ld}</head><body>
 <header><a class="brand" href="/">{SITE_NAME}</a><nav><a href="/mcp/">MCP servers</a><a href="/mcp/health/">MCP uptime</a><a href="/ai-crawlers/">AI crawlers</a><a href="/ai-crawlers/sites/">Sites A–Z</a><a href="/reports/">Reports</a><a href="/data/">Data &amp; API</a><a href="/about/">About</a></nav></header>
 <main>{body}
 <p class="meta">Last updated: <time datetime="{updated}">{updated}</time> (UTC). Numbers are recomputed automatically from primary sources; see <a href="/about/#methodology">methodology</a>.</p>
 </main><footer>{SITE_NAME} is built and operated by an AI agent (Claude, by Anthropic) with a human sponsor. All data is open (CC BY 4.0). Corrections: open an issue on GitHub.</footer>{beacon}</body></html>"""
     if PREFIX:
         doc = doc.replace('href="/', f'href="{PREFIX}/').replace("href='/", f"href='{PREFIX}/")
+    css_fp = os.path.join(OUT, "style.css")
+    if not os.path.exists(css_fp):
+        os.makedirs(OUT, exist_ok=True); open(css_fp, "w").write(CSS)
     fp = os.path.join(OUT, path.strip("/"), "index.html") if path.endswith("/") else os.path.join(OUT, path.strip("/"))
     os.makedirs(os.path.dirname(fp), exist_ok=True)
     open(fp, "w").write(doc)
@@ -87,7 +90,18 @@ def vbar(items, title):
 def cite_box(text):
     return f'<div class="cite"><b>Cite this:</b> {text}</div>'
 
-def write_sitemap():
-    xs = "".join(f"<url><loc>{BASE_URL}{p}</loc><lastmod>{d}</lastmod></url>" for p, d in PAGES)
-    open(os.path.join(OUT, "sitemap.xml"), "w").write(f'<?xml version="1.0" encoding="UTF-8"?><urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">{xs}</urlset>')
+def write_sitemap(chunk=40000):
+    """sitemap.xml = plain urlset when <= chunk URLs, else a sitemap index pointing to sitemap-N.xml files (protocol limit: 50,000 URLs/file)."""
+    hdr = '<?xml version="1.0" encoding="UTF-8"?>'; ns = 'xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"'
+    urls = lambda ps: "".join(f"<url><loc>{BASE_URL}{p}</loc><lastmod>{d}</lastmod></url>" for p, d in ps)
+    for f in os.listdir(OUT):
+        if f.startswith("sitemap-") and f.endswith(".xml"): os.remove(os.path.join(OUT, f))
+    if len(PAGES) <= chunk:
+        open(os.path.join(OUT, "sitemap.xml"), "w").write(f"{hdr}<urlset {ns}>{urls(PAGES)}</urlset>")
+    else:
+        parts = [PAGES[i:i + chunk] for i in range(0, len(PAGES), chunk)]
+        for n, ps in enumerate(parts, 1):
+            open(os.path.join(OUT, f"sitemap-{n}.xml"), "w").write(f"{hdr}<urlset {ns}>{urls(ps)}</urlset>")
+        idx = "".join(f"<sitemap><loc>{BASE_URL}/sitemap-{n}.xml</loc><lastmod>{max(d for _, d in ps)}</lastmod></sitemap>" for n, ps in enumerate(parts, 1))
+        open(os.path.join(OUT, "sitemap.xml"), "w").write(f"{hdr}<sitemapindex {ns}>{idx}</sitemapindex>")
     open(os.path.join(OUT, "robots.txt"), "w").write(f"# AI agents and crawlers are welcome here. Data is CC BY 4.0.\nUser-agent: *\nAllow: /\n\nSitemap: {BASE_URL}/sitemap.xml\n")

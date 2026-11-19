@@ -5,7 +5,7 @@ import argparse, json, os, random, socket, ssl, sys, threading, time, urllib.req
 from concurrent.futures import ThreadPoolExecutor
 from urllib.parse import urlparse, urljoin
 
-UA = "AgentWebCensusBot/0.1 (+https://jirizaloudek.github.io/agentwebcensus/about/; weekly MCP liveness check, one initialize handshake)"
+UA = "AgentWebCensusBot/0.1 (+https://agents.datacensus.org/about/; weekly MCP liveness check, one initialize handshake)"
 TIMEOUT, CAP, CONC, PER_HOST = 10, 256 * 1024, 48, 4
 HDRS = {"User-Agent": UA, "Accept": "application/json, text/event-stream", "Content-Type": "application/json"}
 

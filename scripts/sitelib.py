@@ -1,7 +1,7 @@
 """Tiny static-site helpers: page shell, SVG charts, number formatting. No dependencies."""
 import html, json, os, datetime as dt
 SITE_NAME = "Agent Web Census"
-BASE_URL = os.environ.get("SITE_URL", "https://agentwebcensus.pages.dev").rstrip("/")
+BASE_URL = os.environ.get("SITE_URL", "https://agents.datacensus.org").rstrip("/")
 from urllib.parse import urlparse
 PREFIX = urlparse(BASE_URL).path.rstrip("/")  # e.g. "/agentwebcensus" on a GitHub Pages project site, "" on own domain
 CF_BEACON = os.environ.get("CF_BEACON_TOKEN", "")  # Cloudflare Web Analytics token

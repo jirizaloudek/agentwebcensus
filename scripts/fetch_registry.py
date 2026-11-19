@@ -28,7 +28,7 @@ with open(out + ".tmp", "w") as f:
         url = BASE + "?" + urllib.parse.urlencode(q)
         for attempt in range(5):
             try:
-                req = urllib.request.Request(url, headers={"User-Agent": "AgentWebCensusBot/0.1 (+https://jirizaloudek.github.io/agentwebcensus/about/)"})
+                req = urllib.request.Request(url, headers={"User-Agent": "AgentWebCensusBot/0.1 (+https://agents.datacensus.org/about/)"})
                 d = json.load(urllib.request.urlopen(req, timeout=60)); break
             except Exception as e:
                 print("retry", attempt, e, file=sys.stderr); time.sleep(2 ** attempt)

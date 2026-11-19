@@ -8,7 +8,7 @@ Resumable: domains already present in --out are skipped.
 import argparse, csv, io, json, os, socket, ssl, sys, threading, time, urllib.error, urllib.request, zipfile
 from concurrent.futures import ThreadPoolExecutor, as_completed
 
-UA = ("AgentWebCensusBot/0.1 (+https://jirizaloudek.github.io/agentwebcensus/about/; "
+UA = ("AgentWebCensusBot/0.1 (+https://agents.datacensus.org/about/; "
       "open-data research on AI-crawler policies; fetches robots.txt and llms.txt only)")
 MAX_BODY = 500 * 1024
 KEEP_TEXT = 200 * 1024

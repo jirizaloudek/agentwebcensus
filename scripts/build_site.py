@@ -202,3 +202,10 @@ open(OUT + "/llms.txt", "w").write("\n".join(llms) + "\n")
 open(OUT + "/_headers", "w").write("/data/*\n  Access-Control-Allow-Origin: *\n  Cache-Control: public, max-age=3600\n/llms.txt\n  Content-Type: text/plain; charset=utf-8\n")
 write_sitemap()
 print("pages:", len(sitelib.PAGES))
+
+# ---------- compact indexes for the MCP worker (never fail the build) ----------
+try:
+    import build_index
+    build_index.main()
+except Exception as ex:
+    print("build_index skipped:", ex)

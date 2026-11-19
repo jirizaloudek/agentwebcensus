@@ -1,0 +1,366 @@
+// Agent Web Census MCP server: stateless Streamable HTTP (JSON responses only), no dependencies.
+const SERVER_INFO = { name: "datacensus", version: "0.1.0" };
+const SUPPORTED = ["2025-06-18", "2025-03-26", "2025-11-25"];
+const DEFAULT_DATA_BASE = "https://agents.datacensus.org/data/";
+const ATTRIBUTION = "Source: Agent Web Census (agents.datacensus.org), CC BY 4.0";
+const INSTRUCTIONS =
+  "Open data about the AI agent ecosystem from Agent Web Census (agents.datacensus.org): " +
+  "use find_mcp_servers to search ~65k servers of the official MCP Registry (with a weekly live-check of remote endpoints), " +
+  "mcp_ecosystem_stats for headline MCP numbers, site_ai_crawler_policy to see which AI bots a top-10k website blocks in robots.txt, " +
+  "and ai_crawler_stats for aggregate AI-crawler blocking rates. Data is CC BY 4.0; cite Agent Web Census. " +
+  "This service is operated by an AI agent (Claude).";
+
+const CORS = {
+  "Access-Control-Allow-Origin": "*",
+  "Access-Control-Allow-Methods": "GET, POST, OPTIONS",
+  "Access-Control-Allow-Headers": "Content-Type, Accept, Mcp-Session-Id, Mcp-Protocol-Version, Authorization",
+  "Access-Control-Expose-Headers": "Mcp-Session-Id",
+  "Access-Control-Max-Age": "86400",
+};
+
+const TOOLS = [
+  {
+    name: "find_mcp_servers",
+    description:
+      "Search the official MCP Registry (~65,000 servers) by keyword. Matches name, title and description; ranks servers whose remote endpoint passed a live initialize check first, then by number of tools. Returns name, title, description, remote/package types, health (ok = works without auth, auth = alive but needs auth, fail = unreachable), tool count and a registry link.",
+    inputSchema: {
+      type: "object",
+      properties: {
+        query: { type: "string", description: "Keywords, e.g. 'postgres database' or 'github issues'." },
+        category: { type: "string", description: "Optional category filter, e.g. 'finance & crypto', 'databases' (substring match)." },
+        transport: { type: "string", enum: ["remote", "package", "any"], description: "remote = hosted endpoint, package = installable (npm/pypi/...), any (default)." },
+        working_only: { type: "boolean", description: "Only servers whose remote endpoint responded OK or requires auth (default true). Package-only servers are kept unless transport is 'remote'.", default: true },
+        limit: { type: "integer", minimum: 1, maximum: 25, default: 10, description: "Max results (1-25)." },
+      },
+      required: ["query"],
+    },
+    annotations: { readOnlyHint: true, openWorldHint: false },
+  },
+  {
+    name: "mcp_ecosystem_stats",
+    description:
+      "Headline numbers of the MCP ecosystem: servers in the official registry, new servers in the last 7/30 days, remote vs package share, top package registries and categories, plus the weekly health check of remote servers (share working, requiring auth, failing, median tools and latency).",
+    inputSchema: { type: "object", properties: {} },
+    annotations: { readOnlyHint: true, openWorldHint: false },
+  },
+  {
+    name: "site_ai_crawler_policy",
+    description:
+      "Which AI crawlers does a website block in robots.txt? Looks up a domain in our scan of the top 10,000 websites (Tranco list) and returns, per AI bot (GPTBot, ClaudeBot, Google-Extended, PerplexityBot, ...), whether it is blocked, partly restricted or explicitly allowed, plus llms.txt presence.",
+    inputSchema: {
+      type: "object",
+      properties: { domain: { type: "string", description: "Domain or URL, e.g. 'nytimes.com' or 'https://www.nytimes.com/section'." } },
+      required: ["domain"],
+    },
+    annotations: { readOnlyHint: true, openWorldHint: false },
+  },
+  {
+    name: "ai_crawler_stats",
+    description:
+      "Aggregate AI-crawler blocking statistics across the top 10,000 websites: percentage of sites with a reachable robots.txt that fully block, partly restrict or explicitly allow each AI bot. Give a bot name for one bot, or omit for the overall table.",
+    inputSchema: {
+      type: "object",
+      properties: { bot: { type: "string", description: "Optional bot name, e.g. 'GPTBot', 'ClaudeBot', 'Google-Extended' (case-insensitive)." } },
+    },
+    annotations: { readOnlyHint: true, openWorldHint: false },
+  },
+];
+
+// ---------- data loading ----------
+const mem = new Map(); // name -> { t, p }
+const MEM_TTL = 3600 * 1000;
+
+function dataBase(env) {
+  let b = (env && env.DATA_BASE) || DEFAULT_DATA_BASE;
+  return b.endsWith("/") ? b : b + "/";
+}
+
+async function loadData(env, file) {
+  const key = dataBase(env) + file;
+  const hit = mem.get(key);
+  if (hit && Date.now() - hit.t < MEM_TTL) return hit.p;
+  const p = (async () => {
+    const cache = typeof caches !== "undefined" ? caches.default : null;
+    const req = new Request(key);
+    let res = cache ? await cache.match(req) : null;
+    if (!res) {
+      res = await fetch(key, { cf: { cacheTtl: 3600, cacheEverything: true } });
+      if (!res.ok) throw new Error(`data fetch failed: ${file} HTTP ${res.status}`);
+      if (cache) {
+        const copy = new Response(res.clone().body, res);
+        copy.headers.set("Cache-Control", "public, max-age=3600");
+        try { await cache.put(req, copy); } catch (_) { /* too large or unsupported: ignore */ }
+      }
+    }
+    return res.json();
+  })();
+  mem.set(key, { t: Date.now(), p });
+  p.catch(() => mem.delete(key));
+  return p;
+}
+
+// ---------- tools ----------
+const asText = (summary, data) => ({ content: [{ type: "text", text: `${summary}\n${JSON.stringify(data)}` }] });
+const toolError = (msg) => ({ isError: true, content: [{ type: "text", text: msg }] });
+
+// record: [name,title,desc,categories,remotes,packages,health,tools,latency,first_published]
+// Sharded inverted index (see scripts/build_index.py): idx/tok/<fnv1a(token)&1023>.json, idx/rec/<id>>6>.json,
+// ids are quality ranks (working servers with many tools first).
+const hex3 = (n) => n.toString(16).padStart(3, "0");
+function tokShard(t) {
+  let h = 2166136261;
+  for (const b of new TextEncoder().encode(t)) h = Math.imul(h ^ b, 16777619) >>> 0;
+  return h & 1023;
+}
+const MAX_TOKENS = 6, MAX_CANDIDATES = 300, MAX_REC_SHARDS = 10;
+
+async function findMcpServers(args, env) {
+  const q = typeof args.query === "string" ? args.query.trim() : "";
+  if (!q) return toolError("Parameter 'query' (non-empty string) is required.");
+  const transport = args.transport || "any";
+  if (!["remote", "package", "any"].includes(transport)) return toolError("transport must be 'remote', 'package' or 'any'.");
+  const workingOnly = args.working_only !== false;
+  const limit = Math.min(25, Math.max(1, Number.isInteger(args.limit) ? args.limit : 10));
+  const cat = typeof args.category === "string" ? args.category.toLowerCase().trim() : "";
+  const meta = await loadData(env, "idx/meta.json");
+  const skip = new Set(meta.skip);
+  const tokens = [...new Set(q.toLowerCase().match(/[a-z0-9]+/g) || [])].filter((t) => t.length >= 3 && !skip.has(t)).slice(0, MAX_TOKENS);
+  let cand = []; // ids, best first
+  if (tokens.length) {
+    const lists = await Promise.all(tokens.map(async (t) => (await loadData(env, `idx/tok/${hex3(tokShard(t))}.json`))[t] || []));
+    const cnt = new Map();
+    for (const l of lists) for (const id of l) cnt.set(id, (cnt.get(id) || 0) + 1);
+    const required = tokens.length > 3 ? tokens.length - 1 : tokens.length;
+    cand = [...cnt].filter(([, c]) => c >= required).map(([id]) => id).sort((x, y) => x - y);
+  } else if (cat) {
+    const key = Object.keys(meta.categories).find((k) => k.toLowerCase().includes(cat));
+    cand = key ? meta.categories[key].slice() : [];
+  } else {
+    return toolError("Query has no searchable keywords (words of 3+ letters other than very common ones like 'mcp', 'server', 'agent'). Add a more specific term.");
+  }
+  // pick candidates, bounded by number of record shards (free-plan subrequest/CPU limits)
+  const shardSet = new Set(), picked = [];
+  for (const id of cand) {
+    if (picked.length >= MAX_CANDIDATES) break;
+    const sh = id >> 6;
+    if (!shardSet.has(sh) && shardSet.size >= MAX_REC_SHARDS) continue;
+    shardSet.add(sh); picked.push(id);
+  }
+  const recShards = new Map(await Promise.all([...shardSet].map(async (sh) => [sh, await loadData(env, `idx/rec/${hex3(sh)}.json`)])));
+  const scored = [];
+  for (const id of picked) {
+    const r = recShards.get(id >> 6)[id & 63];
+    if (!r) continue;
+    if (transport === "remote" && !r[4]) continue;
+    if (transport === "package" && !r[5]) continue;
+    if (cat && !r[3].toLowerCase().includes(cat)) continue;
+    if (workingOnly && r[4] && r[6] === "fail") continue;
+    if (workingOnly && r[4] && !r[5] && r[6] === null) continue; // remote-only, never verified
+    const name = r[0].toLowerCase(), title = r[1].toLowerCase(), desc = r[2].toLowerCase();
+    let score = 0;
+    for (const t of tokens) score += (name.includes(t) ? 4 : 0) + (title.includes(t) ? 3 : 0) + (desc.includes(t) ? 1 : 0);
+    const bonus = (r[6] === "ok" ? 3 : r[6] === "auth" ? 1.5 : 0) + Math.min(r[7] || 0, 50) / 25;
+    scored.push([score + bonus, r]);
+  }
+  scored.sort((a, b) => b[0] - a[0]);
+  const results = scored.slice(0, limit).map(([, r]) => ({
+    name: r[0], title: r[1] || undefined, description: r[2],
+    remote: r[4] || undefined, package: r[5] || undefined,
+    health: r[6] || undefined, tools: r[7] ?? undefined,
+    registry_link: "https://registry.modelcontextprotocol.io/v0/servers?search=" + encodeURIComponent(r[0]),
+  }));
+  return asText(
+    `Found ${scored.length} MCP servers matching "${q}" among the best ${picked.length} candidates (showing ${results.length}); health data from ${meta.date || "n/a"}. ${ATTRIBUTION}.`,
+    { candidates_considered: picked.length, results }
+  );
+}
+
+async function mcpEcosystemStats(_args, env) {
+  const [m, h] = await Promise.all([loadData(env, "mcp-latest.json"), loadData(env, "health-latest.json").catch(() => null)]);
+  const top = (o, n) => Object.entries(o || {}).sort((a, b) => b[1] - a[1]).slice(0, n);
+  const data = {
+    registry_data_retrieved: m.generated_at,
+    totals: m.totals,
+    growth: {
+      new_last_24h: m.growth.new_servers_last_24h, new_last_7d: m.growth.new_servers_last_7d,
+      new_last_30d: m.growth.new_servers_last_30d, last_full_month_mom_growth_pct: m.growth.last_full_month_mom_growth_pct,
+    },
+    deployment: {
+      remote_servers: m.deployment.remote_servers, remote_pct: m.deployment.remote_pct,
+      package_servers: m.deployment.package_servers, package_pct: m.deployment.package_pct,
+      remote_transport: m.deployment.remote_transport, package_registry: m.deployment.package_registry,
+    },
+    top_categories: top(m.categories && m.categories.counts, 10),
+  };
+  if (h) {
+    data.remote_health = {
+      checked_on: h.generated, remote_servers_checked: h.checked,
+      ok_pct: h.totals.ok.pct_of_checked, auth_required_pct: h.totals.auth_required.pct_of_checked,
+      alive_pct: h.alive_pct_of_checked, median_latency_ms: h.latency_ms_ok.median,
+      median_tools: h.tools.median, mean_tools: h.tools.mean, protocol_versions: h.protocol_versions,
+    };
+  }
+  const t = m.totals;
+  return asText(
+    `Official MCP Registry as of ${m.generated_at.slice(0, 10)}: ${t.servers} servers (${t.active} active), ${m.growth.new_servers_last_30d} new in 30 days` +
+      (h ? `; ${h.totals.ok.pct_of_checked}% of ${h.checked} remote servers work without auth (checked ${h.generated})` : "") + `. ${ATTRIBUTION}.`,
+    data
+  );
+}
+
+function normDomain(input) {
+  let d = String(input || "").trim().toLowerCase();
+  d = d.replace(/^[a-z][a-z0-9+.-]*:\/\//, "").replace(/^[^@/]*@/, "").split(/[/?#]/)[0].replace(/:\d+$/, "").replace(/\.$/, "");
+  return d.replace(/^www\./, "");
+}
+
+const WORDS = {
+  F: "blocked entirely (Disallow: / for this bot)",
+  P: "partially restricted (some paths disallowed)",
+  A: "explicitly allowed",
+  "*": "not named, but blocked by a blanket 'User-agent: *' rule",
+};
+
+async function siteAiCrawlerPolicy(args, env) {
+  const domain = normDomain(args.domain);
+  if (!domain || !domain.includes(".")) return toolError("Parameter 'domain' must be a domain name such as 'example.com'.");
+  const c0 = domain[0];
+  const idx = await loadData(env, `sites/${/^[a-z0-9]$/.test(c0) ? c0 : "_"}.json`).catch(() => ({ domains: {}, date: "unknown" }));
+  const row = idx.domains[domain];
+  if (!row) {
+    return asText(
+      `${domain} is not in our scan of the top 10,000 websites (scan date ${idx.date}). Fetch https://${domain}/robots.txt yourself and look for user-agents such as GPTBot, ClaudeBot, Google-Extended, PerplexityBot. ${ATTRIBUTION}.`,
+      { domain, in_scan: false, scan_date: idx.date, suggestion: `https://${domain}/robots.txt` }
+    );
+  }
+  const [rank, rb, flags, ...bots] = row;
+  const policy = {};
+  for (const b of bots) { const i = b.lastIndexOf(":"); policy[b.slice(0, i)] = WORDS[b.slice(i + 1)] || b.slice(i + 1); }
+  const star = !!(flags & 2), llms = !!(flags & 1);
+  const robotsOk = rb === "ok";
+  let summary;
+  if (!robotsOk) summary = `${domain} (Tranco rank ${rank}): robots.txt was not usable in our scan (${rb}), so no AI-bot policy could be determined.`;
+  else if (!bots.length) summary = `${domain} (Tranco rank ${rank}): robots.txt names no AI bots${star ? " but a blanket 'User-agent: *' rule blocks all crawlers" : ""}.`;
+  else summary = `${domain} (Tranco rank ${rank}): robots.txt addresses ${bots.length} AI bot(s).`;
+  summary += ` llms.txt ${llms ? "present" : "not found"}. Scan date ${idx.date}. ${ATTRIBUTION}.`;
+  return asText(summary, {
+    domain, in_scan: true, rank, scan_date: idx.date, robots_txt: rb, star_blocks_all: star, llms_txt: llms,
+    bots: policy, note: "Bots not listed are not mentioned in robots.txt (allowed unless the '*' rule blocks them).",
+  });
+}
+
+async function aiCrawlerStats(args, env) {
+  const w = await loadData(env, "web-latest.json");
+  const bots = w.overall.bots;
+  const row = (n, b) => ({
+    bot: n, operator: w.bots_catalog[n] && w.bots_catalog[n].operator, purpose: w.bots_catalog[n] && w.bots_catalog[n].purpose,
+    pct_fully_blocked: b.pct_fully_of_reachable, pct_partially_restricted: b.pct_partially_of_reachable,
+    pct_explicitly_allowed: b.pct_allowed_explicitly_of_reachable, sites_fully_blocked: b.blocked_fully,
+  });
+  const base = `${w.overall.robots_reachable} of ${w.overall.scanned} scanned top websites had a usable robots.txt (percentages are of those)`;
+  if (args.bot) {
+    const n = Object.keys(bots).find((k) => k.toLowerCase() === String(args.bot).toLowerCase());
+    if (!n) return toolError(`Unknown bot '${args.bot}'. Known bots: ${Object.keys(bots).join(", ")}`);
+    const r = row(n, bots[n]);
+    return asText(`${n}: fully blocked by ${r.pct_fully_blocked}% of sites with a robots.txt (${base}); scan date ${w.generated}. ${ATTRIBUTION}.`, { scan_date: w.generated, ...r });
+  }
+  const all = Object.entries(bots).map(([n, b]) => row(n, b)).sort((a, b) => b.pct_fully_blocked - a.pct_fully_blocked);
+  const top = all[0];
+  return asText(`AI crawler blocking among the top websites: most blocked is ${top.bot} (${top.pct_fully_blocked}% fully blocked). ${base}; scan date ${w.generated}. ${ATTRIBUTION}.`,
+    { scan_date: w.generated, sites_scanned: w.overall.scanned, robots_reachable: w.overall.robots_reachable, llms_txt_valid_pct: w.llms_txt && w.llms_txt.overall.pct_valid, bots: all });
+}
+
+const HANDLERS = { find_mcp_servers: findMcpServers, mcp_ecosystem_stats: mcpEcosystemStats, site_ai_crawler_policy: siteAiCrawlerPolicy, ai_crawler_stats: aiCrawlerStats };
+
+// ---------- JSON-RPC ----------
+const rpcErr = (id, code, message) => ({ jsonrpc: "2.0", id: id ?? null, error: { code, message } });
+
+async function handleRpc(msg, env) {
+  if (!msg || typeof msg !== "object" || msg.jsonrpc !== "2.0" || typeof msg.method !== "string") return rpcErr(msg && msg.id, -32600, "Invalid Request");
+  const isNotification = msg.id === undefined || msg.id === null;
+  const { method, params } = msg;
+  if (isNotification) return null; // notifications/initialized, notifications/cancelled, ...
+  switch (method) {
+    case "initialize": {
+      const v = params && params.protocolVersion;
+      return { jsonrpc: "2.0", id: msg.id, result: { protocolVersion: SUPPORTED.includes(v) ? v : "2025-06-18", capabilities: { tools: {} }, serverInfo: SERVER_INFO, instructions: INSTRUCTIONS } };
+    }
+    case "ping": return { jsonrpc: "2.0", id: msg.id, result: {} };
+    case "tools/list": return { jsonrpc: "2.0", id: msg.id, result: { tools: TOOLS } };
+    case "tools/call": {
+      const name = params && params.name;
+      const h = HANDLERS[name];
+      if (!h) return rpcErr(msg.id, -32602, `Unknown tool: ${name}`);
+      const args = (params.arguments && typeof params.arguments === "object") ? params.arguments : {};
+      try { return { jsonrpc: "2.0", id: msg.id, result: await h(args, env) }; }
+      catch (e) { return { jsonrpc: "2.0", id: msg.id, result: toolError(`Tool failed: ${e.message}`) }; }
+    }
+    default: return rpcErr(msg.id, -32601, `Method not found: ${method}`);
+  }
+}
+
+async function handleMcp(request, env) {
+  let body;
+  try { body = await request.json(); } catch (_) { return json(rpcErr(null, -32700, "Parse error"), 400); }
+  if (Array.isArray(body)) {
+    if (!body.length) return json(rpcErr(null, -32600, "Invalid Request"), 400);
+    const out = (await Promise.all(body.map((m) => handleRpc(m, env)))).filter(Boolean);
+    return out.length ? json(out) : new Response(null, { status: 202, headers: CORS });
+  }
+  const res = await handleRpc(body, env);
+  if (res === null) return new Response(null, { status: 202, headers: CORS });
+  return json(res, res.error && res.error.code === -32600 ? 400 : 200);
+}
+
+function json(obj, status = 200) {
+  return new Response(JSON.stringify(obj), { status, headers: { "Content-Type": "application/json", ...CORS } });
+}
+
+// ---------- static pages ----------
+const HOME = `<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Agent Web Census MCP server</title><meta name="description" content="Remote MCP server exposing open data on MCP servers and AI crawler policies.">
+<style>body{font:16px/1.55 system-ui,sans-serif;max-width:46rem;margin:2rem auto;padding:0 1rem;color:#1a1a1a}code,pre{background:#f2f2f2;padding:.1em .3em;border-radius:4px}pre{padding:.8em;overflow:auto}</style></head><body>
+<h1>Agent Web Census MCP server</h1>
+<p>A free remote <a href="https://modelcontextprotocol.io">Model Context Protocol</a> server that gives AI agents access to the open data of <a href="https://agents.datacensus.org">Agent Web Census</a>: search the official MCP Registry with live health checks, and check which AI crawlers top websites block. No API key needed.</p>
+<p>Endpoint (Streamable HTTP): <code>https://datacensus.org/mcp</code></p>
+<h2>Add it to your client</h2>
+<p><b>Claude</b>: Settings, Connectors, Add custom connector, URL <code>https://datacensus.org/mcp</code>. Claude Code: <code>claude mcp add --transport http datacensus https://datacensus.org/mcp</code></p>
+<p><b>Cursor</b>: add to <code>~/.cursor/mcp.json</code>:</p>
+<pre>{ "mcpServers": { "datacensus": { "url": "https://datacensus.org/mcp" } } }</pre>
+<p><b>ChatGPT</b>: Settings, Connectors, Developer mode, create a connector with the URL above (no authentication).</p>
+<h2>Tools</h2>
+<ul>
+<li><code>find_mcp_servers</code>: keyword search over ~65k registry servers, working servers ranked first.</li>
+<li><code>mcp_ecosystem_stats</code>: headline numbers of the MCP ecosystem and remote server health.</li>
+<li><code>site_ai_crawler_policy</code>: which AI bots a top-10k website blocks in robots.txt, and llms.txt presence.</li>
+<li><code>ai_crawler_stats</code>: blocking percentages per AI bot across the top 10k sites.</li>
+</ul>
+<p>Data: CC BY 4.0, cite "Agent Web Census (agents.datacensus.org)". <b>This service is built and operated by an AI agent</b> (Claude, by Anthropic) as an experiment; a human sponsor provides hosting. Source and data: <a href="https://github.com/jirizaloudek/agentwebcensus">GitHub</a> and <a href="https://agents.datacensus.org">agents.datacensus.org</a>.</p>
+</body></html>`;
+
+const LLMS = `# Agent Web Census MCP server
+
+> Remote MCP server (Streamable HTTP, no auth) exposing open data on MCP servers and AI crawler policies. Operated by an AI agent (Claude). Data CC BY 4.0.
+
+- Endpoint: https://datacensus.org/mcp
+- Tools: find_mcp_servers, mcp_ecosystem_stats, site_ai_crawler_policy, ai_crawler_stats
+- Data and methodology: https://agents.datacensus.org/llms.txt
+`;
+
+export default {
+  async fetch(request, env) {
+    const url = new URL(request.url);
+    const path = url.pathname.replace(/\/+$/, "") || "/";
+    if (request.method === "OPTIONS") return new Response(null, { status: 204, headers: CORS });
+    if (path === "/mcp") {
+      if (request.method === "POST") return handleMcp(request, env);
+      if (request.method === "DELETE") return new Response(null, { status: 405, headers: { ...CORS, Allow: "POST, OPTIONS" } });
+      return new Response("Method Not Allowed: this server only supports POST (stateless, no SSE stream).", { status: 405, headers: { ...CORS, Allow: "POST, OPTIONS" } });
+    }
+    if (request.method !== "GET" && request.method !== "HEAD") return new Response("Method Not Allowed", { status: 405, headers: CORS });
+    if (path === "/") return new Response(HOME, { headers: { "Content-Type": "text/html; charset=utf-8", ...CORS } });
+    if (path === "/llms.txt") return new Response(LLMS, { headers: { "Content-Type": "text/plain; charset=utf-8", ...CORS } });
+    if (path === "/robots.txt") return new Response("User-agent: *\nAllow: /\n", { headers: { "Content-Type": "text/plain; charset=utf-8", ...CORS } });
+    return new Response("Not found", { status: 404, headers: CORS });
+  },
+};

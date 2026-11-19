@@ -1,0 +1,12 @@
+name = "datacensus-mcp"
+main = "src/index.js"
+compatibility_date = "2025-07-18"
+workers_dev = true
+
+[vars]
+DATA_BASE = "https://agents.datacensus.org/data/"
+
+# Uncomment once the datacensus.org zone is on Cloudflare:
+# routes = [
+#   { pattern = "datacensus.org/*", zone_name = "datacensus.org" },
+# ]

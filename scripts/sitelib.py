@@ -4,7 +4,7 @@ SITE_NAME = "Agent Web Census"
 BASE_URL = os.environ.get("SITE_URL", "https://agents.datacensus.org").rstrip("/")
 from urllib.parse import urlparse
 PREFIX = urlparse(BASE_URL).path.rstrip("/")  # e.g. "/agentwebcensus" on a GitHub Pages project site, "" on own domain
-CF_BEACON = os.environ.get("CF_BEACON_TOKEN", "")  # Cloudflare Web Analytics token
+CF_BEACON = os.environ.get("CF_BEACON_TOKEN") or "1c8b3b5f971e4c078a348da2fa88f9c6"  # public Cloudflare Web Analytics site token  # Cloudflare Web Analytics token
 OUT = "site"
 PAGES = []  # (path, lastmod) for sitemap
 e = html.escape

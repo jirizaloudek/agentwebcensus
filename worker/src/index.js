@@ -80,18 +80,11 @@ async function loadData(env, file) {
   const hit = mem.get(key);
   if (hit && Date.now() - hit.t < MEM_TTL) return hit.p;
   const p = (async () => {
-    const cache = typeof caches !== "undefined" ? caches.default : null;
-    const req = new Request(key);
-    let res = cache ? await cache.match(req) : null;
-    if (!res) {
-      res = await fetch(key, { cf: { cacheTtl: 3600, cacheEverything: true } });
-      if (!res.ok) throw new Error(`data fetch failed: ${file} HTTP ${res.status}`);
-      if (cache) {
-        const copy = new Response(res.clone().body, res);
-        copy.headers.set("Cache-Control", "public, max-age=3600");
-        try { await cache.put(req, copy); } catch (_) { /* too large or unsupported: ignore */ }
-      }
-    }
+    // one subrequest per file (free plan: 50/request); edge caching via cf.cacheTtlByStatus
+    const res = await fetch(key, { cf: { cacheTtlByStatus: { "200-299": 3600, "404": 0, "500-599": 0 }, cacheEverything: true } });
+    if (!res.ok) throw new Error(`data fetch failed: ${file} HTTP ${res.status}`);
+    const ct = res.headers.get("content-type") || "";
+    if (!ct.includes("json")) throw new Error(`data fetch failed: ${file} returned ${ct || "no content-type"}`);
     return res.json();
   })();
   mem.set(key, { t: Date.now(), p });
@@ -112,7 +105,7 @@ function tokShard(t) {
   for (const b of new TextEncoder().encode(t)) h = Math.imul(h ^ b, 16777619) >>> 0;
   return h & 1023;
 }
-const MAX_TOKENS = 6, MAX_CANDIDATES = 300, MAX_REC_SHARDS = 10;
+const MAX_TOKENS = 6, MAX_CANDIDATES = 300, MAX_REC_SHARDS = 36;  // free plan: 50 subrequests/request (6 token + meta + 40 rec)
 
 async function findMcpServers(args, env) {
   const q = typeof args.query === "string" ? args.query.trim() : "";
@@ -170,8 +163,8 @@ async function findMcpServers(args, env) {
     registry_link: "https://registry.modelcontextprotocol.io/v0/servers?search=" + encodeURIComponent(r[0]),
   }));
   return asText(
-    `Found ${scored.length} MCP servers matching "${q}" among the best ${picked.length} candidates (showing ${results.length}); health data from ${meta.date || "n/a"}. ${ATTRIBUTION}.`,
-    { candidates_considered: picked.length, results }
+    `${cand.length} MCP servers in the official registry match "${q}"; ranked the top ${picked.length} (working servers and more tools first), ${scored.length} passed your filters, showing ${results.length}; health data from ${meta.date || "n/a"}. ${ATTRIBUTION}.`,
+    { total_matches: cand.length, candidates_considered: picked.length, results }
   );
 }
 

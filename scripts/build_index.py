@@ -58,7 +58,7 @@ def build_mcp_index():
     n = len(rows)
     df, post = collections.Counter(), collections.defaultdict(list)
     for i, r in enumerate(rows):
-        for t in tokens(" ".join([r[0], r[1], r[2], r[3]])):
+        for t in tokens(" ".join([r[0].split("/", 1)[-1], r[1], r[2], r[3]])):  # skip namespace (io.github.*)
             post[t].append(i)
     skip = sorted(t for t, ids in post.items() if t in STOP or len(ids) > MAX_DF * n)
     for t in skip:

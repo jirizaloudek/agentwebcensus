@@ -225,7 +225,7 @@ async function siteAiCrawlerPolicy(args, env) {
   const domain = normDomain(args.domain);
   if (!domain || !domain.includes(".")) return toolError("Parameter 'domain' must be a domain name such as 'example.com'.");
   const c0 = domain[0];
-  const idx = await loadData(env, `sites/${/^[a-z0-9]$/.test(c0) ? c0 : "_"}.json`).catch(() => ({ domains: {}, date: "unknown" }));
+  const idx = await loadData(env, `sites/${/^[a-z0-9]$/.test(c0) ? c0 : "_"}.json`);  // errors propagate: never claim "not in scan" when data failed to load
   const row = idx.domains[domain];
   if (!row) {
     return asText(

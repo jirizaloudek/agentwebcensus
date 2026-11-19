@@ -1,12 +1,11 @@
 name = "datacensus-mcp"
 main = "src/index.js"
 compatibility_date = "2025-07-18"
-workers_dev = true
+workers_dev = false
 
 [vars]
-DATA_BASE = "https://agents.datacensus.org/data/"
+DATA_BASE = "http://agents.datacensus.org/data/"  # http until GitHub issues the TLS cert; redirects to https afterwards
 
-# Uncomment once the datacensus.org zone is on Cloudflare:
-# routes = [
-#   { pattern = "datacensus.org/*", zone_name = "datacensus.org" },
-# ]
+routes = [
+  { pattern = "datacensus.org", custom_domain = true },
+]

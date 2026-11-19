@@ -94,7 +94,8 @@ def build_sites_index():
         c = r["d"][0] if r["d"][0].isalnum() and r["d"][0].isascii() else "_"
         out[c][r["d"]] = [r["r"], r["rb"], flags] + [f"{b}:{c2}" for b, c2 in (r.get("b") or {}).items()]
     shutil.rmtree(OUT + "/sites", ignore_errors=True)
-    for c, doms in out.items():
+    for c in list("abcdefghijklmnopqrstuvwxyz0123456789_"):  # always write every shard: a 404 then means data missing, not "domain not scanned"
+        doms = out.get(c, {})
         dump(f"{OUT}/sites/{c}.json", {"date": d["generated"], "codes": d["codes"], "domains": doms})
     return sum(len(v) for v in out.values())
 

@@ -39,7 +39,7 @@ def build(H, servers_health, upd, day):
 <h2>Tools per working server</h2>{hbar(tb, f"Servers by number of tools (n={fmt(TL['n_with_count'])})")}
 <p class="meta">Median {fmt(TL['median'])}, mean {fmt(TL['mean'])}; only the first page of tools/list is counted, only for servers that worked without authentication.</p>
 <h2>Latency</h2><p>Initialize round trip for {fmt(L['n'])} working servers: median <b>{fmt(L['median'])} ms</b>, p90 <b>{fmt(L['p90'])} ms</b>, measured from one network location including connection setup.</p>
-<h2>Protocol versions</h2>{table(['protocolVersion returned', 'Servers'], [[k, v] for k, v in pv], (1,)) if pv else ''}
+<h2>Protocol versions</h2><p class="meta">Version the server answered with when our client requested <code>2025-06-18</code>. Per the MCP spec a server replies with the requested version if it supports it, so this shows how many servers support 2025-06-18 versus fall back to an older (or newer) version — not each server’s newest supported version.</p>{table(['protocolVersion returned', 'Servers'], [[k, v] for k, v in pv], (1,)) if pv else ''}
 <h2>Biggest hosts</h2>{table(['Host', 'Servers checked', 'Working (no auth)'], hosts, (1, 2))}
 <p class="meta">Top 20 hosts by number of registry servers checked; percentage is of that host’s servers.</p>
 <p><a href="/mcp/health/working/">List of working servers →</a></p>

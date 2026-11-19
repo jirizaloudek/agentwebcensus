@@ -152,6 +152,13 @@ if W:
 
 # ---------- home ----------
 home_facts = mcp_facts[:4]
+HH = json.load(open("data/health/latest.json")) if os.path.exists("data/health/latest.json") else None
+health_part = ""
+if HH:
+    T2 = HH["totals"]
+    health_facts = [f"As of {HH['generated']}, {T2['ok']['pct_of_checked']}% of {fmt(HH['checked'])} remote MCP servers in the official MCP Registry completed an MCP initialize handshake without authentication; {T2['auth_required']['pct_of_checked']}% were alive but required authentication; {round(100 - HH['alive_pct_of_checked'], 1)}% failed (single weekly check).",
+                    f"As of {HH['generated']}, the median working remote MCP server in the official registry exposes {fmt(HH['tools']['median'])} tools (mean {HH['tools']['mean']}), with a median initialize latency of {HH['latency_ms_ok']['median']} ms."]
+    health_part = "<h2>Do remote MCP servers work?</h2><ul class='facts'>" + "".join(f"<li>{e(f)}</li>" for f in health_facts) + "</ul><p><a href='/mcp/health/'>MCP uptime check →</a> · <a href='/mcp/health/working/'>list of working servers</a></p>"
 web_part = ""
 if W and "headline_facts" in W:
     web_part = "<h2>AI crawlers &amp; the web</h2><ul class='facts'>" + "".join(f"<li>{e(f)}</li>" for f in W["headline_facts"][:4]) + "</ul><p><a href='/ai-crawlers/'>All AI crawler statistics →</a></p>"
@@ -159,6 +166,7 @@ body = f"""<h1>Agent Web Census: live statistics on the AI agent ecosystem</h1>
 <p>Open numbers measured from primary sources: MCP Registry data is updated daily, the AI-crawler scan weekly — no estimates, no made-up figures. Every number links to its method and raw data.</p>
 {kpis([(T['servers'],'MCP servers (official registry)'),(G['new_servers_last_30d'],'new MCP servers, 30 days'),(D['remote_servers'],'remote MCP servers')])}
 <h2>MCP servers</h2><ul class="facts">{''.join(f'<li>{e(f)}</li>' for f in home_facts)}</ul><p><a href="/mcp/">All MCP statistics →</a></p>{web_part}
+{health_part}<p>Look up a site: <a href="/ai-crawlers/sites/">Does a top website block AI crawlers? (A–Z)</a></p>
 <h2>For AI agents</h2><p>Machine-readable: <a href="/llms.txt">/llms.txt</a>, <a href="/data/">JSON &amp; CSV endpoints</a>. Data is CC BY 4.0 — please cite “Agent Web Census” with the URL.</p>"""
 page("/", "Agent Web Census — live statistics on MCP servers and AI agents", "Primary-source statistics on the AI agent ecosystem: MCP Registry data updated daily, AI crawler policies of top websites scanned weekly. Open data (CC BY 4.0).", body, upd)
 
@@ -184,7 +192,8 @@ page("/about/", "About Agent Web Census & methodology", "Who runs Agent Web Cens
 llms = [f"# {SITE_NAME}", "", "> Live, daily-updated, primary-source statistics on the AI agent ecosystem (MCP servers, AI crawler policies). Open data, CC BY 4.0. Operated by an AI agent (Claude).", "",
         f"MCP data last updated: {upd} (recomputed daily). AI-crawler scan date: {W['generated'] if W else 'n/a'} (repeated weekly).", "", "## Key facts (MCP, official MCP Registry)"] + [f"- {f}" for f in mcp_facts]
 if W and "headline_facts" in W: llms += ["", "## Key facts (AI crawlers)"] + [f"- {f}" for f in W["headline_facts"]]
-llms += ["", "## Pages", f"- [MCP server statistics]({BASE_URL}/mcp/): totals, growth, deployment, categories",
+if HH: llms += ["", "## Key facts (remote MCP server health)"] + [f"- {f}" for f in health_facts]
+llms += ["", "## Pages", f"- [Do remote MCP servers work?]({BASE_URL}/mcp/health/): weekly initialize check of every remote server", f"- [Working remote MCP servers]({BASE_URL}/mcp/health/working/)", f"- [Does <site> block AI crawlers?]({BASE_URL}/ai-crawlers/sites/): per-site pages for top websites", f"- [MCP server statistics]({BASE_URL}/mcp/): totals, growth, deployment, categories",
          f"- [New MCP servers this week]({BASE_URL}/mcp/new/)", f"- [AI crawler statistics]({BASE_URL}/ai-crawlers/): which bots top websites block",
          f"- [Methodology]({BASE_URL}/about/)", "", "## Data", f"- [mcp-latest.json]({BASE_URL}/data/mcp-latest.json)",
          f"- [mcp-history.csv]({BASE_URL}/data/mcp-history.csv)", f"- [mcp-servers/1.json]({BASE_URL}/data/mcp-servers/1.json): all servers, compact"]

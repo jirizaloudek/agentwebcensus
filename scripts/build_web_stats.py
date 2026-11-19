@@ -306,7 +306,7 @@ def main():
                       "pct_of_all_scanned": pct(len(with_sig), len(recs)),
                       "values": {k: dict(c) for k, c in kv.items()}}
 
-    today = datetime.date.today().isoformat()
+    today = meta.get("downloaded") or datetime.date.today().isoformat()  # scan date, not build date
     latest = {
         "generated": today,
         "tranco_list_id": meta.get("tranco_list_id"),

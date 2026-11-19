@@ -1,0 +1,2 @@
+date,checked,ok,auth_required,http_error,timeout,dns_error,tls_error,conn_error,invalid_response,median_latency_ms,median_tools
+2026-11-19,45311,25702,15123,2758,92,9,473,1051,103,293,7.0

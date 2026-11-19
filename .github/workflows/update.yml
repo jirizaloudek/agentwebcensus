@@ -2,7 +2,11 @@ name: daily-update
 on:
   schedule:
     - cron: "17 5 * * *"      # daily 05:17 UTC
-  workflow_dispatch: {}
+  workflow_dispatch:
+    inputs:
+      scans:
+        description: "Also run the weekly scans (AI-crawler + remote MCP health)"
+        default: "false"
 permissions:
   contents: write
   pages: write
@@ -36,12 +40,12 @@ jobs:
         run: python3 scripts/build_mcp_stats.py data/raw/registry.jsonl
       - name: Scan AI-crawler policies (weekly on Mondays, or on manual run)
         run: |
-          if [ "$(date -u +%u)" = "1" ] || [ "${{ github.event_name }}" = "workflow_dispatch" ] || [ ! -f data/web/latest.json ]; then
+          if [ "$(date -u +%u)" = "1" ] || [ "${{ inputs.scans }}" = "true" ] || [ ! -f data/web/latest.json ]; then
             python3 scripts/scan_web.py --top 10000 --out data/web/raw.jsonl && python3 scripts/build_web_stats.py
           fi
       - name: Check remote MCP servers (weekly on Wednesdays, or on manual run)
         run: |
-          if [ "$(date -u +%u)" = "3" ] || [ "${{ github.event_name }}" = "workflow_dispatch" ] || [ ! -f data/health/latest.json ]; then
+          if [ "$(date -u +%u)" = "3" ] || [ "${{ inputs.scans }}" = "true" ] || [ ! -f data/health/latest.json ]; then
             rm -f data/health/raw.jsonl && python3 scripts/check_remotes.py --out data/health/raw.jsonl && python3 scripts/build_health_stats.py
           fi
       - name: Build site
@@ -59,7 +63,9 @@ jobs:
         run: |
           git config user.name "agent-web-census-bot"
           git config user.email "actions@users.noreply.github.com"
+          # Bot owns data/: rebase-free update that never merges JSON line-by-line.
+          git fetch -q origin main
+          git reset -q --mixed origin/main
           git add data
           git diff --cached --quiet || git commit -m "data: daily update $(date -u +%F)"
-          git pull --rebase -X theirs origin main
-          git push
+          git push origin HEAD:main

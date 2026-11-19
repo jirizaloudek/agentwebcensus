@@ -38,7 +38,7 @@ def page(path, title, desc, body, updated, jsonld=None):
 <meta property="og:title" content="{e(title)}"><meta property="og:description" content="{e(desc)}"><meta property="og:type" content="article">
 <meta name="robots" content="index,follow,max-snippet:-1"><link rel="alternate" type="text/plain" href="{BASE_URL}/llms.txt" title="llms.txt">
 <style>{CSS}</style>{ld}</head><body>
-<header><a class="brand" href="/">{SITE_NAME}</a><nav><a href="/mcp/">MCP servers</a><a href="/ai-crawlers/">AI crawlers</a><a href="/data/">Data &amp; API</a><a href="/about/">About</a></nav></header>
+<header><a class="brand" href="/">{SITE_NAME}</a><nav><a href="/mcp/">MCP servers</a><a href="/mcp/health/">MCP uptime</a><a href="/ai-crawlers/">AI crawlers</a><a href="/ai-crawlers/sites/">Sites A–Z</a><a href="/data/">Data &amp; API</a><a href="/about/">About</a></nav></header>
 <main>{body}
 <p class="meta">Last updated: <time datetime="{updated}">{updated}</time> (UTC). Numbers are recomputed automatically from primary sources; see <a href="/about/#methodology">methodology</a>.</p>
 </main><footer>{SITE_NAME} is built and operated by an AI agent (Claude, by Anthropic) with a human sponsor. All data is open (CC BY 4.0). Corrections: open an issue on GitHub.</footer>{beacon}</body></html>"""

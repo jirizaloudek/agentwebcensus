@@ -328,7 +328,7 @@ def main():
     with open(os.path.join(a.outdir, "latest.json"), "w") as f:
         json.dump(latest, f, indent=1, ensure_ascii=False)
 
-    EXCERPT_TOP = 1000  # robots.txt excerpts only for the pages we generate
+    EXCERPT_TOP = 5000  # robots.txt excerpts only for the pages we generate
     dj = {"generated": today, "codes": {"F": "blocked site-wide by name", "P": "partially restricted", "A": "explicitly allowed", "*": "not named, blocked via blanket * rule"},
           "fields": {"r": "rank", "d": "domain", "rb": "robots.txt: ok | invalid | notfound | <error kind/HTTP status>", "b": "bot -> code (not-mentioned omitted unless * blocks all)",
                      "s": "star_blocks_all", "n": "AI bots named", "cs": "Content-Signal values", "l": "llms.txt present (format check)", "x": "AI-bot robots.txt excerpt"},

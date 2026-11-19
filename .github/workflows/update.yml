@@ -50,12 +50,17 @@ jobs:
           fi
       - name: Build site
         run: python3 scripts/build_site.py
+      - name: IndexNow key file
+        run: python3 scripts/indexnow.py --key-only
       - name: Upload site for GitHub Pages
         uses: actions/upload-pages-artifact@v3
         with: { path: site }
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v4
+      - name: Notify IndexNow about changed pages
+        continue-on-error: true
+        run: sleep 30 && python3 scripts/indexnow.py
       - name: Deploy to Cloudflare Pages (optional)
         if: env.CLOUDFLARE_API_TOKEN != ''
         run: npx --yes wrangler@3 pages deploy site --project-name "${{ vars.CF_PROJECT || 'agentwebcensus' }}" --branch main --commit-dirty=true

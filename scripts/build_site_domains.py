@@ -1,8 +1,8 @@
-"""Per-domain pages: /ai-crawlers/site/<domain>/ (top 1,000 ranked domains with a readable robots.txt) and /ai-crawlers/sites/ index."""
+"""Per-domain pages: /ai-crawlers/site/<domain>/ (top 5,000 ranked domains with a readable robots.txt) and /ai-crawlers/sites/ index."""
 import datetime as dt
 from sitelib import *
 
-TOP_N = 1000
+TOP_N = 5000
 WORDS = {"F": "Blocked site-wide", "P": "Partially restricted", "A": "Explicitly allowed", "*": "Blocked via blanket * rule"}
 NOT_NAMED = "Not named (default rules apply)"
 

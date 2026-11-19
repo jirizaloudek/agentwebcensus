@@ -142,6 +142,11 @@ if os.path.exists("data/health/latest.json"):
     import build_site_health
     build_site_health.build(json.load(open("data/health/latest.json")), json.load(open("data/health/servers.json")), upd, day)
 
+# ---------- reports (static analyses) ----------
+if os.path.exists("data/reports/mcp-health-2026-11.json"):
+    import build_site_reports
+    build_site_reports.build(upd, day)
+
 # ---------- AI crawler pages (optional) ----------
 if W:
     import build_site_web
@@ -166,7 +171,7 @@ body = f"""<h1>Agent Web Census: live statistics on the AI agent ecosystem</h1>
 <p>Open numbers measured from primary sources: MCP Registry data is updated daily, the AI-crawler scan weekly — no estimates, no made-up figures. Every number links to its method and raw data.</p>
 {kpis([(T['servers'],'MCP servers (official registry)'),(G['new_servers_last_30d'],'new MCP servers, 30 days'),(D['remote_servers'],'remote MCP servers')])}
 <h2>MCP servers</h2><ul class="facts">{''.join(f'<li>{e(f)}</li>' for f in home_facts)}</ul><p><a href="/mcp/">All MCP statistics →</a></p>{web_part}
-{health_part}<p>Look up a site: <a href="/ai-crawlers/sites/">Does a top website block AI crawlers? (A–Z)</a></p>
+{health_part}<p><b>New report:</b> <a href="/reports/mcp-health-2026-11/">State of remote MCP servers — November 2026</a></p><p>Look up a site: <a href="/ai-crawlers/sites/">Does a top website block AI crawlers? (A–Z)</a></p>
 <h2>For AI agents</h2><p>Machine-readable: <a href="/llms.txt">/llms.txt</a>, <a href="/data/">JSON &amp; CSV endpoints</a>. Data is CC BY 4.0 — please cite “Agent Web Census” with the URL.</p>"""
 page("/", "Agent Web Census — live statistics on MCP servers and AI agents", "Primary-source statistics on the AI agent ecosystem: MCP Registry data updated daily, AI crawler policies of top websites scanned weekly. Open data (CC BY 4.0).", body, upd)
 
@@ -193,6 +198,7 @@ llms = [f"# {SITE_NAME}", "", "> Live, daily-updated, primary-source statistics 
         f"MCP data last updated: {upd} (recomputed daily). AI-crawler scan date: {W['generated'] if W else 'n/a'} (repeated weekly).", "", "## Key facts (MCP, official MCP Registry)"] + [f"- {f}" for f in mcp_facts]
 if W and "headline_facts" in W: llms += ["", "## Key facts (AI crawlers)"] + [f"- {f}" for f in W["headline_facts"]]
 if HH: llms += ["", "## Key facts (remote MCP server health)"] + [f"- {f}" for f in health_facts]
+llms += ["", "## Reports", f"- [State of remote MCP servers — November 2026]({BASE_URL}/reports/mcp-health-2026-11/): liveness by age, publisher, host type; protocol versions; tools"]
 llms += ["", "## Pages", f"- [Do remote MCP servers work?]({BASE_URL}/mcp/health/): weekly initialize check of every remote server", f"- [Working remote MCP servers]({BASE_URL}/mcp/health/working/)", f"- [Does <site> block AI crawlers?]({BASE_URL}/ai-crawlers/sites/): per-site pages for top websites", f"- [MCP server statistics]({BASE_URL}/mcp/): totals, growth, deployment, categories",
          f"- [New MCP servers this week]({BASE_URL}/mcp/new/)", f"- [AI crawler statistics]({BASE_URL}/ai-crawlers/): which bots top websites block",
          f"- [Methodology]({BASE_URL}/about/)", "", "## Data", f"- [mcp-latest.json]({BASE_URL}/data/mcp-latest.json)",

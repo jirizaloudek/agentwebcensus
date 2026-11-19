@@ -137,10 +137,18 @@ for r in D["package_registry"]:
     sub_page(f"/mcp/registry/{slug(r)}/", f"MCP servers distributed via {r}", [s for s in SV if r in s["packages"]], f"MCP servers published as {r} packages")
 sub_page("/mcp/remote/", "Remote (hosted) MCP servers", [s for s in SV if s["remotes"]], "remote MCP servers")
 
+# ---------- remote MCP health (weekly) ----------
+if os.path.exists("data/health/latest.json"):
+    import build_site_health
+    build_site_health.build(json.load(open("data/health/latest.json")), json.load(open("data/health/servers.json")), upd, day)
+
 # ---------- AI crawler pages (optional) ----------
 if W:
     import build_site_web
     build_site_web.build(W, upd, day)
+    if os.path.exists("data/web/domains.json"):
+        import build_site_domains
+        build_site_domains.build(W, json.load(open("data/web/domains.json")), upd, day)
 
 # ---------- home ----------
 home_facts = mcp_facts[:4]

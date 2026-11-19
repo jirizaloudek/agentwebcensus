@@ -131,6 +131,59 @@ def analyze(rec):
     return {"bots": res, "star_blocks_all": star, "signals": bool(signals), "signal_kv": sig}
 
 
+def ai_excerpt(text, max_lines=40):
+    """Raw robots.txt lines of the groups that name a tracked AI bot (Googlebot excluded), max_lines lines.
+    Groups are delimited exactly as in parse_robots (a User-agent line after rules starts a new group)."""
+    groups, cur, in_rules = [], [], False
+    for line in text.lstrip("\ufeff").replace("\r\n", "\n").replace("\r", "\n").split("\n"):
+        body = line.split("#", 1)[0].strip()
+        k = body.split(":", 1)[0].strip().lower() if ":" in body else ""
+        if k == "user-agent":
+            if in_rules:
+                groups.append(cur); cur, in_rules = [], False
+        elif k in ("allow", "disallow"):
+            in_rules = True
+        if body:
+            cur.append(line.strip()[:160])
+    if cur:
+        groups.append(cur)
+    out = []
+    for g in groups:
+        uas = {l.split(":", 1)[1].split("#", 1)[0].strip().lower() for l in g if l.lower().startswith("user-agent:")}
+        if any(u in LOWER and LOWER[u] not in COMPARISON for u in uas):
+            out += g + [""]
+    while out and not out[-1]:
+        out.pop()
+    if len(out) > max_lines:
+        out = out[:max_lines] + ["# ... (truncated)"]
+    return "\n".join(out)
+
+
+BOT_CODE = {"blocked_fully": "F", "blocked_partially": "P", "allowed_explicitly": "A"}
+
+
+def domain_record(r, with_excerpt=False):
+    """Compact per-domain record for domains.json. Bot codes: F blocked site-wide by name, P partial, A explicitly
+    allowed, * not named but blocked via blanket '*' rule; not-mentioned bots are omitted."""
+    a = r["_a"]
+    st = r["robots_status"]
+    rec = {"r": r["rank"], "d": r["domain"],
+           "rb": "ok" if a else ("invalid" if st == 200 else "notfound" if st in (404, 410) else str(st))}
+    if a:
+        rec["b"] = {b: (BOT_CODE[v] if v != "not_mentioned" else "*") for b, v in a["bots"].items()
+                    if v != "not_mentioned" or a["star_blocks_all"]}
+        rec["s"] = int(a["star_blocks_all"])
+        rec["n"] = sum(1 for b in AI_ONLY if a["bots"][b] != "not_mentioned")
+        if a["signal_kv"]:
+            rec["cs"] = a["signal_kv"]
+        if with_excerpt:
+            x = ai_excerpt(r.get("robots_text") or "")
+            if x:
+                rec["x"] = x
+    rec["l"] = int(bool(r["llms_is_valid"]))
+    return rec
+
+
 def pct(n, d):
     return round(100.0 * n / d, 1) if d else None
 
@@ -274,6 +327,14 @@ def main():
     }
     with open(os.path.join(a.outdir, "latest.json"), "w") as f:
         json.dump(latest, f, indent=1, ensure_ascii=False)
+
+    EXCERPT_TOP = 1000  # robots.txt excerpts only for the pages we generate
+    dj = {"generated": today, "codes": {"F": "blocked site-wide by name", "P": "partially restricted", "A": "explicitly allowed", "*": "not named, blocked via blanket * rule"},
+          "fields": {"r": "rank", "d": "domain", "rb": "robots.txt: ok | invalid | notfound | <error kind/HTTP status>", "b": "bot -> code (not-mentioned omitted unless * blocks all)",
+                     "s": "star_blocks_all", "n": "AI bots named", "cs": "Content-Signal values", "l": "llms.txt present (format check)", "x": "AI-bot robots.txt excerpt"},
+          "domains": [domain_record(r, r["rank"] <= EXCERPT_TOP) for r in recs]}
+    with open(os.path.join(a.outdir, "domains.json"), "w") as f:
+        json.dump(dj, f, separators=(",", ":"), ensure_ascii=False)
 
     # history.csv
     b = overall["bots"]

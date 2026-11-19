@@ -1,5 +1,5 @@
 {
- "generated": "2026-11-18",
+ "generated": "2026-11-19",
  "tranco_list_id": "V38GN",
  "tranco_downloaded": "2026-11-18",
  "domains_scanned": 10000,
@@ -8,35 +8,33 @@
  "robots_reachable_pct": 58.4,
  "robots_http200_but_invalid_or_html": 523,
  "robots_status_counts": {
-  "200": 6361,
-  "error:dns": 1379,
-  "403": 852,
-  "404": 592,
-  "error:timeout": 321,
-  "error:ssl": 199,
-  "error:refused": 54,
-  "error:conn": 42,
-  "503": 24,
-  "202": 21,
-  "429": 18,
-  "400": 17,
-  "error:remotedisconnected": 16,
-  "502": 14,
+  "200": 6307,
+  "error:conn": 1531,
+  "403": 818,
+  "404": 580,
+  "error:timeout": 368,
+  "error:ssl": 191,
+  "error:dns": 30,
+  "429": 20,
+  "400": 19,
+  "503": 19,
+  "error:remotedisconnected": 15,
+  "502": 13,
   "500": 11,
-  "418": 8,
+  "418": 10,
   "204": 7,
-  "405": 7,
   "301": 6,
+  "406": 6,
   "401": 5,
-  "307": 5,
-  "406": 5,
+  "202": 5,
   "417": 4,
   "410": 4,
   "530": 4,
   "521": 3,
-  "451": 3,
+  "405": 3,
   "498": 2,
   "522": 2,
+  "451": 2,
   "520": 1,
   "409": 1,
   "302": 1,
@@ -46,11 +44,13 @@
   "444": 1,
   "509": 1,
   "525": 1,
+  "307": 1,
+  "504": 1,
   "447": 1,
   "421": 1,
   "420": 1,
-  "402": 1,
-  "433": 1
+  "433": 1,
+  "523": 1
  },
  "bots_catalog": {
   "GPTBot": {
@@ -196,11 +196,11 @@
  },
  "overall": {
   "scanned": 10000,
-  "robots_reachable": 5838,
+  "robots_reachable": 5806,
   "bots": {
    "GPTBot": {
-    "blocked_fully": 898,
-    "blocked_partially": 227,
+    "blocked_fully": 890,
+    "blocked_partially": 220,
     "allowed_explicitly": 147,
     "not_mentioned": 4566,
     "not_mentioned_but_star_blocks_all": 222,
@@ -223,19 +223,6 @@
     "pct_fully_of_all_scanned": 3.7,
     "pct_partially_of_all_scanned": 2.1,
     "pct_allowed_explicitly_of_all_scanned": 1.5
-   },
-   "OAI-SearchBot": {
-    "blocked_fully": 257,
-    "blocked_partially": 215,
-    "allowed_explicitly": 155,
-    "not_mentioned": 5211,
-    "not_mentioned_but_star_blocks_all": 223,
-    "pct_fully_of_reachable": 4.4,
-    "pct_partially_of_reachable": 3.7,
-    "pct_allowed_explicitly_of_reachable": 2.7,
-    "pct_fully_of_all_scanned": 2.6,
-    "pct_partially_of_all_scanned": 2.1,
-    "pct_allowed_explicitly_of_all_scanned": 1.6
    },
    "ClaudeBot": {
     "blocked_fully": 822,
@@ -277,8 +264,8 @@
     "pct_allowed_explicitly_of_all_scanned": 0.6
    },
    "anthropic-ai": {
-    "blocked_fully": 693,
-    "blocked_partially": 83,
+    "blocked_fully": 690,
+    "blocked_partially": 78,
     "allowed_explicitly": 49,
     "not_mentioned": 5013,
     "not_mentioned_but_star_blocks_all": 254,
@@ -329,8 +316,8 @@
     "pct_allowed_explicitly_of_all_scanned": 1.5
    },
    "Applebot-Extended": {
-    "blocked_fully": 713,
-    "blocked_partially": 86,
+    "blocked_fully": 715,
+    "blocked_partially": 82,
     "allowed_explicitly": 50,
     "not_mentioned": 4989,
     "not_mentioned_but_star_blocks_all": 244,
@@ -459,7 +446,7 @@
     "pct_allowed_explicitly_of_all_scanned": 0.2
    },
    "MistralAI-User": {
-    "blocked_fully": 218,
+    "blocked_fully": 219,
     "blocked_partially": 35,
     "allowed_explicitly": 16,
     "not_mentioned": 5569,
@@ -485,8 +472,8 @@
     "pct_allowed_explicitly_of_all_scanned": 0.3
    },
    "Diffbot": {
-    "blocked_fully": 703,
-    "blocked_partially": 27,
+    "blocked_fully": 705,
+    "blocked_partially": 26,
     "allowed_explicitly": 11,
     "not_mentioned": 5097,
     "not_mentioned_but_star_blocks_all": 256,
@@ -498,7 +485,7 @@
     "pct_allowed_explicitly_of_all_scanned": 0.1
    },
    "Timpibot": {
-    "blocked_fully": 352,
+    "blocked_fully": 351,
     "blocked_partially": 13,
     "allowed_explicitly": 3,
     "not_mentioned": 5470,
@@ -511,8 +498,8 @@
     "pct_allowed_explicitly_of_all_scanned": 0.0
    },
    "ImagesiftBot": {
-    "blocked_fully": 334,
-    "blocked_partially": 12,
+    "blocked_fully": 332,
+    "blocked_partially": 11,
     "allowed_explicitly": 2,
     "not_mentioned": 5490,
     "not_mentioned_but_star_blocks_all": 262,
@@ -524,7 +511,7 @@
     "pct_allowed_explicitly_of_all_scanned": 0.0
    },
    "omgili": {
-    "blocked_fully": 675,
+    "blocked_fully": 673,
     "blocked_partially": 16,
     "allowed_explicitly": 4,
     "not_mentioned": 5143,
@@ -537,8 +524,8 @@
     "pct_allowed_explicitly_of_all_scanned": 0.0
    },
    "AI2Bot": {
-    "blocked_fully": 269,
-    "blocked_partially": 27,
+    "blocked_fully": 272,
+    "blocked_partially": 25,
     "allowed_explicitly": 2,
     "not_mentioned": 5540,
     "not_mentioned_but_star_blocks_all": 264,
@@ -550,12 +537,12 @@
     "pct_allowed_explicitly_of_all_scanned": 0.0
    },
    "PetalBot": {
-    "blocked_fully": 619,
-    "blocked_partially": 28,
-    "allowed_explicitly": 10,
-    "not_mentioned": 5181,
-    "not_mentioned_but_star_blocks_all": 248,
-    "pct_fully_of_reachable": 10.6,
+    "blocked_fully": 621,
+    "blocked_partially": 31,
+    "allowed_explicitly": 11,
+    "not_mentioned": 5143,
+    "not_mentioned_but_star_blocks_all": 240,
+    "pct_fully_of_reachable": 10.7,
     "pct_partially_of_reachable": 0.5,
     "pct_allowed_explicitly_of_reachable": 0.2,
     "pct_fully_of_all_scanned": 6.2,
@@ -578,11 +565,11 @@
    "pct_of_all_scanned": 5.9
   },
   "star_blocks_everything": {
-   "count": 275,
-   "pct_of_reachable": 4.7
+   "count": 267,
+   "pct_of_reachable": 4.6
   },
-  "mean_ai_bots_named_per_robots_txt": 3.166,
-  "mean_ai_bots_named_per_robots_txt_among_those_naming_any": 10.622
+  "mean_ai_bots_named_per_robots_txt": 3.169,
+  "mean_ai_bots_named_per_robots_txt_among_those_naming_any": 10.555
  },
  "by_rank_bucket": {
   "top100": {
@@ -591,80 +578,80 @@
    "bots": {
     "GPTBot": {
      "blocked_fully": 11,
-     "blocked_partially": 2,
+     "blocked_partially": 1,
      "allowed_explicitly": 3,
-     "not_mentioned": 36,
+     "not_mentioned": 37,
      "not_mentioned_but_star_blocks_all": 8,
      "pct_fully_of_reachable": 21.2,
      "pct_partially_of_reachable": 3.8,
      "pct_allowed_explicitly_of_reachable": 5.8,
      "pct_fully_of_all_scanned": 11.0,
-     "pct_partially_of_all_scanned": 2.0,
+     "pct_partially_of_all_scanned": 1.0,
      "pct_allowed_explicitly_of_all_scanned": 3.0
     },
     "ChatGPT-User": {
      "blocked_fully": 5,
-     "blocked_partially": 2,
+     "blocked_partially": 1,
      "allowed_explicitly": 2,
-     "not_mentioned": 43,
+     "not_mentioned": 44,
      "not_mentioned_but_star_blocks_all": 11,
      "pct_fully_of_reachable": 9.6,
      "pct_partially_of_reachable": 3.8,
      "pct_allowed_explicitly_of_reachable": 3.8,
      "pct_fully_of_all_scanned": 5.0,
-     "pct_partially_of_all_scanned": 2.0,
+     "pct_partially_of_all_scanned": 1.0,
      "pct_allowed_explicitly_of_all_scanned": 2.0
     },
     "OAI-SearchBot": {
      "blocked_fully": 3,
-     "blocked_partially": 3,
+     "blocked_partially": 2,
      "allowed_explicitly": 1,
-     "not_mentioned": 45,
+     "not_mentioned": 46,
      "not_mentioned_but_star_blocks_all": 11,
      "pct_fully_of_reachable": 5.8,
      "pct_partially_of_reachable": 5.8,
      "pct_allowed_explicitly_of_reachable": 1.9,
      "pct_fully_of_all_scanned": 3.0,
-     "pct_partially_of_all_scanned": 3.0,
+     "pct_partially_of_all_scanned": 2.0,
      "pct_allowed_explicitly_of_all_scanned": 1.0
     },
     "ClaudeBot": {
      "blocked_fully": 11,
-     "blocked_partially": 2,
+     "blocked_partially": 1,
      "allowed_explicitly": 2,
-     "not_mentioned": 37,
+     "not_mentioned": 38,
      "not_mentioned_but_star_blocks_all": 8,
      "pct_fully_of_reachable": 21.2,
      "pct_partially_of_reachable": 3.8,
      "pct_allowed_explicitly_of_reachable": 3.8,
      "pct_fully_of_all_scanned": 11.0,
-     "pct_partially_of_all_scanned": 2.0,
+     "pct_partially_of_all_scanned": 1.0,
      "pct_allowed_explicitly_of_all_scanned": 2.0
     },
     "Claude-User": {
      "blocked_fully": 4,
-     "blocked_partially": 2,
+     "blocked_partially": 1,
      "allowed_explicitly": 1,
-     "not_mentioned": 45,
+     "not_mentioned": 46,
      "not_mentioned_but_star_blocks_all": 11,
      "pct_fully_of_reachable": 7.7,
      "pct_partially_of_reachable": 3.8,
      "pct_allowed_explicitly_of_reachable": 1.9,
      "pct_fully_of_all_scanned": 4.0,
-     "pct_partially_of_all_scanned": 2.0,
+     "pct_partially_of_all_scanned": 1.0,
      "pct_allowed_explicitly_of_all_scanned": 1.0
     },
     "Claude-SearchBot": {
      "blocked_fully": 3,
-     "blocked_partially": 3,
+     "blocked_partially": 2,
      "allowed_explicitly": 1,
-     "not_mentioned": 45,
+     "not_mentioned": 46,
      "not_mentioned_but_star_blocks_all": 11,
      "pct_fully_of_reachable": 5.8,
      "pct_partially_of_reachable": 5.8,
      "pct_allowed_explicitly_of_reachable": 1.9,
      "pct_fully_of_all_scanned": 3.0,
-     "pct_partially_of_all_scanned": 3.0,
+     "pct_partially_of_all_scanned": 2.0,
      "pct_allowed_explicitly_of_all_scanned": 1.0
     },
     "anthropic-ai": {
@@ -734,28 +721,28 @@
     },
     "PerplexityBot": {
      "blocked_fully": 11,
-     "blocked_partially": 2,
+     "blocked_partially": 1,
      "allowed_explicitly": 3,
-     "not_mentioned": 36,
+     "not_mentioned": 37,
      "not_mentioned_but_star_blocks_all": 8,
      "pct_fully_of_reachable": 21.2,
      "pct_partially_of_reachable": 3.8,
      "pct_allowed_explicitly_of_reachable": 5.8,
      "pct_fully_of_all_scanned": 11.0,
-     "pct_partially_of_all_scanned": 2.0,
+     "pct_partially_of_all_scanned": 1.0,
      "pct_allowed_explicitly_of_all_scanned": 3.0
     },
     "Perplexity-User": {
      "blocked_fully": 4,
-     "blocked_partially": 1,
+     "blocked_partially": 0,
      "allowed_explicitly": 1,
-     "not_mentioned": 46,
+     "not_mentioned": 47,
      "not_mentioned_but_star_blocks_all": 12,
      "pct_fully_of_reachable": 7.7,
      "pct_partially_of_reachable": 1.9,
      "pct_allowed_explicitly_of_reachable": 1.9,
      "pct_fully_of_all_scanned": 4.0,
-     "pct_partially_of_all_scanned": 1.0,
+     "pct_partially_of_all_scanned": 0.0,
      "pct_allowed_explicitly_of_all_scanned": 1.0
     },
     "CCBot": {
@@ -772,10 +759,10 @@
      "pct_allowed_explicitly_of_all_scanned": 2.0
     },
     "Bytespider": {
-     "blocked_fully": 8,
+     "blocked_fully": 7,
      "blocked_partially": 0,
      "allowed_explicitly": 1,
-     "not_mentioned": 43,
+     "not_mentioned": 44,
      "not_mentioned_but_star_blocks_all": 12,
      "pct_fully_of_reachable": 15.4,
      "pct_partially_of_reachable": 0.0,
@@ -955,9 +942,9 @@
     }
    },
    "blocking_at_least_one_ai_bot_fully": {
-    "count": 14,
-    "pct_of_reachable": 26.9,
-    "pct_of_all_scanned": 14.0
+    "count": 13,
+    "pct_of_reachable": 25.0,
+    "pct_of_all_scanned": 13.0
    },
    "restricting_at_least_one_ai_bot_fully_or_partially": {
     "count": 18,
@@ -972,24 +959,24 @@
     "count": 12,
     "pct_of_reachable": 23.1
    },
-   "mean_ai_bots_named_per_robots_txt": 3.981,
-   "mean_ai_bots_named_per_robots_txt_among_those_naming_any": 9.857
+   "mean_ai_bots_named_per_robots_txt": 3.808,
+   "mean_ai_bots_named_per_robots_txt_among_those_naming_any": 9.9
   },
   "top1k": {
    "scanned": 1000,
    "robots_reachable": 511,
    "bots": {
     "GPTBot": {
-     "blocked_fully": 89,
-     "blocked_partially": 27,
+     "blocked_fully": 85,
+     "blocked_partially": 25,
      "allowed_explicitly": 19,
      "not_mentioned": 376,
      "not_mentioned_but_star_blocks_all": 34,
      "pct_fully_of_reachable": 17.4,
      "pct_partially_of_reachable": 5.3,
      "pct_allowed_explicitly_of_reachable": 3.7,
-     "pct_fully_of_all_scanned": 8.9,
-     "pct_partially_of_all_scanned": 2.7,
+     "pct_fully_of_all_scanned": 8.5,
+     "pct_partially_of_all_scanned": 2.5,
      "pct_allowed_explicitly_of_all_scanned": 1.9
     },
     "ChatGPT-User": {
@@ -1019,8 +1006,8 @@
      "pct_allowed_explicitly_of_all_scanned": 1.7
     },
     "ClaudeBot": {
-     "blocked_fully": 87,
-     "blocked_partially": 25,
+     "blocked_fully": 85,
+     "blocked_partially": 24,
      "allowed_explicitly": 17,
      "not_mentioned": 382,
      "not_mentioned_but_star_blocks_all": 36,
@@ -1032,7 +1019,7 @@
      "pct_allowed_explicitly_of_all_scanned": 1.7
     },
     "Claude-User": {
-     "blocked_fully": 43,
+     "blocked_fully": 41,
      "blocked_partially": 24,
      "allowed_explicitly": 7,
      "not_mentioned": 437,
@@ -1042,7 +1029,7 @@
      "pct_allowed_explicitly_of_reachable": 1.4,
      "pct_fully_of_all_scanned": 4.3,
      "pct_partially_of_all_scanned": 2.4,
-     "pct_allowed_explicitly_of_all_scanned": 0.7
+     "pct_allowed_explicitly_of_all_scanned": 0.5
     },
     "Claude-SearchBot": {
      "blocked_fully": 42,
@@ -1058,7 +1045,7 @@
      "pct_allowed_explicitly_of_all_scanned": 0.6
     },
     "anthropic-ai": {
-     "blocked_fully": 54,
+     "blocked_fully": 51,
      "blocked_partially": 9,
      "allowed_explicitly": 9,
      "not_mentioned": 439,
@@ -1084,7 +1071,7 @@
      "pct_allowed_explicitly_of_all_scanned": 0.4
     },
     "Google-Extended": {
-     "blocked_fully": 73,
+     "blocked_fully": 71,
      "blocked_partially": 24,
      "allowed_explicitly": 17,
      "not_mentioned": 397,
@@ -1094,11 +1081,11 @@
      "pct_allowed_explicitly_of_reachable": 3.3,
      "pct_fully_of_all_scanned": 7.3,
      "pct_partially_of_all_scanned": 2.4,
-     "pct_allowed_explicitly_of_all_scanned": 1.7
+     "pct_allowed_explicitly_of_all_scanned": 1.8
     },
     "Googlebot": {
      "blocked_fully": 3,
-     "blocked_partially": 65,
+     "blocked_partially": 64,
      "allowed_explicitly": 14,
      "not_mentioned": 429,
      "not_mentioned_but_star_blocks_all": 21,
@@ -1110,7 +1097,7 @@
      "pct_allowed_explicitly_of_all_scanned": 1.4
     },
     "Applebot-Extended": {
-     "blocked_fully": 71,
+     "blocked_fully": 68,
      "blocked_partially": 14,
      "allowed_explicitly": 7,
      "not_mentioned": 419,
@@ -1149,8 +1136,8 @@
      "pct_allowed_explicitly_of_all_scanned": 0.8
     },
     "CCBot": {
-     "blocked_fully": 92,
-     "blocked_partially": 14,
+     "blocked_fully": 91,
+     "blocked_partially": 15,
      "allowed_explicitly": 8,
      "not_mentioned": 397,
      "not_mentioned_but_star_blocks_all": 43,
@@ -1162,8 +1149,8 @@
      "pct_allowed_explicitly_of_all_scanned": 0.8
     },
     "Bytespider": {
-     "blocked_fully": 96,
-     "blocked_partially": 10,
+     "blocked_fully": 93,
+     "blocked_partially": 11,
      "allowed_explicitly": 2,
      "not_mentioned": 403,
      "not_mentioned_but_star_blocks_all": 43,
@@ -1175,7 +1162,7 @@
      "pct_allowed_explicitly_of_all_scanned": 0.2
     },
     "Amazonbot": {
-     "blocked_fully": 59,
+     "blocked_fully": 56,
      "blocked_partially": 12,
      "allowed_explicitly": 5,
      "not_mentioned": 435,
@@ -1188,8 +1175,8 @@
      "pct_allowed_explicitly_of_all_scanned": 0.5
     },
     "Meta-ExternalAgent": {
-     "blocked_fully": 74,
-     "blocked_partially": 15,
+     "blocked_fully": 69,
+     "blocked_partially": 16,
      "allowed_explicitly": 2,
      "not_mentioned": 420,
      "not_mentioned_but_star_blocks_all": 41,
@@ -1201,7 +1188,7 @@
      "pct_allowed_explicitly_of_all_scanned": 0.2
     },
     "FacebookBot": {
-     "blocked_fully": 45,
+     "blocked_fully": 42,
      "blocked_partially": 10,
      "allowed_explicitly": 0,
      "not_mentioned": 456,
@@ -1209,12 +1196,12 @@
      "pct_fully_of_reachable": 8.8,
      "pct_partially_of_reachable": 2.0,
      "pct_allowed_explicitly_of_reachable": 0.0,
-     "pct_fully_of_all_scanned": 4.5,
+     "pct_fully_of_all_scanned": 4.2,
      "pct_partially_of_all_scanned": 1.0,
      "pct_allowed_explicitly_of_all_scanned": 0.0
     },
     "cohere-ai": {
-     "blocked_fully": 64,
+     "blocked_fully": 60,
      "blocked_partially": 9,
      "allowed_explicitly": 2,
      "not_mentioned": 436,
@@ -1266,8 +1253,8 @@
      "pct_allowed_explicitly_of_all_scanned": 0.2
     },
     "Diffbot": {
-     "blocked_fully": 67,
-     "blocked_partially": 3,
+     "blocked_fully": 66,
+     "blocked_partially": 4,
      "allowed_explicitly": 1,
      "not_mentioned": 440,
      "not_mentioned_but_star_blocks_all": 46,
@@ -1279,7 +1266,7 @@
      "pct_allowed_explicitly_of_all_scanned": 0.1
     },
     "Timpibot": {
-     "blocked_fully": 48,
+     "blocked_fully": 46,
      "blocked_partially": 1,
      "allowed_explicitly": 0,
      "not_mentioned": 462,
@@ -1287,12 +1274,12 @@
      "pct_fully_of_reachable": 9.4,
      "pct_partially_of_reachable": 0.2,
      "pct_allowed_explicitly_of_reachable": 0.0,
-     "pct_fully_of_all_scanned": 4.8,
+     "pct_fully_of_all_scanned": 4.6,
      "pct_partially_of_all_scanned": 0.1,
      "pct_allowed_explicitly_of_all_scanned": 0.0
     },
     "ImagesiftBot": {
-     "blocked_fully": 52,
+     "blocked_fully": 54,
      "blocked_partially": 0,
      "allowed_explicitly": 0,
      "not_mentioned": 459,
@@ -1300,7 +1287,7 @@
      "pct_fully_of_reachable": 10.2,
      "pct_partially_of_reachable": 0.0,
      "pct_allowed_explicitly_of_reachable": 0.0,
-     "pct_fully_of_all_scanned": 5.2,
+     "pct_fully_of_all_scanned": 5.4,
      "pct_partially_of_all_scanned": 0.0,
      "pct_allowed_explicitly_of_all_scanned": 0.0
     },
@@ -1318,7 +1305,7 @@
      "pct_allowed_explicitly_of_all_scanned": 0.0
     },
     "AI2Bot": {
-     "blocked_fully": 40,
+     "blocked_fully": 42,
      "blocked_partially": 3,
      "allowed_explicitly": 0,
      "not_mentioned": 468,
@@ -1326,12 +1313,12 @@
      "pct_fully_of_reachable": 7.8,
      "pct_partially_of_reachable": 0.6,
      "pct_allowed_explicitly_of_reachable": 0.0,
-     "pct_fully_of_all_scanned": 4.0,
+     "pct_fully_of_all_scanned": 4.2,
      "pct_partially_of_all_scanned": 0.3,
      "pct_allowed_explicitly_of_all_scanned": 0.0
     },
     "PetalBot": {
-     "blocked_fully": 60,
+     "blocked_fully": 59,
      "blocked_partially": 4,
      "allowed_explicitly": 1,
      "not_mentioned": 446,
@@ -1362,16 +1349,16 @@
     "count": 51,
     "pct_of_reachable": 10.0
    },
-   "mean_ai_bots_named_per_robots_txt": 4.217,
-   "mean_ai_bots_named_per_robots_txt_among_those_naming_any": 11.283
+   "mean_ai_bots_named_per_robots_txt": 4.086,
+   "mean_ai_bots_named_per_robots_txt_among_those_naming_any": 11.17
   },
   "top10k": {
    "scanned": 10000,
-   "robots_reachable": 5838,
+   "robots_reachable": 5806,
    "bots": {
     "GPTBot": {
-     "blocked_fully": 898,
-     "blocked_partially": 227,
+     "blocked_fully": 890,
+     "blocked_partially": 220,
      "allowed_explicitly": 147,
      "not_mentioned": 4566,
      "not_mentioned_but_star_blocks_all": 222,
@@ -1394,19 +1381,6 @@
      "pct_fully_of_all_scanned": 3.7,
      "pct_partially_of_all_scanned": 2.1,
      "pct_allowed_explicitly_of_all_scanned": 1.5
-    },
-    "OAI-SearchBot": {
-     "blocked_fully": 257,
-     "blocked_partially": 215,
-     "allowed_explicitly": 155,
-     "not_mentioned": 5211,
-     "not_mentioned_but_star_blocks_all": 223,
-     "pct_fully_of_reachable": 4.4,
-     "pct_partially_of_reachable": 3.7,
-     "pct_allowed_explicitly_of_reachable": 2.7,
-     "pct_fully_of_all_scanned": 2.6,
-     "pct_partially_of_all_scanned": 2.1,
-     "pct_allowed_explicitly_of_all_scanned": 1.6
     },
     "ClaudeBot": {
      "blocked_fully": 822,
@@ -1448,8 +1422,8 @@
      "pct_allowed_explicitly_of_all_scanned": 0.6
     },
     "anthropic-ai": {
-     "blocked_fully": 693,
-     "blocked_partially": 83,
+     "blocked_fully": 690,
+     "blocked_partially": 78,
      "allowed_explicitly": 49,
      "not_mentioned": 5013,
      "not_mentioned_but_star_blocks_all": 254,
@@ -1500,8 +1474,8 @@
      "pct_allowed_explicitly_of_all_scanned": 1.5
     },
     "Applebot-Extended": {
-     "blocked_fully": 713,
-     "blocked_partially": 86,
+     "blocked_fully": 715,
+     "blocked_partially": 82,
      "allowed_explicitly": 50,
      "not_mentioned": 4989,
      "not_mentioned_but_star_blocks_all": 244,
@@ -1630,7 +1604,7 @@
      "pct_allowed_explicitly_of_all_scanned": 0.2
     },
     "MistralAI-User": {
-     "blocked_fully": 218,
+     "blocked_fully": 219,
      "blocked_partially": 35,
      "allowed_explicitly": 16,
      "not_mentioned": 5569,
@@ -1656,8 +1630,8 @@
      "pct_allowed_explicitly_of_all_scanned": 0.3
     },
     "Diffbot": {
-     "blocked_fully": 703,
-     "blocked_partially": 27,
+     "blocked_fully": 705,
+     "blocked_partially": 26,
      "allowed_explicitly": 11,
      "not_mentioned": 5097,
      "not_mentioned_but_star_blocks_all": 256,
@@ -1669,7 +1643,7 @@
      "pct_allowed_explicitly_of_all_scanned": 0.1
     },
     "Timpibot": {
-     "blocked_fully": 352,
+     "blocked_fully": 351,
      "blocked_partially": 13,
      "allowed_explicitly": 3,
      "not_mentioned": 5470,
@@ -1682,8 +1656,8 @@
      "pct_allowed_explicitly_of_all_scanned": 0.0
     },
     "ImagesiftBot": {
-     "blocked_fully": 334,
-     "blocked_partially": 12,
+     "blocked_fully": 332,
+     "blocked_partially": 11,
      "allowed_explicitly": 2,
      "not_mentioned": 5490,
      "not_mentioned_but_star_blocks_all": 262,
@@ -1695,7 +1669,7 @@
      "pct_allowed_explicitly_of_all_scanned": 0.0
     },
     "omgili": {
-     "blocked_fully": 675,
+     "blocked_fully": 673,
      "blocked_partially": 16,
      "allowed_explicitly": 4,
      "not_mentioned": 5143,
@@ -1708,8 +1682,8 @@
      "pct_allowed_explicitly_of_all_scanned": 0.0
     },
     "AI2Bot": {
-     "blocked_fully": 269,
-     "blocked_partially": 27,
+     "blocked_fully": 272,
+     "blocked_partially": 25,
      "allowed_explicitly": 2,
      "not_mentioned": 5540,
      "not_mentioned_but_star_blocks_all": 264,
@@ -1721,12 +1695,12 @@
      "pct_allowed_explicitly_of_all_scanned": 0.0
     },
     "PetalBot": {
-     "blocked_fully": 619,
-     "blocked_partially": 28,
-     "allowed_explicitly": 10,
-     "not_mentioned": 5181,
-     "not_mentioned_but_star_blocks_all": 248,
-     "pct_fully_of_reachable": 10.6,
+     "blocked_fully": 621,
+     "blocked_partially": 31,
+     "allowed_explicitly": 11,
+     "not_mentioned": 5143,
+     "not_mentioned_but_star_blocks_all": 240,
+     "pct_fully_of_reachable": 10.7,
      "pct_partially_of_reachable": 0.5,
      "pct_allowed_explicitly_of_reachable": 0.2,
      "pct_fully_of_all_scanned": 6.2,
@@ -1749,17 +1723,17 @@
     "pct_of_all_scanned": 5.9
    },
    "star_blocks_everything": {
-    "count": 275,
-    "pct_of_reachable": 4.7
+    "count": 267,
+    "pct_of_reachable": 4.6
    },
-   "mean_ai_bots_named_per_robots_txt": 3.166,
-   "mean_ai_bots_named_per_robots_txt_among_those_naming_any": 10.622
+   "mean_ai_bots_named_per_robots_txt": 3.169,
+   "mean_ai_bots_named_per_robots_txt_among_those_naming_any": 10.555
   }
  },
  "by_tld": {
   "com": {
    "scanned": 5060,
-   "robots_reachable": 2997,
+   "robots_reachable": 2985,
    "bots": {
     "GPTBot": {
      "blocked_fully": 445,
@@ -1828,10 +1802,10 @@
     },
     "Claude-SearchBot": {
      "blocked_fully": 119,
-     "blocked_partially": 87,
-     "allowed_explicitly": 42,
-     "not_mentioned": 2749,
-     "not_mentioned_but_star_blocks_all": 125,
+     "blocked_partially": 84,
+     "allowed_explicitly": 41,
+     "not_mentioned": 2741,
+     "not_mentioned_but_star_blocks_all": 121,
      "pct_fully_of_reachable": 4.0,
      "pct_partially_of_reachable": 2.9,
      "pct_allowed_explicitly_of_reachable": 1.4,
@@ -1880,10 +1854,10 @@
     },
     "Googlebot": {
      "blocked_fully": 6,
-     "blocked_partially": 200,
-     "allowed_explicitly": 83,
-     "not_mentioned": 2708,
-     "not_mentioned_but_star_blocks_all": 75,
+     "blocked_partially": 193,
+     "allowed_explicitly": 86,
+     "not_mentioned": 2700,
+     "not_mentioned_but_star_blocks_all": 73,
      "pct_fully_of_reachable": 0.2,
      "pct_partially_of_reachable": 6.7,
      "pct_allowed_explicitly_of_reachable": 2.8,
@@ -1931,13 +1905,13 @@
      "pct_allowed_explicitly_of_all_scanned": 0.8
     },
     "CCBot": {
-     "blocked_fully": 487,
-     "blocked_partially": 71,
-     "allowed_explicitly": 35,
-     "not_mentioned": 2404,
-     "not_mentioned_but_star_blocks_all": 127,
-     "pct_fully_of_reachable": 16.2,
-     "pct_partially_of_reachable": 2.4,
+     "blocked_fully": 490,
+     "blocked_partially": 70,
+     "allowed_explicitly": 36,
+     "not_mentioned": 2389,
+     "not_mentioned_but_star_blocks_all": 122,
+     "pct_fully_of_reachable": 16.4,
+     "pct_partially_of_reachable": 2.3,
      "pct_allowed_explicitly_of_reachable": 1.2,
      "pct_fully_of_all_scanned": 9.6,
      "pct_partially_of_all_scanned": 1.4,
@@ -1983,11 +1957,11 @@
      "pct_allowed_explicitly_of_all_scanned": 0.6
     },
     "FacebookBot": {
-     "blocked_fully": 215,
-     "blocked_partially": 34,
-     "allowed_explicitly": 14,
-     "not_mentioned": 2734,
-     "not_mentioned_but_star_blocks_all": 130,
+     "blocked_fully": 214,
+     "blocked_partially": 35,
+     "allowed_explicitly": 13,
+     "not_mentioned": 2723,
+     "not_mentioned_but_star_blocks_all": 125,
      "pct_fully_of_reachable": 7.2,
      "pct_partially_of_reachable": 1.1,
      "pct_allowed_explicitly_of_reachable": 0.5,
@@ -2009,8 +1983,8 @@
      "pct_allowed_explicitly_of_all_scanned": 0.4
     },
     "DuckAssistBot": {
-     "blocked_fully": 123,
-     "blocked_partially": 51,
+     "blocked_fully": 125,
+     "blocked_partially": 48,
      "allowed_explicitly": 9,
      "not_mentioned": 2814,
      "not_mentioned_but_star_blocks_all": 134,
@@ -2022,8 +1996,8 @@
      "pct_allowed_explicitly_of_all_scanned": 0.2
     },
     "MistralAI-User": {
-     "blocked_fully": 114,
-     "blocked_partially": 24,
+     "blocked_fully": 115,
+     "blocked_partially": 23,
      "allowed_explicitly": 9,
      "not_mentioned": 2850,
      "not_mentioned_but_star_blocks_all": 140,
@@ -2048,7 +2022,7 @@
      "pct_allowed_explicitly_of_all_scanned": 0.4
     },
     "Diffbot": {
-     "blocked_fully": 368,
+     "blocked_fully": 371,
      "blocked_partially": 18,
      "allowed_explicitly": 6,
      "not_mentioned": 2605,
@@ -2061,12 +2035,12 @@
      "pct_allowed_explicitly_of_all_scanned": 0.1
     },
     "Timpibot": {
-     "blocked_fully": 186,
+     "blocked_fully": 188,
      "blocked_partially": 9,
      "allowed_explicitly": 1,
-     "not_mentioned": 2801,
-     "not_mentioned_but_star_blocks_all": 139,
-     "pct_fully_of_reachable": 6.2,
+     "not_mentioned": 2787,
+     "not_mentioned_but_star_blocks_all": 134,
+     "pct_fully_of_reachable": 6.3,
      "pct_partially_of_reachable": 0.3,
      "pct_allowed_explicitly_of_reachable": 0.0,
      "pct_fully_of_all_scanned": 3.7,
@@ -2074,8 +2048,8 @@
      "pct_allowed_explicitly_of_all_scanned": 0.0
     },
     "ImagesiftBot": {
-     "blocked_fully": 170,
-     "blocked_partially": 8,
+     "blocked_fully": 169,
+     "blocked_partially": 7,
      "allowed_explicitly": 2,
      "not_mentioned": 2817,
      "not_mentioned_but_star_blocks_all": 138,
@@ -2100,8 +2074,8 @@
      "pct_allowed_explicitly_of_all_scanned": 0.1
     },
     "AI2Bot": {
-     "blocked_fully": 121,
-     "blocked_partially": 18,
+     "blocked_fully": 124,
+     "blocked_partially": 16,
      "allowed_explicitly": 1,
      "not_mentioned": 2857,
      "not_mentioned_but_star_blocks_all": 139,
@@ -2113,13 +2087,13 @@
      "pct_allowed_explicitly_of_all_scanned": 0.0
     },
     "PetalBot": {
-     "blocked_fully": 326,
-     "blocked_partially": 19,
-     "allowed_explicitly": 6,
-     "not_mentioned": 2646,
-     "not_mentioned_but_star_blocks_all": 130,
-     "pct_fully_of_reachable": 10.9,
-     "pct_partially_of_reachable": 0.6,
+     "blocked_fully": 330,
+     "blocked_partially": 22,
+     "allowed_explicitly": 7,
+     "not_mentioned": 2626,
+     "not_mentioned_but_star_blocks_all": 124,
+     "pct_fully_of_reachable": 11.1,
+     "pct_partially_of_reachable": 0.7,
      "pct_allowed_explicitly_of_reachable": 0.2,
      "pct_fully_of_all_scanned": 6.4,
      "pct_partially_of_all_scanned": 0.4,
@@ -2144,15 +2118,15 @@
     "count": 146,
     "pct_of_reachable": 4.9
    },
-   "mean_ai_bots_named_per_robots_txt": 3.384,
-   "mean_ai_bots_named_per_robots_txt_among_those_naming_any": 10.39
+   "mean_ai_bots_named_per_robots_txt": 3.392,
+   "mean_ai_bots_named_per_robots_txt_among_those_naming_any": 10.362
   },
   "net": {
    "scanned": 804,
-   "robots_reachable": 257,
+   "robots_reachable": 259,
    "bots": {
     "GPTBot": {
-     "blocked_fully": 39,
+     "blocked_fully": 40,
      "blocked_partially": 10,
      "allowed_explicitly": 1,
      "not_mentioned": 207,
@@ -2191,7 +2165,7 @@
      "pct_allowed_explicitly_of_all_scanned": 0.5
     },
     "ClaudeBot": {
-     "blocked_fully": 37,
+     "blocked_fully": 38,
      "blocked_partially": 7,
      "allowed_explicitly": 3,
      "not_mentioned": 210,
@@ -2243,7 +2217,7 @@
      "pct_allowed_explicitly_of_all_scanned": 0.0
     },
     "Claude-Web": {
-     "blocked_fully": 29,
+     "blocked_fully": 30,
      "blocked_partially": 3,
      "allowed_explicitly": 0,
      "not_mentioned": 225,
@@ -2270,8 +2244,8 @@
     },
     "Googlebot": {
      "blocked_fully": 2,
-     "blocked_partially": 8,
-     "allowed_explicitly": 6,
+     "blocked_partially": 9,
+     "allowed_explicitly": 7,
      "not_mentioned": 241,
      "not_mentioned_but_star_blocks_all": 25,
      "pct_fully_of_reachable": 0.8,
@@ -2321,7 +2295,7 @@
      "pct_allowed_explicitly_of_all_scanned": 0.2
     },
     "CCBot": {
-     "blocked_fully": 36,
+     "blocked_fully": 37,
      "blocked_partially": 5,
      "allowed_explicitly": 1,
      "not_mentioned": 215,
@@ -2334,7 +2308,7 @@
      "pct_allowed_explicitly_of_all_scanned": 0.1
     },
     "Bytespider": {
-     "blocked_fully": 35,
+     "blocked_fully": 37,
      "blocked_partially": 3,
      "allowed_explicitly": 0,
      "not_mentioned": 219,
@@ -2347,7 +2321,7 @@
      "pct_allowed_explicitly_of_all_scanned": 0.0
     },
     "Amazonbot": {
-     "blocked_fully": 31,
+     "blocked_fully": 30,
      "blocked_partially": 4,
      "allowed_explicitly": 0,
      "not_mentioned": 222,
@@ -2425,7 +2399,7 @@
      "pct_allowed_explicitly_of_all_scanned": 0.0
     },
     "YouBot": {
-     "blocked_fully": 13,
+     "blocked_fully": 12,
      "blocked_partially": 1,
      "allowed_explicitly": 0,
      "not_mentioned": 243,
@@ -2451,7 +2425,7 @@
      "pct_allowed_explicitly_of_all_scanned": 0.0
     },
     "Timpibot": {
-     "blocked_fully": 9,
+     "blocked_fully": 8,
      "blocked_partially": 1,
      "allowed_explicitly": 0,
      "not_mentioned": 247,
@@ -2464,7 +2438,7 @@
      "pct_allowed_explicitly_of_all_scanned": 0.0
     },
     "ImagesiftBot": {
-     "blocked_fully": 13,
+     "blocked_fully": 14,
      "blocked_partially": 1,
      "allowed_explicitly": 0,
      "not_mentioned": 243,
@@ -2477,7 +2451,7 @@
      "pct_allowed_explicitly_of_all_scanned": 0.0
     },
     "omgili": {
-     "blocked_fully": 28,
+     "blocked_fully": 29,
      "blocked_partially": 1,
      "allowed_explicitly": 0,
      "not_mentioned": 228,
@@ -2490,7 +2464,7 @@
      "pct_allowed_explicitly_of_all_scanned": 0.0
     },
     "AI2Bot": {
-     "blocked_fully": 9,
+     "blocked_fully": 10,
      "blocked_partially": 2,
      "allowed_explicitly": 0,
      "not_mentioned": 246,
@@ -2534,18 +2508,18 @@
     "count": 30,
     "pct_of_reachable": 11.7
    },
-   "mean_ai_bots_named_per_robots_txt": 2.704,
-   "mean_ai_bots_named_per_robots_txt_among_those_naming_any": 9.929
+   "mean_ai_bots_named_per_robots_txt": 2.68,
+   "mean_ai_bots_named_per_robots_txt_among_those_naming_any": 9.639
   },
   "org": {
    "scanned": 431,
-   "robots_reachable": 312,
+   "robots_reachable": 310,
    "bots": {
     "GPTBot": {
-     "blocked_fully": 53,
+     "blocked_fully": 50,
      "blocked_partially": 7,
      "allowed_explicitly": 4,
-     "not_mentioned": 248,
+     "not_mentioned": 249,
      "not_mentioned_but_star_blocks_all": 7,
      "pct_fully_of_reachable": 17.0,
      "pct_partially_of_reachable": 2.2,
@@ -2555,7 +2529,7 @@
      "pct_allowed_explicitly_of_all_scanned": 0.9
     },
     "ChatGPT-User": {
-     "blocked_fully": 16,
+     "blocked_fully": 14,
      "blocked_partially": 2,
      "allowed_explicitly": 5,
      "not_mentioned": 289,
@@ -2568,10 +2542,10 @@
      "pct_allowed_explicitly_of_all_scanned": 1.2
     },
     "OAI-SearchBot": {
-     "blocked_fully": 8,
+     "blocked_fully": 7,
      "blocked_partially": 2,
      "allowed_explicitly": 3,
-     "not_mentioned": 299,
+     "not_mentioned": 298,
      "not_mentioned_but_star_blocks_all": 7,
      "pct_fully_of_reachable": 2.6,
      "pct_partially_of_reachable": 0.6,
@@ -2581,7 +2555,7 @@
      "pct_allowed_explicitly_of_all_scanned": 0.7
     },
     "ClaudeBot": {
-     "blocked_fully": 42,
+     "blocked_fully": 40,
      "blocked_partially": 5,
      "allowed_explicitly": 5,
      "not_mentioned": 260,
@@ -2594,10 +2568,10 @@
      "pct_allowed_explicitly_of_all_scanned": 1.2
     },
     "Claude-User": {
-     "blocked_fully": 8,
+     "blocked_fully": 7,
      "blocked_partially": 1,
      "allowed_explicitly": 3,
-     "not_mentioned": 300,
+     "not_mentioned": 299,
      "not_mentioned_but_star_blocks_all": 7,
      "pct_fully_of_reachable": 2.6,
      "pct_partially_of_reachable": 0.3,
@@ -2607,10 +2581,10 @@
      "pct_allowed_explicitly_of_all_scanned": 0.7
     },
     "Claude-SearchBot": {
-     "blocked_fully": 9,
+     "blocked_fully": 8,
      "blocked_partially": 1,
      "allowed_explicitly": 2,
-     "not_mentioned": 300,
+     "not_mentioned": 299,
      "not_mentioned_but_star_blocks_all": 7,
      "pct_fully_of_reachable": 2.9,
      "pct_partially_of_reachable": 0.3,
@@ -2620,7 +2594,7 @@
      "pct_allowed_explicitly_of_all_scanned": 0.5
     },
     "anthropic-ai": {
-     "blocked_fully": 39,
+     "blocked_fully": 37,
      "blocked_partially": 4,
      "allowed_explicitly": 4,
      "not_mentioned": 265,
@@ -2633,7 +2607,7 @@
      "pct_allowed_explicitly_of_all_scanned": 0.9
     },
     "Claude-Web": {
-     "blocked_fully": 29,
+     "blocked_fully": 27,
      "blocked_partially": 1,
      "allowed_explicitly": 1,
      "not_mentioned": 281,
@@ -2646,7 +2620,7 @@
      "pct_allowed_explicitly_of_all_scanned": 0.2
     },
     "Google-Extended": {
-     "blocked_fully": 43,
+     "blocked_fully": 41,
      "blocked_partially": 6,
      "allowed_explicitly": 6,
      "not_mentioned": 257,
@@ -2661,8 +2635,8 @@
     "Googlebot": {
      "blocked_fully": 0,
      "blocked_partially": 11,
-     "allowed_explicitly": 9,
-     "not_mentioned": 292,
+     "allowed_explicitly": 8,
+     "not_mentioned": 291,
      "not_mentioned_but_star_blocks_all": 5,
      "pct_fully_of_reachable": 0.0,
      "pct_partially_of_reachable": 3.5,
@@ -2672,10 +2646,10 @@
      "pct_allowed_explicitly_of_all_scanned": 2.1
     },
     "Applebot-Extended": {
-     "blocked_fully": 39,
+     "blocked_fully": 38,
      "blocked_partially": 2,
      "allowed_explicitly": 2,
-     "not_mentioned": 269,
+     "not_mentioned": 268,
      "not_mentioned_but_star_blocks_all": 7,
      "pct_fully_of_reachable": 12.5,
      "pct_partially_of_reachable": 0.6,
@@ -2685,7 +2659,7 @@
      "pct_allowed_explicitly_of_all_scanned": 0.5
     },
     "PerplexityBot": {
-     "blocked_fully": 14,
+     "blocked_fully": 12,
      "blocked_partially": 3,
      "allowed_explicitly": 6,
      "not_mentioned": 289,
@@ -2701,7 +2675,7 @@
      "blocked_fully": 6,
      "blocked_partially": 1,
      "allowed_explicitly": 2,
-     "not_mentioned": 303,
+     "not_mentioned": 301,
      "not_mentioned_but_star_blocks_all": 7,
      "pct_fully_of_reachable": 1.9,
      "pct_partially_of_reachable": 0.3,
@@ -2711,7 +2685,7 @@
      "pct_allowed_explicitly_of_all_scanned": 0.5
     },
     "CCBot": {
-     "blocked_fully": 52,
+     "blocked_fully": 50,
      "blocked_partially": 6,
      "allowed_explicitly": 2,
      "not_mentioned": 252,
@@ -2724,10 +2698,10 @@
      "pct_allowed_explicitly_of_all_scanned": 0.5
     },
     "Bytespider": {
-     "blocked_fully": 46,
+     "blocked_fully": 43,
      "blocked_partially": 2,
      "allowed_explicitly": 2,
-     "not_mentioned": 262,
+     "not_mentioned": 263,
      "not_mentioned_but_star_blocks_all": 7,
      "pct_fully_of_reachable": 14.7,
      "pct_partially_of_reachable": 0.6,
@@ -2737,10 +2711,10 @@
      "pct_allowed_explicitly_of_all_scanned": 0.5
     },
     "Amazonbot": {
-     "blocked_fully": 36,
+     "blocked_fully": 35,
      "blocked_partially": 0,
      "allowed_explicitly": 1,
-     "not_mentioned": 275,
+     "not_mentioned": 274,
      "not_mentioned_but_star_blocks_all": 7,
      "pct_fully_of_reachable": 11.5,
      "pct_partially_of_reachable": 0.0,
@@ -2750,12 +2724,12 @@
      "pct_allowed_explicitly_of_all_scanned": 0.2
     },
     "Meta-ExternalAgent": {
-     "blocked_fully": 41,
+     "blocked_fully": 40,
      "blocked_partially": 0,
      "allowed_explicitly": 1,
-     "not_mentioned": 270,
+     "not_mentioned": 269,
      "not_mentioned_but_star_blocks_all": 7,
-     "pct_fully_of_reachable": 13.1,
+     "pct_fully_of_reachable": 12.9,
      "pct_partially_of_reachable": 0.0,
      "pct_allowed_explicitly_of_reachable": 0.3,
      "pct_fully_of_all_scanned": 9.5,
@@ -2763,10 +2737,10 @@
      "pct_allowed_explicitly_of_all_scanned": 0.2
     },
     "FacebookBot": {
-     "blocked_fully": 15,
+     "blocked_fully": 14,
      "blocked_partially": 1,
      "allowed_explicitly": 0,
-     "not_mentioned": 296,
+     "not_mentioned": 295,
      "not_mentioned_but_star_blocks_all": 7,
      "pct_fully_of_reachable": 4.8,
      "pct_partially_of_reachable": 0.3,
@@ -2776,10 +2750,10 @@
      "pct_allowed_explicitly_of_all_scanned": 0.0
     },
     "cohere-ai": {
-     "blocked_fully": 36,
+     "blocked_fully": 35,
      "blocked_partially": 1,
      "allowed_explicitly": 0,
-     "not_mentioned": 275,
+     "not_mentioned": 274,
      "not_mentioned_but_star_blocks_all": 7,
      "pct_fully_of_reachable": 11.5,
      "pct_partially_of_reachable": 0.3,
@@ -2792,7 +2766,7 @@
      "blocked_fully": 6,
      "blocked_partially": 0,
      "allowed_explicitly": 2,
-     "not_mentioned": 304,
+     "not_mentioned": 302,
      "not_mentioned_but_star_blocks_all": 7,
      "pct_fully_of_reachable": 1.9,
      "pct_partially_of_reachable": 0.0,
@@ -2805,7 +2779,7 @@
      "blocked_fully": 7,
      "blocked_partially": 1,
      "allowed_explicitly": 1,
-     "not_mentioned": 303,
+     "not_mentioned": 301,
      "not_mentioned_but_star_blocks_all": 7,
      "pct_fully_of_reachable": 2.2,
      "pct_partially_of_reachable": 0.3,
@@ -2818,7 +2792,7 @@
      "blocked_fully": 11,
      "blocked_partially": 0,
      "allowed_explicitly": 2,
-     "not_mentioned": 299,
+     "not_mentioned": 297,
      "not_mentioned_but_star_blocks_all": 7,
      "pct_fully_of_reachable": 3.5,
      "pct_partially_of_reachable": 0.0,
@@ -2828,10 +2802,10 @@
      "pct_allowed_explicitly_of_all_scanned": 0.5
     },
     "Diffbot": {
-     "blocked_fully": 35,
+     "blocked_fully": 34,
      "blocked_partially": 0,
      "allowed_explicitly": 0,
-     "not_mentioned": 277,
+     "not_mentioned": 276,
      "not_mentioned_but_star_blocks_all": 7,
      "pct_fully_of_reachable": 11.2,
      "pct_partially_of_reachable": 0.0,
@@ -2844,7 +2818,7 @@
      "blocked_fully": 10,
      "blocked_partially": 0,
      "allowed_explicitly": 0,
-     "not_mentioned": 302,
+     "not_mentioned": 300,
      "not_mentioned_but_star_blocks_all": 8,
      "pct_fully_of_reachable": 3.2,
      "pct_partially_of_reachable": 0.0,
@@ -2857,7 +2831,7 @@
      "blocked_fully": 15,
      "blocked_partially": 1,
      "allowed_explicitly": 0,
-     "not_mentioned": 296,
+     "not_mentioned": 294,
      "not_mentioned_but_star_blocks_all": 7,
      "pct_fully_of_reachable": 4.8,
      "pct_partially_of_reachable": 0.3,
@@ -2867,10 +2841,10 @@
      "pct_allowed_explicitly_of_all_scanned": 0.0
     },
     "omgili": {
-     "blocked_fully": 34,
+     "blocked_fully": 33,
      "blocked_partially": 0,
      "allowed_explicitly": 0,
-     "not_mentioned": 278,
+     "not_mentioned": 277,
      "not_mentioned_but_star_blocks_all": 7,
      "pct_fully_of_reachable": 10.9,
      "pct_partially_of_reachable": 0.0,
@@ -2883,7 +2857,7 @@
      "blocked_fully": 9,
      "blocked_partially": 0,
      "allowed_explicitly": 0,
-     "not_mentioned": 303,
+     "not_mentioned": 301,
      "not_mentioned_but_star_blocks_all": 8,
      "pct_fully_of_reachable": 2.9,
      "pct_partially_of_reachable": 0.0,
@@ -2896,7 +2870,7 @@
      "blocked_fully": 27,
      "blocked_partially": 1,
      "allowed_explicitly": 0,
-     "not_mentioned": 284,
+     "not_mentioned": 282,
      "not_mentioned_but_star_blocks_all": 7,
      "pct_fully_of_reachable": 8.7,
      "pct_partially_of_reachable": 0.3,
@@ -2924,16 +2898,16 @@
     "count": 8,
     "pct_of_reachable": 2.6
    },
-   "mean_ai_bots_named_per_robots_txt": 2.526,
-   "mean_ai_bots_named_per_robots_txt_among_those_naming_any": 10.234
+   "mean_ai_bots_named_per_robots_txt": 2.445,
+   "mean_ai_bots_named_per_robots_txt_among_those_naming_any": 10.243
   },
   "ru": {
    "scanned": 295,
-   "robots_reachable": 149,
+   "robots_reachable": 152,
    "bots": {
     "GPTBot": {
      "blocked_fully": 11,
-     "blocked_partially": 3,
+     "blocked_partially": 4,
      "allowed_explicitly": 3,
      "not_mentioned": 132,
      "not_mentioned_but_star_blocks_all": 5,
@@ -2946,7 +2920,7 @@
     },
     "ChatGPT-User": {
      "blocked_fully": 5,
-     "blocked_partially": 3,
+     "blocked_partially": 4,
      "allowed_explicitly": 2,
      "not_mentioned": 139,
      "not_mentioned_but_star_blocks_all": 5,
@@ -2972,7 +2946,7 @@
     },
     "ClaudeBot": {
      "blocked_fully": 7,
-     "blocked_partially": 3,
+     "blocked_partially": 4,
      "allowed_explicitly": 2,
      "not_mentioned": 137,
      "not_mentioned_but_star_blocks_all": 6,
@@ -3024,7 +2998,7 @@
     },
     "Claude-Web": {
      "blocked_fully": 2,
-     "blocked_partially": 2,
+     "blocked_partially": 3,
      "allowed_explicitly": 1,
      "not_mentioned": 144,
      "not_mentioned_but_star_blocks_all": 6,
@@ -3050,9 +3024,9 @@
     },
     "Googlebot": {
      "blocked_fully": 0,
-     "blocked_partially": 42,
+     "blocked_partially": 43,
      "allowed_explicitly": 1,
-     "not_mentioned": 106,
+     "not_mentioned": 108,
      "not_mentioned_but_star_blocks_all": 5,
      "pct_fully_of_reachable": 0.0,
      "pct_partially_of_reachable": 28.2,
@@ -3076,7 +3050,7 @@
     },
     "PerplexityBot": {
      "blocked_fully": 3,
-     "blocked_partially": 4,
+     "blocked_partially": 5,
      "allowed_explicitly": 2,
      "not_mentioned": 140,
      "not_mentioned_but_star_blocks_all": 6,
@@ -3115,7 +3089,7 @@
     },
     "Bytespider": {
      "blocked_fully": 8,
-     "blocked_partially": 1,
+     "blocked_partially": 2,
      "allowed_explicitly": 1,
      "not_mentioned": 139,
      "not_mentioned_but_star_blocks_all": 5,
@@ -3302,8 +3276,8 @@
     "pct_of_all_scanned": 4.1
    },
    "restricting_at_least_one_ai_bot_fully_or_partially": {
-    "count": 17,
-    "pct_of_reachable": 11.4
+    "count": 19,
+    "pct_of_reachable": 12.5
    },
    "blocking_all_of_GPTBot_ClaudeBot_Google-Extended_CCBot": {
     "count": 4,
@@ -3314,15 +3288,15 @@
     "count": 7,
     "pct_of_reachable": 4.7
    },
-   "mean_ai_bots_named_per_robots_txt": 1.235,
-   "mean_ai_bots_named_per_robots_txt_among_those_naming_any": 8.762
+   "mean_ai_bots_named_per_robots_txt": 1.257,
+   "mean_ai_bots_named_per_robots_txt_among_those_naming_any": 8.304
   },
   "io": {
    "scanned": 213,
-   "robots_reachable": 104,
+   "robots_reachable": 103,
    "bots": {
     "GPTBot": {
-     "blocked_fully": 7,
+     "blocked_fully": 8,
      "blocked_partially": 2,
      "allowed_explicitly": 6,
      "not_mentioned": 89,
@@ -3338,8 +3312,8 @@
      "blocked_fully": 0,
      "blocked_partially": 2,
      "allowed_explicitly": 5,
-     "not_mentioned": 97,
-     "not_mentioned_but_star_blocks_all": 7,
+     "not_mentioned": 96,
+     "not_mentioned_but_star_blocks_all": 6,
      "pct_fully_of_reachable": 0.0,
      "pct_partially_of_reachable": 1.9,
      "pct_allowed_explicitly_of_reachable": 4.8,
@@ -3351,8 +3325,8 @@
      "blocked_fully": 0,
      "blocked_partially": 2,
      "allowed_explicitly": 5,
-     "not_mentioned": 97,
-     "not_mentioned_but_star_blocks_all": 7,
+     "not_mentioned": 96,
+     "not_mentioned_but_star_blocks_all": 6,
      "pct_fully_of_reachable": 0.0,
      "pct_partially_of_reachable": 1.9,
      "pct_allowed_explicitly_of_reachable": 4.8,
@@ -3361,7 +3335,7 @@
      "pct_allowed_explicitly_of_all_scanned": 2.3
     },
     "ClaudeBot": {
-     "blocked_fully": 6,
+     "blocked_fully": 7,
      "blocked_partially": 1,
      "allowed_explicitly": 5,
      "not_mentioned": 92,
@@ -3377,8 +3351,8 @@
      "blocked_fully": 0,
      "blocked_partially": 1,
      "allowed_explicitly": 2,
-     "not_mentioned": 101,
-     "not_mentioned_but_star_blocks_all": 7,
+     "not_mentioned": 100,
+     "not_mentioned_but_star_blocks_all": 6,
      "pct_fully_of_reachable": 0.0,
      "pct_partially_of_reachable": 1.0,
      "pct_allowed_explicitly_of_reachable": 1.9,
@@ -3390,8 +3364,8 @@
      "blocked_fully": 0,
      "blocked_partially": 1,
      "allowed_explicitly": 2,
-     "not_mentioned": 101,
-     "not_mentioned_but_star_blocks_all": 7,
+     "not_mentioned": 100,
+     "not_mentioned_but_star_blocks_all": 6,
      "pct_fully_of_reachable": 0.0,
      "pct_partially_of_reachable": 1.0,
      "pct_allowed_explicitly_of_reachable": 1.9,
@@ -3427,7 +3401,7 @@
     },
     "Google-Extended": {
      "blocked_fully": 6,
-     "blocked_partially": 1,
+     "blocked_partially": 2,
      "allowed_explicitly": 7,
      "not_mentioned": 90,
      "not_mentioned_but_star_blocks_all": 7,
@@ -3442,8 +3416,8 @@
      "blocked_fully": 0,
      "blocked_partially": 1,
      "allowed_explicitly": 3,
-     "not_mentioned": 100,
-     "not_mentioned_but_star_blocks_all": 7,
+     "not_mentioned": 99,
+     "not_mentioned_but_star_blocks_all": 6,
      "pct_fully_of_reachable": 0.0,
      "pct_partially_of_reachable": 1.0,
      "pct_allowed_explicitly_of_reachable": 2.9,
@@ -3468,8 +3442,8 @@
      "blocked_fully": 0,
      "blocked_partially": 3,
      "allowed_explicitly": 7,
-     "not_mentioned": 94,
-     "not_mentioned_but_star_blocks_all": 7,
+     "not_mentioned": 93,
+     "not_mentioned_but_star_blocks_all": 6,
      "pct_fully_of_reachable": 0.0,
      "pct_partially_of_reachable": 2.9,
      "pct_allowed_explicitly_of_reachable": 6.7,
@@ -3481,8 +3455,8 @@
      "blocked_fully": 0,
      "blocked_partially": 1,
      "allowed_explicitly": 3,
-     "not_mentioned": 100,
-     "not_mentioned_but_star_blocks_all": 7,
+     "not_mentioned": 99,
+     "not_mentioned_but_star_blocks_all": 6,
      "pct_fully_of_reachable": 0.0,
      "pct_partially_of_reachable": 1.0,
      "pct_allowed_explicitly_of_reachable": 2.9,
@@ -3492,7 +3466,7 @@
     },
     "CCBot": {
      "blocked_fully": 7,
-     "blocked_partially": 0,
+     "blocked_partially": 1,
      "allowed_explicitly": 6,
      "not_mentioned": 91,
      "not_mentioned_but_star_blocks_all": 7,
@@ -3504,7 +3478,7 @@
      "pct_allowed_explicitly_of_all_scanned": 2.8
     },
     "Bytespider": {
-     "blocked_fully": 7,
+     "blocked_fully": 8,
      "blocked_partially": 0,
      "allowed_explicitly": 1,
      "not_mentioned": 96,
@@ -3517,7 +3491,7 @@
      "pct_allowed_explicitly_of_all_scanned": 0.5
     },
     "Amazonbot": {
-     "blocked_fully": 6,
+     "blocked_fully": 7,
      "blocked_partially": 1,
      "allowed_explicitly": 2,
      "not_mentioned": 95,
@@ -3546,8 +3520,8 @@
      "blocked_fully": 0,
      "blocked_partially": 0,
      "allowed_explicitly": 0,
-     "not_mentioned": 104,
-     "not_mentioned_but_star_blocks_all": 7,
+     "not_mentioned": 103,
+     "not_mentioned_but_star_blocks_all": 6,
      "pct_fully_of_reachable": 0.0,
      "pct_partially_of_reachable": 0.0,
      "pct_allowed_explicitly_of_reachable": 0.0,
@@ -3572,8 +3546,8 @@
      "blocked_fully": 0,
      "blocked_partially": 1,
      "allowed_explicitly": 2,
-     "not_mentioned": 101,
-     "not_mentioned_but_star_blocks_all": 7,
+     "not_mentioned": 100,
+     "not_mentioned_but_star_blocks_all": 6,
      "pct_fully_of_reachable": 0.0,
      "pct_partially_of_reachable": 1.0,
      "pct_allowed_explicitly_of_reachable": 1.9,
@@ -3585,8 +3559,8 @@
      "blocked_fully": 0,
      "blocked_partially": 0,
      "allowed_explicitly": 2,
-     "not_mentioned": 102,
-     "not_mentioned_but_star_blocks_all": 7,
+     "not_mentioned": 101,
+     "not_mentioned_but_star_blocks_all": 6,
      "pct_fully_of_reachable": 0.0,
      "pct_partially_of_reachable": 0.0,
      "pct_allowed_explicitly_of_reachable": 1.9,
@@ -3598,8 +3572,8 @@
      "blocked_fully": 0,
      "blocked_partially": 0,
      "allowed_explicitly": 1,
-     "not_mentioned": 103,
-     "not_mentioned_but_star_blocks_all": 7,
+     "not_mentioned": 102,
+     "not_mentioned_but_star_blocks_all": 6,
      "pct_fully_of_reachable": 0.0,
      "pct_partially_of_reachable": 0.0,
      "pct_allowed_explicitly_of_reachable": 1.0,
@@ -3624,8 +3598,8 @@
      "blocked_fully": 0,
      "blocked_partially": 0,
      "allowed_explicitly": 0,
-     "not_mentioned": 104,
-     "not_mentioned_but_star_blocks_all": 7,
+     "not_mentioned": 103,
+     "not_mentioned_but_star_blocks_all": 6,
      "pct_fully_of_reachable": 0.0,
      "pct_partially_of_reachable": 0.0,
      "pct_allowed_explicitly_of_reachable": 0.0,
@@ -3663,8 +3637,8 @@
      "blocked_fully": 0,
      "blocked_partially": 0,
      "allowed_explicitly": 0,
-     "not_mentioned": 104,
-     "not_mentioned_but_star_blocks_all": 7,
+     "not_mentioned": 103,
+     "not_mentioned_but_star_blocks_all": 6,
      "pct_fully_of_reachable": 0.0,
      "pct_partially_of_reachable": 0.0,
      "pct_allowed_explicitly_of_reachable": 0.0,
@@ -3673,12 +3647,12 @@
      "pct_allowed_explicitly_of_all_scanned": 0.0
     },
     "PetalBot": {
-     "blocked_fully": 6,
+     "blocked_fully": 7,
      "blocked_partially": 0,
      "allowed_explicitly": 1,
-     "not_mentioned": 97,
-     "not_mentioned_but_star_blocks_all": 7,
-     "pct_fully_of_reachable": 5.8,
+     "not_mentioned": 95,
+     "not_mentioned_but_star_blocks_all": 5,
+     "pct_fully_of_reachable": 6.8,
      "pct_partially_of_reachable": 0.0,
      "pct_allowed_explicitly_of_reachable": 1.0,
      "pct_fully_of_all_scanned": 2.8,
@@ -3704,16 +3678,16 @@
     "count": 7,
     "pct_of_reachable": 6.7
    },
-   "mean_ai_bots_named_per_robots_txt": 1.731,
-   "mean_ai_bots_named_per_robots_txt_among_those_naming_any": 11.25
+   "mean_ai_bots_named_per_robots_txt": 1.816,
+   "mean_ai_bots_named_per_robots_txt_among_those_naming_any": 10.389
   },
   "jp": {
    "scanned": 199,
-   "robots_reachable": 110,
+   "robots_reachable": 114,
    "bots": {
     "GPTBot": {
      "blocked_fully": 16,
-     "blocked_partially": 2,
+     "blocked_partially": 3,
      "allowed_explicitly": 0,
      "not_mentioned": 92,
      "not_mentioned_but_star_blocks_all": 5,
@@ -3726,7 +3700,7 @@
     },
     "ChatGPT-User": {
      "blocked_fully": 10,
-     "blocked_partially": 2,
+     "blocked_partially": 3,
      "allowed_explicitly": 0,
      "not_mentioned": 98,
      "not_mentioned_but_star_blocks_all": 5,
@@ -3739,7 +3713,7 @@
     },
     "OAI-SearchBot": {
      "blocked_fully": 10,
-     "blocked_partially": 2,
+     "blocked_partially": 3,
      "allowed_explicitly": 0,
      "not_mentioned": 98,
      "not_mentioned_but_star_blocks_all": 5,
@@ -3752,7 +3726,7 @@
     },
     "ClaudeBot": {
      "blocked_fully": 13,
-     "blocked_partially": 4,
+     "blocked_partially": 5,
      "allowed_explicitly": 1,
      "not_mentioned": 92,
      "not_mentioned_but_star_blocks_all": 5,
@@ -3765,11 +3739,24 @@
     },
     "Claude-User": {
      "blocked_fully": 7,
+     "blocked_partially": 3,
+     "allowed_explicitly": 0,
+     "not_mentioned": 104,
+     "not_mentioned_but_star_blocks_all": 4,
+     "pct_fully_of_reachable": 6.1,
+     "pct_partially_of_reachable": 2.6,
+     "pct_allowed_explicitly_of_reachable": 0.0,
+     "pct_fully_of_all_scanned": 3.5,
+     "pct_partially_of_all_scanned": 1.5,
+     "pct_allowed_explicitly_of_all_scanned": 0.0
+    },
+    "Claude-SearchBot": {
+     "blocked_fully": 7,
      "blocked_partially": 2,
      "allowed_explicitly": 0,
-     "not_mentioned": 101,
-     "not_mentioned_but_star_blocks_all": 5,
-     "pct_fully_of_reachable": 6.4,
+     "not_mentioned": 105,
+     "not_mentioned_but_star_blocks_all": 4,
+     "pct_fully_of_reachable": 6.1,
      "pct_partially_of_reachable": 1.8,
      "pct_allowed_explicitly_of_reachable": 0.0,
      "pct_fully_of_all_scanned": 3.5,
@@ -3830,7 +3817,7 @@
     },
     "Googlebot": {
      "blocked_fully": 1,
-     "blocked_partially": 11,
+     "blocked_partially": 12,
      "allowed_explicitly": 1,
      "not_mentioned": 97,
      "not_mentioned_but_star_blocks_all": 5,
@@ -3856,7 +3843,7 @@
     },
     "PerplexityBot": {
      "blocked_fully": 10,
-     "blocked_partially": 3,
+     "blocked_partially": 4,
      "allowed_explicitly": 0,
      "not_mentioned": 97,
      "not_mentioned_but_star_blocks_all": 5,
@@ -3869,7 +3856,7 @@
     },
     "Perplexity-User": {
      "blocked_fully": 7,
-     "blocked_partially": 1,
+     "blocked_partially": 2,
      "allowed_explicitly": 0,
      "not_mentioned": 102,
      "not_mentioned_but_star_blocks_all": 5,
@@ -3882,7 +3869,7 @@
     },
     "CCBot": {
      "blocked_fully": 14,
-     "blocked_partially": 1,
+     "blocked_partially": 2,
      "allowed_explicitly": 0,
      "not_mentioned": 95,
      "not_mentioned_but_star_blocks_all": 5,
@@ -3908,7 +3895,7 @@
     },
     "Amazonbot": {
      "blocked_fully": 9,
-     "blocked_partially": 2,
+     "blocked_partially": 3,
      "allowed_explicitly": 0,
      "not_mentioned": 99,
      "not_mentioned_but_star_blocks_all": 5,
@@ -3921,7 +3908,7 @@
     },
     "Meta-ExternalAgent": {
      "blocked_fully": 14,
-     "blocked_partially": 1,
+     "blocked_partially": 2,
      "allowed_explicitly": 0,
      "not_mentioned": 95,
      "not_mentioned_but_star_blocks_all": 5,
@@ -3960,7 +3947,7 @@
     },
     "DuckAssistBot": {
      "blocked_fully": 4,
-     "blocked_partially": 1,
+     "blocked_partially": 2,
      "allowed_explicitly": 0,
      "not_mentioned": 105,
      "not_mentioned_but_star_blocks_all": 5,
@@ -3973,7 +3960,7 @@
     },
     "MistralAI-User": {
      "blocked_fully": 1,
-     "blocked_partially": 1,
+     "blocked_partially": 2,
      "allowed_explicitly": 0,
      "not_mentioned": 108,
      "not_mentioned_but_star_blocks_all": 5,
@@ -4094,16 +4081,16 @@
     "count": 5,
     "pct_of_reachable": 4.5
    },
-   "mean_ai_bots_named_per_robots_txt": 2.5,
-   "mean_ai_bots_named_per_robots_txt_among_those_naming_any": 9.167
+   "mean_ai_bots_named_per_robots_txt": 2.526,
+   "mean_ai_bots_named_per_robots_txt_among_those_naming_any": 9.29
   },
   "de": {
    "scanned": 177,
-   "robots_reachable": 138,
+   "robots_reachable": 135,
    "bots": {
     "GPTBot": {
-     "blocked_fully": 34,
-     "blocked_partially": 9,
+     "blocked_fully": 33,
+     "blocked_partially": 8,
      "allowed_explicitly": 3,
      "not_mentioned": 92,
      "not_mentioned_but_star_blocks_all": 7,
@@ -4115,8 +4102,8 @@
      "pct_allowed_explicitly_of_all_scanned": 1.7
     },
     "ChatGPT-User": {
-     "blocked_fully": 9,
-     "blocked_partially": 9,
+     "blocked_fully": 10,
+     "blocked_partially": 8,
      "allowed_explicitly": 6,
      "not_mentioned": 114,
      "not_mentioned_but_star_blocks_all": 4,
@@ -4141,7 +4128,7 @@
      "pct_allowed_explicitly_of_all_scanned": 2.8
     },
     "ClaudeBot": {
-     "blocked_fully": 31,
+     "blocked_fully": 30,
      "blocked_partially": 4,
      "allowed_explicitly": 4,
      "not_mentioned": 99,
@@ -4167,7 +4154,7 @@
      "pct_allowed_explicitly_of_all_scanned": 1.7
     },
     "Claude-SearchBot": {
-     "blocked_fully": 6,
+     "blocked_fully": 7,
      "blocked_partially": 5,
      "allowed_explicitly": 3,
      "not_mentioned": 124,
@@ -4180,7 +4167,7 @@
      "pct_allowed_explicitly_of_all_scanned": 1.7
     },
     "anthropic-ai": {
-     "blocked_fully": 11,
+     "blocked_fully": 12,
      "blocked_partially": 0,
      "allowed_explicitly": 2,
      "not_mentioned": 125,
@@ -4193,7 +4180,7 @@
      "pct_allowed_explicitly_of_all_scanned": 1.1
     },
     "Claude-Web": {
-     "blocked_fully": 10,
+     "blocked_fully": 11,
      "blocked_partially": 0,
      "allowed_explicitly": 3,
      "not_mentioned": 125,
@@ -4206,7 +4193,7 @@
      "pct_allowed_explicitly_of_all_scanned": 1.7
     },
     "Google-Extended": {
-     "blocked_fully": 25,
+     "blocked_fully": 26,
      "blocked_partially": 5,
      "allowed_explicitly": 5,
      "not_mentioned": 103,
@@ -4222,8 +4209,8 @@
      "blocked_fully": 0,
      "blocked_partially": 10,
      "allowed_explicitly": 5,
-     "not_mentioned": 123,
-     "not_mentioned_but_star_blocks_all": 1,
+     "not_mentioned": 120,
+     "not_mentioned_but_star_blocks_all": 0,
      "pct_fully_of_reachable": 0.0,
      "pct_partially_of_reachable": 7.2,
      "pct_allowed_explicitly_of_reachable": 3.6,
@@ -4232,7 +4219,7 @@
      "pct_allowed_explicitly_of_all_scanned": 2.8
     },
     "Applebot-Extended": {
-     "blocked_fully": 28,
+     "blocked_fully": 29,
      "blocked_partially": 1,
      "allowed_explicitly": 3,
      "not_mentioned": 106,
@@ -4245,8 +4232,8 @@
      "pct_allowed_explicitly_of_all_scanned": 1.7
     },
     "PerplexityBot": {
-     "blocked_fully": 15,
-     "blocked_partially": 8,
+     "blocked_fully": 16,
+     "blocked_partially": 7,
      "allowed_explicitly": 4,
      "not_mentioned": 111,
      "not_mentioned_but_star_blocks_all": 4,
@@ -4258,7 +4245,7 @@
      "pct_allowed_explicitly_of_all_scanned": 2.3
     },
     "Perplexity-User": {
-     "blocked_fully": 6,
+     "blocked_fully": 7,
      "blocked_partially": 5,
      "allowed_explicitly": 3,
      "not_mentioned": 124,
@@ -4271,7 +4258,7 @@
      "pct_allowed_explicitly_of_all_scanned": 1.7
     },
     "CCBot": {
-     "blocked_fully": 35,
+     "blocked_fully": 34,
      "blocked_partially": 4,
      "allowed_explicitly": 1,
      "not_mentioned": 98,
@@ -4284,7 +4271,7 @@
      "pct_allowed_explicitly_of_all_scanned": 0.6
     },
     "Bytespider": {
-     "blocked_fully": 31,
+     "blocked_fully": 30,
      "blocked_partially": 1,
      "allowed_explicitly": 2,
      "not_mentioned": 104,
@@ -4297,8 +4284,8 @@
      "pct_allowed_explicitly_of_all_scanned": 1.1
     },
     "Amazonbot": {
-     "blocked_fully": 16,
-     "blocked_partially": 3,
+     "blocked_fully": 14,
+     "blocked_partially": 2,
      "allowed_explicitly": 2,
      "not_mentioned": 117,
      "not_mentioned_but_star_blocks_all": 7,
@@ -4310,7 +4297,7 @@
      "pct_allowed_explicitly_of_all_scanned": 1.1
     },
     "Meta-ExternalAgent": {
-     "blocked_fully": 26,
+     "blocked_fully": 25,
      "blocked_partially": 1,
      "allowed_explicitly": 3,
      "not_mentioned": 108,
@@ -4388,7 +4375,7 @@
      "pct_allowed_explicitly_of_all_scanned": 0.6
     },
     "Diffbot": {
-     "blocked_fully": 23,
+     "blocked_fully": 24,
      "blocked_partially": 1,
      "allowed_explicitly": 1,
      "not_mentioned": 113,
@@ -4401,7 +4388,7 @@
      "pct_allowed_explicitly_of_all_scanned": 0.6
     },
     "Timpibot": {
-     "blocked_fully": 12,
+     "blocked_fully": 11,
      "blocked_partially": 1,
      "allowed_explicitly": 0,
      "not_mentioned": 125,
@@ -4427,7 +4414,7 @@
      "pct_allowed_explicitly_of_all_scanned": 0.0
     },
     "omgili": {
-     "blocked_fully": 19,
+     "blocked_fully": 20,
      "blocked_partially": 0,
      "allowed_explicitly": 0,
      "not_mentioned": 119,
@@ -4435,7 +4422,7 @@
      "pct_fully_of_reachable": 13.8,
      "pct_partially_of_reachable": 0.0,
      "pct_allowed_explicitly_of_reachable": 0.0,
-     "pct_fully_of_all_scanned": 10.7,
+     "pct_fully_of_all_scanned": 11.3,
      "pct_partially_of_all_scanned": 0.0,
      "pct_allowed_explicitly_of_all_scanned": 0.0
     },
@@ -4453,7 +4440,7 @@
      "pct_allowed_explicitly_of_all_scanned": 0.0
     },
     "PetalBot": {
-     "blocked_fully": 14,
+     "blocked_fully": 12,
      "blocked_partially": 4,
      "allowed_explicitly": 0,
      "not_mentioned": 120,
@@ -4472,8 +4459,8 @@
     "pct_of_all_scanned": 23.7
    },
    "restricting_at_least_one_ai_bot_fully_or_partially": {
-    "count": 57,
-    "pct_of_reachable": 41.3
+    "count": 54,
+    "pct_of_reachable": 40.0
    },
    "blocking_all_of_GPTBot_ClaudeBot_Google-Extended_CCBot": {
     "count": 22,
@@ -4484,18 +4471,18 @@
     "count": 7,
     "pct_of_reachable": 5.1
    },
-   "mean_ai_bots_named_per_robots_txt": 4.159,
-   "mean_ai_bots_named_per_robots_txt_among_those_naming_any": 9.567
+   "mean_ai_bots_named_per_robots_txt": 4.215,
+   "mean_ai_bots_named_per_robots_txt_among_those_naming_any": 9.982
   },
   "edu": {
    "scanned": 125,
-   "robots_reachable": 105,
+   "robots_reachable": 103,
    "bots": {
     "GPTBot": {
      "blocked_fully": 6,
      "blocked_partially": 1,
      "allowed_explicitly": 1,
-     "not_mentioned": 97,
+     "not_mentioned": 95,
      "not_mentioned_but_star_blocks_all": 1,
      "pct_fully_of_reachable": 5.7,
      "pct_partially_of_reachable": 1.0,
@@ -4508,7 +4495,7 @@
      "blocked_fully": 1,
      "blocked_partially": 1,
      "allowed_explicitly": 1,
-     "not_mentioned": 102,
+     "not_mentioned": 100,
      "not_mentioned_but_star_blocks_all": 1,
      "pct_fully_of_reachable": 1.0,
      "pct_partially_of_reachable": 1.0,
@@ -4521,7 +4508,7 @@
      "blocked_fully": 0,
      "blocked_partially": 1,
      "allowed_explicitly": 0,
-     "not_mentioned": 104,
+     "not_mentioned": 102,
      "not_mentioned_but_star_blocks_all": 1,
      "pct_fully_of_reachable": 0.0,
      "pct_partially_of_reachable": 1.0,
@@ -4531,10 +4518,10 @@
      "pct_allowed_explicitly_of_all_scanned": 0.0
     },
     "ClaudeBot": {
-     "blocked_fully": 4,
+     "blocked_fully": 5,
      "blocked_partially": 1,
      "allowed_explicitly": 1,
-     "not_mentioned": 99,
+     "not_mentioned": 96,
      "not_mentioned_but_star_blocks_all": 2,
      "pct_fully_of_reachable": 3.8,
      "pct_partially_of_reachable": 1.0,
@@ -4547,7 +4534,7 @@
      "blocked_fully": 0,
      "blocked_partially": 1,
      "allowed_explicitly": 0,
-     "not_mentioned": 104,
+     "not_mentioned": 102,
      "not_mentioned_but_star_blocks_all": 1,
      "pct_fully_of_reachable": 0.0,
      "pct_partially_of_reachable": 1.0,
@@ -4560,7 +4547,7 @@
      "blocked_fully": 0,
      "blocked_partially": 1,
      "allowed_explicitly": 0,
-     "not_mentioned": 104,
+     "not_mentioned": 102,
      "not_mentioned_but_star_blocks_all": 1,
      "pct_fully_of_reachable": 0.0,
      "pct_partially_of_reachable": 1.0,
@@ -4570,10 +4557,10 @@
      "pct_allowed_explicitly_of_all_scanned": 0.0
     },
     "anthropic-ai": {
-     "blocked_fully": 4,
+     "blocked_fully": 5,
      "blocked_partially": 0,
      "allowed_explicitly": 1,
-     "not_mentioned": 100,
+     "not_mentioned": 97,
      "not_mentioned_but_star_blocks_all": 2,
      "pct_fully_of_reachable": 3.8,
      "pct_partially_of_reachable": 0.0,
@@ -4586,7 +4573,7 @@
      "blocked_fully": 4,
      "blocked_partially": 0,
      "allowed_explicitly": 0,
-     "not_mentioned": 101,
+     "not_mentioned": 99,
      "not_mentioned_but_star_blocks_all": 2,
      "pct_fully_of_reachable": 3.8,
      "pct_partially_of_reachable": 0.0,
@@ -4597,35 +4584,35 @@
     },
     "Google-Extended": {
      "blocked_fully": 5,
-     "blocked_partially": 0,
+     "blocked_partially": 1,
      "allowed_explicitly": 1,
-     "not_mentioned": 99,
+     "not_mentioned": 96,
      "not_mentioned_but_star_blocks_all": 1,
      "pct_fully_of_reachable": 4.8,
      "pct_partially_of_reachable": 0.0,
      "pct_allowed_explicitly_of_reachable": 1.0,
      "pct_fully_of_all_scanned": 4.0,
-     "pct_partially_of_all_scanned": 0.0,
+     "pct_partially_of_all_scanned": 0.8,
      "pct_allowed_explicitly_of_all_scanned": 0.8
     },
     "Googlebot": {
      "blocked_fully": 0,
-     "blocked_partially": 5,
+     "blocked_partially": 6,
      "allowed_explicitly": 1,
-     "not_mentioned": 99,
+     "not_mentioned": 96,
      "not_mentioned_but_star_blocks_all": 0,
      "pct_fully_of_reachable": 0.0,
      "pct_partially_of_reachable": 4.8,
      "pct_allowed_explicitly_of_reachable": 1.0,
      "pct_fully_of_all_scanned": 0.0,
-     "pct_partially_of_all_scanned": 4.0,
+     "pct_partially_of_all_scanned": 4.8,
      "pct_allowed_explicitly_of_all_scanned": 0.8
     },
     "Applebot-Extended": {
      "blocked_fully": 4,
      "blocked_partially": 0,
      "allowed_explicitly": 0,
-     "not_mentioned": 101,
+     "not_mentioned": 99,
      "not_mentioned_but_star_blocks_all": 1,
      "pct_fully_of_reachable": 3.8,
      "pct_partially_of_reachable": 0.0,
@@ -4638,7 +4625,7 @@
      "blocked_fully": 2,
      "blocked_partially": 1,
      "allowed_explicitly": 1,
-     "not_mentioned": 101,
+     "not_mentioned": 99,
      "not_mentioned_but_star_blocks_all": 1,
      "pct_fully_of_reachable": 1.9,
      "pct_partially_of_reachable": 1.0,
@@ -4651,7 +4638,7 @@
      "blocked_fully": 0,
      "blocked_partially": 0,
      "allowed_explicitly": 0,
-     "not_mentioned": 105,
+     "not_mentioned": 103,
      "not_mentioned_but_star_blocks_all": 2,
      "pct_fully_of_reachable": 0.0,
      "pct_partially_of_reachable": 0.0,
@@ -4661,23 +4648,10 @@
      "pct_allowed_explicitly_of_all_scanned": 0.0
     },
     "CCBot": {
-     "blocked_fully": 4,
-     "blocked_partially": 1,
-     "allowed_explicitly": 1,
-     "not_mentioned": 99,
-     "not_mentioned_but_star_blocks_all": 2,
-     "pct_fully_of_reachable": 3.8,
-     "pct_partially_of_reachable": 1.0,
-     "pct_allowed_explicitly_of_reachable": 1.0,
-     "pct_fully_of_all_scanned": 3.2,
-     "pct_partially_of_all_scanned": 0.8,
-     "pct_allowed_explicitly_of_all_scanned": 0.8
-    },
-    "Bytespider": {
      "blocked_fully": 5,
      "blocked_partially": 1,
      "allowed_explicitly": 1,
-     "not_mentioned": 98,
+     "not_mentioned": 96,
      "not_mentioned_but_star_blocks_all": 2,
      "pct_fully_of_reachable": 4.8,
      "pct_partially_of_reachable": 1.0,
@@ -4703,7 +4677,7 @@
      "blocked_fully": 3,
      "blocked_partially": 1,
      "allowed_explicitly": 1,
-     "not_mentioned": 100,
+     "not_mentioned": 98,
      "not_mentioned_but_star_blocks_all": 2,
      "pct_fully_of_reachable": 2.9,
      "pct_partially_of_reachable": 1.0,
@@ -4713,28 +4687,28 @@
      "pct_allowed_explicitly_of_all_scanned": 0.8
     },
     "FacebookBot": {
-     "blocked_fully": 0,
-     "blocked_partially": 0,
-     "allowed_explicitly": 0,
-     "not_mentioned": 105,
-     "not_mentioned_but_star_blocks_all": 2,
-     "pct_fully_of_reachable": 0.0,
-     "pct_partially_of_reachable": 0.0,
-     "pct_allowed_explicitly_of_reachable": 0.0,
-     "pct_fully_of_all_scanned": 0.0,
-     "pct_partially_of_all_scanned": 0.0,
-     "pct_allowed_explicitly_of_all_scanned": 0.0
-    },
-    "cohere-ai": {
-     "blocked_fully": 3,
+     "blocked_fully": 1,
      "blocked_partially": 0,
      "allowed_explicitly": 0,
      "not_mentioned": 102,
      "not_mentioned_but_star_blocks_all": 2,
+     "pct_fully_of_reachable": 0.0,
+     "pct_partially_of_reachable": 0.0,
+     "pct_allowed_explicitly_of_reachable": 0.0,
+     "pct_fully_of_all_scanned": 0.8,
+     "pct_partially_of_all_scanned": 0.0,
+     "pct_allowed_explicitly_of_all_scanned": 0.0
+    },
+    "cohere-ai": {
+     "blocked_fully": 4,
+     "blocked_partially": 0,
+     "allowed_explicitly": 0,
+     "not_mentioned": 99,
+     "not_mentioned_but_star_blocks_all": 2,
      "pct_fully_of_reachable": 2.9,
      "pct_partially_of_reachable": 0.0,
      "pct_allowed_explicitly_of_reachable": 0.0,
-     "pct_fully_of_all_scanned": 2.4,
+     "pct_fully_of_all_scanned": 3.2,
      "pct_partially_of_all_scanned": 0.0,
      "pct_allowed_explicitly_of_all_scanned": 0.0
     },
@@ -4742,7 +4716,7 @@
      "blocked_fully": 0,
      "blocked_partially": 1,
      "allowed_explicitly": 0,
-     "not_mentioned": 104,
+     "not_mentioned": 102,
      "not_mentioned_but_star_blocks_all": 1,
      "pct_fully_of_reachable": 0.0,
      "pct_partially_of_reachable": 1.0,
@@ -4755,7 +4729,7 @@
      "blocked_fully": 0,
      "blocked_partially": 1,
      "allowed_explicitly": 0,
-     "not_mentioned": 104,
+     "not_mentioned": 102,
      "not_mentioned_but_star_blocks_all": 1,
      "pct_fully_of_reachable": 0.0,
      "pct_partially_of_reachable": 1.0,
@@ -4768,7 +4742,7 @@
      "blocked_fully": 0,
      "blocked_partially": 1,
      "allowed_explicitly": 0,
-     "not_mentioned": 104,
+     "not_mentioned": 102,
      "not_mentioned_but_star_blocks_all": 1,
      "pct_fully_of_reachable": 0.0,
      "pct_partially_of_reachable": 1.0,
@@ -4778,54 +4752,54 @@
      "pct_allowed_explicitly_of_all_scanned": 0.0
     },
     "Diffbot": {
-     "blocked_fully": 3,
+     "blocked_fully": 4,
      "blocked_partially": 0,
      "allowed_explicitly": 0,
-     "not_mentioned": 102,
+     "not_mentioned": 99,
      "not_mentioned_but_star_blocks_all": 2,
      "pct_fully_of_reachable": 2.9,
      "pct_partially_of_reachable": 0.0,
      "pct_allowed_explicitly_of_reachable": 0.0,
-     "pct_fully_of_all_scanned": 2.4,
+     "pct_fully_of_all_scanned": 3.2,
      "pct_partially_of_all_scanned": 0.0,
      "pct_allowed_explicitly_of_all_scanned": 0.0
     },
     "Timpibot": {
-     "blocked_fully": 0,
-     "blocked_partially": 0,
-     "allowed_explicitly": 0,
-     "not_mentioned": 105,
-     "not_mentioned_but_star_blocks_all": 2,
-     "pct_fully_of_reachable": 0.0,
-     "pct_partially_of_reachable": 0.0,
-     "pct_allowed_explicitly_of_reachable": 0.0,
-     "pct_fully_of_all_scanned": 0.0,
-     "pct_partially_of_all_scanned": 0.0,
-     "pct_allowed_explicitly_of_all_scanned": 0.0
-    },
-    "ImagesiftBot": {
-     "blocked_fully": 0,
-     "blocked_partially": 0,
-     "allowed_explicitly": 0,
-     "not_mentioned": 105,
-     "not_mentioned_but_star_blocks_all": 2,
-     "pct_fully_of_reachable": 0.0,
-     "pct_partially_of_reachable": 0.0,
-     "pct_allowed_explicitly_of_reachable": 0.0,
-     "pct_fully_of_all_scanned": 0.0,
-     "pct_partially_of_all_scanned": 0.0,
-     "pct_allowed_explicitly_of_all_scanned": 0.0
-    },
-    "omgili": {
-     "blocked_fully": 3,
+     "blocked_fully": 1,
      "blocked_partially": 0,
      "allowed_explicitly": 0,
      "not_mentioned": 102,
      "not_mentioned_but_star_blocks_all": 2,
+     "pct_fully_of_reachable": 0.0,
+     "pct_partially_of_reachable": 0.0,
+     "pct_allowed_explicitly_of_reachable": 0.0,
+     "pct_fully_of_all_scanned": 0.8,
+     "pct_partially_of_all_scanned": 0.0,
+     "pct_allowed_explicitly_of_all_scanned": 0.0
+    },
+    "ImagesiftBot": {
+     "blocked_fully": 1,
+     "blocked_partially": 0,
+     "allowed_explicitly": 0,
+     "not_mentioned": 102,
+     "not_mentioned_but_star_blocks_all": 2,
+     "pct_fully_of_reachable": 0.0,
+     "pct_partially_of_reachable": 0.0,
+     "pct_allowed_explicitly_of_reachable": 0.0,
+     "pct_fully_of_all_scanned": 0.8,
+     "pct_partially_of_all_scanned": 0.0,
+     "pct_allowed_explicitly_of_all_scanned": 0.0
+    },
+    "omgili": {
+     "blocked_fully": 4,
+     "blocked_partially": 0,
+     "allowed_explicitly": 0,
+     "not_mentioned": 99,
+     "not_mentioned_but_star_blocks_all": 2,
      "pct_fully_of_reachable": 2.9,
      "pct_partially_of_reachable": 0.0,
      "pct_allowed_explicitly_of_reachable": 0.0,
-     "pct_fully_of_all_scanned": 2.4,
+     "pct_fully_of_all_scanned": 3.2,
      "pct_partially_of_all_scanned": 0.0,
      "pct_allowed_explicitly_of_all_scanned": 0.0
     },
@@ -4833,7 +4807,7 @@
      "blocked_fully": 0,
      "blocked_partially": 0,
      "allowed_explicitly": 0,
-     "not_mentioned": 105,
+     "not_mentioned": 103,
      "not_mentioned_but_star_blocks_all": 2,
      "pct_fully_of_reachable": 0.0,
      "pct_partially_of_reachable": 0.0,
@@ -4846,7 +4820,7 @@
      "blocked_fully": 4,
      "blocked_partially": 1,
      "allowed_explicitly": 0,
-     "not_mentioned": 100,
+     "not_mentioned": 98,
      "not_mentioned_but_star_blocks_all": 2,
      "pct_fully_of_reachable": 3.8,
      "pct_partially_of_reachable": 1.0,
@@ -4874,18 +4848,18 @@
     "count": 2,
     "pct_of_reachable": 1.9
    },
-   "mean_ai_bots_named_per_robots_txt": 0.79,
-   "mean_ai_bots_named_per_robots_txt_among_those_naming_any": 6.917
+   "mean_ai_bots_named_per_robots_txt": 0.922,
+   "mean_ai_bots_named_per_robots_txt_among_those_naming_any": 7.308
   },
   "gov": {
    "scanned": 115,
-   "robots_reachable": 77,
+   "robots_reachable": 80,
    "bots": {
     "GPTBot": {
      "blocked_fully": 1,
      "blocked_partially": 1,
      "allowed_explicitly": 0,
-     "not_mentioned": 75,
+     "not_mentioned": 78,
      "not_mentioned_but_star_blocks_all": 2,
      "pct_fully_of_reachable": 1.3,
      "pct_partially_of_reachable": 1.3,
@@ -4898,9 +4872,9 @@
      "blocked_fully": 2,
      "blocked_partially": 0,
      "allowed_explicitly": 0,
-     "not_mentioned": 75,
+     "not_mentioned": 78,
      "not_mentioned_but_star_blocks_all": 2,
-     "pct_fully_of_reachable": 2.6,
+     "pct_fully_of_reachable": 2.5,
      "pct_partially_of_reachable": 0.0,
      "pct_allowed_explicitly_of_reachable": 0.0,
      "pct_fully_of_all_scanned": 1.7,
@@ -4911,7 +4885,7 @@
      "blocked_fully": 1,
      "blocked_partially": 1,
      "allowed_explicitly": 0,
-     "not_mentioned": 75,
+     "not_mentioned": 78,
      "not_mentioned_but_star_blocks_all": 2,
      "pct_fully_of_reachable": 1.3,
      "pct_partially_of_reachable": 1.3,
@@ -4924,7 +4898,7 @@
      "blocked_fully": 2,
      "blocked_partially": 1,
      "allowed_explicitly": 0,
-     "not_mentioned": 74,
+     "not_mentioned": 77,
      "not_mentioned_but_star_blocks_all": 2,
      "pct_fully_of_reachable": 2.6,
      "pct_partially_of_reachable": 1.3,
@@ -4937,9 +4911,9 @@
      "blocked_fully": 2,
      "blocked_partially": 0,
      "allowed_explicitly": 0,
-     "not_mentioned": 75,
+     "not_mentioned": 78,
      "not_mentioned_but_star_blocks_all": 2,
-     "pct_fully_of_reachable": 2.6,
+     "pct_fully_of_reachable": 2.5,
      "pct_partially_of_reachable": 0.0,
      "pct_allowed_explicitly_of_reachable": 0.0,
      "pct_fully_of_all_scanned": 1.7,
@@ -4950,7 +4924,7 @@
      "blocked_fully": 1,
      "blocked_partially": 1,
      "allowed_explicitly": 0,
-     "not_mentioned": 75,
+     "not_mentioned": 78,
      "not_mentioned_but_star_blocks_all": 2,
      "pct_fully_of_reachable": 1.3,
      "pct_partially_of_reachable": 1.3,
@@ -4963,7 +4937,7 @@
      "blocked_fully": 1,
      "blocked_partially": 0,
      "allowed_explicitly": 0,
-     "not_mentioned": 76,
+     "not_mentioned": 79,
      "not_mentioned_but_star_blocks_all": 2,
      "pct_fully_of_reachable": 1.3,
      "pct_partially_of_reachable": 0.0,
@@ -4976,7 +4950,7 @@
      "blocked_fully": 1,
      "blocked_partially": 0,
      "allowed_explicitly": 0,
-     "not_mentioned": 76,
+     "not_mentioned": 79,
      "not_mentioned_but_star_blocks_all": 2,
      "pct_fully_of_reachable": 1.3,
      "pct_partially_of_reachable": 0.0,
@@ -4989,7 +4963,7 @@
      "blocked_fully": 1,
      "blocked_partially": 0,
      "allowed_explicitly": 0,
-     "not_mentioned": 76,
+     "not_mentioned": 79,
      "not_mentioned_but_star_blocks_all": 2,
      "pct_fully_of_reachable": 1.3,
      "pct_partially_of_reachable": 0.0,
@@ -5001,8 +4975,8 @@
     "Googlebot": {
      "blocked_fully": 0,
      "blocked_partially": 3,
-     "allowed_explicitly": 1,
-     "not_mentioned": 73,
+     "allowed_explicitly": 2,
+     "not_mentioned": 75,
      "not_mentioned_but_star_blocks_all": 2,
      "pct_fully_of_reachable": 0.0,
      "pct_partially_of_reachable": 3.9,
@@ -5015,7 +4989,7 @@
      "blocked_fully": 0,
      "blocked_partially": 0,
      "allowed_explicitly": 0,
-     "not_mentioned": 77,
+     "not_mentioned": 80,
      "not_mentioned_but_star_blocks_all": 2,
      "pct_fully_of_reachable": 0.0,
      "pct_partially_of_reachable": 0.0,
@@ -5025,10 +4999,10 @@
      "pct_allowed_explicitly_of_all_scanned": 0.0
     },
     "PerplexityBot": {
-     "blocked_fully": 1,
+     "blocked_fully": 2,
      "blocked_partially": 1,
      "allowed_explicitly": 0,
-     "not_mentioned": 75,
+     "not_mentioned": 77,
      "not_mentioned_but_star_blocks_all": 2,
      "pct_fully_of_reachable": 1.3,
      "pct_partially_of_reachable": 1.3,
@@ -5041,9 +5015,9 @@
      "blocked_fully": 2,
      "blocked_partially": 0,
      "allowed_explicitly": 0,
-     "not_mentioned": 75,
+     "not_mentioned": 78,
      "not_mentioned_but_star_blocks_all": 2,
-     "pct_fully_of_reachable": 2.6,
+     "pct_fully_of_reachable": 2.5,
      "pct_partially_of_reachable": 0.0,
      "pct_allowed_explicitly_of_reachable": 0.0,
      "pct_fully_of_all_scanned": 1.7,
@@ -5053,8 +5027,8 @@
     "CCBot": {
      "blocked_fully": 2,
      "blocked_partially": 1,
-     "allowed_explicitly": 0,
-     "not_mentioned": 74,
+     "allowed_explicitly": 1,
+     "not_mentioned": 76,
      "not_mentioned_but_star_blocks_all": 2,
      "pct_fully_of_reachable": 2.6,
      "pct_partially_of_reachable": 1.3,
@@ -5064,10 +5038,10 @@
      "pct_allowed_explicitly_of_all_scanned": 0.0
     },
     "Bytespider": {
-     "blocked_fully": 2,
+     "blocked_fully": 3,
      "blocked_partially": 1,
      "allowed_explicitly": 0,
-     "not_mentioned": 74,
+     "not_mentioned": 76,
      "not_mentioned_but_star_blocks_all": 2,
      "pct_fully_of_reachable": 2.6,
      "pct_partially_of_reachable": 1.3,
@@ -5080,7 +5054,7 @@
      "blocked_fully": 3,
      "blocked_partially": 1,
      "allowed_explicitly": 0,
-     "not_mentioned": 73,
+     "not_mentioned": 76,
      "not_mentioned_but_star_blocks_all": 2,
      "pct_fully_of_reachable": 3.9,
      "pct_partially_of_reachable": 1.3,
@@ -5093,7 +5067,7 @@
      "blocked_fully": 2,
      "blocked_partially": 1,
      "allowed_explicitly": 0,
-     "not_mentioned": 74,
+     "not_mentioned": 77,
      "not_mentioned_but_star_blocks_all": 2,
      "pct_fully_of_reachable": 2.6,
      "pct_partially_of_reachable": 1.3,
@@ -5106,7 +5080,7 @@
      "blocked_fully": 1,
      "blocked_partially": 0,
      "allowed_explicitly": 0,
-     "not_mentioned": 76,
+     "not_mentioned": 79,
      "not_mentioned_but_star_blocks_all": 2,
      "pct_fully_of_reachable": 1.3,
      "pct_partially_of_reachable": 0.0,
@@ -5119,7 +5093,7 @@
      "blocked_fully": 1,
      "blocked_partially": 1,
      "allowed_explicitly": 0,
-     "not_mentioned": 75,
+     "not_mentioned": 78,
      "not_mentioned_but_star_blocks_all": 2,
      "pct_fully_of_reachable": 1.3,
      "pct_partially_of_reachable": 1.3,
@@ -5132,7 +5106,7 @@
      "blocked_fully": 1,
      "blocked_partially": 1,
      "allowed_explicitly": 0,
-     "not_mentioned": 75,
+     "not_mentioned": 78,
      "not_mentioned_but_star_blocks_all": 2,
      "pct_fully_of_reachable": 1.3,
      "pct_partially_of_reachable": 1.3,
@@ -5145,9 +5119,9 @@
      "blocked_fully": 2,
      "blocked_partially": 0,
      "allowed_explicitly": 0,
-     "not_mentioned": 75,
+     "not_mentioned": 78,
      "not_mentioned_but_star_blocks_all": 2,
-     "pct_fully_of_reachable": 2.6,
+     "pct_fully_of_reachable": 2.5,
      "pct_partially_of_reachable": 0.0,
      "pct_allowed_explicitly_of_reachable": 0.0,
      "pct_fully_of_all_scanned": 1.7,
@@ -5158,7 +5132,7 @@
      "blocked_fully": 1,
      "blocked_partially": 1,
      "allowed_explicitly": 0,
-     "not_mentioned": 75,
+     "not_mentioned": 78,
      "not_mentioned_but_star_blocks_all": 2,
      "pct_fully_of_reachable": 1.3,
      "pct_partially_of_reachable": 1.3,
@@ -5171,7 +5145,7 @@
      "blocked_fully": 1,
      "blocked_partially": 0,
      "allowed_explicitly": 0,
-     "not_mentioned": 76,
+     "not_mentioned": 79,
      "not_mentioned_but_star_blocks_all": 2,
      "pct_fully_of_reachable": 1.3,
      "pct_partially_of_reachable": 0.0,
@@ -5184,7 +5158,7 @@
      "blocked_fully": 1,
      "blocked_partially": 0,
      "allowed_explicitly": 0,
-     "not_mentioned": 76,
+     "not_mentioned": 79,
      "not_mentioned_but_star_blocks_all": 2,
      "pct_fully_of_reachable": 1.3,
      "pct_partially_of_reachable": 0.0,
@@ -5197,7 +5171,7 @@
      "blocked_fully": 1,
      "blocked_partially": 0,
      "allowed_explicitly": 0,
-     "not_mentioned": 76,
+     "not_mentioned": 79,
      "not_mentioned_but_star_blocks_all": 2,
      "pct_fully_of_reachable": 1.3,
      "pct_partially_of_reachable": 0.0,
@@ -5210,7 +5184,7 @@
      "blocked_fully": 1,
      "blocked_partially": 0,
      "allowed_explicitly": 0,
-     "not_mentioned": 76,
+     "not_mentioned": 79,
      "not_mentioned_but_star_blocks_all": 2,
      "pct_fully_of_reachable": 1.3,
      "pct_partially_of_reachable": 0.0,
@@ -5223,7 +5197,7 @@
      "blocked_fully": 1,
      "blocked_partially": 0,
      "allowed_explicitly": 0,
-     "not_mentioned": 76,
+     "not_mentioned": 79,
      "not_mentioned_but_star_blocks_all": 2,
      "pct_fully_of_reachable": 1.3,
      "pct_partially_of_reachable": 0.0,
@@ -5236,7 +5210,7 @@
      "blocked_fully": 7,
      "blocked_partially": 0,
      "allowed_explicitly": 0,
-     "not_mentioned": 70,
+     "not_mentioned": 73,
      "not_mentioned_but_star_blocks_all": 2,
      "pct_fully_of_reachable": 9.1,
      "pct_partially_of_reachable": 0.0,
@@ -5262,10 +5236,10 @@
    },
    "star_blocks_everything": {
     "count": 2,
-    "pct_of_reachable": 2.6
+    "pct_of_reachable": 2.5
    },
-   "mean_ai_bots_named_per_robots_txt": 0.701,
-   "mean_ai_bots_named_per_robots_txt_among_those_naming_any": 4.5
+   "mean_ai_bots_named_per_robots_txt": 0.713,
+   "mean_ai_bots_named_per_robots_txt_among_those_naming_any": 4.071
   },
   "in": {
    "scanned": 106,
@@ -5275,7 +5249,7 @@
      "blocked_fully": 5,
      "blocked_partially": 2,
      "allowed_explicitly": 2,
-     "not_mentioned": 30,
+     "not_mentioned": 34,
      "not_mentioned_but_star_blocks_all": 0,
      "pct_fully_of_reachable": 12.8,
      "pct_partially_of_reachable": 5.1,
@@ -5284,36 +5258,10 @@
      "pct_partially_of_all_scanned": 1.9,
      "pct_allowed_explicitly_of_all_scanned": 1.9
     },
-    "ChatGPT-User": {
-     "blocked_fully": 2,
-     "blocked_partially": 2,
-     "allowed_explicitly": 1,
-     "not_mentioned": 34,
-     "not_mentioned_but_star_blocks_all": 0,
-     "pct_fully_of_reachable": 5.1,
-     "pct_partially_of_reachable": 5.1,
-     "pct_allowed_explicitly_of_reachable": 2.6,
-     "pct_fully_of_all_scanned": 1.9,
-     "pct_partially_of_all_scanned": 1.9,
-     "pct_allowed_explicitly_of_all_scanned": 0.9
-    },
-    "OAI-SearchBot": {
-     "blocked_fully": 1,
-     "blocked_partially": 4,
-     "allowed_explicitly": 0,
-     "not_mentioned": 34,
-     "not_mentioned_but_star_blocks_all": 0,
-     "pct_fully_of_reachable": 2.6,
-     "pct_partially_of_reachable": 10.3,
-     "pct_allowed_explicitly_of_reachable": 0.0,
-     "pct_fully_of_all_scanned": 0.9,
-     "pct_partially_of_all_scanned": 3.8,
-     "pct_allowed_explicitly_of_all_scanned": 0.0
-    },
     "ClaudeBot": {
      "blocked_fully": 5,
-     "blocked_partially": 1,
-     "allowed_explicitly": 2,
+     "blocked_partially": 0,
+     "allowed_explicitly": 3,
      "not_mentioned": 31,
      "not_mentioned_but_star_blocks_all": 0,
      "pct_fully_of_reachable": 12.8,
@@ -5325,7 +5273,7 @@
     },
     "Claude-User": {
      "blocked_fully": 2,
-     "blocked_partially": 1,
+     "blocked_partially": 0,
      "allowed_explicitly": 0,
      "not_mentioned": 36,
      "not_mentioned_but_star_blocks_all": 0,
@@ -5338,7 +5286,7 @@
     },
     "Claude-SearchBot": {
      "blocked_fully": 1,
-     "blocked_partially": 2,
+     "blocked_partially": 1,
      "allowed_explicitly": 0,
      "not_mentioned": 36,
      "not_mentioned_but_star_blocks_all": 0,
@@ -5351,8 +5299,8 @@
     },
     "anthropic-ai": {
      "blocked_fully": 3,
-     "blocked_partially": 1,
-     "allowed_explicitly": 1,
+     "blocked_partially": 0,
+     "allowed_explicitly": 2,
      "not_mentioned": 34,
      "not_mentioned_but_star_blocks_all": 0,
      "pct_fully_of_reachable": 7.7,
@@ -5364,8 +5312,8 @@
     },
     "Claude-Web": {
      "blocked_fully": 4,
-     "blocked_partially": 1,
-     "allowed_explicitly": 0,
+     "blocked_partially": 0,
+     "allowed_explicitly": 1,
      "not_mentioned": 34,
      "not_mentioned_but_star_blocks_all": 0,
      "pct_fully_of_reachable": 10.3,
@@ -5377,9 +5325,9 @@
     },
     "Google-Extended": {
      "blocked_fully": 5,
-     "blocked_partially": 2,
-     "allowed_explicitly": 2,
-     "not_mentioned": 30,
+     "blocked_partially": 0,
+     "allowed_explicitly": 3,
+     "not_mentioned": 31,
      "not_mentioned_but_star_blocks_all": 0,
      "pct_fully_of_reachable": 12.8,
      "pct_partially_of_reachable": 5.1,
@@ -5390,8 +5338,8 @@
     },
     "Googlebot": {
      "blocked_fully": 0,
-     "blocked_partially": 2,
-     "allowed_explicitly": 2,
+     "blocked_partially": 1,
+     "allowed_explicitly": 3,
      "not_mentioned": 35,
      "not_mentioned_but_star_blocks_all": 0,
      "pct_fully_of_reachable": 0.0,
@@ -5403,8 +5351,8 @@
     },
     "Applebot-Extended": {
      "blocked_fully": 3,
-     "blocked_partially": 1,
-     "allowed_explicitly": 0,
+     "blocked_partially": 0,
+     "allowed_explicitly": 1,
      "not_mentioned": 35,
      "not_mentioned_but_star_blocks_all": 1,
      "pct_fully_of_reachable": 7.7,
@@ -5416,9 +5364,9 @@
     },
     "PerplexityBot": {
      "blocked_fully": 2,
-     "blocked_partially": 3,
-     "allowed_explicitly": 2,
-     "not_mentioned": 32,
+     "blocked_partially": 1,
+     "allowed_explicitly": 3,
+     "not_mentioned": 33,
      "not_mentioned_but_star_blocks_all": 0,
      "pct_fully_of_reachable": 5.1,
      "pct_partially_of_reachable": 7.7,
@@ -5429,7 +5377,7 @@
     },
     "Perplexity-User": {
      "blocked_fully": 2,
-     "blocked_partially": 2,
+     "blocked_partially": 0,
      "allowed_explicitly": 0,
      "not_mentioned": 35,
      "not_mentioned_but_star_blocks_all": 0,
@@ -5442,8 +5390,8 @@
     },
     "CCBot": {
      "blocked_fully": 6,
-     "blocked_partially": 1,
-     "allowed_explicitly": 1,
+     "blocked_partially": 0,
+     "allowed_explicitly": 2,
      "not_mentioned": 31,
      "not_mentioned_but_star_blocks_all": 0,
      "pct_fully_of_reachable": 15.4,
@@ -5455,7 +5403,7 @@
     },
     "Bytespider": {
      "blocked_fully": 7,
-     "blocked_partially": 1,
+     "blocked_partially": 0,
      "allowed_explicitly": 0,
      "not_mentioned": 31,
      "not_mentioned_but_star_blocks_all": 0,
@@ -5463,12 +5411,12 @@
      "pct_partially_of_reachable": 2.6,
      "pct_allowed_explicitly_of_reachable": 0.0,
      "pct_fully_of_all_scanned": 6.6,
-     "pct_partially_of_all_scanned": 0.9,
+     "pct_partially_of_all_scanned": 0.0,
      "pct_allowed_explicitly_of_all_scanned": 0.0
     },
     "Amazonbot": {
      "blocked_fully": 4,
-     "blocked_partially": 1,
+     "blocked_partially": 0,
      "allowed_explicitly": 0,
      "not_mentioned": 34,
      "not_mentioned_but_star_blocks_all": 1,
@@ -5481,8 +5429,8 @@
     },
     "Meta-ExternalAgent": {
      "blocked_fully": 6,
-     "blocked_partially": 1,
-     "allowed_explicitly": 0,
+     "blocked_partially": 0,
+     "allowed_explicitly": 1,
      "not_mentioned": 32,
      "not_mentioned_but_star_blocks_all": 0,
      "pct_fully_of_reachable": 15.4,
@@ -5495,8 +5443,8 @@
     "FacebookBot": {
      "blocked_fully": 1,
      "blocked_partially": 0,
-     "allowed_explicitly": 0,
-     "not_mentioned": 38,
+     "allowed_explicitly": 1,
+     "not_mentioned": 37,
      "not_mentioned_but_star_blocks_all": 1,
      "pct_fully_of_reachable": 2.6,
      "pct_partially_of_reachable": 0.0,
@@ -5507,7 +5455,7 @@
     },
     "cohere-ai": {
      "blocked_fully": 6,
-     "blocked_partially": 1,
+     "blocked_partially": 0,
      "allowed_explicitly": 0,
      "not_mentioned": 32,
      "not_mentioned_but_star_blocks_all": 0,
@@ -5520,7 +5468,7 @@
     },
     "DuckAssistBot": {
      "blocked_fully": 3,
-     "blocked_partially": 1,
+     "blocked_partially": 0,
      "allowed_explicitly": 0,
      "not_mentioned": 35,
      "not_mentioned_but_star_blocks_all": 0,
@@ -5546,7 +5494,7 @@
     },
     "YouBot": {
      "blocked_fully": 3,
-     "blocked_partially": 1,
+     "blocked_partially": 0,
      "allowed_explicitly": 0,
      "not_mentioned": 35,
      "not_mentioned_but_star_blocks_all": 1,
@@ -5559,7 +5507,7 @@
     },
     "Diffbot": {
      "blocked_fully": 5,
-     "blocked_partially": 1,
+     "blocked_partially": 0,
      "allowed_explicitly": 0,
      "not_mentioned": 33,
      "not_mentioned_but_star_blocks_all": 0,
@@ -5654,18 +5602,18 @@
     "count": 1,
     "pct_of_reachable": 2.6
    },
-   "mean_ai_bots_named_per_robots_txt": 3.462,
-   "mean_ai_bots_named_per_robots_txt_among_those_naming_any": 11.25
+   "mean_ai_bots_named_per_robots_txt": 3.154,
+   "mean_ai_bots_named_per_robots_txt_among_those_naming_any": 10.25
   },
   "cn": {
    "scanned": 104,
-   "robots_reachable": 34,
+   "robots_reachable": 32,
    "bots": {
     "GPTBot": {
      "blocked_fully": 0,
      "blocked_partially": 1,
      "allowed_explicitly": 1,
-     "not_mentioned": 32,
+     "not_mentioned": 30,
      "not_mentioned_but_star_blocks_all": 2,
      "pct_fully_of_reachable": 0.0,
      "pct_partially_of_reachable": 2.9,
@@ -5678,7 +5626,7 @@
      "blocked_fully": 0,
      "blocked_partially": 0,
      "allowed_explicitly": 1,
-     "not_mentioned": 33,
+     "not_mentioned": 31,
      "not_mentioned_but_star_blocks_all": 2,
      "pct_fully_of_reachable": 0.0,
      "pct_partially_of_reachable": 0.0,
@@ -5691,7 +5639,7 @@
      "blocked_fully": 0,
      "blocked_partially": 0,
      "allowed_explicitly": 1,
-     "not_mentioned": 33,
+     "not_mentioned": 31,
      "not_mentioned_but_star_blocks_all": 2,
      "pct_fully_of_reachable": 0.0,
      "pct_partially_of_reachable": 0.0,
@@ -5704,7 +5652,7 @@
      "blocked_fully": 0,
      "blocked_partially": 1,
      "allowed_explicitly": 1,
-     "not_mentioned": 32,
+     "not_mentioned": 30,
      "not_mentioned_but_star_blocks_all": 2,
      "pct_fully_of_reachable": 0.0,
      "pct_partially_of_reachable": 2.9,
@@ -5717,7 +5665,7 @@
      "blocked_fully": 0,
      "blocked_partially": 0,
      "allowed_explicitly": 1,
-     "not_mentioned": 33,
+     "not_mentioned": 31,
      "not_mentioned_but_star_blocks_all": 2,
      "pct_fully_of_reachable": 0.0,
      "pct_partially_of_reachable": 0.0,
@@ -5730,7 +5678,7 @@
      "blocked_fully": 0,
      "blocked_partially": 0,
      "allowed_explicitly": 1,
-     "not_mentioned": 33,
+     "not_mentioned": 31,
      "not_mentioned_but_star_blocks_all": 2,
      "pct_fully_of_reachable": 0.0,
      "pct_partially_of_reachable": 0.0,
@@ -5743,7 +5691,7 @@
      "blocked_fully": 0,
      "blocked_partially": 1,
      "allowed_explicitly": 0,
-     "not_mentioned": 33,
+     "not_mentioned": 31,
      "not_mentioned_but_star_blocks_all": 2,
      "pct_fully_of_reachable": 0.0,
      "pct_partially_of_reachable": 2.9,
@@ -5756,7 +5704,7 @@
      "blocked_fully": 0,
      "blocked_partially": 0,
      "allowed_explicitly": 0,
-     "not_mentioned": 34,
+     "not_mentioned": 32,
      "not_mentioned_but_star_blocks_all": 2,
      "pct_fully_of_reachable": 0.0,
      "pct_partially_of_reachable": 0.0,
@@ -5769,7 +5717,7 @@
      "blocked_fully": 0,
      "blocked_partially": 1,
      "allowed_explicitly": 1,
-     "not_mentioned": 32,
+     "not_mentioned": 30,
      "not_mentioned_but_star_blocks_all": 2,
      "pct_fully_of_reachable": 0.0,
      "pct_partially_of_reachable": 2.9,
@@ -5780,9 +5728,9 @@
     },
     "Googlebot": {
      "blocked_fully": 0,
-     "blocked_partially": 1,
+     "blocked_partially": 0,
      "allowed_explicitly": 2,
-     "not_mentioned": 31,
+     "not_mentioned": 30,
      "not_mentioned_but_star_blocks_all": 2,
      "pct_fully_of_reachable": 0.0,
      "pct_partially_of_reachable": 2.9,
@@ -5795,7 +5743,7 @@
      "blocked_fully": 0,
      "blocked_partially": 0,
      "allowed_explicitly": 1,
-     "not_mentioned": 33,
+     "not_mentioned": 31,
      "not_mentioned_but_star_blocks_all": 2,
      "pct_fully_of_reachable": 0.0,
      "pct_partially_of_reachable": 0.0,
@@ -5808,7 +5756,7 @@
      "blocked_fully": 0,
      "blocked_partially": 1,
      "allowed_explicitly": 1,
-     "not_mentioned": 32,
+     "not_mentioned": 30,
      "not_mentioned_but_star_blocks_all": 2,
      "pct_fully_of_reachable": 0.0,
      "pct_partially_of_reachable": 2.9,
@@ -5821,7 +5769,7 @@
      "blocked_fully": 0,
      "blocked_partially": 0,
      "allowed_explicitly": 1,
-     "not_mentioned": 33,
+     "not_mentioned": 31,
      "not_mentioned_but_star_blocks_all": 2,
      "pct_fully_of_reachable": 0.0,
      "pct_partially_of_reachable": 0.0,
@@ -5834,7 +5782,7 @@
      "blocked_fully": 0,
      "blocked_partially": 1,
      "allowed_explicitly": 1,
-     "not_mentioned": 32,
+     "not_mentioned": 30,
      "not_mentioned_but_star_blocks_all": 2,
      "pct_fully_of_reachable": 0.0,
      "pct_partially_of_reachable": 2.9,
@@ -5847,7 +5795,7 @@
      "blocked_fully": 0,
      "blocked_partially": 1,
      "allowed_explicitly": 1,
-     "not_mentioned": 32,
+     "not_mentioned": 30,
      "not_mentioned_but_star_blocks_all": 2,
      "pct_fully_of_reachable": 0.0,
      "pct_partially_of_reachable": 2.9,
@@ -5860,7 +5808,7 @@
      "blocked_fully": 0,
      "blocked_partially": 1,
      "allowed_explicitly": 1,
-     "not_mentioned": 32,
+     "not_mentioned": 30,
      "not_mentioned_but_star_blocks_all": 2,
      "pct_fully_of_reachable": 0.0,
      "pct_partially_of_reachable": 2.9,
@@ -5873,7 +5821,7 @@
      "blocked_fully": 0,
      "blocked_partially": 0,
      "allowed_explicitly": 1,
-     "not_mentioned": 33,
+     "not_mentioned": 31,
      "not_mentioned_but_star_blocks_all": 2,
      "pct_fully_of_reachable": 0.0,
      "pct_partially_of_reachable": 0.0,
@@ -5886,7 +5834,7 @@
      "blocked_fully": 0,
      "blocked_partially": 0,
      "allowed_explicitly": 0,
-     "not_mentioned": 34,
+     "not_mentioned": 32,
      "not_mentioned_but_star_blocks_all": 2,
      "pct_fully_of_reachable": 0.0,
      "pct_partially_of_reachable": 0.0,
@@ -5899,7 +5847,7 @@
      "blocked_fully": 0,
      "blocked_partially": 1,
      "allowed_explicitly": 0,
-     "not_mentioned": 33,
+     "not_mentioned": 31,
      "not_mentioned_but_star_blocks_all": 2,
      "pct_fully_of_reachable": 0.0,
      "pct_partially_of_reachable": 2.9,
@@ -5912,7 +5860,7 @@
      "blocked_fully": 0,
      "blocked_partially": 0,
      "allowed_explicitly": 0,
-     "not_mentioned": 34,
+     "not_mentioned": 32,
      "not_mentioned_but_star_blocks_all": 2,
      "pct_fully_of_reachable": 0.0,
      "pct_partially_of_reachable": 0.0,
@@ -5925,7 +5873,7 @@
      "blocked_fully": 0,
      "blocked_partially": 0,
      "allowed_explicitly": 0,
-     "not_mentioned": 34,
+     "not_mentioned": 32,
      "not_mentioned_but_star_blocks_all": 2,
      "pct_fully_of_reachable": 0.0,
      "pct_partially_of_reachable": 0.0,
@@ -5938,7 +5886,7 @@
      "blocked_fully": 0,
      "blocked_partially": 0,
      "allowed_explicitly": 1,
-     "not_mentioned": 33,
+     "not_mentioned": 31,
      "not_mentioned_but_star_blocks_all": 2,
      "pct_fully_of_reachable": 0.0,
      "pct_partially_of_reachable": 0.0,
@@ -5951,7 +5899,7 @@
      "blocked_fully": 0,
      "blocked_partially": 0,
      "allowed_explicitly": 1,
-     "not_mentioned": 33,
+     "not_mentioned": 31,
      "not_mentioned_but_star_blocks_all": 2,
      "pct_fully_of_reachable": 0.0,
      "pct_partially_of_reachable": 0.0,
@@ -5964,7 +5912,7 @@
      "blocked_fully": 0,
      "blocked_partially": 0,
      "allowed_explicitly": 1,
-     "not_mentioned": 33,
+     "not_mentioned": 31,
      "not_mentioned_but_star_blocks_all": 2,
      "pct_fully_of_reachable": 0.0,
      "pct_partially_of_reachable": 0.0,
@@ -5977,7 +5925,7 @@
      "blocked_fully": 0,
      "blocked_partially": 0,
      "allowed_explicitly": 0,
-     "not_mentioned": 34,
+     "not_mentioned": 32,
      "not_mentioned_but_star_blocks_all": 2,
      "pct_fully_of_reachable": 0.0,
      "pct_partially_of_reachable": 0.0,
@@ -5990,7 +5938,7 @@
      "blocked_fully": 0,
      "blocked_partially": 0,
      "allowed_explicitly": 0,
-     "not_mentioned": 34,
+     "not_mentioned": 32,
      "not_mentioned_but_star_blocks_all": 2,
      "pct_fully_of_reachable": 0.0,
      "pct_partially_of_reachable": 0.0,
@@ -6003,7 +5951,7 @@
      "blocked_fully": 0,
      "blocked_partially": 0,
      "allowed_explicitly": 0,
-     "not_mentioned": 34,
+     "not_mentioned": 32,
      "not_mentioned_but_star_blocks_all": 2,
      "pct_fully_of_reachable": 0.0,
      "pct_partially_of_reachable": 0.0,
@@ -6016,7 +5964,7 @@
      "blocked_fully": 0,
      "blocked_partially": 0,
      "allowed_explicitly": 0,
-     "not_mentioned": 34,
+     "not_mentioned": 32,
      "not_mentioned_but_star_blocks_all": 2,
      "pct_fully_of_reachable": 0.0,
      "pct_partially_of_reachable": 0.0,
@@ -6044,18 +5992,18 @@
     "count": 2,
     "pct_of_reachable": 5.9
    },
-   "mean_ai_bots_named_per_robots_txt": 0.765,
+   "mean_ai_bots_named_per_robots_txt": 0.812,
    "mean_ai_bots_named_per_robots_txt_among_those_naming_any": 13.0
   },
   "br": {
    "scanned": 103,
-   "robots_reachable": 60,
+   "robots_reachable": 63,
    "bots": {
     "GPTBot": {
-     "blocked_fully": 8,
+     "blocked_fully": 7,
      "blocked_partially": 2,
      "allowed_explicitly": 1,
-     "not_mentioned": 49,
+     "not_mentioned": 53,
      "not_mentioned_but_star_blocks_all": 1,
      "pct_fully_of_reachable": 13.3,
      "pct_partially_of_reachable": 3.3,
@@ -6065,10 +6013,10 @@
      "pct_allowed_explicitly_of_all_scanned": 1.0
     },
     "ChatGPT-User": {
-     "blocked_fully": 4,
+     "blocked_fully": 3,
      "blocked_partially": 2,
      "allowed_explicitly": 3,
-     "not_mentioned": 51,
+     "not_mentioned": 55,
      "not_mentioned_but_star_blocks_all": 1,
      "pct_fully_of_reachable": 6.7,
      "pct_partially_of_reachable": 3.3,
@@ -6078,10 +6026,10 @@
      "pct_allowed_explicitly_of_all_scanned": 2.9
     },
     "OAI-SearchBot": {
-     "blocked_fully": 3,
+     "blocked_fully": 2,
      "blocked_partially": 2,
      "allowed_explicitly": 0,
-     "not_mentioned": 55,
+     "not_mentioned": 59,
      "not_mentioned_but_star_blocks_all": 1,
      "pct_fully_of_reachable": 5.0,
      "pct_partially_of_reachable": 3.3,
@@ -6091,10 +6039,10 @@
      "pct_allowed_explicitly_of_all_scanned": 0.0
     },
     "ClaudeBot": {
-     "blocked_fully": 7,
+     "blocked_fully": 6,
      "blocked_partially": 2,
      "allowed_explicitly": 1,
-     "not_mentioned": 50,
+     "not_mentioned": 54,
      "not_mentioned_but_star_blocks_all": 1,
      "pct_fully_of_reachable": 11.7,
      "pct_partially_of_reachable": 3.3,
@@ -6107,7 +6055,7 @@
      "blocked_fully": 2,
      "blocked_partially": 0,
      "allowed_explicitly": 0,
-     "not_mentioned": 58,
+     "not_mentioned": 61,
      "not_mentioned_but_star_blocks_all": 1,
      "pct_fully_of_reachable": 3.3,
      "pct_partially_of_reachable": 0.0,
@@ -6120,7 +6068,7 @@
      "blocked_fully": 2,
      "blocked_partially": 0,
      "allowed_explicitly": 0,
-     "not_mentioned": 58,
+     "not_mentioned": 61,
      "not_mentioned_but_star_blocks_all": 1,
      "pct_fully_of_reachable": 3.3,
      "pct_partially_of_reachable": 0.0,
@@ -6130,10 +6078,10 @@
      "pct_allowed_explicitly_of_all_scanned": 0.0
     },
     "anthropic-ai": {
-     "blocked_fully": 6,
+     "blocked_fully": 5,
      "blocked_partially": 0,
      "allowed_explicitly": 2,
-     "not_mentioned": 52,
+     "not_mentioned": 56,
      "not_mentioned_but_star_blocks_all": 1,
      "pct_fully_of_reachable": 10.0,
      "pct_partially_of_reachable": 0.0,
@@ -6146,7 +6094,7 @@
      "blocked_fully": 5,
      "blocked_partially": 0,
      "allowed_explicitly": 0,
-     "not_mentioned": 55,
+     "not_mentioned": 58,
      "not_mentioned_but_star_blocks_all": 1,
      "pct_fully_of_reachable": 8.3,
      "pct_partially_of_reachable": 0.0,
@@ -6157,9 +6105,9 @@
     },
     "Google-Extended": {
      "blocked_fully": 7,
-     "blocked_partially": 3,
+     "blocked_partially": 2,
      "allowed_explicitly": 5,
-     "not_mentioned": 45,
+     "not_mentioned": 49,
      "not_mentioned_but_star_blocks_all": 1,
      "pct_fully_of_reachable": 11.7,
      "pct_partially_of_reachable": 5.0,
@@ -6170,22 +6118,22 @@
     },
     "Googlebot": {
      "blocked_fully": 0,
-     "blocked_partially": 9,
+     "blocked_partially": 8,
      "allowed_explicitly": 0,
-     "not_mentioned": 51,
+     "not_mentioned": 55,
      "not_mentioned_but_star_blocks_all": 1,
      "pct_fully_of_reachable": 0.0,
-     "pct_partially_of_reachable": 15.0,
+     "pct_partially_of_reachable": 12.7,
      "pct_allowed_explicitly_of_reachable": 0.0,
      "pct_fully_of_all_scanned": 0.0,
      "pct_partially_of_all_scanned": 8.7,
      "pct_allowed_explicitly_of_all_scanned": 0.0
     },
     "Applebot-Extended": {
-     "blocked_fully": 6,
+     "blocked_fully": 5,
      "blocked_partially": 1,
      "allowed_explicitly": 0,
-     "not_mentioned": 53,
+     "not_mentioned": 57,
      "not_mentioned_but_star_blocks_all": 1,
      "pct_fully_of_reachable": 10.0,
      "pct_partially_of_reachable": 1.7,
@@ -6195,10 +6143,10 @@
      "pct_allowed_explicitly_of_all_scanned": 0.0
     },
     "PerplexityBot": {
-     "blocked_fully": 5,
+     "blocked_fully": 4,
      "blocked_partially": 1,
      "allowed_explicitly": 2,
-     "not_mentioned": 52,
+     "not_mentioned": 56,
      "not_mentioned_but_star_blocks_all": 1,
      "pct_fully_of_reachable": 8.3,
      "pct_partially_of_reachable": 1.7,
@@ -6211,7 +6159,7 @@
      "blocked_fully": 4,
      "blocked_partially": 1,
      "allowed_explicitly": 0,
-     "not_mentioned": 55,
+     "not_mentioned": 58,
      "not_mentioned_but_star_blocks_all": 1,
      "pct_fully_of_reachable": 6.7,
      "pct_partially_of_reachable": 1.7,
@@ -6221,10 +6169,10 @@
      "pct_allowed_explicitly_of_all_scanned": 0.0
     },
     "CCBot": {
-     "blocked_fully": 10,
+     "blocked_fully": 9,
      "blocked_partially": 0,
      "allowed_explicitly": 1,
-     "not_mentioned": 49,
+     "not_mentioned": 53,
      "not_mentioned_but_star_blocks_all": 1,
      "pct_fully_of_reachable": 16.7,
      "pct_partially_of_reachable": 0.0,
@@ -6234,23 +6182,23 @@
      "pct_allowed_explicitly_of_all_scanned": 1.0
     },
     "Bytespider": {
-     "blocked_fully": 8,
+     "blocked_fully": 7,
      "blocked_partially": 0,
      "allowed_explicitly": 0,
-     "not_mentioned": 52,
+     "not_mentioned": 56,
      "not_mentioned_but_star_blocks_all": 1,
      "pct_fully_of_reachable": 13.3,
      "pct_partially_of_reachable": 0.0,
      "pct_allowed_explicitly_of_reachable": 0.0,
-     "pct_fully_of_all_scanned": 7.8,
+     "pct_fully_of_all_scanned": 6.8,
      "pct_partially_of_all_scanned": 0.0,
      "pct_allowed_explicitly_of_all_scanned": 0.0
     },
     "Amazonbot": {
-     "blocked_fully": 6,
+     "blocked_fully": 5,
      "blocked_partially": 0,
      "allowed_explicitly": 0,
-     "not_mentioned": 54,
+     "not_mentioned": 58,
      "not_mentioned_but_star_blocks_all": 1,
      "pct_fully_of_reachable": 10.0,
      "pct_partially_of_reachable": 0.0,
@@ -6260,10 +6208,10 @@
      "pct_allowed_explicitly_of_all_scanned": 0.0
     },
     "Meta-ExternalAgent": {
-     "blocked_fully": 7,
+     "blocked_fully": 6,
      "blocked_partially": 0,
      "allowed_explicitly": 1,
-     "not_mentioned": 52,
+     "not_mentioned": 56,
      "not_mentioned_but_star_blocks_all": 1,
      "pct_fully_of_reachable": 11.7,
      "pct_partially_of_reachable": 0.0,
@@ -6273,10 +6221,10 @@
      "pct_allowed_explicitly_of_all_scanned": 1.0
     },
     "FacebookBot": {
-     "blocked_fully": 4,
+     "blocked_fully": 3,
      "blocked_partially": 0,
      "allowed_explicitly": 0,
-     "not_mentioned": 56,
+     "not_mentioned": 60,
      "not_mentioned_but_star_blocks_all": 1,
      "pct_fully_of_reachable": 6.7,
      "pct_partially_of_reachable": 0.0,
@@ -6286,15 +6234,15 @@
      "pct_allowed_explicitly_of_all_scanned": 0.0
     },
     "cohere-ai": {
-     "blocked_fully": 8,
+     "blocked_fully": 7,
      "blocked_partially": 0,
      "allowed_explicitly": 0,
-     "not_mentioned": 52,
+     "not_mentioned": 56,
      "not_mentioned_but_star_blocks_all": 1,
      "pct_fully_of_reachable": 13.3,
      "pct_partially_of_reachable": 0.0,
      "pct_allowed_explicitly_of_reachable": 0.0,
-     "pct_fully_of_all_scanned": 7.8,
+     "pct_fully_of_all_scanned": 6.8,
      "pct_partially_of_all_scanned": 0.0,
      "pct_allowed_explicitly_of_all_scanned": 0.0
     },
@@ -6302,7 +6250,7 @@
      "blocked_fully": 3,
      "blocked_partially": 0,
      "allowed_explicitly": 0,
-     "not_mentioned": 57,
+     "not_mentioned": 60,
      "not_mentioned_but_star_blocks_all": 1,
      "pct_fully_of_reachable": 5.0,
      "pct_partially_of_reachable": 0.0,
@@ -6315,7 +6263,7 @@
      "blocked_fully": 2,
      "blocked_partially": 0,
      "allowed_explicitly": 0,
-     "not_mentioned": 58,
+     "not_mentioned": 61,
      "not_mentioned_but_star_blocks_all": 1,
      "pct_fully_of_reachable": 3.3,
      "pct_partially_of_reachable": 0.0,
@@ -6328,7 +6276,7 @@
      "blocked_fully": 4,
      "blocked_partially": 0,
      "allowed_explicitly": 0,
-     "not_mentioned": 56,
+     "not_mentioned": 59,
      "not_mentioned_but_star_blocks_all": 1,
      "pct_fully_of_reachable": 6.7,
      "pct_partially_of_reachable": 0.0,
@@ -6338,10 +6286,10 @@
      "pct_allowed_explicitly_of_all_scanned": 0.0
     },
     "Diffbot": {
-     "blocked_fully": 7,
+     "blocked_fully": 6,
      "blocked_partially": 0,
      "allowed_explicitly": 0,
-     "not_mentioned": 53,
+     "not_mentioned": 57,
      "not_mentioned_but_star_blocks_all": 1,
      "pct_fully_of_reachable": 11.7,
      "pct_partially_of_reachable": 0.0,
@@ -6351,10 +6299,10 @@
      "pct_allowed_explicitly_of_all_scanned": 0.0
     },
     "Timpibot": {
-     "blocked_fully": 4,
+     "blocked_fully": 3,
      "blocked_partially": 0,
      "allowed_explicitly": 0,
-     "not_mentioned": 56,
+     "not_mentioned": 60,
      "not_mentioned_but_star_blocks_all": 1,
      "pct_fully_of_reachable": 6.7,
      "pct_partially_of_reachable": 0.0,
@@ -6364,10 +6312,10 @@
      "pct_allowed_explicitly_of_all_scanned": 0.0
     },
     "ImagesiftBot": {
-     "blocked_fully": 4,
+     "blocked_fully": 3,
      "blocked_partially": 0,
      "allowed_explicitly": 0,
-     "not_mentioned": 56,
+     "not_mentioned": 60,
      "not_mentioned_but_star_blocks_all": 1,
      "pct_fully_of_reachable": 6.7,
      "pct_partially_of_reachable": 0.0,
@@ -6380,9 +6328,9 @@
      "blocked_fully": 8,
      "blocked_partially": 0,
      "allowed_explicitly": 0,
-     "not_mentioned": 52,
+     "not_mentioned": 55,
      "not_mentioned_but_star_blocks_all": 1,
-     "pct_fully_of_reachable": 13.3,
+     "pct_fully_of_reachable": 12.7,
      "pct_partially_of_reachable": 0.0,
      "pct_allowed_explicitly_of_reachable": 0.0,
      "pct_fully_of_all_scanned": 7.8,
@@ -6390,10 +6338,10 @@
      "pct_allowed_explicitly_of_all_scanned": 0.0
     },
     "AI2Bot": {
-     "blocked_fully": 5,
+     "blocked_fully": 4,
      "blocked_partially": 0,
      "allowed_explicitly": 0,
-     "not_mentioned": 55,
+     "not_mentioned": 59,
      "not_mentioned_but_star_blocks_all": 1,
      "pct_fully_of_reachable": 8.3,
      "pct_partially_of_reachable": 0.0,
@@ -6403,12 +6351,12 @@
      "pct_allowed_explicitly_of_all_scanned": 0.0
     },
     "PetalBot": {
-     "blocked_fully": 9,
+     "blocked_fully": 8,
      "blocked_partially": 0,
      "allowed_explicitly": 0,
-     "not_mentioned": 51,
+     "not_mentioned": 55,
      "not_mentioned_but_star_blocks_all": 1,
-     "pct_fully_of_reachable": 15.0,
+     "pct_fully_of_reachable": 12.7,
      "pct_partially_of_reachable": 0.0,
      "pct_allowed_explicitly_of_reachable": 0.0,
      "pct_fully_of_all_scanned": 8.7,
@@ -6434,18 +6382,18 @@
     "count": 1,
     "pct_of_reachable": 1.7
    },
-   "mean_ai_bots_named_per_robots_txt": 2.967,
-   "mean_ai_bots_named_per_robots_txt_among_those_naming_any": 9.889
+   "mean_ai_bots_named_per_robots_txt": 2.524,
+   "mean_ai_bots_named_per_robots_txt_among_those_naming_any": 9.353
   },
   "fr": {
    "scanned": 97,
-   "robots_reachable": 78,
+   "robots_reachable": 75,
    "bots": {
     "GPTBot": {
      "blocked_fully": 26,
      "blocked_partially": 2,
      "allowed_explicitly": 1,
-     "not_mentioned": 49,
+     "not_mentioned": 47,
      "not_mentioned_but_star_blocks_all": 2,
      "pct_fully_of_reachable": 33.3,
      "pct_partially_of_reachable": 2.6,
@@ -6458,7 +6406,7 @@
      "blocked_fully": 18,
      "blocked_partially": 3,
      "allowed_explicitly": 4,
-     "not_mentioned": 53,
+     "not_mentioned": 50,
      "not_mentioned_but_star_blocks_all": 2,
      "pct_fully_of_reachable": 23.1,
      "pct_partially_of_reachable": 3.8,
@@ -6471,7 +6419,7 @@
      "blocked_fully": 13,
      "blocked_partially": 2,
      "allowed_explicitly": 4,
-     "not_mentioned": 59,
+     "not_mentioned": 56,
      "not_mentioned_but_star_blocks_all": 2,
      "pct_fully_of_reachable": 16.7,
      "pct_partially_of_reachable": 2.6,
@@ -6481,10 +6429,10 @@
      "pct_allowed_explicitly_of_all_scanned": 4.1
     },
     "ClaudeBot": {
-     "blocked_fully": 26,
-     "blocked_partially": 4,
+     "blocked_fully": 25,
+     "blocked_partially": 3,
      "allowed_explicitly": 1,
-     "not_mentioned": 47,
+     "not_mentioned": 46,
      "not_mentioned_but_star_blocks_all": 2,
      "pct_fully_of_reachable": 33.3,
      "pct_partially_of_reachable": 5.1,
@@ -6497,7 +6445,7 @@
      "blocked_fully": 14,
      "blocked_partially": 1,
      "allowed_explicitly": 1,
-     "not_mentioned": 62,
+     "not_mentioned": 59,
      "not_mentioned_but_star_blocks_all": 2,
      "pct_fully_of_reachable": 17.9,
      "pct_partially_of_reachable": 1.3,
@@ -6510,7 +6458,7 @@
      "blocked_fully": 12,
      "blocked_partially": 2,
      "allowed_explicitly": 1,
-     "not_mentioned": 63,
+     "not_mentioned": 60,
      "not_mentioned_but_star_blocks_all": 2,
      "pct_fully_of_reachable": 15.4,
      "pct_partially_of_reachable": 2.6,
@@ -6523,7 +6471,7 @@
      "blocked_fully": 22,
      "blocked_partially": 2,
      "allowed_explicitly": 0,
-     "not_mentioned": 54,
+     "not_mentioned": 51,
      "not_mentioned_but_star_blocks_all": 3,
      "pct_fully_of_reachable": 28.2,
      "pct_partially_of_reachable": 2.6,
@@ -6536,7 +6484,7 @@
      "blocked_fully": 20,
      "blocked_partially": 0,
      "allowed_explicitly": 2,
-     "not_mentioned": 56,
+     "not_mentioned": 53,
      "not_mentioned_but_star_blocks_all": 3,
      "pct_fully_of_reachable": 25.6,
      "pct_partially_of_reachable": 0.0,
@@ -6549,7 +6497,7 @@
      "blocked_fully": 26,
      "blocked_partially": 2,
      "allowed_explicitly": 1,
-     "not_mentioned": 49,
+     "not_mentioned": 47,
      "not_mentioned_but_star_blocks_all": 2,
      "pct_fully_of_reachable": 33.3,
      "pct_partially_of_reachable": 2.6,
@@ -6560,9 +6508,9 @@
     },
     "Googlebot": {
      "blocked_fully": 0,
-     "blocked_partially": 12,
+     "blocked_partially": 11,
      "allowed_explicitly": 1,
-     "not_mentioned": 65,
+     "not_mentioned": 63,
      "not_mentioned_but_star_blocks_all": 1,
      "pct_fully_of_reachable": 0.0,
      "pct_partially_of_reachable": 15.4,
@@ -6575,7 +6523,7 @@
      "blocked_fully": 17,
      "blocked_partially": 1,
      "allowed_explicitly": 1,
-     "not_mentioned": 59,
+     "not_mentioned": 56,
      "not_mentioned_but_star_blocks_all": 2,
      "pct_fully_of_reachable": 21.8,
      "pct_partially_of_reachable": 1.3,
@@ -6588,7 +6536,7 @@
      "blocked_fully": 18,
      "blocked_partially": 2,
      "allowed_explicitly": 1,
-     "not_mentioned": 57,
+     "not_mentioned": 54,
      "not_mentioned_but_star_blocks_all": 2,
      "pct_fully_of_reachable": 23.1,
      "pct_partially_of_reachable": 2.6,
@@ -6601,7 +6549,7 @@
      "blocked_fully": 10,
      "blocked_partially": 1,
      "allowed_explicitly": 1,
-     "not_mentioned": 66,
+     "not_mentioned": 63,
      "not_mentioned_but_star_blocks_all": 2,
      "pct_fully_of_reachable": 12.8,
      "pct_partially_of_reachable": 1.3,
@@ -6614,7 +6562,7 @@
      "blocked_fully": 30,
      "blocked_partially": 3,
      "allowed_explicitly": 2,
-     "not_mentioned": 43,
+     "not_mentioned": 41,
      "not_mentioned_but_star_blocks_all": 2,
      "pct_fully_of_reachable": 38.5,
      "pct_partially_of_reachable": 3.8,
@@ -6627,7 +6575,7 @@
      "blocked_fully": 23,
      "blocked_partially": 1,
      "allowed_explicitly": 0,
-     "not_mentioned": 54,
+     "not_mentioned": 51,
      "not_mentioned_but_star_blocks_all": 3,
      "pct_fully_of_reachable": 29.5,
      "pct_partially_of_reachable": 1.3,
@@ -6640,7 +6588,7 @@
      "blocked_fully": 24,
      "blocked_partially": 2,
      "allowed_explicitly": 1,
-     "not_mentioned": 51,
+     "not_mentioned": 49,
      "not_mentioned_but_star_blocks_all": 2,
      "pct_fully_of_reachable": 30.8,
      "pct_partially_of_reachable": 2.6,
@@ -6653,7 +6601,7 @@
      "blocked_fully": 16,
      "blocked_partially": 0,
      "allowed_explicitly": 1,
-     "not_mentioned": 61,
+     "not_mentioned": 58,
      "not_mentioned_but_star_blocks_all": 2,
      "pct_fully_of_reachable": 20.5,
      "pct_partially_of_reachable": 0.0,
@@ -6666,7 +6614,7 @@
      "blocked_fully": 17,
      "blocked_partially": 1,
      "allowed_explicitly": 0,
-     "not_mentioned": 60,
+     "not_mentioned": 57,
      "not_mentioned_but_star_blocks_all": 3,
      "pct_fully_of_reachable": 21.8,
      "pct_partially_of_reachable": 1.3,
@@ -6679,7 +6627,7 @@
      "blocked_fully": 23,
      "blocked_partially": 0,
      "allowed_explicitly": 0,
-     "not_mentioned": 55,
+     "not_mentioned": 52,
      "not_mentioned_but_star_blocks_all": 3,
      "pct_fully_of_reachable": 29.5,
      "pct_partially_of_reachable": 0.0,
@@ -6692,7 +6640,7 @@
      "blocked_fully": 15,
      "blocked_partially": 1,
      "allowed_explicitly": 0,
-     "not_mentioned": 62,
+     "not_mentioned": 59,
      "not_mentioned_but_star_blocks_all": 2,
      "pct_fully_of_reachable": 19.2,
      "pct_partially_of_reachable": 1.3,
@@ -6705,7 +6653,7 @@
      "blocked_fully": 16,
      "blocked_partially": 1,
      "allowed_explicitly": 1,
-     "not_mentioned": 60,
+     "not_mentioned": 57,
      "not_mentioned_but_star_blocks_all": 2,
      "pct_fully_of_reachable": 20.5,
      "pct_partially_of_reachable": 1.3,
@@ -6718,7 +6666,7 @@
      "blocked_fully": 20,
      "blocked_partially": 0,
      "allowed_explicitly": 0,
-     "not_mentioned": 58,
+     "not_mentioned": 55,
      "not_mentioned_but_star_blocks_all": 2,
      "pct_fully_of_reachable": 25.6,
      "pct_partially_of_reachable": 0.0,
@@ -6731,7 +6679,7 @@
      "blocked_fully": 16,
      "blocked_partially": 0,
      "allowed_explicitly": 1,
-     "not_mentioned": 61,
+     "not_mentioned": 58,
      "not_mentioned_but_star_blocks_all": 2,
      "pct_fully_of_reachable": 20.5,
      "pct_partially_of_reachable": 0.0,
@@ -6744,9 +6692,9 @@
      "blocked_fully": 12,
      "blocked_partially": 0,
      "allowed_explicitly": 0,
-     "not_mentioned": 66,
+     "not_mentioned": 63,
      "not_mentioned_but_star_blocks_all": 2,
-     "pct_fully_of_reachable": 15.4,
+     "pct_fully_of_reachable": 16.0,
      "pct_partially_of_reachable": 0.0,
      "pct_allowed_explicitly_of_reachable": 0.0,
      "pct_fully_of_all_scanned": 12.4,
@@ -6757,7 +6705,7 @@
      "blocked_fully": 10,
      "blocked_partially": 0,
      "allowed_explicitly": 0,
-     "not_mentioned": 68,
+     "not_mentioned": 65,
      "not_mentioned_but_star_blocks_all": 3,
      "pct_fully_of_reachable": 12.8,
      "pct_partially_of_reachable": 0.0,
@@ -6770,7 +6718,7 @@
      "blocked_fully": 19,
      "blocked_partially": 0,
      "allowed_explicitly": 0,
-     "not_mentioned": 59,
+     "not_mentioned": 56,
      "not_mentioned_but_star_blocks_all": 3,
      "pct_fully_of_reachable": 24.4,
      "pct_partially_of_reachable": 0.0,
@@ -6783,9 +6731,9 @@
      "blocked_fully": 15,
      "blocked_partially": 0,
      "allowed_explicitly": 0,
-     "not_mentioned": 63,
+     "not_mentioned": 60,
      "not_mentioned_but_star_blocks_all": 3,
-     "pct_fully_of_reachable": 19.2,
+     "pct_fully_of_reachable": 20.0,
      "pct_partially_of_reachable": 0.0,
      "pct_allowed_explicitly_of_reachable": 0.0,
      "pct_fully_of_all_scanned": 15.5,
@@ -6793,10 +6741,10 @@
      "pct_allowed_explicitly_of_all_scanned": 0.0
     },
     "PetalBot": {
-     "blocked_fully": 11,
+     "blocked_fully": 10,
      "blocked_partially": 0,
      "allowed_explicitly": 1,
-     "not_mentioned": 66,
+     "not_mentioned": 64,
      "not_mentioned_but_star_blocks_all": 2,
      "pct_fully_of_reachable": 14.1,
      "pct_partially_of_reachable": 0.0,
@@ -6812,8 +6760,8 @@
     "pct_of_all_scanned": 39.2
    },
    "restricting_at_least_one_ai_bot_fully_or_partially": {
-    "count": 41,
-    "pct_of_reachable": 52.6
+    "count": 39,
+    "pct_of_reachable": 52.0
    },
    "blocking_all_of_GPTBot_ClaudeBot_Google-Extended_CCBot": {
     "count": 20,
@@ -6824,18 +6772,18 @@
     "count": 4,
     "pct_of_reachable": 5.1
    },
-   "mean_ai_bots_named_per_robots_txt": 6.987,
-   "mean_ai_bots_named_per_robots_txt_among_those_naming_any": 12.976
+   "mean_ai_bots_named_per_robots_txt": 7.173,
+   "mean_ai_bots_named_per_robots_txt_among_those_naming_any": 13.45
   },
   "uk": {
    "scanned": 90,
-   "robots_reachable": 58,
+   "robots_reachable": 60,
    "bots": {
     "GPTBot": {
-     "blocked_fully": 15,
+     "blocked_fully": 14,
      "blocked_partially": 2,
      "allowed_explicitly": 0,
-     "not_mentioned": 41,
+     "not_mentioned": 44,
      "not_mentioned_but_star_blocks_all": 2,
      "pct_fully_of_reachable": 25.9,
      "pct_partially_of_reachable": 3.4,
@@ -6848,7 +6796,7 @@
      "blocked_fully": 7,
      "blocked_partially": 4,
      "allowed_explicitly": 2,
-     "not_mentioned": 45,
+     "not_mentioned": 47,
      "not_mentioned_but_star_blocks_all": 2,
      "pct_fully_of_reachable": 12.1,
      "pct_partially_of_reachable": 6.9,
@@ -6861,7 +6809,7 @@
      "blocked_fully": 10,
      "blocked_partially": 4,
      "allowed_explicitly": 2,
-     "not_mentioned": 42,
+     "not_mentioned": 44,
      "not_mentioned_but_star_blocks_all": 2,
      "pct_fully_of_reachable": 17.2,
      "pct_partially_of_reachable": 6.9,
@@ -6874,9 +6822,9 @@
      "blocked_fully": 15,
      "blocked_partially": 0,
      "allowed_explicitly": 0,
-     "not_mentioned": 43,
+     "not_mentioned": 45,
      "not_mentioned_but_star_blocks_all": 4,
-     "pct_fully_of_reachable": 25.9,
+     "pct_fully_of_reachable": 25.0,
      "pct_partially_of_reachable": 0.0,
      "pct_allowed_explicitly_of_reachable": 0.0,
      "pct_fully_of_all_scanned": 16.7,
@@ -6913,9 +6861,9 @@
      "blocked_fully": 12,
      "blocked_partially": 0,
      "allowed_explicitly": 0,
-     "not_mentioned": 46,
+     "not_mentioned": 48,
      "not_mentioned_but_star_blocks_all": 3,
-     "pct_fully_of_reachable": 20.7,
+     "pct_fully_of_reachable": 20.0,
      "pct_partially_of_reachable": 0.0,
      "pct_allowed_explicitly_of_reachable": 0.0,
      "pct_fully_of_all_scanned": 13.3,
@@ -6926,7 +6874,7 @@
      "blocked_fully": 10,
      "blocked_partially": 0,
      "allowed_explicitly": 0,
-     "not_mentioned": 48,
+     "not_mentioned": 50,
      "not_mentioned_but_star_blocks_all": 4,
      "pct_fully_of_reachable": 17.2,
      "pct_partially_of_reachable": 0.0,
@@ -6939,7 +6887,7 @@
      "blocked_fully": 10,
      "blocked_partially": 1,
      "allowed_explicitly": 2,
-     "not_mentioned": 45,
+     "not_mentioned": 47,
      "not_mentioned_but_star_blocks_all": 3,
      "pct_fully_of_reachable": 17.2,
      "pct_partially_of_reachable": 1.7,
@@ -6952,7 +6900,7 @@
      "blocked_fully": 0,
      "blocked_partially": 5,
      "allowed_explicitly": 2,
-     "not_mentioned": 51,
+     "not_mentioned": 53,
      "not_mentioned_but_star_blocks_all": 1,
      "pct_fully_of_reachable": 0.0,
      "pct_partially_of_reachable": 8.6,
@@ -6962,10 +6910,10 @@
      "pct_allowed_explicitly_of_all_scanned": 2.2
     },
     "Applebot-Extended": {
-     "blocked_fully": 12,
+     "blocked_fully": 13,
      "blocked_partially": 0,
      "allowed_explicitly": 0,
-     "not_mentioned": 46,
+     "not_mentioned": 47,
      "not_mentioned_but_star_blocks_all": 4,
      "pct_fully_of_reachable": 20.7,
      "pct_partially_of_reachable": 0.0,
@@ -6975,10 +6923,10 @@
      "pct_allowed_explicitly_of_all_scanned": 0.0
     },
     "PerplexityBot": {
-     "blocked_fully": 13,
+     "blocked_fully": 14,
      "blocked_partially": 1,
      "allowed_explicitly": 3,
-     "not_mentioned": 41,
+     "not_mentioned": 42,
      "not_mentioned_but_star_blocks_all": 3,
      "pct_fully_of_reachable": 22.4,
      "pct_partially_of_reachable": 1.7,
@@ -6988,10 +6936,10 @@
      "pct_allowed_explicitly_of_all_scanned": 3.3
     },
     "Perplexity-User": {
-     "blocked_fully": 7,
+     "blocked_fully": 8,
      "blocked_partially": 0,
      "allowed_explicitly": 0,
-     "not_mentioned": 51,
+     "not_mentioned": 52,
      "not_mentioned_but_star_blocks_all": 5,
      "pct_fully_of_reachable": 12.1,
      "pct_partially_of_reachable": 0.0,
@@ -7004,9 +6952,9 @@
      "blocked_fully": 18,
      "blocked_partially": 0,
      "allowed_explicitly": 1,
-     "not_mentioned": 39,
+     "not_mentioned": 41,
      "not_mentioned_but_star_blocks_all": 3,
-     "pct_fully_of_reachable": 31.0,
+     "pct_fully_of_reachable": 30.0,
      "pct_partially_of_reachable": 0.0,
      "pct_allowed_explicitly_of_reachable": 1.7,
      "pct_fully_of_all_scanned": 20.0,
@@ -7014,10 +6962,10 @@
      "pct_allowed_explicitly_of_all_scanned": 1.1
     },
     "Bytespider": {
-     "blocked_fully": 12,
+     "blocked_fully": 13,
      "blocked_partially": 0,
      "allowed_explicitly": 0,
-     "not_mentioned": 46,
+     "not_mentioned": 47,
      "not_mentioned_but_star_blocks_all": 4,
      "pct_fully_of_reachable": 20.7,
      "pct_partially_of_reachable": 0.0,
@@ -7030,7 +6978,7 @@
      "blocked_fully": 11,
      "blocked_partially": 0,
      "allowed_explicitly": 0,
-     "not_mentioned": 47,
+     "not_mentioned": 49,
      "not_mentioned_but_star_blocks_all": 4,
      "pct_fully_of_reachable": 19.0,
      "pct_partially_of_reachable": 0.0,
@@ -7040,8 +6988,8 @@
      "pct_allowed_explicitly_of_all_scanned": 0.0
     },
     "Meta-ExternalAgent": {
-     "blocked_fully": 13,
-     "blocked_partially": 1,
+     "blocked_fully": 14,
+     "blocked_partially": 2,
      "allowed_explicitly": 0,
      "not_mentioned": 44,
      "not_mentioned_but_star_blocks_all": 4,
@@ -7056,7 +7004,7 @@
      "blocked_fully": 8,
      "blocked_partially": 1,
      "allowed_explicitly": 0,
-     "not_mentioned": 49,
+     "not_mentioned": 51,
      "not_mentioned_but_star_blocks_all": 3,
      "pct_fully_of_reachable": 13.8,
      "pct_partially_of_reachable": 1.7,
@@ -7069,59 +7017,20 @@
      "blocked_fully": 9,
      "blocked_partially": 0,
      "allowed_explicitly": 0,
-     "not_mentioned": 49,
+     "not_mentioned": 51,
      "not_mentioned_but_star_blocks_all": 4,
-     "pct_fully_of_reachable": 15.5,
+     "pct_fully_of_reachable": 15.0,
      "pct_partially_of_reachable": 0.0,
      "pct_allowed_explicitly_of_reachable": 0.0,
      "pct_fully_of_all_scanned": 10.0,
      "pct_partially_of_all_scanned": 0.0,
      "pct_allowed_explicitly_of_all_scanned": 0.0
     },
-    "DuckAssistBot": {
-     "blocked_fully": 9,
-     "blocked_partially": 1,
-     "allowed_explicitly": 0,
-     "not_mentioned": 48,
-     "not_mentioned_but_star_blocks_all": 3,
-     "pct_fully_of_reachable": 15.5,
-     "pct_partially_of_reachable": 1.7,
-     "pct_allowed_explicitly_of_reachable": 0.0,
-     "pct_fully_of_all_scanned": 10.0,
-     "pct_partially_of_all_scanned": 1.1,
-     "pct_allowed_explicitly_of_all_scanned": 0.0
-    },
-    "MistralAI-User": {
-     "blocked_fully": 4,
-     "blocked_partially": 0,
-     "allowed_explicitly": 0,
-     "not_mentioned": 54,
-     "not_mentioned_but_star_blocks_all": 5,
-     "pct_fully_of_reachable": 6.9,
-     "pct_partially_of_reachable": 0.0,
-     "pct_allowed_explicitly_of_reachable": 0.0,
-     "pct_fully_of_all_scanned": 4.4,
-     "pct_partially_of_all_scanned": 0.0,
-     "pct_allowed_explicitly_of_all_scanned": 0.0
-    },
-    "YouBot": {
-     "blocked_fully": 12,
-     "blocked_partially": 0,
-     "allowed_explicitly": 1,
-     "not_mentioned": 45,
-     "not_mentioned_but_star_blocks_all": 4,
-     "pct_fully_of_reachable": 20.7,
-     "pct_partially_of_reachable": 0.0,
-     "pct_allowed_explicitly_of_reachable": 1.7,
-     "pct_fully_of_all_scanned": 13.3,
-     "pct_partially_of_all_scanned": 0.0,
-     "pct_allowed_explicitly_of_all_scanned": 1.1
-    },
-    "Diffbot": {
+    "Timpibot": {
      "blocked_fully": 8,
      "blocked_partially": 0,
      "allowed_explicitly": 0,
-     "not_mentioned": 50,
+     "not_mentioned": 52,
      "not_mentioned_but_star_blocks_all": 4,
      "pct_fully_of_reachable": 13.8,
      "pct_partially_of_reachable": 0.0,
@@ -7130,26 +7039,13 @@
      "pct_partially_of_all_scanned": 0.0,
      "pct_allowed_explicitly_of_all_scanned": 0.0
     },
-    "Timpibot": {
-     "blocked_fully": 7,
-     "blocked_partially": 0,
-     "allowed_explicitly": 0,
-     "not_mentioned": 51,
-     "not_mentioned_but_star_blocks_all": 4,
-     "pct_fully_of_reachable": 12.1,
-     "pct_partially_of_reachable": 0.0,
-     "pct_allowed_explicitly_of_reachable": 0.0,
-     "pct_fully_of_all_scanned": 7.8,
-     "pct_partially_of_all_scanned": 0.0,
-     "pct_allowed_explicitly_of_all_scanned": 0.0
-    },
     "ImagesiftBot": {
      "blocked_fully": 6,
      "blocked_partially": 0,
      "allowed_explicitly": 0,
-     "not_mentioned": 52,
+     "not_mentioned": 54,
      "not_mentioned_but_star_blocks_all": 4,
-     "pct_fully_of_reachable": 10.3,
+     "pct_fully_of_reachable": 10.0,
      "pct_partially_of_reachable": 0.0,
      "pct_allowed_explicitly_of_reachable": 0.0,
      "pct_fully_of_all_scanned": 6.7,
@@ -7160,7 +7056,7 @@
      "blocked_fully": 8,
      "blocked_partially": 0,
      "allowed_explicitly": 0,
-     "not_mentioned": 50,
+     "not_mentioned": 52,
      "not_mentioned_but_star_blocks_all": 4,
      "pct_fully_of_reachable": 13.8,
      "pct_partially_of_reachable": 0.0,
@@ -7173,9 +7069,9 @@
      "blocked_fully": 6,
      "blocked_partially": 0,
      "allowed_explicitly": 0,
-     "not_mentioned": 52,
+     "not_mentioned": 54,
      "not_mentioned_but_star_blocks_all": 4,
-     "pct_fully_of_reachable": 10.3,
+     "pct_fully_of_reachable": 10.0,
      "pct_partially_of_reachable": 0.0,
      "pct_allowed_explicitly_of_reachable": 0.0,
      "pct_fully_of_all_scanned": 6.7,
@@ -7183,10 +7079,10 @@
      "pct_allowed_explicitly_of_all_scanned": 0.0
     },
     "PetalBot": {
-     "blocked_fully": 10,
+     "blocked_fully": 11,
      "blocked_partially": 0,
      "allowed_explicitly": 0,
-     "not_mentioned": 48,
+     "not_mentioned": 49,
      "not_mentioned_but_star_blocks_all": 5,
      "pct_fully_of_reachable": 17.2,
      "pct_partially_of_reachable": 0.0,
@@ -7214,18 +7110,18 @@
     "count": 5,
     "pct_of_reachable": 8.6
    },
-   "mean_ai_bots_named_per_robots_txt": 5.121,
-   "mean_ai_bots_named_per_robots_txt_among_those_naming_any": 11.0
+   "mean_ai_bots_named_per_robots_txt": 5.183,
+   "mean_ai_bots_named_per_robots_txt_among_those_naming_any": 11.107
   },
   "it": {
    "scanned": 83,
-   "robots_reachable": 57,
+   "robots_reachable": 58,
    "bots": {
     "GPTBot": {
      "blocked_fully": 18,
      "blocked_partially": 0,
      "allowed_explicitly": 0,
-     "not_mentioned": 39,
+     "not_mentioned": 40,
      "not_mentioned_but_star_blocks_all": 1,
      "pct_fully_of_reachable": 31.6,
      "pct_partially_of_reachable": 0.0,
@@ -7238,7 +7134,7 @@
      "blocked_fully": 10,
      "blocked_partially": 2,
      "allowed_explicitly": 0,
-     "not_mentioned": 45,
+     "not_mentioned": 46,
      "not_mentioned_but_star_blocks_all": 1,
      "pct_fully_of_reachable": 17.5,
      "pct_partially_of_reachable": 3.5,
@@ -7251,7 +7147,7 @@
      "blocked_fully": 8,
      "blocked_partially": 2,
      "allowed_explicitly": 1,
-     "not_mentioned": 46,
+     "not_mentioned": 47,
      "not_mentioned_but_star_blocks_all": 1,
      "pct_fully_of_reachable": 14.0,
      "pct_partially_of_reachable": 3.5,
@@ -7261,7 +7157,7 @@
      "pct_allowed_explicitly_of_all_scanned": 1.2
     },
     "ClaudeBot": {
-     "blocked_fully": 18,
+     "blocked_fully": 19,
      "blocked_partially": 1,
      "allowed_explicitly": 0,
      "not_mentioned": 38,
@@ -7274,7 +7170,7 @@
      "pct_allowed_explicitly_of_all_scanned": 0.0
     },
     "Claude-User": {
-     "blocked_fully": 7,
+     "blocked_fully": 8,
      "blocked_partially": 1,
      "allowed_explicitly": 0,
      "not_mentioned": 49,
@@ -7287,7 +7183,7 @@
      "pct_allowed_explicitly_of_all_scanned": 0.0
     },
     "Claude-SearchBot": {
-     "blocked_fully": 7,
+     "blocked_fully": 8,
      "blocked_partially": 1,
      "allowed_explicitly": 0,
      "not_mentioned": 49,
@@ -7303,7 +7199,7 @@
      "blocked_fully": 13,
      "blocked_partially": 0,
      "allowed_explicitly": 0,
-     "not_mentioned": 44,
+     "not_mentioned": 45,
      "not_mentioned_but_star_blocks_all": 1,
      "pct_fully_of_reachable": 22.8,
      "pct_partially_of_reachable": 0.0,
@@ -7316,7 +7212,7 @@
      "blocked_fully": 13,
      "blocked_partially": 0,
      "allowed_explicitly": 0,
-     "not_mentioned": 44,
+     "not_mentioned": 45,
      "not_mentioned_but_star_blocks_all": 1,
      "pct_fully_of_reachable": 22.8,
      "pct_partially_of_reachable": 0.0,
@@ -7326,7 +7222,7 @@
      "pct_allowed_explicitly_of_all_scanned": 0.0
     },
     "Google-Extended": {
-     "blocked_fully": 15,
+     "blocked_fully": 16,
      "blocked_partially": 1,
      "allowed_explicitly": 0,
      "not_mentioned": 41,
@@ -7342,7 +7238,7 @@
      "blocked_fully": 1,
      "blocked_partially": 5,
      "allowed_explicitly": 0,
-     "not_mentioned": 51,
+     "not_mentioned": 52,
      "not_mentioned_but_star_blocks_all": 0,
      "pct_fully_of_reachable": 1.8,
      "pct_partially_of_reachable": 8.8,
@@ -7352,7 +7248,7 @@
      "pct_allowed_explicitly_of_all_scanned": 0.0
     },
     "Applebot-Extended": {
-     "blocked_fully": 11,
+     "blocked_fully": 12,
      "blocked_partially": 0,
      "allowed_explicitly": 0,
      "not_mentioned": 46,
@@ -7365,7 +7261,7 @@
      "pct_allowed_explicitly_of_all_scanned": 0.0
     },
     "PerplexityBot": {
-     "blocked_fully": 15,
+     "blocked_fully": 16,
      "blocked_partially": 2,
      "allowed_explicitly": 0,
      "not_mentioned": 40,
@@ -7378,7 +7274,7 @@
      "pct_allowed_explicitly_of_all_scanned": 0.0
     },
     "Perplexity-User": {
-     "blocked_fully": 3,
+     "blocked_fully": 4,
      "blocked_partially": 1,
      "allowed_explicitly": 0,
      "not_mentioned": 53,
@@ -7391,7 +7287,7 @@
      "pct_allowed_explicitly_of_all_scanned": 0.0
     },
     "CCBot": {
-     "blocked_fully": 21,
+     "blocked_fully": 22,
      "blocked_partially": 0,
      "allowed_explicitly": 0,
      "not_mentioned": 36,
@@ -7403,21 +7299,8 @@
      "pct_partially_of_all_scanned": 0.0,
      "pct_allowed_explicitly_of_all_scanned": 0.0
     },
-    "Bytespider": {
-     "blocked_fully": 20,
-     "blocked_partially": 0,
-     "allowed_explicitly": 0,
-     "not_mentioned": 37,
-     "not_mentioned_but_star_blocks_all": 1,
-     "pct_fully_of_reachable": 35.1,
-     "pct_partially_of_reachable": 0.0,
-     "pct_allowed_explicitly_of_reachable": 0.0,
-     "pct_fully_of_all_scanned": 24.1,
-     "pct_partially_of_all_scanned": 0.0,
-     "pct_allowed_explicitly_of_all_scanned": 0.0
-    },
     "Amazonbot": {
-     "blocked_fully": 13,
+     "blocked_fully": 14,
      "blocked_partially": 0,
      "allowed_explicitly": 3,
      "not_mentioned": 41,
@@ -7430,7 +7313,7 @@
      "pct_allowed_explicitly_of_all_scanned": 3.6
     },
     "Meta-ExternalAgent": {
-     "blocked_fully": 10,
+     "blocked_fully": 11,
      "blocked_partially": 0,
      "allowed_explicitly": 0,
      "not_mentioned": 47,
@@ -7446,7 +7329,7 @@
      "blocked_fully": 6,
      "blocked_partially": 1,
      "allowed_explicitly": 1,
-     "not_mentioned": 49,
+     "not_mentioned": 50,
      "not_mentioned_but_star_blocks_all": 1,
      "pct_fully_of_reachable": 10.5,
      "pct_partially_of_reachable": 1.8,
@@ -7456,7 +7339,7 @@
      "pct_allowed_explicitly_of_all_scanned": 1.2
     },
     "cohere-ai": {
-     "blocked_fully": 15,
+     "blocked_fully": 16,
      "blocked_partially": 0,
      "allowed_explicitly": 0,
      "not_mentioned": 42,
@@ -7468,60 +7351,8 @@
      "pct_partially_of_all_scanned": 0.0,
      "pct_allowed_explicitly_of_all_scanned": 0.0
     },
-    "DuckAssistBot": {
-     "blocked_fully": 12,
-     "blocked_partially": 0,
-     "allowed_explicitly": 0,
-     "not_mentioned": 45,
-     "not_mentioned_but_star_blocks_all": 1,
-     "pct_fully_of_reachable": 21.1,
-     "pct_partially_of_reachable": 0.0,
-     "pct_allowed_explicitly_of_reachable": 0.0,
-     "pct_fully_of_all_scanned": 14.5,
-     "pct_partially_of_all_scanned": 0.0,
-     "pct_allowed_explicitly_of_all_scanned": 0.0
-    },
-    "MistralAI-User": {
-     "blocked_fully": 4,
-     "blocked_partially": 0,
-     "allowed_explicitly": 0,
-     "not_mentioned": 53,
-     "not_mentioned_but_star_blocks_all": 1,
-     "pct_fully_of_reachable": 7.0,
-     "pct_partially_of_reachable": 0.0,
-     "pct_allowed_explicitly_of_reachable": 0.0,
-     "pct_fully_of_all_scanned": 4.8,
-     "pct_partially_of_all_scanned": 0.0,
-     "pct_allowed_explicitly_of_all_scanned": 0.0
-    },
-    "YouBot": {
-     "blocked_fully": 11,
-     "blocked_partially": 0,
-     "allowed_explicitly": 0,
-     "not_mentioned": 46,
-     "not_mentioned_but_star_blocks_all": 1,
-     "pct_fully_of_reachable": 19.3,
-     "pct_partially_of_reachable": 0.0,
-     "pct_allowed_explicitly_of_reachable": 0.0,
-     "pct_fully_of_all_scanned": 13.3,
-     "pct_partially_of_all_scanned": 0.0,
-     "pct_allowed_explicitly_of_all_scanned": 0.0
-    },
-    "Diffbot": {
-     "blocked_fully": 14,
-     "blocked_partially": 0,
-     "allowed_explicitly": 0,
-     "not_mentioned": 43,
-     "not_mentioned_but_star_blocks_all": 1,
-     "pct_fully_of_reachable": 24.6,
-     "pct_partially_of_reachable": 0.0,
-     "pct_allowed_explicitly_of_reachable": 0.0,
-     "pct_fully_of_all_scanned": 16.9,
-     "pct_partially_of_all_scanned": 0.0,
-     "pct_allowed_explicitly_of_all_scanned": 0.0
-    },
     "Timpibot": {
-     "blocked_fully": 7,
+     "blocked_fully": 8,
      "blocked_partially": 0,
      "allowed_explicitly": 0,
      "not_mentioned": 50,
@@ -7537,7 +7368,7 @@
      "blocked_fully": 12,
      "blocked_partially": 0,
      "allowed_explicitly": 0,
-     "not_mentioned": 45,
+     "not_mentioned": 46,
      "not_mentioned_but_star_blocks_all": 1,
      "pct_fully_of_reachable": 21.1,
      "pct_partially_of_reachable": 0.0,
@@ -7550,7 +7381,7 @@
      "blocked_fully": 7,
      "blocked_partially": 0,
      "allowed_explicitly": 0,
-     "not_mentioned": 50,
+     "not_mentioned": 51,
      "not_mentioned_but_star_blocks_all": 1,
      "pct_fully_of_reachable": 12.3,
      "pct_partially_of_reachable": 0.0,
@@ -7563,9 +7394,9 @@
      "blocked_fully": 4,
      "blocked_partially": 0,
      "allowed_explicitly": 0,
-     "not_mentioned": 53,
+     "not_mentioned": 54,
      "not_mentioned_but_star_blocks_all": 1,
-     "pct_fully_of_reachable": 7.0,
+     "pct_fully_of_reachable": 6.9,
      "pct_partially_of_reachable": 0.0,
      "pct_allowed_explicitly_of_reachable": 0.0,
      "pct_fully_of_all_scanned": 4.8,
@@ -7573,7 +7404,7 @@
      "pct_allowed_explicitly_of_all_scanned": 0.0
     },
     "PetalBot": {
-     "blocked_fully": 11,
+     "blocked_fully": 12,
      "blocked_partially": 1,
      "allowed_explicitly": 0,
      "not_mentioned": 45,
@@ -7604,8 +7435,8 @@
     "count": 1,
     "pct_of_reachable": 1.8
    },
-   "mean_ai_bots_named_per_robots_txt": 5.667,
-   "mean_ai_bots_named_per_robots_txt_among_those_naming_any": 11.963
+   "mean_ai_bots_named_per_robots_txt": 5.879,
+   "mean_ai_bots_named_per_robots_txt_among_those_naming_any": 12.179
   },
   "tv": {
    "scanned": 71,
@@ -7999,10 +7830,10 @@
   },
   "co": {
    "scanned": 60,
-   "robots_reachable": 31,
+   "robots_reachable": 32,
    "bots": {
     "GPTBot": {
-     "blocked_fully": 2,
+     "blocked_fully": 3,
      "blocked_partially": 2,
      "allowed_explicitly": 0,
      "not_mentioned": 27,
@@ -8018,7 +7849,7 @@
      "blocked_fully": 0,
      "blocked_partially": 1,
      "allowed_explicitly": 0,
-     "not_mentioned": 30,
+     "not_mentioned": 31,
      "not_mentioned_but_star_blocks_all": 1,
      "pct_fully_of_reachable": 0.0,
      "pct_partially_of_reachable": 3.2,
@@ -8031,7 +7862,7 @@
      "blocked_fully": 0,
      "blocked_partially": 1,
      "allowed_explicitly": 0,
-     "not_mentioned": 30,
+     "not_mentioned": 31,
      "not_mentioned_but_star_blocks_all": 1,
      "pct_fully_of_reachable": 0.0,
      "pct_partially_of_reachable": 3.2,
@@ -8044,7 +7875,7 @@
      "blocked_fully": 2,
      "blocked_partially": 1,
      "allowed_explicitly": 0,
-     "not_mentioned": 28,
+     "not_mentioned": 29,
      "not_mentioned_but_star_blocks_all": 1,
      "pct_fully_of_reachable": 6.5,
      "pct_partially_of_reachable": 3.2,
@@ -8057,7 +7888,7 @@
      "blocked_fully": 0,
      "blocked_partially": 0,
      "allowed_explicitly": 0,
-     "not_mentioned": 31,
+     "not_mentioned": 32,
      "not_mentioned_but_star_blocks_all": 1,
      "pct_fully_of_reachable": 0.0,
      "pct_partially_of_reachable": 0.0,
@@ -8070,7 +7901,7 @@
      "blocked_fully": 0,
      "blocked_partially": 0,
      "allowed_explicitly": 0,
-     "not_mentioned": 31,
+     "not_mentioned": 32,
      "not_mentioned_but_star_blocks_all": 1,
      "pct_fully_of_reachable": 0.0,
      "pct_partially_of_reachable": 0.0,
@@ -8083,7 +7914,7 @@
      "blocked_fully": 1,
      "blocked_partially": 0,
      "allowed_explicitly": 0,
-     "not_mentioned": 30,
+     "not_mentioned": 31,
      "not_mentioned_but_star_blocks_all": 1,
      "pct_fully_of_reachable": 3.2,
      "pct_partially_of_reachable": 0.0,
@@ -8096,7 +7927,7 @@
      "blocked_fully": 1,
      "blocked_partially": 1,
      "allowed_explicitly": 0,
-     "not_mentioned": 29,
+     "not_mentioned": 30,
      "not_mentioned_but_star_blocks_all": 1,
      "pct_fully_of_reachable": 3.2,
      "pct_partially_of_reachable": 3.2,
@@ -8106,7 +7937,7 @@
      "pct_allowed_explicitly_of_all_scanned": 0.0
     },
     "Google-Extended": {
-     "blocked_fully": 2,
+     "blocked_fully": 3,
      "blocked_partially": 1,
      "allowed_explicitly": 1,
      "not_mentioned": 27,
@@ -8120,7 +7951,7 @@
     },
     "Googlebot": {
      "blocked_fully": 0,
-     "blocked_partially": 0,
+     "blocked_partially": 1,
      "allowed_explicitly": 2,
      "not_mentioned": 29,
      "not_mentioned_but_star_blocks_all": 0,
@@ -8135,7 +7966,7 @@
      "blocked_fully": 2,
      "blocked_partially": 1,
      "allowed_explicitly": 0,
-     "not_mentioned": 28,
+     "not_mentioned": 29,
      "not_mentioned_but_star_blocks_all": 1,
      "pct_fully_of_reachable": 6.5,
      "pct_partially_of_reachable": 3.2,
@@ -8148,7 +7979,7 @@
      "blocked_fully": 0,
      "blocked_partially": 2,
      "allowed_explicitly": 0,
-     "not_mentioned": 29,
+     "not_mentioned": 30,
      "not_mentioned_but_star_blocks_all": 1,
      "pct_fully_of_reachable": 0.0,
      "pct_partially_of_reachable": 6.5,
@@ -8161,7 +7992,7 @@
      "blocked_fully": 0,
      "blocked_partially": 0,
      "allowed_explicitly": 0,
-     "not_mentioned": 31,
+     "not_mentioned": 32,
      "not_mentioned_but_star_blocks_all": 1,
      "pct_fully_of_reachable": 0.0,
      "pct_partially_of_reachable": 0.0,
@@ -8174,7 +8005,7 @@
      "blocked_fully": 2,
      "blocked_partially": 1,
      "allowed_explicitly": 0,
-     "not_mentioned": 28,
+     "not_mentioned": 29,
      "not_mentioned_but_star_blocks_all": 1,
      "pct_fully_of_reachable": 6.5,
      "pct_partially_of_reachable": 3.2,
@@ -8187,7 +8018,7 @@
      "blocked_fully": 3,
      "blocked_partially": 0,
      "allowed_explicitly": 0,
-     "not_mentioned": 28,
+     "not_mentioned": 29,
      "not_mentioned_but_star_blocks_all": 1,
      "pct_fully_of_reachable": 9.7,
      "pct_partially_of_reachable": 0.0,
@@ -8200,7 +8031,7 @@
      "blocked_fully": 2,
      "blocked_partially": 0,
      "allowed_explicitly": 0,
-     "not_mentioned": 29,
+     "not_mentioned": 30,
      "not_mentioned_but_star_blocks_all": 1,
      "pct_fully_of_reachable": 6.5,
      "pct_partially_of_reachable": 0.0,
@@ -8213,7 +8044,7 @@
      "blocked_fully": 2,
      "blocked_partially": 0,
      "allowed_explicitly": 0,
-     "not_mentioned": 29,
+     "not_mentioned": 30,
      "not_mentioned_but_star_blocks_all": 1,
      "pct_fully_of_reachable": 6.5,
      "pct_partially_of_reachable": 0.0,
@@ -8226,7 +8057,7 @@
      "blocked_fully": 1,
      "blocked_partially": 0,
      "allowed_explicitly": 0,
-     "not_mentioned": 30,
+     "not_mentioned": 31,
      "not_mentioned_but_star_blocks_all": 1,
      "pct_fully_of_reachable": 3.2,
      "pct_partially_of_reachable": 0.0,
@@ -8239,7 +8070,7 @@
      "blocked_fully": 2,
      "blocked_partially": 0,
      "allowed_explicitly": 0,
-     "not_mentioned": 29,
+     "not_mentioned": 30,
      "not_mentioned_but_star_blocks_all": 1,
      "pct_fully_of_reachable": 6.5,
      "pct_partially_of_reachable": 0.0,
@@ -8252,7 +8083,7 @@
      "blocked_fully": 1,
      "blocked_partially": 0,
      "allowed_explicitly": 0,
-     "not_mentioned": 30,
+     "not_mentioned": 31,
      "not_mentioned_but_star_blocks_all": 1,
      "pct_fully_of_reachable": 3.2,
      "pct_partially_of_reachable": 0.0,
@@ -8265,7 +8096,7 @@
      "blocked_fully": 0,
      "blocked_partially": 0,
      "allowed_explicitly": 0,
-     "not_mentioned": 31,
+     "not_mentioned": 32,
      "not_mentioned_but_star_blocks_all": 1,
      "pct_fully_of_reachable": 0.0,
      "pct_partially_of_reachable": 0.0,
@@ -8278,7 +8109,7 @@
      "blocked_fully": 1,
      "blocked_partially": 0,
      "allowed_explicitly": 0,
-     "not_mentioned": 30,
+     "not_mentioned": 31,
      "not_mentioned_but_star_blocks_all": 1,
      "pct_fully_of_reachable": 3.2,
      "pct_partially_of_reachable": 0.0,
@@ -8291,7 +8122,7 @@
      "blocked_fully": 2,
      "blocked_partially": 0,
      "allowed_explicitly": 0,
-     "not_mentioned": 29,
+     "not_mentioned": 30,
      "not_mentioned_but_star_blocks_all": 1,
      "pct_fully_of_reachable": 6.5,
      "pct_partially_of_reachable": 0.0,
@@ -8304,7 +8135,7 @@
      "blocked_fully": 1,
      "blocked_partially": 0,
      "allowed_explicitly": 0,
-     "not_mentioned": 30,
+     "not_mentioned": 31,
      "not_mentioned_but_star_blocks_all": 1,
      "pct_fully_of_reachable": 3.2,
      "pct_partially_of_reachable": 0.0,
@@ -8317,7 +8148,7 @@
      "blocked_fully": 1,
      "blocked_partially": 0,
      "allowed_explicitly": 0,
-     "not_mentioned": 30,
+     "not_mentioned": 31,
      "not_mentioned_but_star_blocks_all": 1,
      "pct_fully_of_reachable": 3.2,
      "pct_partially_of_reachable": 0.0,
@@ -8330,7 +8161,7 @@
      "blocked_fully": 2,
      "blocked_partially": 0,
      "allowed_explicitly": 0,
-     "not_mentioned": 29,
+     "not_mentioned": 30,
      "not_mentioned_but_star_blocks_all": 1,
      "pct_fully_of_reachable": 6.5,
      "pct_partially_of_reachable": 0.0,
@@ -8343,7 +8174,7 @@
      "blocked_fully": 1,
      "blocked_partially": 0,
      "allowed_explicitly": 0,
-     "not_mentioned": 30,
+     "not_mentioned": 31,
      "not_mentioned_but_star_blocks_all": 1,
      "pct_fully_of_reachable": 3.2,
      "pct_partially_of_reachable": 0.0,
@@ -8356,7 +8187,7 @@
      "blocked_fully": 2,
      "blocked_partially": 0,
      "allowed_explicitly": 0,
-     "not_mentioned": 29,
+     "not_mentioned": 30,
      "not_mentioned_but_star_blocks_all": 1,
      "pct_fully_of_reachable": 6.5,
      "pct_partially_of_reachable": 0.0,
@@ -8384,31 +8215,31 @@
     "count": 1,
     "pct_of_reachable": 3.2
    },
-   "mean_ai_bots_named_per_robots_txt": 1.452,
-   "mean_ai_bots_named_per_robots_txt_among_those_naming_any": 9.0
+   "mean_ai_bots_named_per_robots_txt": 1.469,
+   "mean_ai_bots_named_per_robots_txt_among_those_naming_any": 7.833
   },
   "es": {
    "scanned": 57,
    "robots_reachable": 43,
    "bots": {
     "GPTBot": {
-     "blocked_fully": 12,
+     "blocked_fully": 11,
      "blocked_partially": 0,
      "allowed_explicitly": 0,
-     "not_mentioned": 31,
+     "not_mentioned": 32,
      "not_mentioned_but_star_blocks_all": 0,
      "pct_fully_of_reachable": 27.9,
      "pct_partially_of_reachable": 0.0,
      "pct_allowed_explicitly_of_reachable": 0.0,
-     "pct_fully_of_all_scanned": 21.1,
+     "pct_fully_of_all_scanned": 19.3,
      "pct_partially_of_all_scanned": 0.0,
      "pct_allowed_explicitly_of_all_scanned": 0.0
     },
     "ChatGPT-User": {
-     "blocked_fully": 6,
+     "blocked_fully": 5,
      "blocked_partially": 1,
      "allowed_explicitly": 0,
-     "not_mentioned": 36,
+     "not_mentioned": 37,
      "not_mentioned_but_star_blocks_all": 0,
      "pct_fully_of_reachable": 14.0,
      "pct_partially_of_reachable": 2.3,
@@ -8418,10 +8249,10 @@
      "pct_allowed_explicitly_of_all_scanned": 0.0
     },
     "OAI-SearchBot": {
-     "blocked_fully": 4,
+     "blocked_fully": 3,
      "blocked_partially": 1,
      "allowed_explicitly": 0,
-     "not_mentioned": 38,
+     "not_mentioned": 39,
      "not_mentioned_but_star_blocks_all": 0,
      "pct_fully_of_reachable": 9.3,
      "pct_partially_of_reachable": 2.3,
@@ -8431,10 +8262,10 @@
      "pct_allowed_explicitly_of_all_scanned": 0.0
     },
     "ClaudeBot": {
-     "blocked_fully": 12,
+     "blocked_fully": 11,
      "blocked_partially": 1,
      "allowed_explicitly": 0,
-     "not_mentioned": 30,
+     "not_mentioned": 31,
      "not_mentioned_but_star_blocks_all": 0,
      "pct_fully_of_reachable": 27.9,
      "pct_partially_of_reachable": 2.3,
@@ -8444,10 +8275,10 @@
      "pct_allowed_explicitly_of_all_scanned": 0.0
     },
     "Claude-User": {
-     "blocked_fully": 4,
+     "blocked_fully": 3,
      "blocked_partially": 0,
      "allowed_explicitly": 0,
-     "not_mentioned": 39,
+     "not_mentioned": 40,
      "not_mentioned_but_star_blocks_all": 0,
      "pct_fully_of_reachable": 9.3,
      "pct_partially_of_reachable": 0.0,
@@ -8457,12 +8288,12 @@
      "pct_allowed_explicitly_of_all_scanned": 0.0
     },
     "Claude-SearchBot": {
-     "blocked_fully": 5,
+     "blocked_fully": 4,
      "blocked_partially": 0,
      "allowed_explicitly": 0,
-     "not_mentioned": 38,
+     "not_mentioned": 39,
      "not_mentioned_but_star_blocks_all": 0,
-     "pct_fully_of_reachable": 11.6,
+     "pct_fully_of_reachable": 9.3,
      "pct_partially_of_reachable": 0.0,
      "pct_allowed_explicitly_of_reachable": 0.0,
      "pct_fully_of_all_scanned": 8.8,
@@ -8470,10 +8301,10 @@
      "pct_allowed_explicitly_of_all_scanned": 0.0
     },
     "anthropic-ai": {
-     "blocked_fully": 7,
+     "blocked_fully": 6,
      "blocked_partially": 0,
      "allowed_explicitly": 0,
-     "not_mentioned": 36,
+     "not_mentioned": 37,
      "not_mentioned_but_star_blocks_all": 0,
      "pct_fully_of_reachable": 16.3,
      "pct_partially_of_reachable": 0.0,
@@ -8483,12 +8314,12 @@
      "pct_allowed_explicitly_of_all_scanned": 0.0
     },
     "Claude-Web": {
-     "blocked_fully": 5,
+     "blocked_fully": 4,
      "blocked_partially": 0,
      "allowed_explicitly": 0,
-     "not_mentioned": 38,
+     "not_mentioned": 39,
      "not_mentioned_but_star_blocks_all": 0,
-     "pct_fully_of_reachable": 11.6,
+     "pct_fully_of_reachable": 9.3,
      "pct_partially_of_reachable": 0.0,
      "pct_allowed_explicitly_of_reachable": 0.0,
      "pct_fully_of_all_scanned": 8.8,
@@ -8496,10 +8327,10 @@
      "pct_allowed_explicitly_of_all_scanned": 0.0
     },
     "Google-Extended": {
-     "blocked_fully": 7,
+     "blocked_fully": 6,
      "blocked_partially": 0,
      "allowed_explicitly": 1,
-     "not_mentioned": 35,
+     "not_mentioned": 36,
      "not_mentioned_but_star_blocks_all": 0,
      "pct_fully_of_reachable": 16.3,
      "pct_partially_of_reachable": 0.0,
@@ -8534,59 +8365,7 @@
      "pct_partially_of_all_scanned": 0.0,
      "pct_allowed_explicitly_of_all_scanned": 0.0
     },
-    "PerplexityBot": {
-     "blocked_fully": 6,
-     "blocked_partially": 1,
-     "allowed_explicitly": 0,
-     "not_mentioned": 36,
-     "not_mentioned_but_star_blocks_all": 0,
-     "pct_fully_of_reachable": 14.0,
-     "pct_partially_of_reachable": 2.3,
-     "pct_allowed_explicitly_of_reachable": 0.0,
-     "pct_fully_of_all_scanned": 10.5,
-     "pct_partially_of_all_scanned": 1.8,
-     "pct_allowed_explicitly_of_all_scanned": 0.0
-    },
-    "Perplexity-User": {
-     "blocked_fully": 5,
-     "blocked_partially": 0,
-     "allowed_explicitly": 0,
-     "not_mentioned": 38,
-     "not_mentioned_but_star_blocks_all": 0,
-     "pct_fully_of_reachable": 11.6,
-     "pct_partially_of_reachable": 0.0,
-     "pct_allowed_explicitly_of_reachable": 0.0,
-     "pct_fully_of_all_scanned": 8.8,
-     "pct_partially_of_all_scanned": 0.0,
-     "pct_allowed_explicitly_of_all_scanned": 0.0
-    },
-    "CCBot": {
-     "blocked_fully": 12,
-     "blocked_partially": 0,
-     "allowed_explicitly": 0,
-     "not_mentioned": 31,
-     "not_mentioned_but_star_blocks_all": 0,
-     "pct_fully_of_reachable": 27.9,
-     "pct_partially_of_reachable": 0.0,
-     "pct_allowed_explicitly_of_reachable": 0.0,
-     "pct_fully_of_all_scanned": 21.1,
-     "pct_partially_of_all_scanned": 0.0,
-     "pct_allowed_explicitly_of_all_scanned": 0.0
-    },
-    "Bytespider": {
-     "blocked_fully": 12,
-     "blocked_partially": 0,
-     "allowed_explicitly": 0,
-     "not_mentioned": 31,
-     "not_mentioned_but_star_blocks_all": 0,
-     "pct_fully_of_reachable": 27.9,
-     "pct_partially_of_reachable": 0.0,
-     "pct_allowed_explicitly_of_reachable": 0.0,
-     "pct_fully_of_all_scanned": 21.1,
-     "pct_partially_of_all_scanned": 0.0,
-     "pct_allowed_explicitly_of_all_scanned": 0.0
-    },
-    "Amazonbot": {
+    "Meta-ExternalAgent": {
      "blocked_fully": 10,
      "blocked_partially": 0,
      "allowed_explicitly": 0,
@@ -8599,24 +8378,11 @@
      "pct_partially_of_all_scanned": 0.0,
      "pct_allowed_explicitly_of_all_scanned": 0.0
     },
-    "Meta-ExternalAgent": {
-     "blocked_fully": 11,
-     "blocked_partially": 0,
-     "allowed_explicitly": 0,
-     "not_mentioned": 32,
-     "not_mentioned_but_star_blocks_all": 0,
-     "pct_fully_of_reachable": 25.6,
-     "pct_partially_of_reachable": 0.0,
-     "pct_allowed_explicitly_of_reachable": 0.0,
-     "pct_fully_of_all_scanned": 19.3,
-     "pct_partially_of_all_scanned": 0.0,
-     "pct_allowed_explicitly_of_all_scanned": 0.0
-    },
     "FacebookBot": {
-     "blocked_fully": 5,
+     "blocked_fully": 4,
      "blocked_partially": 2,
      "allowed_explicitly": 0,
-     "not_mentioned": 36,
+     "not_mentioned": 37,
      "not_mentioned_but_star_blocks_all": 0,
      "pct_fully_of_reachable": 11.6,
      "pct_partially_of_reachable": 4.7,
@@ -8626,10 +8392,10 @@
      "pct_allowed_explicitly_of_all_scanned": 0.0
     },
     "cohere-ai": {
-     "blocked_fully": 10,
+     "blocked_fully": 9,
      "blocked_partially": 0,
      "allowed_explicitly": 0,
-     "not_mentioned": 33,
+     "not_mentioned": 34,
      "not_mentioned_but_star_blocks_all": 0,
      "pct_fully_of_reachable": 23.3,
      "pct_partially_of_reachable": 0.0,
@@ -8651,20 +8417,20 @@
      "pct_partially_of_all_scanned": 0.0,
      "pct_allowed_explicitly_of_all_scanned": 0.0
     },
-    "MistralAI-User": {
-     "blocked_fully": 5,
+    "Diffbot": {
+     "blocked_fully": 8,
      "blocked_partially": 0,
      "allowed_explicitly": 0,
-     "not_mentioned": 38,
+     "not_mentioned": 35,
      "not_mentioned_but_star_blocks_all": 0,
-     "pct_fully_of_reachable": 11.6,
+     "pct_fully_of_reachable": 18.6,
      "pct_partially_of_reachable": 0.0,
      "pct_allowed_explicitly_of_reachable": 0.0,
      "pct_fully_of_all_scanned": 8.8,
      "pct_partially_of_all_scanned": 0.0,
      "pct_allowed_explicitly_of_all_scanned": 0.0
     },
-    "YouBot": {
+    "Timpibot": {
      "blocked_fully": 7,
      "blocked_partially": 0,
      "allowed_explicitly": 0,
@@ -8677,11 +8443,11 @@
      "pct_partially_of_all_scanned": 0.0,
      "pct_allowed_explicitly_of_all_scanned": 0.0
     },
-    "Diffbot": {
-     "blocked_fully": 9,
+    "ImagesiftBot": {
+     "blocked_fully": 5,
      "blocked_partially": 0,
      "allowed_explicitly": 0,
-     "not_mentioned": 34,
+     "not_mentioned": 38,
      "not_mentioned_but_star_blocks_all": 0,
      "pct_fully_of_reachable": 20.9,
      "pct_partially_of_reachable": 0.0,
@@ -8717,12 +8483,12 @@
      "pct_allowed_explicitly_of_all_scanned": 0.0
     },
     "omgili": {
-     "blocked_fully": 9,
+     "blocked_fully": 8,
      "blocked_partially": 0,
      "allowed_explicitly": 0,
-     "not_mentioned": 34,
+     "not_mentioned": 35,
      "not_mentioned_but_star_blocks_all": 0,
-     "pct_fully_of_reachable": 20.9,
+     "pct_fully_of_reachable": 18.6,
      "pct_partially_of_reachable": 0.0,
      "pct_allowed_explicitly_of_reachable": 0.0,
      "pct_fully_of_all_scanned": 15.8,
@@ -8730,12 +8496,12 @@
      "pct_allowed_explicitly_of_all_scanned": 0.0
     },
     "AI2Bot": {
-     "blocked_fully": 9,
+     "blocked_fully": 8,
      "blocked_partially": 0,
      "allowed_explicitly": 0,
-     "not_mentioned": 34,
+     "not_mentioned": 35,
      "not_mentioned_but_star_blocks_all": 0,
-     "pct_fully_of_reachable": 20.9,
+     "pct_fully_of_reachable": 18.6,
      "pct_partially_of_reachable": 0.0,
      "pct_allowed_explicitly_of_reachable": 0.0,
      "pct_fully_of_all_scanned": 15.8,
@@ -8743,10 +8509,10 @@
      "pct_allowed_explicitly_of_all_scanned": 0.0
     },
     "PetalBot": {
-     "blocked_fully": 6,
+     "blocked_fully": 5,
      "blocked_partially": 0,
      "allowed_explicitly": 0,
-     "not_mentioned": 37,
+     "not_mentioned": 38,
      "not_mentioned_but_star_blocks_all": 0,
      "pct_fully_of_reachable": 14.0,
      "pct_partially_of_reachable": 0.0,
@@ -8774,8 +8540,8 @@
     "count": 0,
     "pct_of_reachable": 0.0
    },
-   "mean_ai_bots_named_per_robots_txt": 4.977,
-   "mean_ai_bots_named_per_robots_txt_among_those_naming_any": 11.889
+   "mean_ai_bots_named_per_robots_txt": 4.349,
+   "mean_ai_bots_named_per_robots_txt_among_those_naming_any": 11.0
   },
   "pl": {
    "scanned": 54,
@@ -8784,25 +8550,25 @@
     "GPTBot": {
      "blocked_fully": 12,
      "blocked_partially": 0,
-     "allowed_explicitly": 1,
-     "not_mentioned": 31,
+     "allowed_explicitly": 2,
+     "not_mentioned": 29,
      "not_mentioned_but_star_blocks_all": 0,
      "pct_fully_of_reachable": 27.3,
      "pct_partially_of_reachable": 0.0,
      "pct_allowed_explicitly_of_reachable": 2.3,
      "pct_fully_of_all_scanned": 22.2,
      "pct_partially_of_all_scanned": 0.0,
-     "pct_allowed_explicitly_of_all_scanned": 1.9
+     "pct_allowed_explicitly_of_all_scanned": 3.7
     },
     "ChatGPT-User": {
      "blocked_fully": 2,
      "blocked_partially": 0,
-     "allowed_explicitly": 4,
-     "not_mentioned": 38,
+     "allowed_explicitly": 5,
+     "not_mentioned": 35,
      "not_mentioned_but_star_blocks_all": 0,
      "pct_fully_of_reachable": 4.5,
      "pct_partially_of_reachable": 0.0,
-     "pct_allowed_explicitly_of_reachable": 9.1,
+     "pct_allowed_explicitly_of_reachable": 11.9,
      "pct_fully_of_all_scanned": 3.7,
      "pct_partially_of_all_scanned": 0.0,
      "pct_allowed_explicitly_of_all_scanned": 7.4
@@ -8810,8 +8576,8 @@
     "OAI-SearchBot": {
      "blocked_fully": 2,
      "blocked_partially": 0,
-     "allowed_explicitly": 6,
-     "not_mentioned": 36,
+     "allowed_explicitly": 7,
+     "not_mentioned": 33,
      "not_mentioned_but_star_blocks_all": 0,
      "pct_fully_of_reachable": 4.5,
      "pct_partially_of_reachable": 0.0,
@@ -8823,8 +8589,8 @@
     "ClaudeBot": {
      "blocked_fully": 4,
      "blocked_partially": 0,
-     "allowed_explicitly": 0,
-     "not_mentioned": 40,
+     "allowed_explicitly": 1,
+     "not_mentioned": 37,
      "not_mentioned_but_star_blocks_all": 0,
      "pct_fully_of_reachable": 9.1,
      "pct_partially_of_reachable": 0.0,
@@ -8875,8 +8641,8 @@
     "Claude-Web": {
      "blocked_fully": 2,
      "blocked_partially": 0,
-     "allowed_explicitly": 0,
-     "not_mentioned": 42,
+     "allowed_explicitly": 1,
+     "not_mentioned": 39,
      "not_mentioned_but_star_blocks_all": 0,
      "pct_fully_of_reachable": 4.5,
      "pct_partially_of_reachable": 0.0,
@@ -8886,10 +8652,10 @@
      "pct_allowed_explicitly_of_all_scanned": 0.0
     },
     "Google-Extended": {
-     "blocked_fully": 4,
+     "blocked_fully": 3,
      "blocked_partially": 0,
      "allowed_explicitly": 0,
-     "not_mentioned": 40,
+     "not_mentioned": 39,
      "not_mentioned_but_star_blocks_all": 0,
      "pct_fully_of_reachable": 9.1,
      "pct_partially_of_reachable": 0.0,
@@ -8900,9 +8666,9 @@
     },
     "Googlebot": {
      "blocked_fully": 0,
-     "blocked_partially": 2,
+     "blocked_partially": 3,
      "allowed_explicitly": 1,
-     "not_mentioned": 41,
+     "not_mentioned": 38,
      "not_mentioned_but_star_blocks_all": 0,
      "pct_fully_of_reachable": 0.0,
      "pct_partially_of_reachable": 4.5,
@@ -8927,12 +8693,12 @@
     "PerplexityBot": {
      "blocked_fully": 2,
      "blocked_partially": 0,
-     "allowed_explicitly": 4,
-     "not_mentioned": 38,
+     "allowed_explicitly": 5,
+     "not_mentioned": 35,
      "not_mentioned_but_star_blocks_all": 0,
      "pct_fully_of_reachable": 4.5,
      "pct_partially_of_reachable": 0.0,
-     "pct_allowed_explicitly_of_reachable": 9.1,
+     "pct_allowed_explicitly_of_reachable": 11.9,
      "pct_fully_of_all_scanned": 3.7,
      "pct_partially_of_all_scanned": 0.0,
      "pct_allowed_explicitly_of_all_scanned": 7.4
@@ -8951,7 +8717,7 @@
      "pct_allowed_explicitly_of_all_scanned": 7.4
     },
     "CCBot": {
-     "blocked_fully": 9,
+     "blocked_fully": 8,
      "blocked_partially": 1,
      "allowed_explicitly": 0,
      "not_mentioned": 34,
@@ -8964,10 +8730,10 @@
      "pct_allowed_explicitly_of_all_scanned": 0.0
     },
     "Bytespider": {
-     "blocked_fully": 7,
+     "blocked_fully": 6,
      "blocked_partially": 0,
      "allowed_explicitly": 0,
-     "not_mentioned": 37,
+     "not_mentioned": 36,
      "not_mentioned_but_star_blocks_all": 0,
      "pct_fully_of_reachable": 15.9,
      "pct_partially_of_reachable": 0.0,
@@ -8977,10 +8743,10 @@
      "pct_allowed_explicitly_of_all_scanned": 0.0
     },
     "Amazonbot": {
-     "blocked_fully": 5,
+     "blocked_fully": 4,
      "blocked_partially": 0,
      "allowed_explicitly": 0,
-     "not_mentioned": 39,
+     "not_mentioned": 38,
      "not_mentioned_but_star_blocks_all": 0,
      "pct_fully_of_reachable": 11.4,
      "pct_partially_of_reachable": 0.0,
@@ -8990,10 +8756,10 @@
      "pct_allowed_explicitly_of_all_scanned": 0.0
     },
     "Meta-ExternalAgent": {
-     "blocked_fully": 5,
+     "blocked_fully": 4,
      "blocked_partially": 0,
      "allowed_explicitly": 0,
-     "not_mentioned": 39,
+     "not_mentioned": 38,
      "not_mentioned_but_star_blocks_all": 0,
      "pct_fully_of_reachable": 11.4,
      "pct_partially_of_reachable": 0.0,
@@ -9016,10 +8782,10 @@
      "pct_allowed_explicitly_of_all_scanned": 0.0
     },
     "cohere-ai": {
-     "blocked_fully": 5,
+     "blocked_fully": 4,
      "blocked_partially": 0,
      "allowed_explicitly": 0,
-     "not_mentioned": 39,
+     "not_mentioned": 38,
      "not_mentioned_but_star_blocks_all": 0,
      "pct_fully_of_reachable": 11.4,
      "pct_partially_of_reachable": 0.0,
@@ -9055,10 +8821,10 @@
      "pct_allowed_explicitly_of_all_scanned": 0.0
     },
     "YouBot": {
-     "blocked_fully": 5,
+     "blocked_fully": 4,
      "blocked_partially": 0,
      "allowed_explicitly": 0,
-     "not_mentioned": 39,
+     "not_mentioned": 38,
      "not_mentioned_but_star_blocks_all": 0,
      "pct_fully_of_reachable": 11.4,
      "pct_partially_of_reachable": 0.0,
@@ -9068,10 +8834,10 @@
      "pct_allowed_explicitly_of_all_scanned": 0.0
     },
     "Diffbot": {
-     "blocked_fully": 5,
+     "blocked_fully": 4,
      "blocked_partially": 0,
      "allowed_explicitly": 0,
-     "not_mentioned": 39,
+     "not_mentioned": 38,
      "not_mentioned_but_star_blocks_all": 0,
      "pct_fully_of_reachable": 11.4,
      "pct_partially_of_reachable": 0.0,
@@ -9081,10 +8847,10 @@
      "pct_allowed_explicitly_of_all_scanned": 0.0
     },
     "Timpibot": {
-     "blocked_fully": 5,
+     "blocked_fully": 4,
      "blocked_partially": 0,
      "allowed_explicitly": 0,
-     "not_mentioned": 39,
+     "not_mentioned": 38,
      "not_mentioned_but_star_blocks_all": 0,
      "pct_fully_of_reachable": 11.4,
      "pct_partially_of_reachable": 0.0,
@@ -9164,18 +8930,18 @@
     "count": 0,
     "pct_of_reachable": 0.0
    },
-   "mean_ai_bots_named_per_robots_txt": 2.773,
-   "mean_ai_bots_named_per_robots_txt_among_those_naming_any": 5.81
+   "mean_ai_bots_named_per_robots_txt": 2.81,
+   "mean_ai_bots_named_per_robots_txt_among_those_naming_any": 5.9
   },
   "ai": {
    "scanned": 51,
-   "robots_reachable": 39,
+   "robots_reachable": 38,
    "bots": {
     "GPTBot": {
      "blocked_fully": 4,
      "blocked_partially": 2,
      "allowed_explicitly": 0,
-     "not_mentioned": 33,
+     "not_mentioned": 32,
      "not_mentioned_but_star_blocks_all": 1,
      "pct_fully_of_reachable": 10.3,
      "pct_partially_of_reachable": 5.1,
@@ -9188,7 +8954,7 @@
      "blocked_fully": 1,
      "blocked_partially": 3,
      "allowed_explicitly": 0,
-     "not_mentioned": 35,
+     "not_mentioned": 34,
      "not_mentioned_but_star_blocks_all": 2,
      "pct_fully_of_reachable": 2.6,
      "pct_partially_of_reachable": 7.7,
@@ -9201,7 +8967,7 @@
      "blocked_fully": 1,
      "blocked_partially": 3,
      "allowed_explicitly": 0,
-     "not_mentioned": 35,
+     "not_mentioned": 34,
      "not_mentioned_but_star_blocks_all": 2,
      "pct_fully_of_reachable": 2.6,
      "pct_partially_of_reachable": 7.7,
@@ -9214,7 +8980,7 @@
      "blocked_fully": 3,
      "blocked_partially": 2,
      "allowed_explicitly": 0,
-     "not_mentioned": 34,
+     "not_mentioned": 33,
      "not_mentioned_but_star_blocks_all": 1,
      "pct_fully_of_reachable": 7.7,
      "pct_partially_of_reachable": 5.1,
@@ -9227,7 +8993,7 @@
      "blocked_fully": 0,
      "blocked_partially": 2,
      "allowed_explicitly": 0,
-     "not_mentioned": 37,
+     "not_mentioned": 36,
      "not_mentioned_but_star_blocks_all": 2,
      "pct_fully_of_reachable": 0.0,
      "pct_partially_of_reachable": 5.1,
@@ -9240,7 +9006,7 @@
      "blocked_fully": 0,
      "blocked_partially": 2,
      "allowed_explicitly": 0,
-     "not_mentioned": 37,
+     "not_mentioned": 36,
      "not_mentioned_but_star_blocks_all": 2,
      "pct_fully_of_reachable": 0.0,
      "pct_partially_of_reachable": 5.1,
@@ -9253,7 +9019,7 @@
      "blocked_fully": 1,
      "blocked_partially": 0,
      "allowed_explicitly": 0,
-     "not_mentioned": 38,
+     "not_mentioned": 37,
      "not_mentioned_but_star_blocks_all": 3,
      "pct_fully_of_reachable": 2.6,
      "pct_partially_of_reachable": 0.0,
@@ -9266,7 +9032,7 @@
      "blocked_fully": 1,
      "blocked_partially": 1,
      "allowed_explicitly": 0,
-     "not_mentioned": 37,
+     "not_mentioned": 36,
      "not_mentioned_but_star_blocks_all": 3,
      "pct_fully_of_reachable": 2.6,
      "pct_partially_of_reachable": 2.6,
@@ -9279,7 +9045,7 @@
      "blocked_fully": 4,
      "blocked_partially": 2,
      "allowed_explicitly": 0,
-     "not_mentioned": 33,
+     "not_mentioned": 32,
      "not_mentioned_but_star_blocks_all": 1,
      "pct_fully_of_reachable": 10.3,
      "pct_partially_of_reachable": 5.1,
@@ -9292,7 +9058,7 @@
      "blocked_fully": 0,
      "blocked_partially": 3,
      "allowed_explicitly": 0,
-     "not_mentioned": 36,
+     "not_mentioned": 35,
      "not_mentioned_but_star_blocks_all": 1,
      "pct_fully_of_reachable": 0.0,
      "pct_partially_of_reachable": 7.7,
@@ -9305,7 +9071,7 @@
      "blocked_fully": 4,
      "blocked_partially": 1,
      "allowed_explicitly": 0,
-     "not_mentioned": 34,
+     "not_mentioned": 33,
      "not_mentioned_but_star_blocks_all": 1,
      "pct_fully_of_reachable": 10.3,
      "pct_partially_of_reachable": 2.6,
@@ -9318,7 +9084,7 @@
      "blocked_fully": 1,
      "blocked_partially": 3,
      "allowed_explicitly": 0,
-     "not_mentioned": 35,
+     "not_mentioned": 34,
      "not_mentioned_but_star_blocks_all": 1,
      "pct_fully_of_reachable": 2.6,
      "pct_partially_of_reachable": 7.7,
@@ -9331,7 +9097,7 @@
      "blocked_fully": 0,
      "blocked_partially": 3,
      "allowed_explicitly": 0,
-     "not_mentioned": 36,
+     "not_mentioned": 35,
      "not_mentioned_but_star_blocks_all": 2,
      "pct_fully_of_reachable": 0.0,
      "pct_partially_of_reachable": 7.7,
@@ -9344,7 +9110,7 @@
      "blocked_fully": 1,
      "blocked_partially": 0,
      "allowed_explicitly": 0,
-     "not_mentioned": 38,
+     "not_mentioned": 37,
      "not_mentioned_but_star_blocks_all": 3,
      "pct_fully_of_reachable": 2.6,
      "pct_partially_of_reachable": 0.0,
@@ -9357,7 +9123,7 @@
      "blocked_fully": 2,
      "blocked_partially": 0,
      "allowed_explicitly": 0,
-     "not_mentioned": 37,
+     "not_mentioned": 36,
      "not_mentioned_but_star_blocks_all": 3,
      "pct_fully_of_reachable": 5.1,
      "pct_partially_of_reachable": 0.0,
@@ -9370,7 +9136,7 @@
      "blocked_fully": 4,
      "blocked_partially": 1,
      "allowed_explicitly": 0,
-     "not_mentioned": 34,
+     "not_mentioned": 33,
      "not_mentioned_but_star_blocks_all": 1,
      "pct_fully_of_reachable": 10.3,
      "pct_partially_of_reachable": 2.6,
@@ -9383,7 +9149,7 @@
      "blocked_fully": 1,
      "blocked_partially": 1,
      "allowed_explicitly": 0,
-     "not_mentioned": 37,
+     "not_mentioned": 36,
      "not_mentioned_but_star_blocks_all": 3,
      "pct_fully_of_reachable": 2.6,
      "pct_partially_of_reachable": 2.6,
@@ -9396,7 +9162,7 @@
      "blocked_fully": 0,
      "blocked_partially": 0,
      "allowed_explicitly": 0,
-     "not_mentioned": 39,
+     "not_mentioned": 38,
      "not_mentioned_but_star_blocks_all": 3,
      "pct_fully_of_reachable": 0.0,
      "pct_partially_of_reachable": 0.0,
@@ -9409,7 +9175,7 @@
      "blocked_fully": 1,
      "blocked_partially": 0,
      "allowed_explicitly": 0,
-     "not_mentioned": 38,
+     "not_mentioned": 37,
      "not_mentioned_but_star_blocks_all": 3,
      "pct_fully_of_reachable": 2.6,
      "pct_partially_of_reachable": 0.0,
@@ -9422,7 +9188,7 @@
      "blocked_fully": 0,
      "blocked_partially": 0,
      "allowed_explicitly": 0,
-     "not_mentioned": 39,
+     "not_mentioned": 38,
      "not_mentioned_but_star_blocks_all": 3,
      "pct_fully_of_reachable": 0.0,
      "pct_partially_of_reachable": 0.0,
@@ -9435,7 +9201,7 @@
      "blocked_fully": 0,
      "blocked_partially": 0,
      "allowed_explicitly": 0,
-     "not_mentioned": 39,
+     "not_mentioned": 38,
      "not_mentioned_but_star_blocks_all": 3,
      "pct_fully_of_reachable": 0.0,
      "pct_partially_of_reachable": 0.0,
@@ -9448,7 +9214,7 @@
      "blocked_fully": 0,
      "blocked_partially": 0,
      "allowed_explicitly": 0,
-     "not_mentioned": 39,
+     "not_mentioned": 38,
      "not_mentioned_but_star_blocks_all": 3,
      "pct_fully_of_reachable": 0.0,
      "pct_partially_of_reachable": 0.0,
@@ -9461,7 +9227,7 @@
      "blocked_fully": 1,
      "blocked_partially": 0,
      "allowed_explicitly": 0,
-     "not_mentioned": 38,
+     "not_mentioned": 37,
      "not_mentioned_but_star_blocks_all": 3,
      "pct_fully_of_reachable": 2.6,
      "pct_partially_of_reachable": 0.0,
@@ -9474,7 +9240,7 @@
      "blocked_fully": 0,
      "blocked_partially": 0,
      "allowed_explicitly": 0,
-     "not_mentioned": 39,
+     "not_mentioned": 38,
      "not_mentioned_but_star_blocks_all": 3,
      "pct_fully_of_reachable": 0.0,
      "pct_partially_of_reachable": 0.0,
@@ -9487,7 +9253,7 @@
      "blocked_fully": 0,
      "blocked_partially": 0,
      "allowed_explicitly": 0,
-     "not_mentioned": 39,
+     "not_mentioned": 38,
      "not_mentioned_but_star_blocks_all": 3,
      "pct_fully_of_reachable": 0.0,
      "pct_partially_of_reachable": 0.0,
@@ -9500,7 +9266,7 @@
      "blocked_fully": 1,
      "blocked_partially": 0,
      "allowed_explicitly": 0,
-     "not_mentioned": 38,
+     "not_mentioned": 37,
      "not_mentioned_but_star_blocks_all": 3,
      "pct_fully_of_reachable": 2.6,
      "pct_partially_of_reachable": 0.0,
@@ -9513,7 +9279,7 @@
      "blocked_fully": 0,
      "blocked_partially": 0,
      "allowed_explicitly": 0,
-     "not_mentioned": 39,
+     "not_mentioned": 38,
      "not_mentioned_but_star_blocks_all": 3,
      "pct_fully_of_reachable": 0.0,
      "pct_partially_of_reachable": 0.0,
@@ -9526,7 +9292,7 @@
      "blocked_fully": 5,
      "blocked_partially": 0,
      "allowed_explicitly": 0,
-     "not_mentioned": 34,
+     "not_mentioned": 33,
      "not_mentioned_but_star_blocks_all": 1,
      "pct_fully_of_reachable": 12.8,
      "pct_partially_of_reachable": 0.0,
@@ -9554,7 +9320,7 @@
     "count": 3,
     "pct_of_reachable": 7.7
    },
-   "mean_ai_bots_named_per_robots_txt": 1.59,
+   "mean_ai_bots_named_per_robots_txt": 1.632,
    "mean_ai_bots_named_per_robots_txt_among_those_naming_any": 6.889
   },
   "cz": {
@@ -9959,17 +9725,17 @@
   "by_rank_bucket": {
    "top100": {
     "scanned": 100,
-    "valid": 9,
-    "pct_valid": 9.0,
-    "http200": 30,
-    "pct_http200": 30.0
+    "valid": 8,
+    "pct_valid": 8.0,
+    "http200": 27,
+    "pct_http200": 27.0
    },
    "top1k": {
     "scanned": 1000,
-    "valid": 118,
-    "pct_valid": 11.8,
-    "http200": 245,
-    "pct_http200": 24.5
+    "valid": 116,
+    "pct_valid": 11.6,
+    "http200": 232,
+    "pct_http200": 23.2
    },
    "top10k": {
     "scanned": 10000,
@@ -9986,11 +9752,11 @@
   "pct_of_all_scanned": 4.0,
   "values": {
    "ai-train": {
-    "yes": 77,
-    "no": 315
+    "yes": 75,
+    "no": 314
    },
    "search": {
-    "yes": 392,
+    "yes": 389,
     "no": 3
    },
    "ai-input": {

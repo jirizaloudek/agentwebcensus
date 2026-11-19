@@ -4,3 +4,4 @@ __pycache__/
 data/web/raw.jsonl
 data/mcp/servers.json
 site/
+data/health/raw.jsonl

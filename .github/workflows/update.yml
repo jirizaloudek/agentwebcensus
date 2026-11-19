@@ -39,6 +39,11 @@ jobs:
           if [ "$(date -u +%u)" = "1" ] || [ "${{ github.event_name }}" = "workflow_dispatch" ] || [ ! -f data/web/latest.json ]; then
             python3 scripts/scan_web.py --top 10000 --out data/web/raw.jsonl && python3 scripts/build_web_stats.py
           fi
+      - name: Check remote MCP servers (weekly on Wednesdays, or on manual run)
+        run: |
+          if [ "$(date -u +%u)" = "3" ] || [ "${{ github.event_name }}" = "workflow_dispatch" ] || [ ! -f data/health/latest.json ]; then
+            rm -f data/health/raw.jsonl && python3 scripts/check_remotes.py --out data/health/raw.jsonl && python3 scripts/build_health_stats.py
+          fi
       - name: Build site
         run: python3 scripts/build_site.py
       - name: Upload site for GitHub Pages

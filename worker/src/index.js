@@ -315,7 +315,7 @@ const HOME = `<!doctype html><html lang="en"><head><meta charset="utf-8"><meta n
 <style>body{font:16px/1.55 system-ui,sans-serif;max-width:46rem;margin:2rem auto;padding:0 1rem;color:#1a1a1a}code,pre{background:#f2f2f2;padding:.1em .3em;border-radius:4px}pre{padding:.8em;overflow:auto}</style></head><body>
 <h1>Agent Web Census MCP server</h1>
 <p>A free remote <a href="https://modelcontextprotocol.io">Model Context Protocol</a> server that gives AI agents access to the open data of <a href="https://agents.datacensus.org">Agent Web Census</a>: search the official MCP Registry with live health checks, and check which AI crawlers top websites block. No API key needed.</p>
-<p>Endpoint (Streamable HTTP): <code>https://datacensus.org/mcp</code></p>
+<p>Endpoint (Streamable HTTP): <code>https://datacensus.org/mcp</code> &middot; server card: <a href="/.well-known/mcp/server-card.json">/.well-known/mcp/server-card.json</a></p>
 <h2>Add it to your client</h2>
 <p><b>Claude</b>: Settings, Connectors, Add custom connector, URL <code>https://datacensus.org/mcp</code>. Claude Code: <code>claude mcp add --transport http datacensus https://datacensus.org/mcp</code></p>
 <p><b>Cursor</b>: add to <code>~/.cursor/mcp.json</code>:</p>
@@ -340,6 +340,24 @@ const LLMS = `# Agent Web Census MCP server
 - Data and methodology: https://agents.datacensus.org/llms.txt
 `;
 
+// MCP server card (SEP-1649 draft) for discovery by clients and directories.
+const SERVER_CARD = {
+  version: "1.0",
+  protocolVersion: "2025-06-18",
+  serverInfo: SERVER_INFO,
+  name: "org.datacensus/agents",
+  title: "Agent Web Census",
+  description: "Open data on MCP servers (with live health checks) and which AI crawlers top websites block. Operated by an AI agent (Claude). Data CC BY 4.0.",
+  websiteUrl: "https://agents.datacensus.org",
+  repository: { url: "https://github.com/jirizaloudek/agentwebcensus", source: "github" },
+  transport: { type: "streamable-http", endpoint: "/mcp" },
+  remotes: [{ type: "streamable-http", url: "https://datacensus.org/mcp" }],
+  capabilities: { tools: { listChanged: false } },
+  authentication: { required: false, schemes: [] },
+  instructions: INSTRUCTIONS,
+  tools: TOOLS.map((t) => ({ name: t.name, description: t.description })),
+};
+
 export default {
   async fetch(request, env) {
     const url = new URL(request.url);
@@ -353,6 +371,7 @@ export default {
     if (request.method !== "GET" && request.method !== "HEAD") return new Response("Method Not Allowed", { status: 405, headers: CORS });
     if (path === "/") return new Response(HOME, { headers: { "Content-Type": "text/html; charset=utf-8", ...CORS } });
     if (path === "/llms.txt") return new Response(LLMS, { headers: { "Content-Type": "text/plain; charset=utf-8", ...CORS } });
+    if (path === "/.well-known/mcp/server-card.json" || path === "/.well-known/mcp.json") return json(SERVER_CARD);
     if (path === "/robots.txt") return new Response("User-agent: *\nAllow: /\n", { headers: { "Content-Type": "text/plain; charset=utf-8", ...CORS } });
     return new Response("Not found", { status: 404, headers: CORS });
   },

@@ -311,11 +311,19 @@ function json(obj, status = 200) {
 
 // ---------- static pages ----------
 const HOME = `<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Agent Web Census MCP server</title><meta name="description" content="Remote MCP server exposing open data on MCP servers and AI crawler policies.">
+<title>Agent Web Census MCP server</title><meta name="description" content="Remote MCP server exposing open data on MCP servers and AI crawler policies."><link rel="canonical" href="https://datacensus.org/">
 <style>body{font:16px/1.55 system-ui,sans-serif;max-width:46rem;margin:2rem auto;padding:0 1rem;color:#1a1a1a}code,pre{background:#f2f2f2;padding:.1em .3em;border-radius:4px}pre{padding:.8em;overflow:auto}</style></head><body>
 <h1>Agent Web Census MCP server</h1>
 <p>A free remote <a href="https://modelcontextprotocol.io">Model Context Protocol</a> server that gives AI agents access to the open data of <a href="https://agents.datacensus.org">Agent Web Census</a>: search the official MCP Registry with live health checks, and check which AI crawlers top websites block. No API key needed.</p>
 <p>Endpoint (Streamable HTTP): <code>https://datacensus.org/mcp</code> &middot; server card: <a href="/.well-known/mcp/server-card.json">/.well-known/mcp/server-card.json</a></p>
+<h2>Explore the data (no install needed)</h2>
+<ul>
+<li><a href="https://agents.datacensus.org/mcp/">MCP ecosystem stats</a>: daily counts and growth of the official MCP Registry.</li>
+<li><a href="https://agents.datacensus.org/mcp/health/">Remote MCP health</a>: how many public remote MCP endpoints actually answer <code>initialize</code>.</li>
+<li><a href="https://agents.datacensus.org/mcp/servers/">Is my MCP server working?</a> A to Z index of ~45k remote servers with their last check.</li>
+<li><a href="https://agents.datacensus.org/ai-crawlers/">AI crawler blocking</a>: which AI bots the top 10k websites block in robots.txt.</li>
+<li><a href="https://agents.datacensus.org/reports/">Reports</a> and <a href="https://agents.datacensus.org/data/">open data downloads</a> (JSON/CSV, CC BY 4.0).</li>
+</ul>
 <h2>Add it to your client</h2>
 <p><b>Claude</b>: Settings, Connectors, Add custom connector, URL <code>https://datacensus.org/mcp</code>. Claude Code: <code>claude mcp add --transport http datacensus https://datacensus.org/mcp</code></p>
 <p><b>Cursor</b>: add to <code>~/.cursor/mcp.json</code>:</p>

@@ -1,26 +1,26 @@
 {
- "generated_at": "2026-11-21T13:33:37+00:00",
+ "generated_at": "2026-11-22T13:40:47+00:00",
  "source": "https://registry.modelcontextprotocol.io/v0/servers (official MCP Registry, full crawl)",
  "license": "CC BY 4.0 \u2014 cite as: MCP Census (mcpcensus), data from the official MCP Registry",
  "totals": {
-  "servers": 69582,
-  "version_records": 279573,
-  "active": 68432,
-  "deprecated": 1117,
-  "namespaces": 42618,
+  "servers": 70074,
+  "version_records": 281607,
+  "active": 68947,
+  "deprecated": 1127,
+  "namespaces": 43035,
   "avg_versions_per_server": 4.02,
   "median_versions_per_server": 1.0,
   "first_server_published": "2025-09-08"
  },
  "growth": {
-  "new_servers_last_24h": 599,
-  "new_servers_last_7d": 5422,
-  "new_7d_first_published_on_or_after": "2026-11-15",
-  "new_servers_last_30d": 21482,
-  "version_publishes_last_7d": 26754,
-  "version_publishes_last_30d": 111583,
-  "servers_updated_last_30d": 31364,
-  "last_full_month_mom_growth_pct": 37.3,
+  "new_servers_last_24h": 569,
+  "new_servers_last_7d": 5376,
+  "new_7d_first_published_on_or_after": "2026-11-16",
+  "new_servers_last_30d": 21465,
+  "version_publishes_last_7d": 25772,
+  "version_publishes_last_30d": 110815,
+  "servers_updated_last_30d": 31469,
+  "last_full_month_mom_growth_pct": 37.2,
   "monthly": [
    {
     "month": "2025-09",
@@ -29,80 +29,76 @@
    },
    {
     "month": "2025-10",
-    "new": 296,
-    "cumulative": 752
+    "new": 295,
+    "cumulative": 751
    },
    {
     "month": "2025-11",
     "new": 173,
-    "cumulative": 925
+    "cumulative": 924
    },
    {
     "month": "2025-12",
-    "new": 275,
-    "cumulative": 1200
+    "new": 273,
+    "cumulative": 1197
    },
    {
     "month": "2026-01",
     "new": 389,
-    "cumulative": 1589
+    "cumulative": 1586
    },
    {
     "month": "2026-02",
-    "new": 1152,
-    "cumulative": 2741
+    "new": 1140,
+    "cumulative": 2726
    },
    {
     "month": "2026-03",
-    "new": 1932,
-    "cumulative": 4673
+    "new": 1927,
+    "cumulative": 4653
    },
    {
     "month": "2026-04",
-    "new": 2545,
-    "cumulative": 7218
+    "new": 2539,
+    "cumulative": 7192
    },
    {
     "month": "2026-05",
-    "new": 3014,
-    "cumulative": 10232
+    "new": 3012,
+    "cumulative": 10204
    },
    {
     "month": "2026-06",
-    "new": 3844,
-    "cumulative": 14076
+    "new": 3843,
+    "cumulative": 14047
    },
    {
     "month": "2026-07",
-    "new": 5068,
-    "cumulative": 19144
+    "new": 5053,
+    "cumulative": 19100
    },
    {
     "month": "2026-08",
-    "new": 6514,
-    "cumulative": 25658
+    "new": 6512,
+    "cumulative": 25612
    },
    {
     "month": "2026-09",
-    "new": 11838,
-    "cumulative": 37496
+    "new": 11837,
+    "cumulative": 37449
    },
    {
     "month": "2026-10",
-    "new": 16253,
-    "cumulative": 53749
+    "new": 16240,
+    "cumulative": 53689
    },
    {
     "month": "2026-11",
-    "new": 15833,
-    "cumulative": 69582
+    "new": 16385,
+    "cumulative": 70074
    }
   ],
   "daily_last_60": [
-   {
-    "date": "2026-09-23",
-    "new": 368
-   },
    {
     "date": "2026-09-24",
     "new": 416
@@ -129,11 +125,11 @@
    },
    {
     "date": "2026-09-30",
-    "new": 368
+    "new": 367
    },
    {
     "date": "2026-10-01",
-    "new": 379
+    "new": 378
    },
    {
     "date": "2026-10-02",
@@ -161,7 +157,7 @@
    },
    {
     "date": "2026-10-08",
-    "new": 433
+    "new": 432
    },
    {
     "date": "2026-10-09",
@@ -185,7 +181,7 @@
    },
    {
     "date": "2026-10-14",
-    "new": 561
+    "new": 560
    },
    {
     "date": "2026-10-15",
@@ -193,7 +189,7 @@
    },
    {
     "date": "2026-10-16",
-    "new": 590
+    "new": 588
    },
    {
     "date": "2026-10-17",
@@ -201,11 +197,11 @@
    },
    {
     "date": "2026-10-18",
-    "new": 571
+    "new": 570
    },
    {
     "date": "2026-10-19",
-    "new": 569
+    "new": 568
    },
    {
     "date": "2026-10-20",
@@ -213,7 +209,7 @@
    },
    {
     "date": "2026-10-21",
-    "new": 731
+    "new": 730
    },
    {
     "date": "2026-10-22",
@@ -221,11 +217,11 @@
    },
    {
     "date": "2026-10-23",
-    "new": 549
+    "new": 548
    },
    {
     "date": "2026-10-24",
-    "new": 531
+    "new": 529
    },
    {
     "date": "2026-10-25",
@@ -241,11 +237,11 @@
    },
    {
     "date": "2026-10-28",
-    "new": 677
+    "new": 676
    },
    {
     "date": "2026-10-29",
-    "new": 691
+    "new": 690
    },
    {
     "date": "2026-10-30",
@@ -261,11 +257,11 @@
    },
    {
     "date": "2026-11-02",
-    "new": 835
+    "new": 834
    },
    {
     "date": "2026-11-03",
-    "new": 707
+    "new": 705
    },
    {
     "date": "2026-11-04",
@@ -273,7 +269,7 @@
    },
    {
     "date": "2026-11-05",
-    "new": 541
+    "new": 540
    },
    {
     "date": "2026-11-06",
@@ -281,11 +277,11 @@
    },
    {
     "date": "2026-11-07",
-    "new": 553
+    "new": 552
    },
    {
     "date": "2026-11-08",
-    "new": 1311
+    "new": 1310
    },
    {
     "date": "2026-11-09",
@@ -293,7 +289,7 @@
    },
    {
     "date": "2026-11-10",
-    "new": 853
+    "new": 850
    },
    {
     "date": "2026-11-11",
@@ -309,7 +305,7 @@
    },
    {
     "date": "2026-11-14",
-    "new": 515
+    "new": 514
    },
    {
     "date": "2026-11-15",
@@ -321,74 +317,78 @@
    },
    {
     "date": "2026-11-17",
-    "new": 774
+    "new": 773
    },
    {
     "date": "2026-11-18",
-    "new": 712
+    "new": 711
    },
    {
     "date": "2026-11-19",
-    "new": 921
+    "new": 915
    },
    {
     "date": "2026-11-20",
-    "new": 1326
+    "new": 1325
    },
    {
     "date": "2026-11-21",
-    "new": 253
+    "new": 544
+   },
+   {
+    "date": "2026-11-22",
+    "new": 280
    }
   ]
  },
  "deployment": {
-  "remote_servers": 47268,
-  "remote_pct": 67.9,
-  "package_servers": 26539,
-  "package_pct": 38.1,
-  "remote_and_package": 4942,
+  "remote_servers": 47717,
+  "remote_pct": 68.1,
+  "package_servers": 26617,
+  "package_pct": 38.0,
+  "remote_and_package": 4978,
   "remote_transport": {
-   "streamable-http": 46524,
+   "streamable-http": 46974,
    "sse": 1128
   },
   "package_registry": {
-   "npm": 18151,
-   "pypi": 5677,
-   "oci": 2006,
-   "mcpb": 1880,
-   "nuget": 188,
+   "npm": 18195,
+   "pypi": 5690,
+   "oci": 2012,
+   "mcpb": 1894,
+   "nuget": 189,
    "cargo": 155
   },
   "package_transport": {
-   "stdio": 26207,
-   "streamable-http": 649,
-   "sse": 34
+   "stdio": 26283,
+   "streamable-http": 652,
+   "sse": 35
   },
-  "unique_remote_hosts": 35963,
-  "packages_requiring_env_vars": 12877,
+  "unique_remote_hosts": 36362,
+  "packages_requiring_env_vars": 12910,
   "packages_requiring_env_vars_pct": 48.5
  },
  "metadata_quality": {
-  "with_repository_pct": 63.5,
-  "github_hosted_repo_pct": 63.3,
-  "with_icon_pct": 19.5,
-  "with_website_pct": 65.8,
-  "with_title_pct": 75.3,
+  "with_repository_pct": 63.4,
+  "github_hosted_repo_pct": 63.2,
+  "with_icon_pct": 19.7,
+  "with_website_pct": 66.0,
+  "with_title_pct": 75.4,
   "median_description_chars": 91.0
  },
  "concentration": {
-  "top10_publishers_share_pct": 16.3,
-  "top100_publishers_share_pct": 24.4,
-  "publishers_with_one_server": 38609,
+  "top10_publishers_share_pct": 16.2,
+  "top100_publishers_share_pct": 24.2,
+  "publishers_with_one_server": 38988,
   "publishers_with_100plus": 24
  },
  "namespaces": {
   "by_kind": {
-   "io.github.*": 38181,
-   "com.*": 13652,
-   "other": 11867,
-   "ai.*": 3161,
-   "io.*": 2721
+   "io.github.*": 38351,
+   "com.*": 13793,
+   "other": 12014,
+   "ai.*": 3178,
+   "io.*": 2738
   },
   "top_25": [
    {
@@ -409,7 +409,7 @@
    },
    {
     "namespace": "io.usefulapi",
-    "servers": 1095
+    "servers": 1097
    },
    {
     "namespace": "io.github.CloudCorpRecords",
@@ -496,19 +496,19 @@
  "categories": {
   "method": "keyword match on name/title/description; a server may be in several categories",
   "counts": {
-   "search & web": 9312,
-   "ai & media generation": 5434,
-   "finance & crypto": 4144,
-   "dev tools & code": 3860,
-   "productivity & docs": 3601,
-   "marketing & seo": 3263,
-   "memory & knowledge": 3064,
-   "maps & travel": 2702,
-   "security": 2700,
-   "commerce": 2659,
-   "cloud & infra": 1511,
+   "search & web": 9399,
+   "ai & media generation": 5462,
+   "finance & crypto": 4167,
+   "dev tools & code": 3870,
+   "productivity & docs": 3634,
+   "marketing & seo": 3306,
+   "memory & knowledge": 3075,
+   "maps & travel": 2720,
+   "security": 2712,
+   "commerce": 2693,
+   "cloud & infra": 1516,
    "database": 1151
   },
-  "uncategorized": 35647
+  "uncategorized": 35908
  }
 }

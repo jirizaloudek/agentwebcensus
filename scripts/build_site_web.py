@@ -63,7 +63,7 @@ def build(W, upd, day):
 <h2>Method</h2><p class="meta">{e(W['methodology'])}</p><p>Data: <a href="/data/web-latest.json">web-latest.json</a> · <a href="/data/web-history.csv">web-history.csv</a></p>"""
     page("/ai-crawlers/", f"AI Crawler Blocking Statistics ({mon}): who blocks GPTBot, ClaudeBot & co. (top-{fmt(N)} sites with a robots.txt)",
          f"{any1['pct_of_reachable']}% {den} block at least one AI crawler by name site-wide ({allp(any1['pct_of_all_scanned'])}). Scan of {gen}, repeated weekly.", body, gen,
-         {"@context": "https://schema.org", "@type": "Dataset", "name": "AI crawler robots.txt policies of top websites", "url": BASE_URL + "/ai-crawlers/",
+         {"@context": "https://schema.org", "@type": "Dataset", "name": "AI crawler robots.txt policies of top websites", "description": "Which AI crawlers (GPTBot, ClaudeBot and others) are blocked in the robots.txt of the top 10,000 websites, scanned weekly, with per-bot counts.", "url": BASE_URL + "/ai-crawlers/",
           "dateModified": gen, "license": "https://creativecommons.org/licenses/by/4.0/", "creator": {"@type": "Organization", "name": SITE_NAME},
           "distribution": [{"@type": "DataDownload", "encodingFormat": "json", "contentUrl": BASE_URL + "/data/web-latest.json"}]})
 

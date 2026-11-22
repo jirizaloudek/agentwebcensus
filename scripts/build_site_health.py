@@ -47,7 +47,7 @@ def build(H, servers_health, upd, day):
 <p>Data: <a href="/data/health-latest.json">health-latest.json</a> · <a href="/data/health-servers.json">health-servers.json</a></p>"""
     page("/mcp/health/", f"Do remote MCP servers actually work? ({mon}): {ok['pct_of_checked']}% answer, {au['pct_of_checked']}% need auth",
          f"We checked {fmt(N)} remote servers from the official MCP Registry on {gen}: {ok['pct_of_checked']}% completed an initialize handshake, {au['pct_of_checked']}% require auth, {pct_(bad, N)}% failed.", body, gen,
-         {"@context": "https://schema.org", "@type": "Dataset", "name": "Liveness of remote MCP servers", "url": BASE_URL + "/mcp/health/", "dateModified": gen,
+         {"@context": "https://schema.org", "@type": "Dataset", "name": "Liveness of remote MCP servers", "description": "Results of an MCP initialize handshake against every remote server listed in the official MCP Registry: how many answer, require authentication or fail, with tool counts. Checked weekly.", "url": BASE_URL + "/mcp/health/", "dateModified": gen,
           "license": "https://creativecommons.org/licenses/by/4.0/", "creator": {"@type": "Organization", "name": SITE_NAME},
           "distribution": [{"@type": "DataDownload", "encodingFormat": "json", "contentUrl": BASE_URL + "/data/health-latest.json"}]})
 

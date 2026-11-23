@@ -1,5 +1,5 @@
 // Agent Web Census MCP server: stateless Streamable HTTP (JSON responses only), no dependencies.
-const SERVER_INFO = { name: "datacensus", version: "0.1.0" };
+const SERVER_INFO = { name: "datacensus", version: "0.2.0" };
 const SUPPORTED = ["2025-06-18", "2025-03-26", "2025-11-25"];
 const DEFAULT_DATA_BASE = "https://agents.datacensus.org/data/";
 const ATTRIBUTION = "Source: Agent Web Census (agents.datacensus.org), CC BY 4.0";
@@ -7,7 +7,8 @@ const INSTRUCTIONS =
   "Open data about the AI agent ecosystem from Agent Web Census (agents.datacensus.org): " +
   "use find_mcp_servers to search ~65k servers of the official MCP Registry (with a weekly live-check of remote endpoints), " +
   "mcp_ecosystem_stats for headline MCP numbers, site_ai_crawler_policy to see which AI bots a top-10k website blocks in robots.txt, " +
-  "and ai_crawler_stats for aggregate AI-crawler blocking rates. Data is CC BY 4.0; cite Agent Web Census. " +
+  "and ai_crawler_stats for aggregate AI-crawler blocking rates. " +
+  "For macroeconomics use latest_indicator: the latest official inflation, central bank policy rate, unemployment, GDP growth, IMF forecasts and population for ~60 economies, refreshed daily from OECD, BIS, IMF, World Bank and Eurostat (datacensus.org/stats). Data is CC BY 4.0; cite Agent Web Census. " +
   "This service is operated by an AI agent (Claude).";
 
 const CORS = {
@@ -61,6 +62,20 @@ const TOOLS = [
     inputSchema: {
       type: "object",
       properties: { bot: { type: "string", description: "Optional bot name, e.g. 'GPTBot', 'ClaudeBot', 'Google-Extended' (case-insensitive)." } },
+    },
+    annotations: { readOnlyHint: true, openWorldHint: false },
+  },
+  {
+    name: "latest_indicator",
+    description:
+      "Latest official macroeconomic numbers for a country, refreshed daily from primary sources (OECD, BIS, IMF World Economic Outlook, World Bank, Eurostat): inflation (CPI y/y), central bank policy rate, unemployment rate, real GDP growth (quarterly y/y), IMF annual GDP growth and inflation incl. forecasts, population. Returns value, reference period, previous value, source and a citable URL. Omit country to get one indicator for all countries (ranked).",
+    inputSchema: {
+      type: "object",
+      properties: {
+        country: { type: "string", description: "Country name or ISO code, e.g. 'Germany', 'DE', 'USA', 'euro area'. Omit to list all countries for one indicator." },
+        indicator: { type: "string", enum: ["inflation", "policy_rate", "unemployment", "gdp_growth", "inflation_hicp", "imf_gdp_growth", "imf_inflation", "population", "all"], description: "Which indicator (default 'all' for a country; 'inflation' when listing all countries)." },
+        history: { type: "boolean", description: "Include the full recent time series (up to 60 observations) for the chosen indicator.", default: false },
+      },
     },
     annotations: { readOnlyHint: true, openWorldHint: false },
   },
@@ -263,7 +278,49 @@ async function aiCrawlerStats(args, env) {
     { scan_date: w.generated, sites_scanned: w.overall.scanned, robots_reachable: w.overall.robots_reachable, llms_txt_valid_pct: w.llms_txt && w.llms_txt.overall.pct_valid, bots: all });
 }
 
-const HANDLERS = { find_mcp_servers: findMcpServers, mcp_ecosystem_stats: mcpEcosystemStats, site_ai_crawler_policy: siteAiCrawlerPolicy, ai_crawler_stats: aiCrawlerStats };
+
+const ALIASES = { "us": "USA", "u.s.": "USA", "america": "USA", "united states of america": "USA", "uk": "GBR", "britain": "GBR", "great britain": "GBR", "england": "GBR",
+  "eurozone": "EA20", "euro area": "EA20", "euro zone": "EA20", "ea": "EA20", "south korea": "KOR", "korea": "KOR", "russia": "RUS", "czechia": "CZE", "czech republic": "CZE", "turkey": "TUR", "turkiye": "TUR" };
+const STATS_HOME = "https://agents.datacensus.org/stats/";
+function findCountry(countries, q) {
+  const s = String(q).trim().toLowerCase();
+  if (ALIASES[s] && countries[ALIASES[s]]) return ALIASES[s];
+  for (const [k, c] of Object.entries(countries)) if (k.toLowerCase() === s || (c.iso2 && c.iso2.toLowerCase() === s)) return k;
+  for (const [k, c] of Object.entries(countries)) if (c.name.toLowerCase() === s) return k;
+  for (const [k, c] of Object.entries(countries)) if (c.name.toLowerCase().startsWith(s) || c.name.toLowerCase().includes(s)) return k;
+  return null;
+}
+async function latestIndicator(args, env) {
+  const d = await loadData(env, "stats-summary.json");
+  const ind = args.indicator && args.indicator !== "all" ? args.indicator : null;
+  if (ind && !d.indicators[ind]) return toolError(`Unknown indicator '${ind}'. Known: ${Object.keys(d.indicators).join(", ")}`);
+  const cite = `Source: datacensus.org (official data from OECD, BIS, IMF, World Bank, Eurostat), retrieved ${String(d.generated).slice(0, 10)}, CC BY 4.0.`;
+  if (!args.country) {
+    const k = ind || "inflation";
+    const rows = Object.entries(d.countries).filter(([, c]) => c[k]).map(([code, c]) => ({ country: c.name, code, value: c[k].value, period: c[k].period, previous: c[k].previous, url: c.url }))
+      .sort((a, b) => b.value - a.value);
+    return asText(`${d.indicators[k].name} for ${rows.length} countries (latest official values; periods differ). Highest: ${rows[0].country} ${rows[0].value}, lowest: ${rows[rows.length - 1].country} ${rows[rows.length - 1].value}. ${cite}`,
+      { indicator: k, unit: d.indicators[k].unit, generated: d.generated, rows });
+  }
+  const code = findCountry(d.countries, args.country);
+  if (!code) return toolError(`No data for '${args.country}'. Covered: ${Object.values(d.countries).map((c) => c.name).join(", ")}`);
+  const c = d.countries[code];
+  const ks = (ind ? [ind] : Object.keys(d.indicators)).filter((k) => c[k]);
+  if (!ks.length) return toolError(`${c.name}: no ${ind} data. Available: ${Object.keys(d.indicators).filter((k) => c[k]).join(", ")}`);
+  const out = {};
+  const parts = [];
+  for (const k of ks) {
+    const u = d.indicators[k].unit === "%" ? "%" : "";
+    out[k] = { name: d.indicators[k].name, unit: d.indicators[k].unit, ...c[k] };
+    parts.push(`${d.indicators[k].name}: ${c[k].value}${u} (${c[k].period}${c[k].previous != null ? `; previous ${c[k].previous}${u}` : ""}; ${c[k].source})`);
+  }
+  if (args.history && ind) {
+    try { const s = await loadData(env, `stats/${code}-${ind}.json`); out[ind].obs = s.obs; out[ind].source_url = s.source_url; } catch (_) { /* summary only */ }
+  }
+  return asText(`${c.name} — ${parts.join("; ")}. Page: ${c.url} . ${cite}`, { country: c.name, code, generated: d.generated, url: c.url, indicators: out });
+}
+
+const HANDLERS = { latest_indicator: latestIndicator,  find_mcp_servers: findMcpServers, mcp_ecosystem_stats: mcpEcosystemStats, site_ai_crawler_policy: siteAiCrawlerPolicy, ai_crawler_stats: aiCrawlerStats };
 
 // ---------- JSON-RPC ----------
 const rpcErr = (id, code, message) => ({ jsonrpc: "2.0", id: id ?? null, error: { code, message } });
@@ -318,6 +375,7 @@ const HOME = `<!doctype html><html lang="en"><head><meta charset="utf-8"><meta n
 <p>Endpoint (Streamable HTTP): <code>https://datacensus.org/mcp</code> &middot; server card: <a href="/.well-known/mcp/server-card.json">/.well-known/mcp/server-card.json</a></p>
 <h2>Explore the data (no install needed)</h2>
 <ul>
+<li><a href="https://agents.datacensus.org/stats/">Latest economic indicators by country</a>: inflation, interest rates, unemployment, GDP — official sources, refreshed daily.</li>
 <li><a href="https://agents.datacensus.org/mcp/">MCP ecosystem stats</a>: daily counts and growth of the official MCP Registry.</li>
 <li><a href="https://agents.datacensus.org/mcp/health/">Remote MCP health</a>: how many public remote MCP endpoints actually answer <code>initialize</code>.</li>
 <li><a href="https://agents.datacensus.org/mcp/servers/">Is my MCP server working?</a> A to Z index of ~45k remote servers with their last check.</li>
@@ -335,6 +393,7 @@ const HOME = `<!doctype html><html lang="en"><head><meta charset="utf-8"><meta n
 <li><code>mcp_ecosystem_stats</code>: headline numbers of the MCP ecosystem and remote server health.</li>
 <li><code>site_ai_crawler_policy</code>: which AI bots a top-10k website blocks in robots.txt, and llms.txt presence.</li>
 <li><code>ai_crawler_stats</code>: blocking percentages per AI bot across the top 10k sites.</li>
+<li><code>latest_indicator</code>: latest official inflation, central bank rate, unemployment, GDP growth, IMF forecasts and population for ~60 economies, refreshed daily.</li>
 </ul>
 <p>Data: CC BY 4.0, cite "Agent Web Census (agents.datacensus.org)". <b>This service is built and operated by an AI agent</b> (Claude, by Anthropic) as an experiment; a human sponsor provides hosting. Source and data: <a href="https://github.com/jirizaloudek/agentwebcensus">GitHub</a> and <a href="https://agents.datacensus.org">agents.datacensus.org</a>.</p>
 </body></html>`;
@@ -344,7 +403,8 @@ const LLMS = `# Agent Web Census MCP server
 > Remote MCP server (Streamable HTTP, no auth) exposing open data on MCP servers and AI crawler policies. Operated by an AI agent (Claude). Data CC BY 4.0.
 
 - Endpoint: https://datacensus.org/mcp
-- Tools: find_mcp_servers, mcp_ecosystem_stats, site_ai_crawler_policy, ai_crawler_stats
+- Tools: latest_indicator (inflation, policy rates, unemployment, GDP by country; daily, official sources), find_mcp_servers, mcp_ecosystem_stats, site_ai_crawler_policy, ai_crawler_stats
+- Economic indicators (web + Markdown): https://agents.datacensus.org/stats/
 - Data and methodology: https://agents.datacensus.org/llms.txt
 `;
 

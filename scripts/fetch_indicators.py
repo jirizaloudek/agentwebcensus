@@ -325,6 +325,164 @@ def fetch_eurostat(iso2_to_iso3):
     return out
 
 
+# ------------------------------------------------- national statistics offices
+def yoy_from_index(idx):
+    """{period 'YYYY-MM': index} -> [[period, y/y %]] (needs the same month a year earlier)."""
+    obs = []
+    for p in sorted(idx):
+        prev = f"{int(p[:4]) - 1}{p[4:]}"
+        if prev in idx and idx[prev]:
+            obs.append([p, rnd((idx[p] / idx[prev] - 1) * 100)])
+    return obs
+
+
+def fetch_nso_usa():
+    """USA: BLS public API v1 (no key, ~25 req/day); fallback FRED CSV (no key, republishes BLS)."""
+    out = {"inflation": None, "unemployment": None}
+    bls_url = "https://api.bls.gov/publicAPI/v1/timeseries/data/"
+    start = YEAR - 3
+
+    def bls(sid):
+        d = json.loads(http_get(f"{bls_url}{sid}?startyear={start}&endyear={YEAR}"))
+        if d.get("status") != "REQUEST_SUCCEEDED":
+            raise RuntimeError(f"BLS {sid}: {str(d.get('message'))[:150]}")
+        vals = {}
+        for r in d["Results"]["series"][0]["data"]:
+            if r["period"].startswith("M") and r["period"] != "M13" and r["value"] not in ("-", ""):
+                vals[f"{r['year']}-{r['period'][1:]}"] = float(r["value"])
+        return vals
+
+    def fred(sid):
+        vals = {}
+        for r in csv.DictReader(io.StringIO(http_get("https://fred.stlouisfed.org/graph/fredgraph.csv?id=" + sid))):
+            v = r.get(sid, "")
+            if v not in ("", "."):
+                vals[r["observation_date"][:7]] = float(v)
+        return vals
+
+    for ind, bsid, fsid in (("inflation", "CUUR0000SA0", "CPIAUCNS"), ("unemployment", "LNS14000000", "UNRATE")):
+        try:
+            vals, src, url = bls(bsid), "US Bureau of Labor Statistics (public API v1)", "https://www.bls.gov/cpi/" if ind == "inflation" else "https://www.bls.gov/cps/"
+        except Exception as e:  # noqa: BLE001
+            WARN.append(f"BLS {bsid} failed ({str(e)[:80]}); using FRED {fsid}")
+            vals = fred(fsid)
+            src = "US Bureau of Labor Statistics via FRED (St. Louis Fed)"
+            url = "https://fred.stlouisfed.org/series/" + fsid
+        if ind == "inflation":
+            obs = yoy_from_index(vals)
+            sn = "BLS CPI-U all items, U.S. city average, not seasonally adjusted; y/y computed from index (" + src + ")"
+        else:
+            obs = [[p, rnd(v)] for p, v in sorted(vals.items())]
+            sn = "BLS Current Population Survey unemployment rate, seasonally adjusted (" + src + ")"
+        if obs:
+            out[ind] = {"USA": mk("NSO", sn, url, obs)}
+    return out
+
+
+def fetch_nso_jpn():
+    """Japan: Statistics Bureau CPI 2025-base nationwide monthly index CSV (all items); y/y computed."""
+    url = "https://www.stat.go.jp/data/cpi/2025/csv/zmi2025aa.csv"
+    raw = http_get(url, binary=True).decode("cp932")
+    idx = {r[0][:4] + "-" + r[0][4:]: float(r[1]) for r in csv.reader(io.StringIO(raw))
+           if len(r) > 1 and r[0].isdigit() and len(r[0]) == 6 and r[1].strip()}
+    obs = yoy_from_index(idx)
+    if not obs:
+        raise RuntimeError("no y/y observations")
+    return {"inflation": {"JPN": mk("NSO", "Statistics Bureau of Japan CPI, all items, nationwide (2025=100; y/y computed from index)",
+                                    "https://www.stat.go.jp/english/data/cpi/", obs)}}
+
+
+def fetch_nso_gbr():
+    """UK: ONS CPI annual rate (series D7G7), CSV."""
+    import re
+    url = "https://www.ons.gov.uk/generator?format=csv&uri=/economy/inflationandpriceindices/timeseries/d7g7/mm23"
+    mon = {m: i + 1 for i, m in enumerate("JAN FEB MAR APR MAY JUN JUL AUG SEP OCT NOV DEC".split())}
+    obs = []
+    for r in csv.reader(io.StringIO(http_get(url))):
+        m = re.match(r"^(\d{4}) ([A-Z]{3})$", r[0].strip()) if len(r) > 1 else None
+        if m and m.group(2) in mon and r[1].strip():
+            obs.append([f"{m.group(1)}-{mon[m.group(2)]:02d}", rnd(r[1])])
+    if not obs:
+        raise RuntimeError("no monthly observations")
+    return {"inflation": {"GBR": mk("NSO", "UK Office for National Statistics, CPI annual rate (D7G7)",
+                                    "https://www.ons.gov.uk/economy/inflationandpriceindices/timeseries/d7g7/mm23", obs)}}
+
+
+def fetch_nso_can():
+    """Canada: Statistics Canada WDS: CPI index (v41690973, y/y computed) and unemployment rate SA (v2062815)."""
+    api = "https://www150.statcan.gc.ca/t1/wds/rest/getDataFromVectorsAndLatestNPeriods"
+
+    def vec(v, n):
+        req = urllib.request.Request(api, data=json.dumps([{"vectorId": v, "latestN": n}]).encode(),
+                                     headers={"User-Agent": UA, "Content-Type": "application/json"})
+        with urllib.request.urlopen(req, timeout=TIMEOUT) as r:
+            d = json.loads(r.read())
+        if d[0].get("status") != "SUCCESS":
+            raise RuntimeError(f"StatCan v{v}: {str(d[0])[:120]}")
+        return {x["refPer"][:7]: float(x["value"]) for x in d[0]["object"]["vectorDataPoint"] if x.get("value") is not None}
+
+    out = {}
+    try:
+        obs = yoy_from_index(vec(41690973, 40))
+        if obs:
+            out["inflation"] = {"CAN": mk("NSO", "Statistics Canada CPI all-items, Canada (Table 18-10-0004; y/y computed from index)",
+                                          "https://www150.statcan.gc.ca/t1/tbl1/en/tv.action?pid=1810000401", obs)}
+    except Exception as e:  # noqa: BLE001
+        WARN.append(f"StatCan CPI failed: {str(e)[:100]}")
+    try:
+        v = vec(2062815, 37)
+        out["unemployment"] = {"CAN": mk("NSO", "Statistics Canada Labour Force Survey unemployment rate, seasonally adjusted (Table 14-10-0287)",
+                                         "https://www150.statcan.gc.ca/t1/tbl1/en/tv.action?pid=1410028701",
+                                         [[p, rnd(x)] for p, x in sorted(v.items())])}
+    except Exception as e:  # noqa: BLE001
+        WARN.append(f"StatCan unemployment failed: {str(e)[:100]}")
+    if not out:
+        raise RuntimeError("StatCan returned nothing")
+    return out
+
+
+def fetch_nso_aus():
+    """Australia: ABS Monthly CPI (complete monthly CPI dataflow, % change from corresponding month of previous year)."""
+    url = f"https://data.api.abs.gov.au/rest/data/ABS,CPI,2.0.0/3.10001.10.50.M?startPeriod={months_back(37)}&format=csv"
+    obs = [[r["TIME_PERIOD"], rnd(r["OBS_VALUE"])] for r in csv.DictReader(io.StringIO(http_get(url)))
+           if r.get("OBS_VALUE")]
+    obs.sort()
+    if not obs:
+        raise RuntimeError("no observations")
+    return {"inflation": {"AUS": mk("NSO", "Australian Bureau of Statistics, Consumer Price Index (monthly), all groups, annual change",
+                                    "https://www.abs.gov.au/statistics/economy/price-indexes-and-inflation/consumer-price-index-australia", obs)}}
+
+
+def apply_nso(new, nso):
+    """Let a national series replace the OECD one only when newer (or OECD has none)."""
+    for ind in ("inflation", "unemployment"):
+        cur_all = new.setdefault(ind, {})
+        for iso3, s in nso.get(ind, {}).items():
+            if not s.get("obs"):
+                continue
+            cur = cur_all.get(iso3)
+            n_last = s["obs"][-1][0]
+            if cur is None or not cur.get("obs"):
+                fb = dict(s)
+                fb["note"] = "national statistics office used (country missing from OECD)"
+                cur_all[iso3] = fb
+                continue
+            if cur.get("source") != "OECD":
+                continue
+            o_last = cur["obs"][-1][0]
+            if n_last <= o_last:
+                continue
+            o = dict(cur["obs"])
+            diffs = [abs(v - o[p]) for p, v in s["obs"] if p in o]
+            if diffs and max(diffs[-3:]) > 0.3:
+                WARN.append(f"NSO {ind} {iso3} differs from OECD by {max(diffs[-3:]):.2f} pp on overlapping months; kept OECD")
+                continue
+            fb = dict(s)
+            fb["note"] = (f"national statistics office used: newer than OECD "
+                          f"(OECD latest {o_last}, NSO latest {n_last})")
+            cur_all[iso3] = fb
+
+
 # -------------------------------------------------------------------- driver
 def load_previous():
     try:
@@ -377,6 +535,19 @@ def main():
     run("imf_gdp_growth", ["imf_gdp_growth"], lambda: fetch_imf("NGDP_RPCH", valid_iso3))
     run("imf_inflation", ["imf_inflation"], lambda: fetch_imf("PCPIPCH", valid_iso3))
     run("eurostat_hicp", ["inflation_hicp"], lambda: fetch_eurostat(iso2_to_iso3))
+
+    # National statistics offices (no key): fresher than OECD for USA, GBR, CAN, AUS, JPN
+    nso = {}
+    for label, fn in (("nso_usa", fetch_nso_usa), ("nso_jpn", fetch_nso_jpn), ("nso_gbr", fetch_nso_gbr),
+                      ("nso_can", fetch_nso_can), ("nso_aus", fetch_nso_aus)):
+        try:
+            for ind, data in fn().items():
+                if data:
+                    nso.setdefault(ind, {}).update(data)
+        except Exception as e:  # noqa: BLE001
+            FAILED.append(label)
+            log(f"WARNING: source {label} failed: {e}")
+    apply_nso(new, nso)
 
     # Fallback: HICP fills EU countries missing from OECD CPI (BG, HR, CY, MT, RO ...)
     if "inflation_hicp" in new:

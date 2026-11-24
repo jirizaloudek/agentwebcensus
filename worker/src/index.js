@@ -79,6 +79,20 @@ const TOOLS = [
     },
     annotations: { readOnlyHint: true, openWorldHint: false },
   },
+  {
+    name: "economic_data_releases",
+    description:
+      "Which countries published NEW official economic numbers recently (inflation, central bank policy rate, unemployment, GDP growth), newest first. Detected daily by datacensus.org from national statistics offices, OECD, BIS and Eurostat. Use it to answer 'what changed today/this week' or 'did X publish new inflation data'.",
+    inputSchema: {
+      type: "object",
+      properties: {
+        days: { type: "integer", description: "Look back this many days (default 7, max 120).", default: 7 },
+        indicator: { type: "string", enum: ["inflation", "policy_rate", "unemployment", "gdp_growth", "gdp_growth_qoq", "inflation_hicp"], description: "Optional filter." },
+        country: { type: "string", description: "Optional filter: country name or ISO3 code." },
+      },
+    },
+    annotations: { readOnlyHint: true, openWorldHint: false },
+  },
 ];
 
 // ---------- data loading ----------
@@ -320,7 +334,19 @@ async function latestIndicator(args, env) {
   return asText(`${c.name} — ${parts.join("; ")}. Page: ${c.url} . ${cite}`, { country: c.name, code, generated: d.generated, url: c.url, indicators: out });
 }
 
-const HANDLERS = { latest_indicator: latestIndicator,  find_mcp_servers: findMcpServers, mcp_ecosystem_stats: mcpEcosystemStats, site_ai_crawler_policy: siteAiCrawlerPolicy, ai_crawler_stats: aiCrawlerStats };
+async function economicDataReleases(args, env) {
+  const r = await loadData(env, "stats-releases.json");
+  const days = Math.min(Math.max(parseInt(args.days || 7, 10) || 7, 1), 120);
+  const cut = new Date(Date.now() - days * 864e5).toISOString().slice(0, 10);
+  const q = args.country ? String(args.country).trim().toLowerCase() : null;
+  const ev = (r.events || []).filter((x) => x.detected >= cut && (!args.indicator || x.indicator === args.indicator) &&
+    (!q || x.iso3.toLowerCase() === q || x.name.toLowerCase().includes(q)));
+  const head = ev.slice(0, 15).map((x) => `${x.name} ${x.indicator} ${x.value} (${x.period}${x.previous_value != null ? `, prev ${x.previous_value}` : ""}; seen ${x.detected})`).join("; ");
+  return asText(`${ev.length} new official releases in the last ${days} days${args.indicator ? ` for ${args.indicator}` : ""}${q ? ` matching '${args.country}'` : ""}. ${head || "None."} Page: ${STATS_HOME}releases/ . Source: datacensus.org (official data), CC BY 4.0. Note: ${r.note || ""}`,
+    { days, count: ev.length, events: ev.slice(0, 200), updated: r.updated });
+}
+
+const HANDLERS = { economic_data_releases: economicDataReleases, latest_indicator: latestIndicator,  find_mcp_servers: findMcpServers, mcp_ecosystem_stats: mcpEcosystemStats, site_ai_crawler_policy: siteAiCrawlerPolicy, ai_crawler_stats: aiCrawlerStats };
 
 // ---------- JSON-RPC ----------
 const rpcErr = (id, code, message) => ({ jsonrpc: "2.0", id: id ?? null, error: { code, message } });

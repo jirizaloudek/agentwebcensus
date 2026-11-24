@@ -163,7 +163,7 @@ def fetch_oecd_unemployment(valid, names):
     rows, url = oecd_csv(path)
     data = oecd_collect(rows, valid, names)
     return {k: mk("OECD", "OECD Labour Force Statistics, monthly unemployment rates (DF_IALFS_UNE_M)", url,
-                  [[p, rnd(v)] for p, v in sorted(t[""].items())]) for k, t in data.items() if t.get("")}
+                  [[p, rnd(v)] for p, v in sorted((t.get("_Z") or t.get("")).items())]) for k, t in data.items() if t.get("_Z") or t.get("")}
 
 
 def fetch_oecd_gdp(valid, names):
@@ -196,8 +196,9 @@ def fetch_bis(valid, names):
         code, label = code.strip(), label.strip()
         iso2 = code
         t = r["TIME_PERIOD:Time period or range"]
-        v = r["OBS_VALUE"]
-        if v == "":
+        v = (r.get("OBS_VALUE") if "OBS_VALUE" in r else r.get("OBS_VALUE:Observation Value", "")) or ""
+        v = v.split(":")[0].strip()
+        if v == "" or v.upper() == "NAN":
             continue
         if fr == "M" and t >= cutoff_m:
             monthly.setdefault(iso2, {})[t] = float(v)
@@ -381,10 +382,34 @@ def main():
     if "inflation_hicp" in new:
         infl = new.setdefault("inflation", {})
         for iso3, s in new["inflation_hicp"].items():
-            if iso3 not in infl and (iso3 in valid_iso3 or iso3 in AGG_NAMES):
+            if not (iso3 in valid_iso3 or iso3 in AGG_NAMES) or not s.get("obs"):
+                continue
+            cur = infl.get(iso3)
+            if cur is None:
                 fb = dict(s)
                 fb["note"] = "fallback: Eurostat HICP (country missing from OECD CPI)"
                 infl[iso3] = fb
+            elif cur.get("obs") and s["obs"][-1][0] > cur["obs"][-1][0]:
+                fb = dict(s)
+                fb["note"] = (f"Eurostat HICP used: newer than OECD CPI (OECD latest {cur['obs'][-1][0]}, "
+                              f"Eurostat latest {s['obs'][-1][0]})")
+                infl[iso3] = fb
+    # Euro area members share the ECB policy rate (BIS publishes it once, as the euro area)
+    EURO = ["AUT", "BEL", "BGR", "HRV", "CYP", "EST", "FIN", "FRA", "DEU", "GRC", "IRL", "ITA", "LVA", "LTU",
+            "LUX", "MLT", "NLD", "PRT", "SVK", "SVN", "ESP"]
+    pr = new.get("policy_rate", {})
+    if "EA20" in pr:
+        for iso3 in EURO:
+            if iso3 not in pr and iso3 in valid_iso3:
+                s_ = dict(pr["EA20"])
+                s_["note"] = "euro area member: ECB policy rate (BIS euro area series)"
+                pr[iso3] = s_
+    # Drop monthly series whose latest observation is too old to be called "latest"
+    stale_cut = months_back(9)
+    for ind in ("inflation", "inflation_hicp", "unemployment", "policy_rate"):
+        for iso3 in [c for c, s in new.get(ind, {}).items() if not s.get("obs") or s["obs"][-1][0] < stale_cut]:
+            WARN.append(f"dropped stale {ind} for {iso3} (latest {new[ind][iso3]['obs'][-1][0] if new[ind][iso3].get('obs') else 'none'})")
+            del new[ind][iso3]
 
     # Keep previous series for failed sources / missing indicators
     if prev:

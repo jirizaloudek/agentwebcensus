@@ -86,7 +86,12 @@ def fact(cname, k, s, ind, day):
     daily = len(str(cur[0])) == 10
     t = f"{cname}: {name} = {val_h(k, cur[1], unit)} {'as of' if daily else 'in'} {period_h(cur[0])}"
     if prev and not daily: t += f" (previous: {val_h(k, prev[1], unit)} in {period_h(prev[0])})"
-    if k == "policy_rate" and s.get("last_change"): t += f"; last changed on {period_h(s['last_change'])}" + (f" (from {val_h(k, s['previous_rate'], unit)})" if s.get("previous_rate") is not None else "")
+    lc = s.get("last_change") if k == "policy_rate" else None
+    if isinstance(lc, dict) and lc.get("date"):
+        t += f"; last changed on {period_h(lc['date'])} (from {val_h(k, lc.get('from'), unit)} to {val_h(k, lc.get('to'), unit)})"
+    if k == "policy_rate" and s.get("latest_daily"):
+        t += f"; daily value as of {period_h(s['latest_daily'][0])}: {val_h(k, s['latest_daily'][1], unit)}"
+    if s.get("note"): t += f" [{s['note']}]"
     fc = [o for o in s.get("obs", []) if len(o) > 2 and o[2] and o[1] is not None]
     if fc: t += "; IMF projections: " + ", ".join(f"{o[0]}: {val_h(k, o[1], unit)}" for o in fc)
     return t + f". Source: {src}; retrieved {s.get('fetched', day)}."
@@ -176,7 +181,7 @@ We republish the official figure unchanged; when the source revises a number, th
 <h2>Key facts</h2><ul class="facts">{''.join(f'<li>{e(x)}</li>' for x in facts)}</ul>
 <p>Machine-readable: <a href="index.md">Markdown</a> · <a href="/data/stats-summary.json">all countries (JSON)</a></p>"""
         page(path, f"{cn} economy: inflation, interest rate, unemployment, GDP – latest data", f"Latest official economic indicators for {cn}: " + "; ".join(facts[:2]), body, upd)
-        write_text(path + "index.md", md_doc(f"{cn}: latest economic indicators", "", [f"- {x}" for x in facts], BASE_URL + path, upd))
+        write_text(path + "index.md", md_doc(f"{cn}: latest economic indicators", f"Latest official values for {cn} (inflation, central bank policy rate, unemployment, GDP growth, IMF forecasts, population), each with its reference period, previous value and primary source. Refreshed daily.", [f"- {x}" for x in facts], BASE_URL + path, upd))
 
     # ---- indicator ranking pages
     for k in keys:

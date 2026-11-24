@@ -222,7 +222,7 @@ We republish the official figure unchanged; when the source revises a number, th
     body = f"""<h1>Latest economic indicators by country</h1>
 <p>Inflation, central bank interest rates, unemployment, GDP growth and population for {len(rows)} economies — the most recent <b>official</b> figures,
 re-fetched every day from OECD, the Bank for International Settlements, the IMF, the World Bank and Eurostat. Built for people and for AI agents: every number has a period, a source and a stable URL, plus Markdown and JSON versions.</p>
-<p>By indicator: {links}</p>
+<p>By indicator: {links} · <a href="/stats/releases/"><b>New releases (what changed today)</b></a></p>
 {table(hdr, rows, num_cols=tuple(range(1, len(hdr))))}
 <h2>For AI agents &amp; developers</h2><ul><li><a href="/data/stats-summary.json">/data/stats-summary.json</a> — latest value of every indicator for every country (one request).</li>
 <li><code>/data/stats/&lt;ISO3&gt;-&lt;indicator&gt;.json</code> — full series, e.g. <a href="/data/stats/USA-inflation.json">USA-inflation.json</a>.</li>
@@ -232,4 +232,38 @@ re-fetched every day from OECD, the Bank for International Settlements, the IMF,
     write_text("/stats/index.md", md_doc("Latest economic indicators by country", "Refreshed daily from OECD, BIS, IMF, World Bank, Eurostat.",
                ["| " + " | ".join(hdr) + " |", "|" + "---|" * len(hdr)] + ["| " + " | ".join(re.sub(r"<[^>]+>", "", x) for x in r) + " |" for r in rows] +
                ["", "Indicators: " + ", ".join(f"{LABEL[k]}: {BASE_URL}/stats/{SLUG[k]}/" for k in keys)], BASE_URL + "/stats/", upd))
+    build_releases(I, cslug, upd)
     return {"countries": len(rows), "keys": keys, "facts": [fact(cname[c], "inflation", S[c]["inflation"], I["inflation"], day) for c in ("USA", "EA20", "GBR", "JPN", "CHN") if c in S and "inflation" in S[c]]}
+
+
+def build_releases(I, cslug, upd):
+    """/stats/releases/: which countries published new official numbers, newest first (data/stats/releases.json)."""
+    if not os.path.exists("data/stats/releases.json"): return
+    R = json.load(open("data/stats/releases.json"))
+    ev = R.get("events", [])
+    json.dump(R, open(OUT + "/data/stats-releases.json", "w"), ensure_ascii=False, separators=(",", ":"))
+    days = {}
+    for x in ev: days.setdefault(x["detected"], []).append(x)
+    html, md = [], []
+    for d in sorted(days, reverse=True)[:60]:
+        items = days[d]
+        html.append(f"<h2>{e(period_h(d))}</h2><ul>")
+        md.append(f"\n## {period_h(d)}\n")
+        for x in items:
+            k = x["indicator"]; unit = I.get(k, {}).get("unit", "")
+            prev = f" (previous: {val_h(k, x['previous_value'], unit)} in {period_h(x['previous_period'])})" if x.get("previous_period") else ""
+            t = f"{x['name']}: {LABEL.get(k, k)} = {val_h(k, x['value'], unit)} in {period_h(x['period'])}{prev}. Source: {x.get('source', '')}."
+            slug = cslug.get(x["iso3"])
+            link = f'/stats/{slug}/{SLUG.get(k, k)}/' if slug and k in SLUG else None
+            html.append(f'<li>{e(t)}' + (f' <a href="{link}">details</a>' if link else '') + '</li>')
+            md.append(f"- {t}" + (f" {BASE_URL}{link}" if link else ""))
+        html.append("</ul>")
+    n7 = sum(len(days[d]) for d in sorted(days, reverse=True)[:7])
+    intro = (f"New official economic data detected by datacensus.org: {len(ev)} releases in the log, {n7} in the last 7 days of activity. "
+             "Every day we re-fetch inflation, central bank policy rates, unemployment and GDP growth from national statistics offices, OECD, BIS and Eurostat "
+             "and list each series whose latest reference period moved forward. The date is when we first saw the new number, usually the release day or the day after.")
+    if not ev: intro += " No releases detected yet (the log started recently)."
+    body = (f"<h1>New economic data releases (inflation, interest rates, unemployment, GDP)</h1><p>{e(intro)}</p>" + "".join(html) +
+            '<p>Machine-readable: <a href="/data/stats-releases.json">/data/stats-releases.json</a> · Markdown: <a href="/stats/releases/index.md">index.md</a> · <a href="/stats/">all latest values</a></p>')
+    page("/stats/releases/", "New economic data releases today: inflation, interest rates, unemployment, GDP", intro[:300], body, upd)
+    write_text("/stats/releases/index.md", md_doc("New economic data releases", intro, md, BASE_URL + "/stats/releases/", upd))

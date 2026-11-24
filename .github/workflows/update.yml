@@ -53,22 +53,36 @@ jobs:
         timeout-minutes: 15
         run: python3 scripts/fetch_indicators.py
       - name: Build site
+        id: build
         run: python3 scripts/build_site.py
       - name: IndexNow key file
         run: python3 scripts/indexnow.py --key-only
       - name: Upload site for GitHub Pages
         uses: actions/upload-pages-artifact@v3
         with: { path: site }
+      # GitHub Pages deploys fail transiently ("Deployment failed, try again later",
+      # "No artifacts named github-pages were found" right after a successful upload): retry once.
       - name: Deploy to GitHub Pages
         id: deployment
+        continue-on-error: true
+        uses: actions/deploy-pages@v4
+      - name: Wait before retrying Pages deploy
+        if: steps.deployment.outcome == 'failure'
+        run: sleep 90
+      - name: Deploy to GitHub Pages (retry)
+        id: deployment_retry
+        if: steps.deployment.outcome == 'failure'
         uses: actions/deploy-pages@v4
       - name: Notify IndexNow about changed pages
+        if: steps.deployment.outcome == 'success' || steps.deployment_retry.outcome == 'success'
         continue-on-error: true
         run: sleep 30 && python3 scripts/indexnow.py
       - name: Deploy to Cloudflare Pages (optional)
         if: env.CLOUDFLARE_API_TOKEN != ''
         run: npx --yes wrangler@3 pages deploy site --project-name "${{ vars.CF_PROJECT || 'agentwebcensus' }}" --branch main --commit-dirty=true
+      # Data history is committed even if the Pages deploy failed (the next run redeploys the site).
       - name: Commit aggregated data (history)
+        if: ${{ !cancelled() && steps.build.outcome == 'success' }}
         run: |
           git config user.name "agent-web-census-bot"
           git config user.email "actions@users.noreply.github.com"

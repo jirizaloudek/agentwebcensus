@@ -2,14 +2,17 @@
   "$schema": "https://static.modelcontextprotocol.io/schemas/2025-12-11/server.schema.json",
   "name": "org.datacensus/agents",
   "title": "Agent Web Census",
-  "description": "Open data on MCP servers (with live health) and which AI crawlers top websites block.",
-  "version": "0.1.0",
+  "description": "Latest official inflation, rates, GDP for 60+ economies; MCP server and AI-crawler open data.",
+  "version": "0.2.0",
   "websiteUrl": "https://agents.datacensus.org",
   "repository": {
     "url": "https://github.com/jirizaloudek/agentwebcensus",
     "source": "github"
   },
   "remotes": [
-    { "type": "streamable-http", "url": "https://datacensus.org/mcp" }
+    {
+      "type": "streamable-http",
+      "url": "https://datacensus.org/mcp"
+    }
   ]
 }

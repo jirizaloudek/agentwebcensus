@@ -1,83 +1,83 @@
 {
- "generated": "2026-11-19",
- "checked": 45311,
- "legacy_sse_checked": 1119,
+ "generated": "2026-11-25",
+ "checked": 49144,
+ "legacy_sse_checked": 1130,
  "totals": {
   "ok": {
-   "n": 25702,
-   "pct_of_checked": 56.7
+   "n": 29069,
+   "pct_of_checked": 59.2
   },
   "auth_required": {
-   "n": 15123,
-   "pct_of_checked": 33.4
+   "n": 15311,
+   "pct_of_checked": 31.2
   },
   "http_error": {
-   "n": 2758,
+   "n": 3013,
    "pct_of_checked": 6.1
   },
   "timeout": {
-   "n": 92,
-   "pct_of_checked": 0.2
+   "n": 269,
+   "pct_of_checked": 0.5
   },
   "dns_error": {
-   "n": 9,
-   "pct_of_checked": 0.0
+   "n": 966,
+   "pct_of_checked": 2.0
   },
   "tls_error": {
-   "n": 473,
-   "pct_of_checked": 1.0
+   "n": 363,
+   "pct_of_checked": 0.7
   },
   "conn_error": {
-   "n": 1051,
-   "pct_of_checked": 2.3
+   "n": 37,
+   "pct_of_checked": 0.1
   },
   "invalid_response": {
-   "n": 103,
+   "n": 116,
    "pct_of_checked": 0.2
   }
  },
- "alive_pct_of_checked": 90.1,
+ "alive_pct_of_checked": 90.3,
  "latency_ms_ok": {
-  "median": 293,
-  "p90": 751,
-  "n": 25702
+  "median": 229,
+  "p90": 820,
+  "n": 29069
  },
  "protocol_versions": {
-  "2025-06-18": 21487,
-  "2025-03-26": 2949,
-  "2024-11-05": 656,
-  "2025-11-25": 184,
-  "2026-07-28": 32,
+  "2025-06-18": 24717,
+  "2025-03-26": 3025,
+  "2024-11-05": 685,
+  "2025-11-25": 207,
+  "2026-07-28": 35,
   "2025-11-05": 2
  },
  "tools": {
-  "n_with_count": 24916,
-  "median": 7.0,
-  "mean": 16.1,
+  "n_with_count": 28299,
+  "median": 8,
+  "mean": 15.6,
   "buckets": {
-   "0": 15,
-   "1-5": 8580,
-   "6-10": 6356,
-   "11-20": 3122,
-   "21-50": 6060,
-   "51+": 783
+   "0": 13,
+   "1-5": 9753,
+   "6-10": 7221,
+   "11-20": 3970,
+   "21-50": 6498,
+   "51+": 844
   }
  },
  "top_hosts": [
   {
    "host": "agent-observatory-sensor.nolimit-observatory.workers.dev",
    "servers": 2365,
-   "ok_pct": 99.9
+   "ok_pct": 100.0
   },
   {
    "host": "gateway.pipeworx.io",
    "servers": 1936,
-   "ok_pct": 96.5
+   "ok_pct": 96.4
   },
   {
    "host": "mcp.apify.com",
-   "servers": 1261,
-   "ok_pct": 0.6
+   "servers": 1452,
+   "ok_pct": 0.0
   },
   {
    "host": "api.mcp.ai",
@@ -100,13 +100,18 @@
    "ok_pct": 0.0
   },
   {
+   "host": "www.brainiac.software",
+   "servers": 147,
+   "ok_pct": 100.0
+  },
+  {
    "host": "atoms.pipavia.com",
    "servers": 145,
    "ok_pct": 0.0
   },
   {
    "host": "a2awire.com",
-   "servers": 135,
+   "servers": 136,
    "ok_pct": 99.3
   },
   {
@@ -158,169 +163,164 @@
    "host": "bumiatlas.com",
    "servers": 45,
    "ok_pct": 0.0
-  },
-  {
-   "host": "api.meok.ai",
-   "servers": 39,
-   "ok_pct": 0.0
   }
  ],
  "by_category": {
   "uncategorized": {
-   "n": 24286,
-   "ok": 15206,
-   "auth_required": 6870,
-   "http_error": 1405,
-   "timeout": 45,
-   "dns_error": 1,
-   "tls_error": 207,
-   "conn_error": 505,
-   "invalid_response": 47,
-   "ok_pct": 62.6
+   "n": 26335,
+   "ok": 17171,
+   "auth_required": 6756,
+   "http_error": 1592,
+   "timeout": 115,
+   "dns_error": 465,
+   "tls_error": 164,
+   "conn_error": 15,
+   "invalid_response": 57,
+   "ok_pct": 65.2
   },
   "search & web": {
-   "n": 6157,
-   "ok": 3430,
-   "auth_required": 2140,
-   "http_error": 359,
-   "timeout": 20,
-   "dns_error": 3,
-   "tls_error": 61,
-   "conn_error": 134,
-   "invalid_response": 10,
-   "ok_pct": 55.7
+   "n": 6708,
+   "ok": 3809,
+   "auth_required": 2275,
+   "http_error": 380,
+   "timeout": 49,
+   "dns_error": 129,
+   "tls_error": 47,
+   "conn_error": 8,
+   "invalid_response": 11,
+   "ok_pct": 56.8
   },
   "ai & media generation": {
-   "n": 3291,
-   "ok": 1341,
-   "auth_required": 1586,
-   "http_error": 250,
-   "timeout": 3,
-   "dns_error": 2,
-   "tls_error": 41,
-   "conn_error": 60,
-   "invalid_response": 8,
-   "ok_pct": 40.7
+   "n": 3546,
+   "ok": 1470,
+   "auth_required": 1712,
+   "http_error": 258,
+   "timeout": 15,
+   "dns_error": 48,
+   "tls_error": 33,
+   "conn_error": 3,
+   "invalid_response": 7,
+   "ok_pct": 41.5
   },
   "finance & crypto": {
-   "n": 2932,
-   "ok": 1723,
-   "auth_required": 757,
-   "http_error": 246,
-   "timeout": 7,
-   "dns_error": 0,
-   "tls_error": 67,
-   "conn_error": 119,
-   "invalid_response": 13,
-   "ok_pct": 58.8
+   "n": 3167,
+   "ok": 2020,
+   "auth_required": 684,
+   "http_error": 253,
+   "timeout": 35,
+   "dns_error": 105,
+   "tls_error": 50,
+   "conn_error": 5,
+   "invalid_response": 15,
+   "ok_pct": 63.8
   },
   "marketing & seo": {
-   "n": 2446,
-   "ok": 647,
-   "auth_required": 1617,
-   "http_error": 101,
-   "timeout": 2,
-   "dns_error": 2,
-   "tls_error": 21,
-   "conn_error": 49,
+   "n": 2679,
+   "ok": 749,
+   "auth_required": 1741,
+   "http_error": 110,
+   "timeout": 5,
+   "dns_error": 46,
+   "tls_error": 19,
+   "conn_error": 2,
    "invalid_response": 7,
-   "ok_pct": 26.5
+   "ok_pct": 28.0
   },
   "productivity & docs": {
-   "n": 2288,
-   "ok": 1051,
-   "auth_required": 1024,
-   "http_error": 126,
-   "timeout": 2,
-   "dns_error": 0,
-   "tls_error": 27,
-   "conn_error": 54,
-   "invalid_response": 4,
-   "ok_pct": 45.9
+   "n": 2475,
+   "ok": 1170,
+   "auth_required": 1076,
+   "http_error": 131,
+   "timeout": 17,
+   "dns_error": 47,
+   "tls_error": 24,
+   "conn_error": 4,
+   "invalid_response": 6,
+   "ok_pct": 47.3
   },
   "commerce": {
-   "n": 2030,
-   "ok": 1052,
-   "auth_required": 794,
-   "http_error": 109,
-   "timeout": 6,
-   "dns_error": 1,
-   "tls_error": 22,
-   "conn_error": 39,
-   "invalid_response": 7,
-   "ok_pct": 51.8
+   "n": 2276,
+   "ok": 1256,
+   "auth_required": 835,
+   "http_error": 116,
+   "timeout": 17,
+   "dns_error": 31,
+   "tls_error": 11,
+   "conn_error": 1,
+   "invalid_response": 9,
+   "ok_pct": 55.2
   },
   "maps & travel": {
-   "n": 1902,
-   "ok": 1245,
-   "auth_required": 517,
-   "http_error": 96,
-   "timeout": 5,
-   "dns_error": 0,
-   "tls_error": 10,
-   "conn_error": 24,
+   "n": 2079,
+   "ok": 1383,
+   "auth_required": 540,
+   "http_error": 106,
+   "timeout": 13,
+   "dns_error": 20,
+   "tls_error": 12,
+   "conn_error": 0,
    "invalid_response": 5,
-   "ok_pct": 65.5
+   "ok_pct": 66.5
   },
   "security": {
-   "n": 1638,
-   "ok": 1026,
-   "auth_required": 403,
-   "http_error": 136,
-   "timeout": 3,
-   "dns_error": 1,
-   "tls_error": 22,
-   "conn_error": 39,
+   "n": 1767,
+   "ok": 1125,
+   "auth_required": 432,
+   "http_error": 134,
+   "timeout": 20,
+   "dns_error": 38,
+   "tls_error": 10,
+   "conn_error": 0,
    "invalid_response": 8,
-   "ok_pct": 62.6
+   "ok_pct": 63.7
   },
   "memory & knowledge": {
-   "n": 1612,
-   "ok": 473,
-   "auth_required": 939,
-   "http_error": 109,
-   "timeout": 8,
-   "dns_error": 0,
-   "tls_error": 31,
-   "conn_error": 50,
+   "n": 1717,
+   "ok": 609,
+   "auth_required": 897,
+   "http_error": 117,
+   "timeout": 20,
+   "dns_error": 49,
+   "tls_error": 21,
+   "conn_error": 2,
    "invalid_response": 2,
-   "ok_pct": 29.3
+   "ok_pct": 35.5
   },
   "dev tools & code": {
-   "n": 1233,
-   "ok": 636,
-   "auth_required": 432,
-   "http_error": 92,
-   "timeout": 2,
-   "dns_error": 0,
-   "tls_error": 19,
-   "conn_error": 48,
-   "invalid_response": 4,
-   "ok_pct": 51.6
+   "n": 1332,
+   "ok": 706,
+   "auth_required": 457,
+   "http_error": 100,
+   "timeout": 7,
+   "dns_error": 44,
+   "tls_error": 15,
+   "conn_error": 0,
+   "invalid_response": 3,
+   "ok_pct": 53.0
   },
   "cloud & infra": {
-   "n": 889,
-   "ok": 315,
-   "auth_required": 424,
-   "http_error": 56,
-   "timeout": 0,
-   "dns_error": 0,
-   "tls_error": 6,
-   "conn_error": 85,
+   "n": 942,
+   "ok": 366,
+   "auth_required": 426,
+   "http_error": 55,
+   "timeout": 4,
+   "dns_error": 86,
+   "tls_error": 2,
+   "conn_error": 0,
    "invalid_response": 3,
-   "ok_pct": 35.4
+   "ok_pct": 38.9
   },
   "database": {
-   "n": 454,
-   "ok": 229,
-   "auth_required": 175,
-   "http_error": 27,
-   "timeout": 1,
-   "dns_error": 0,
-   "tls_error": 5,
-   "conn_error": 16,
+   "n": 484,
+   "ok": 248,
+   "auth_required": 187,
+   "http_error": 26,
+   "timeout": 3,
+   "dns_error": 15,
+   "tls_error": 3,
+   "conn_error": 1,
    "invalid_response": 1,
-   "ok_pct": 50.4
+   "ok_pct": 51.2
   }
  },
  "methodology": "For each server in the official MCP Registry that lists at least one remote URL, we test the first remote URL only (identical URLs are checked once) with a single attempt per week: one MCP initialize JSON-RPC POST (protocol 2025-06-18; JSON and SSE responses accepted), 10 s timeout, 256 KB body cap. If it succeeds without authentication we send notifications/initialized and one tools/list to count tools (first page only); no tool is ever called. Legacy SSE-type remotes get a GET and are classed reachable if an event stream starts within 5 s (no tool count). Caveats: a single attempt means transient failures (timeouts, 5xx, rate limits) can be counted as broken; auth_required (HTTP 401/403 or a WWW-Authenticate header) means the endpoint is alive but needs credentials, so we cannot tell whether it works for authorised users; servers listing several remotes are judged by the first only; registry entries can be stale. Checked from a single network location."

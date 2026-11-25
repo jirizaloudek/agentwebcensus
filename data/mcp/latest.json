@@ -1,25 +1,25 @@
 {
- "generated_at": "2026-11-24T20:31:18+00:00",
+ "generated_at": "2026-11-25T01:19:56+00:00",
  "source": "https://registry.modelcontextprotocol.io/v0/servers (official MCP Registry, full crawl)",
  "license": "CC BY 4.0 \u2014 cite as: MCP Census (mcpcensus), data from the official MCP Registry",
  "totals": {
-  "servers": 73170,
-  "version_records": 289228,
-  "active": 71791,
-  "deprecated": 1108,
-  "namespaces": 44634,
+  "servers": 73349,
+  "version_records": 289748,
+  "active": 71964,
+  "deprecated": 1112,
+  "namespaces": 44746,
   "avg_versions_per_server": 3.95,
-  "median_versions_per_server": 1.0,
+  "median_versions_per_server": 1,
   "first_server_published": "2025-09-08"
  },
  "growth": {
-  "new_servers_last_24h": 1133,
-  "new_servers_last_7d": 6871,
-  "new_7d_first_published_on_or_after": "2026-11-18",
-  "new_servers_last_30d": 23380,
-  "version_publishes_last_7d": 24647,
-  "version_publishes_last_30d": 111429,
-  "servers_updated_last_30d": 33874,
+  "new_servers_last_24h": 892,
+  "new_servers_last_7d": 6339,
+  "new_7d_first_published_on_or_after": "2026-11-19",
+  "new_servers_last_30d": 23466,
+  "version_publishes_last_7d": 23607,
+  "version_publishes_last_30d": 111065,
+  "servers_updated_last_30d": 33992,
   "last_full_month_mom_growth_pct": 37.2,
   "monthly": [
    {
@@ -94,15 +94,11 @@
    },
    {
     "month": "2026-11",
-    "new": 19481,
-    "cumulative": 73170
+    "new": 19660,
+    "cumulative": 73349
    }
   ],
   "daily_last_60": [
-   {
-    "date": "2026-09-26",
-    "new": 330
-   },
    {
     "date": "2026-09-27",
     "new": 318
@@ -337,58 +333,62 @@
    },
    {
     "date": "2026-11-24",
-    "new": 751
+    "new": 887
+   },
+   {
+    "date": "2026-11-25",
+    "new": 43
    }
   ]
  },
  "deployment": {
-  "remote_servers": 49482,
-  "remote_pct": 67.6,
-  "package_servers": 27986,
+  "remote_servers": 49636,
+  "remote_pct": 67.7,
+  "package_servers": 28017,
   "package_pct": 38.2,
-  "remote_and_package": 5034,
+  "remote_and_package": 5040,
   "remote_transport": {
-   "streamable-http": 48739,
+   "streamable-http": 48893,
    "sse": 1133
   },
   "package_registry": {
-   "npm": 19417,
-   "pypi": 5767,
-   "oci": 2051,
-   "mcpb": 1939,
+   "npm": 19430,
+   "pypi": 5774,
+   "oci": 2054,
+   "mcpb": 1945,
    "nuget": 192,
-   "cargo": 159
+   "cargo": 161
   },
   "package_transport": {
-   "stdio": 27640,
+   "stdio": 27671,
    "streamable-http": 666,
    "sse": 35
   },
-  "unique_remote_hosts": 37947,
-  "packages_requiring_env_vars": 13085,
+  "unique_remote_hosts": 38069,
+  "packages_requiring_env_vars": 13100,
   "packages_requiring_env_vars_pct": 46.8
  },
  "metadata_quality": {
   "with_repository_pct": 63.1,
-  "github_hosted_repo_pct": 63.0,
+  "github_hosted_repo_pct": 62.9,
   "with_icon_pct": 19.7,
-  "with_website_pct": 65.7,
-  "with_title_pct": 75.9,
-  "median_description_chars": 91.0
+  "with_website_pct": 65.8,
+  "with_title_pct": 76.0,
+  "median_description_chars": 91
  },
  "concentration": {
   "top10_publishers_share_pct": 17.0,
-  "top100_publishers_share_pct": 24.8,
-  "publishers_with_one_server": 40450,
+  "top100_publishers_share_pct": 24.7,
+  "publishers_with_one_server": 40548,
   "publishers_with_100plus": 25
  },
  "namespaces": {
   "by_kind": {
-   "io.github.*": 39979,
-   "com.*": 14599,
-   "other": 12517,
-   "ai.*": 3287,
-   "io.*": 2788
+   "io.github.*": 40073,
+   "com.*": 14638,
+   "other": 12555,
+   "ai.*": 3292,
+   "io.*": 2791
   },
   "top_25": [
    {
@@ -417,7 +417,7 @@
    },
    {
     "namespace": "io.github.theluckystrike",
-    "servers": 428
+    "servers": 433
    },
    {
     "namespace": "dev.cotlet",
@@ -496,19 +496,19 @@
  "categories": {
   "method": "keyword match on name/title/description; a server may be in several categories",
   "counts": {
-   "search & web": 9673,
-   "ai & media generation": 5631,
-   "finance & crypto": 4280,
-   "dev tools & code": 3940,
-   "productivity & docs": 3737,
-   "marketing & seo": 3411,
-   "memory & knowledge": 3140,
-   "commerce": 2851,
-   "maps & travel": 2809,
-   "security": 2776,
-   "cloud & infra": 1554,
-   "database": 1185
+   "search & web": 9704,
+   "ai & media generation": 5645,
+   "finance & crypto": 4293,
+   "dev tools & code": 3943,
+   "productivity & docs": 3747,
+   "marketing & seo": 3416,
+   "memory & knowledge": 3144,
+   "commerce": 2866,
+   "maps & travel": 2818,
+   "security": 2784,
+   "cloud & infra": 1556,
+   "database": 1188
   },
-  "uncategorized": 37991
+  "uncategorized": 38082
  }
 }

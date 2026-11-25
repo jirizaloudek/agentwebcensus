@@ -1,25 +1,25 @@
 {
- "generated_at": "2026-11-25T01:19:56+00:00",
+ "generated_at": "2026-11-25T19:20:30+00:00",
  "source": "https://registry.modelcontextprotocol.io/v0/servers (official MCP Registry, full crawl)",
  "license": "CC BY 4.0 \u2014 cite as: MCP Census (mcpcensus), data from the official MCP Registry",
  "totals": {
-  "servers": 73349,
-  "version_records": 289748,
-  "active": 71964,
-  "deprecated": 1112,
-  "namespaces": 44746,
-  "avg_versions_per_server": 3.95,
+  "servers": 74279,
+  "version_records": 292214,
+  "active": 72877,
+  "deprecated": 1115,
+  "namespaces": 45138,
+  "avg_versions_per_server": 3.93,
   "median_versions_per_server": 1,
   "first_server_published": "2025-09-08"
  },
  "growth": {
-  "new_servers_last_24h": 892,
-  "new_servers_last_7d": 6339,
+  "new_servers_last_24h": 1141,
+  "new_servers_last_7d": 7269,
   "new_7d_first_published_on_or_after": "2026-11-19",
-  "new_servers_last_30d": 23466,
-  "version_publishes_last_7d": 23607,
-  "version_publishes_last_30d": 111065,
-  "servers_updated_last_30d": 33992,
+  "new_servers_last_30d": 23913,
+  "version_publishes_last_7d": 21919,
+  "version_publishes_last_30d": 111737,
+  "servers_updated_last_30d": 34531,
   "last_full_month_mom_growth_pct": 37.2,
   "monthly": [
    {
@@ -94,8 +94,8 @@
    },
    {
     "month": "2026-11",
-    "new": 19660,
-    "cumulative": 73349
+    "new": 20590,
+    "cumulative": 74279
    }
   ],
   "daily_last_60": [
@@ -337,63 +337,63 @@
    },
    {
     "date": "2026-11-25",
-    "new": 43
+    "new": 973
    }
   ]
  },
  "deployment": {
-  "remote_servers": 49636,
-  "remote_pct": 67.7,
-  "package_servers": 28017,
-  "package_pct": 38.2,
-  "remote_and_package": 5040,
+  "remote_servers": 50183,
+  "remote_pct": 67.6,
+  "package_servers": 28418,
+  "package_pct": 38.3,
+  "remote_and_package": 5059,
   "remote_transport": {
-   "streamable-http": 48893,
-   "sse": 1133
+   "streamable-http": 49440,
+   "sse": 1134
   },
   "package_registry": {
-   "npm": 19430,
-   "pypi": 5774,
-   "oci": 2054,
-   "mcpb": 1945,
+   "npm": 19792,
+   "pypi": 5801,
+   "oci": 2062,
+   "mcpb": 1953,
    "nuget": 192,
    "cargo": 161
   },
   "package_transport": {
-   "stdio": 27671,
-   "streamable-http": 666,
+   "stdio": 28069,
+   "streamable-http": 669,
    "sse": 35
   },
-  "unique_remote_hosts": 38069,
-  "packages_requiring_env_vars": 13100,
-  "packages_requiring_env_vars_pct": 46.8
+  "unique_remote_hosts": 38561,
+  "packages_requiring_env_vars": 13157,
+  "packages_requiring_env_vars_pct": 46.3
  },
  "metadata_quality": {
-  "with_repository_pct": 63.1,
-  "github_hosted_repo_pct": 62.9,
-  "with_icon_pct": 19.7,
-  "with_website_pct": 65.8,
-  "with_title_pct": 76.0,
+  "with_repository_pct": 63.2,
+  "github_hosted_repo_pct": 63.0,
+  "with_icon_pct": 19.9,
+  "with_website_pct": 65.7,
+  "with_title_pct": 76.2,
   "median_description_chars": 91
  },
  "concentration": {
-  "top10_publishers_share_pct": 17.0,
-  "top100_publishers_share_pct": 24.7,
-  "publishers_with_one_server": 40548,
+  "top10_publishers_share_pct": 17.3,
+  "top100_publishers_share_pct": 25.0,
+  "publishers_with_one_server": 40897,
   "publishers_with_100plus": 25
  },
  "namespaces": {
   "by_kind": {
-   "io.github.*": 40073,
-   "com.*": 14638,
-   "other": 12555,
-   "ai.*": 3292,
-   "io.*": 2791
+   "io.github.*": 40552,
+   "com.*": 14789,
+   "other": 12689,
+   "ai.*": 3323,
+   "io.*": 2926
   },
   "top_25": [
    {
     "namespace": "io.github.mrfentmen",
-    "servers": 3784
+    "servers": 4075
    },
    {
     "namespace": "io.github.sadri-dridi",
@@ -404,12 +404,12 @@
     "servers": 1936
    },
    {
-    "namespace": "io.github.mcp-dir",
-    "servers": 1120
+    "namespace": "io.usefulapi",
+    "servers": 1230
    },
    {
-    "namespace": "io.usefulapi",
-    "servers": 1110
+    "namespace": "io.github.mcp-dir",
+    "servers": 1120
    },
    {
     "namespace": "io.github.CloudCorpRecords",
@@ -441,7 +441,7 @@
    },
    {
     "namespace": "com.mambabuilt",
-    "servers": 158
+    "servers": 163
    },
    {
     "namespace": "io.github.jmshinhwa",
@@ -496,19 +496,19 @@
  "categories": {
   "method": "keyword match on name/title/description; a server may be in several categories",
   "counts": {
-   "search & web": 9704,
-   "ai & media generation": 5645,
-   "finance & crypto": 4293,
-   "dev tools & code": 3943,
-   "productivity & docs": 3747,
-   "marketing & seo": 3416,
-   "memory & knowledge": 3144,
-   "commerce": 2866,
-   "maps & travel": 2818,
-   "security": 2784,
-   "cloud & infra": 1556,
-   "database": 1188
+   "search & web": 9791,
+   "ai & media generation": 5692,
+   "finance & crypto": 4338,
+   "dev tools & code": 3975,
+   "productivity & docs": 3779,
+   "marketing & seo": 3441,
+   "memory & knowledge": 3172,
+   "commerce": 2891,
+   "maps & travel": 2845,
+   "security": 2805,
+   "cloud & infra": 1576,
+   "database": 1198
   },
-  "uncategorized": 38082
+  "uncategorized": 38686
  }
 }

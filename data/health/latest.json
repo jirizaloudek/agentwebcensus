@@ -1,73 +1,73 @@
 {
  "generated": "2026-11-25",
- "checked": 49144,
- "legacy_sse_checked": 1130,
+ "checked": 49667,
+ "legacy_sse_checked": 1131,
  "totals": {
   "ok": {
-   "n": 29069,
-   "pct_of_checked": 59.2
+   "n": 28003,
+   "pct_of_checked": 56.4
   },
   "auth_required": {
-   "n": 15311,
-   "pct_of_checked": 31.2
+   "n": 16743,
+   "pct_of_checked": 33.7
   },
   "http_error": {
-   "n": 3013,
-   "pct_of_checked": 6.1
+   "n": 3131,
+   "pct_of_checked": 6.3
   },
   "timeout": {
-   "n": 269,
-   "pct_of_checked": 0.5
+   "n": 290,
+   "pct_of_checked": 0.6
   },
   "dns_error": {
-   "n": 966,
+   "n": 978,
    "pct_of_checked": 2.0
   },
   "tls_error": {
-   "n": 363,
+   "n": 361,
    "pct_of_checked": 0.7
   },
   "conn_error": {
-   "n": 37,
+   "n": 42,
    "pct_of_checked": 0.1
   },
   "invalid_response": {
-   "n": 116,
+   "n": 119,
    "pct_of_checked": 0.2
   }
  },
- "alive_pct_of_checked": 90.3,
+ "alive_pct_of_checked": 90.1,
  "latency_ms_ok": {
-  "median": 229,
-  "p90": 820,
-  "n": 29069
+  "median": 276,
+  "p90": 857,
+  "n": 28003
  },
  "protocol_versions": {
-  "2025-06-18": 24717,
-  "2025-03-26": 3025,
-  "2024-11-05": 685,
-  "2025-11-25": 207,
-  "2026-07-28": 35,
+  "2025-06-18": 23655,
+  "2025-03-26": 3027,
+  "2024-11-05": 677,
+  "2025-11-25": 209,
+  "2026-07-28": 36,
   "2025-11-05": 2
  },
  "tools": {
-  "n_with_count": 28299,
-  "median": 8,
+  "n_with_count": 27225,
+  "median": 7,
   "mean": 15.6,
   "buckets": {
    "0": 13,
-   "1-5": 9753,
-   "6-10": 7221,
-   "11-20": 3970,
-   "21-50": 6498,
-   "51+": 844
+   "1-5": 9619,
+   "6-10": 7007,
+   "11-20": 3513,
+   "21-50": 6236,
+   "51+": 837
   }
  },
  "top_hosts": [
   {
    "host": "agent-observatory-sensor.nolimit-observatory.workers.dev",
    "servers": 2365,
-   "ok_pct": 100.0
+   "ok_pct": 99.8
   },
   {
    "host": "gateway.pipeworx.io",
@@ -76,13 +76,13 @@
   },
   {
    "host": "mcp.apify.com",
-   "servers": 1452,
+   "servers": 1476,
    "ok_pct": 0.0
   },
   {
    "host": "api.mcp.ai",
    "servers": 1122,
-   "ok_pct": 100.0
+   "ok_pct": 99.5
   },
   {
    "host": "cotlet.dev",
@@ -167,160 +167,160 @@
  ],
  "by_category": {
   "uncategorized": {
-   "n": 26335,
-   "ok": 17171,
-   "auth_required": 6756,
-   "http_error": 1592,
-   "timeout": 115,
-   "dns_error": 465,
-   "tls_error": 164,
-   "conn_error": 15,
-   "invalid_response": 57,
-   "ok_pct": 65.2
+   "n": 26627,
+   "ok": 16501,
+   "auth_required": 7625,
+   "http_error": 1651,
+   "timeout": 142,
+   "dns_error": 473,
+   "tls_error": 160,
+   "conn_error": 17,
+   "invalid_response": 58,
+   "ok_pct": 62.0
   },
   "search & web": {
-   "n": 6708,
-   "ok": 3809,
-   "auth_required": 2275,
-   "http_error": 380,
-   "timeout": 49,
-   "dns_error": 129,
-   "tls_error": 47,
-   "conn_error": 8,
-   "invalid_response": 11,
-   "ok_pct": 56.8
+   "n": 6774,
+   "ok": 3755,
+   "auth_required": 2376,
+   "http_error": 398,
+   "timeout": 46,
+   "dns_error": 132,
+   "tls_error": 48,
+   "conn_error": 7,
+   "invalid_response": 12,
+   "ok_pct": 55.4
   },
   "ai & media generation": {
-   "n": 3546,
-   "ok": 1470,
-   "auth_required": 1712,
-   "http_error": 258,
-   "timeout": 15,
+   "n": 3584,
+   "ok": 1446,
+   "auth_required": 1760,
+   "http_error": 267,
+   "timeout": 16,
    "dns_error": 48,
-   "tls_error": 33,
-   "conn_error": 3,
-   "invalid_response": 7,
-   "ok_pct": 41.5
+   "tls_error": 34,
+   "conn_error": 5,
+   "invalid_response": 8,
+   "ok_pct": 40.3
   },
   "finance & crypto": {
-   "n": 3167,
-   "ok": 2020,
-   "auth_required": 684,
-   "http_error": 253,
-   "timeout": 35,
-   "dns_error": 105,
+   "n": 3199,
+   "ok": 1895,
+   "auth_required": 826,
+   "http_error": 271,
+   "timeout": 32,
+   "dns_error": 107,
    "tls_error": 50,
-   "conn_error": 5,
-   "invalid_response": 15,
-   "ok_pct": 63.8
+   "conn_error": 4,
+   "invalid_response": 14,
+   "ok_pct": 59.2
   },
   "marketing & seo": {
-   "n": 2679,
-   "ok": 749,
-   "auth_required": 1741,
-   "http_error": 110,
-   "timeout": 5,
-   "dns_error": 46,
+   "n": 2702,
+   "ok": 713,
+   "auth_required": 1794,
+   "http_error": 112,
+   "timeout": 8,
+   "dns_error": 47,
    "tls_error": 19,
    "conn_error": 2,
    "invalid_response": 7,
-   "ok_pct": 28.0
+   "ok_pct": 26.4
   },
   "productivity & docs": {
-   "n": 2475,
-   "ok": 1170,
-   "auth_required": 1076,
-   "http_error": 131,
-   "timeout": 17,
+   "n": 2500,
+   "ok": 1141,
+   "auth_required": 1125,
+   "http_error": 137,
+   "timeout": 16,
    "dns_error": 47,
    "tls_error": 24,
    "conn_error": 4,
    "invalid_response": 6,
-   "ok_pct": 47.3
+   "ok_pct": 45.6
   },
   "commerce": {
-   "n": 2276,
-   "ok": 1256,
-   "auth_required": 835,
-   "http_error": 116,
-   "timeout": 17,
-   "dns_error": 31,
+   "n": 2297,
+   "ok": 1206,
+   "auth_required": 897,
+   "http_error": 125,
+   "timeout": 15,
+   "dns_error": 32,
    "tls_error": 11,
    "conn_error": 1,
-   "invalid_response": 9,
-   "ok_pct": 55.2
+   "invalid_response": 10,
+   "ok_pct": 52.5
   },
   "maps & travel": {
-   "n": 2079,
-   "ok": 1383,
-   "auth_required": 540,
-   "http_error": 106,
-   "timeout": 13,
+   "n": 2101,
+   "ok": 1353,
+   "auth_required": 587,
+   "http_error": 113,
+   "timeout": 11,
    "dns_error": 20,
    "tls_error": 12,
    "conn_error": 0,
    "invalid_response": 5,
-   "ok_pct": 66.5
+   "ok_pct": 64.4
   },
   "security": {
-   "n": 1767,
-   "ok": 1125,
-   "auth_required": 432,
-   "http_error": 134,
-   "timeout": 20,
+   "n": 1776,
+   "ok": 1122,
+   "auth_required": 444,
+   "http_error": 137,
+   "timeout": 15,
    "dns_error": 38,
    "tls_error": 10,
-   "conn_error": 0,
-   "invalid_response": 8,
-   "ok_pct": 63.7
+   "conn_error": 1,
+   "invalid_response": 9,
+   "ok_pct": 63.2
   },
   "memory & knowledge": {
-   "n": 1717,
-   "ok": 609,
-   "auth_required": 897,
-   "http_error": 117,
-   "timeout": 20,
+   "n": 1735,
+   "ok": 506,
+   "auth_required": 1012,
+   "http_error": 116,
+   "timeout": 26,
    "dns_error": 49,
    "tls_error": 21,
-   "conn_error": 2,
+   "conn_error": 3,
    "invalid_response": 2,
-   "ok_pct": 35.5
+   "ok_pct": 29.2
   },
   "dev tools & code": {
-   "n": 1332,
-   "ok": 706,
-   "auth_required": 457,
-   "http_error": 100,
-   "timeout": 7,
+   "n": 1346,
+   "ok": 701,
+   "auth_required": 472,
+   "http_error": 103,
+   "timeout": 8,
    "dns_error": 44,
    "tls_error": 15,
    "conn_error": 0,
    "invalid_response": 3,
-   "ok_pct": 53.0
+   "ok_pct": 52.1
   },
   "cloud & infra": {
-   "n": 942,
-   "ok": 366,
-   "auth_required": 426,
-   "http_error": 55,
+   "n": 953,
+   "ok": 333,
+   "auth_required": 470,
+   "http_error": 56,
    "timeout": 4,
-   "dns_error": 86,
+   "dns_error": 85,
    "tls_error": 2,
    "conn_error": 0,
    "invalid_response": 3,
-   "ok_pct": 38.9
+   "ok_pct": 34.9
   },
   "database": {
-   "n": 484,
-   "ok": 248,
-   "auth_required": 187,
-   "http_error": 26,
+   "n": 490,
+   "ok": 247,
+   "auth_required": 192,
+   "http_error": 28,
    "timeout": 3,
    "dns_error": 15,
    "tls_error": 3,
    "conn_error": 1,
    "invalid_response": 1,
-   "ok_pct": 51.2
+   "ok_pct": 50.4
   }
  },
  "methodology": "For each server in the official MCP Registry that lists at least one remote URL, we test the first remote URL only (identical URLs are checked once) with a single attempt per week: one MCP initialize JSON-RPC POST (protocol 2025-06-18; JSON and SSE responses accepted), 10 s timeout, 256 KB body cap. If it succeeds without authentication we send notifications/initialized and one tools/list to count tools (first page only); no tool is ever called. Legacy SSE-type remotes get a GET and are classed reachable if an event stream starts within 5 s (no tool count). Caveats: a single attempt means transient failures (timeouts, 5xx, rate limits) can be counted as broken; auth_required (HTTP 401/403 or a WWW-Authenticate header) means the endpoint is alive but needs credentials, so we cannot tell whether it works for authorised users; servers listing several remotes are judged by the first only; registry entries can be stale. Checked from a single network location."

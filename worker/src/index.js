@@ -107,6 +107,21 @@ const TOOLS = [
     },
     annotations: { readOnlyHint: true, openWorldHint: false },
   },
+  {
+    name: "submit_feedback",
+    description:
+      "Tell the operator of datacensus.org what went wrong or is missing. Call this whenever a tool of this server returned an error, an empty or unclear result, lacks a country/currency/field you needed, or you had to retry or work around something. Also use it for suggestions (new data you wish this server offered). Keep it short and factual; do NOT include personal data, secrets or the user's private conversation.",
+    inputSchema: {
+      type: "object",
+      properties: {
+        message: { type: "string", description: "What happened or what is missing (max 1000 characters).", maxLength: 1000 },
+        tool: { type: "string", description: "Name of the tool concerned, if any." },
+        kind: { type: "string", enum: ["error", "missing_data", "unclear", "suggestion", "other"], description: "Type of feedback." },
+      },
+      required: ["message"],
+    },
+    annotations: { readOnlyHint: false, destructiveHint: false, idempotentHint: false, openWorldHint: false },
+  },
 ];
 
 // ---------- data loading ----------
@@ -379,7 +394,38 @@ async function fxRate(args, env) {
   return asText(`1 ${base} = ${v.toPrecision(6)} ${cur} on ${last}${p ? ` (${((v / p - 1) * 100).toFixed(2)}% vs ${prev})` : ""}. ${cite}`, out);
 }
 
-const HANDLERS = { fx_rate: fxRate, economic_data_releases: economicDataReleases, latest_indicator: latestIndicator,  find_mcp_servers: findMcpServers, mcp_ecosystem_stats: mcpEcosystemStats, site_ai_crawler_policy: siteAiCrawlerPolicy, ai_crawler_stats: aiCrawlerStats };
+async function submitFeedback(args, env) {
+  const message = String(args.message || "").trim().slice(0, 1000);
+  if (message.length < 5) return toolError("message is required (at least a few words).");
+  const row = { tool: String(args.tool || "").slice(0, 64), kind: String(args.kind || "other").slice(0, 20), message };
+  console.log("AGENT_FEEDBACK " + JSON.stringify(row)); // read back via Workers Logs (observability)
+  return asText("Thank you, feedback recorded. The operator (an AI agent) reviews it regularly.", { stored: true });
+  // eslint-disable-next-line no-unreachable
+  const r = await env.FEEDBACK.get(env.FEEDBACK.idFromName("main")).fetch("https://do/add", { method: "POST", body: JSON.stringify(row) });
+  const j = await r.json();
+  return asText(j.stored ? "Thank you, feedback recorded. The operator (an AI agent) reviews it regularly." : `Feedback not stored (${j.reason}).`, { stored: !!j.stored });
+}
+
+export class Feedback {
+  constructor(state) {
+    this.sql = state.storage.sql;
+    try { this.sql.exec("CREATE TABLE IF NOT EXISTS fb (id INTEGER PRIMARY KEY AUTOINCREMENT, ts TEXT, tool TEXT, kind TEXT, message TEXT)"); } catch (e) { this.err = "create: " + e.message; }
+  }
+  async fetch(request) {
+    const u = new URL(request.url);
+    if (u.pathname === "/add") {
+      if (this.err) return Response.json({ stored: false, reason: this.err });
+      const row = await request.json();
+      if (this.sql.databaseSize > 2e6) return Response.json({ stored: false, reason: "storage cap" });
+      this.sql.exec("INSERT INTO fb (ts, tool, kind, message) VALUES (?,?,?,?)", new Date().toISOString(), row.tool, row.kind, row.message);
+      return Response.json({ stored: true });
+    }
+    const rows = this.sql.exec("SELECT id, ts, tool, kind, message FROM fb ORDER BY id DESC LIMIT 500").toArray();
+    return Response.json(rows);
+  }
+}
+
+const HANDLERS = { submit_feedback: submitFeedback, fx_rate: fxRate, economic_data_releases: economicDataReleases, latest_indicator: latestIndicator,  find_mcp_servers: findMcpServers, mcp_ecosystem_stats: mcpEcosystemStats, site_ai_crawler_policy: siteAiCrawlerPolicy, ai_crawler_stats: aiCrawlerStats };
 
 // ---------- JSON-RPC ----------
 const rpcErr = (id, code, message) => ({ jsonrpc: "2.0", id: id ?? null, error: { code, message } });
@@ -495,6 +541,8 @@ export default {
       if (request.method === "DELETE") return new Response(null, { status: 405, headers: { ...CORS, Allow: "POST, OPTIONS" } });
       return new Response("Method Not Allowed: this server only supports POST (stateless, no SSE stream).", { status: 405, headers: { ...CORS, Allow: "POST, OPTIONS" } });
     }
+    if (path === "/feedback-admin" && env.ADMIN_KEY && url.searchParams.get("key") === env.ADMIN_KEY && env.FEEDBACK)
+      return env.FEEDBACK.get(env.FEEDBACK.idFromName("main")).fetch("https://do/list");
     if (request.method !== "GET" && request.method !== "HEAD") return new Response("Method Not Allowed", { status: 405, headers: CORS });
     if (path === "/") return new Response(HOME, { headers: { "Content-Type": "text/html; charset=utf-8", ...CORS } });
     if (path === "/llms.txt") return new Response(LLMS, { headers: { "Content-Type": "text/plain; charset=utf-8", ...CORS } });

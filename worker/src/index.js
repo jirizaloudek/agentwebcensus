@@ -93,6 +93,20 @@ const TOOLS = [
     },
     annotations: { readOnlyHint: true, openWorldHint: false },
   },
+  {
+    name: "fx_rate",
+    description:
+      "Latest official euro foreign exchange reference rate (European Central Bank, published each TARGET working day ~16:00 CET) for 29 currencies, with daily change and up to 90 days of history. Use for 'EUR to USD today' or to convert between two listed currencies via the euro.",
+    inputSchema: {
+      type: "object",
+      properties: {
+        currency: { type: "string", description: "ISO 4217 code, e.g. USD, JPY, CZK. Omit to get all currencies." },
+        base: { type: "string", description: "Optional second currency: returns the cross rate base->currency (via EUR). Default EUR." },
+        history: { type: "boolean", description: "Include the last 90 days (only with currency)." },
+      },
+    },
+    annotations: { readOnlyHint: true, openWorldHint: false },
+  },
 ];
 
 // ---------- data loading ----------
@@ -346,7 +360,26 @@ async function economicDataReleases(args, env) {
     { days, count: ev.length, events: ev.slice(0, 200), updated: r.updated });
 }
 
-const HANDLERS = { economic_data_releases: economicDataReleases, latest_indicator: latestIndicator,  find_mcp_servers: findMcpServers, mcp_ecosystem_stats: mcpEcosystemStats, site_ai_crawler_policy: siteAiCrawlerPolicy, ai_crawler_stats: aiCrawlerStats };
+async function fxRate(args, env) {
+  const d = await loadData(env, "stats-fx.json");
+  const last = d.dates[d.dates.length - 1], prev = d.dates[d.dates.length - 2];
+  const cite = `Source: European Central Bank euro reference rates (${last}), via datacensus.org. Reference rates, not transaction rates. Page: https://agents.datacensus.org/stats/fx/`;
+  const get = (c, day) => (c === "EUR" ? 1 : d.rates[c] && d.rates[c][day]);
+  const cur = args.currency ? String(args.currency).toUpperCase() : null;
+  if (!cur) {
+    const rates = {}; for (const c of Object.keys(d.rates)) rates[c] = d.rates[c][last];
+    return asText(`1 EUR in ${Object.keys(rates).length} currencies on ${last}. ${cite}`, { base: "EUR", date: last, rates });
+  }
+  const base = args.base ? String(args.base).toUpperCase() : "EUR";
+  if (!get(cur, last) || !get(base, last)) return toolError(`Unknown currency. Available: EUR, ${Object.keys(d.rates).join(", ")}`);
+  const x = (day) => (get(cur, day) && get(base, day) ? get(cur, day) / get(base, day) : null);
+  const v = x(last), p = x(prev);
+  const out = { base, currency: cur, date: last, rate: v, previous_date: prev, previous_rate: p, change_pct: p ? (v / p - 1) * 100 : null };
+  if (args.history) out.history = d.dates.map((day) => [day, x(day)]).filter((r) => r[1] != null);
+  return asText(`1 ${base} = ${v.toPrecision(6)} ${cur} on ${last}${p ? ` (${((v / p - 1) * 100).toFixed(2)}% vs ${prev})` : ""}. ${cite}`, out);
+}
+
+const HANDLERS = { fx_rate: fxRate, economic_data_releases: economicDataReleases, latest_indicator: latestIndicator,  find_mcp_servers: findMcpServers, mcp_ecosystem_stats: mcpEcosystemStats, site_ai_crawler_policy: siteAiCrawlerPolicy, ai_crawler_stats: aiCrawlerStats };
 
 // ---------- JSON-RPC ----------
 const rpcErr = (id, code, message) => ({ jsonrpc: "2.0", id: id ?? null, error: { code, message } });

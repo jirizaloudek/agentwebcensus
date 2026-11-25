@@ -158,6 +158,14 @@ if W:
         import build_site_domains
         build_site_domains.build(W, json.load(open("data/web/domains.json")), upd, day)
 
+# ---------- ECB FX rates (data/stats/fx.json) ----------
+if os.path.exists("data/stats/fx.json"):
+    try:
+        import build_site_fx
+        print("fx pages:", build_site_fx.build(upd, day))
+    except Exception as ex:  # noqa: BLE001
+        print("fx pages skipped:", ex)
+
 # ---------- economic indicators (daily, data/stats/latest.json) ----------
 ST = None
 if os.path.exists("data/stats/latest.json"):
@@ -218,6 +226,7 @@ if ST:
         f"- [Unemployment by country]({BASE_URL}/stats/unemployment/)", f"- [GDP growth by country]({BASE_URL}/stats/gdp-growth/)",
         f"- Per country: {BASE_URL}/stats/<country-name>/ e.g. {BASE_URL}/stats/united-states/ ; per series: {BASE_URL}/stats/united-states/inflation/ (append index.md for Markdown)",
         f"- [stats-summary.json]({BASE_URL}/data/stats-summary.json): latest value of every indicator for every country in one request",
+        f"- [Euro exchange rates today, 29 currencies, ECB reference rates]({BASE_URL}/stats/fx/) (JSON: {BASE_URL}/data/stats-fx.json)",
         f"- [New economic data releases]({BASE_URL}/stats/releases/): which countries published new inflation, rate, unemployment or GDP numbers, by day (JSON: {BASE_URL}/data/stats-releases.json)"]
 llms += ["", "## Reports", f"- [State of remote MCP servers — November 2026]({BASE_URL}/reports/mcp-health-2026-11/): liveness by age, publisher, host type; protocol versions; tools"]
 llms += ["", "## Pages", f"- [Do remote MCP servers work?]({BASE_URL}/mcp/health/): weekly initialize check of every remote server", f"- [Working remote MCP servers]({BASE_URL}/mcp/health/working/)", f"- [Does <site> block AI crawlers?]({BASE_URL}/ai-crawlers/sites/): per-site pages for top websites", f"- [MCP server statistics]({BASE_URL}/mcp/): totals, growth, deployment, categories",

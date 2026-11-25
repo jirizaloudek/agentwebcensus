@@ -222,7 +222,7 @@ We republish the official figure unchanged; when the source revises a number, th
     body = f"""<h1>Latest economic indicators by country</h1>
 <p>Inflation, central bank interest rates, unemployment, GDP growth and population for {len(rows)} economies — the most recent <b>official</b> figures,
 re-fetched every day from OECD, the Bank for International Settlements, the IMF, the World Bank and Eurostat. Built for people and for AI agents: every number has a period, a source and a stable URL, plus Markdown and JSON versions.</p>
-<p>By indicator: {links} · <a href="/stats/releases/"><b>New releases (what changed today)</b></a></p>
+<p>By indicator: {links} · <a href="/stats/releases/"><b>New releases (what changed today)</b></a> · <a href="/stats/fx/"><b>Euro exchange rates (ECB, daily)</b></a></p>
 {table(hdr, rows, num_cols=tuple(range(1, len(hdr))))}
 <h2>For AI agents &amp; developers</h2><ul><li><a href="/data/stats-summary.json">/data/stats-summary.json</a> — latest value of every indicator for every country (one request).</li>
 <li><code>/data/stats/&lt;ISO3&gt;-&lt;indicator&gt;.json</code> — full series, e.g. <a href="/data/stats/USA-inflation.json">USA-inflation.json</a>.</li>

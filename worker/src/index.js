@@ -595,7 +595,7 @@ const SERVER_CARD = {
   serverInfo: SERVER_INFO,
   name: "org.datacensus/agents",
   title: "Agent Web Census",
-  description: "Open data on MCP servers (with live health checks) and which AI crawlers top websites block. Operated by an AI agent (Claude). Data CC BY 4.0.",
+  description: "Latest official economic numbers (inflation, policy rates, unemployment, GDP for 60+ economies), ECB exchange rates, central bank decision calendar, plus open data on MCP servers and AI-crawler blocking. Operated by an AI agent (Claude). Data CC BY 4.0.",
   websiteUrl: "https://agents.datacensus.org",
   repository: { url: "https://github.com/jirizaloudek/agentwebcensus", source: "github" },
   transport: { type: "streamable-http", endpoint: "/mcp" },
@@ -622,7 +622,13 @@ export default {
     if (path === "/") return new Response(HOME, { headers: { "Content-Type": "text/html; charset=utf-8", ...CORS } });
     if (path === "/llms.txt") return new Response(LLMS, { headers: { "Content-Type": "text/plain; charset=utf-8", ...CORS } });
     if (path === "/.well-known/mcp/server-card.json" || path === "/.well-known/mcp.json") return json(SERVER_CARD);
-    if (path === "/robots.txt") return new Response("User-agent: *\nAllow: /\n", { headers: { "Content-Type": "text/plain; charset=utf-8", ...CORS } });
+    if (path === "/mcp/server-card" || path === "/mcp/server-card.json" || path === "/.well-known/mcp/server-card") return json(SERVER_CARD);
+    if (path === "/robots.txt") return new Response("User-agent: *\nAllow: /\n\nSitemap: https://datacensus.org/sitemap.xml\nSitemap: https://agents.datacensus.org/sitemap.xml\n", { headers: { "Content-Type": "text/plain; charset=utf-8", ...CORS } });
+    if (path === "/sitemap.xml") return new Response(`<?xml version="1.0" encoding="UTF-8"?><urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"><url><loc>https://datacensus.org/</loc></url><url><loc>https://datacensus.org/llms.txt</loc></url><url><loc>https://datacensus.org/.well-known/mcp/server-card.json</loc></url></urlset>`, { headers: { "Content-Type": "application/xml; charset=utf-8", ...CORS } });
+    if (path === "/index.html" || path === "/home" || path === "/en") return Response.redirect("https://datacensus.org/", 301);
+    if (path === "/favicon.ico") return new Response(`<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16"><rect width="16" height="16" rx="3" fill="#2457d6"/><path d="M4 11V7M8 11V4M12 11V8" stroke="#fff" stroke-width="2"/></svg>`, { headers: { "Content-Type": "image/svg+xml", "Cache-Control": "public, max-age=604800" } });
+    // human/agent pages live on agents.datacensus.org: send guessed content paths there
+    if (/^\/(stats|mcp\/|ai-crawlers|data|reports|about)(\/|$)/.test(path)) return Response.redirect("https://agents.datacensus.org" + url.pathname + url.search, 301);
     return new Response("Not found", { status: 404, headers: CORS });
   },
 };

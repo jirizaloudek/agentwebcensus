@@ -58,7 +58,11 @@ def build(upd, day):
         wk = "<h2>Decisions in the next 7 days</h2><ul class=\"facts\">" + "".join(
             f"<li><a href=\"/stats/central-banks/{slug[c]}/\">{e(B[c]['bank'])}</a>: {e(bs.period_h(B[c]['next_meeting']))} ({days_to(B[c]['next_meeting'], today)})"
             f"{' at ' + e(B[c]['announcement_time_local']) if B[c].get('announcement_time_local') else ''}; current rate {pct(B[c].get('rate'))}.</li>" for c in week) + "</ul>"
-    body = (f"<h1>Central bank interest rate decisions: calendar and current rates</h1><p>{e(intro)}</p>{wk}" +
+    MN = ['january','february','march','april','may','june','july','august','september','october','november','december']
+    nxt = (today.replace(day=1) + dt.timedelta(days=32)).isoformat()[:7]
+    mlinks = " · ".join(f'<a href="/stats/central-banks/{MN[int(ym[5:]) - 1]}-{ym[:4]}/">{e(bs.period_h(ym))}</a>' for ym in (day[:7], nxt)
+                        if any(m.startswith(ym) for c in B for m in B[c]["meetings"]))
+    body = (f"<h1>Central bank interest rate decisions: calendar and current rates</h1><p>{e(intro)}</p>" + (f"<p>Decisions by month: {mlinks}</p>" if mlinks else "") + f"{wk}" +
             table(["Central bank", "Policy rate", "As of", "Last change", "Next decision"], rows, num_cols=(1,)) +
             "<h2>Key facts</h2><ul class=\"facts\">" + "".join(f"<li>{e(fact(c))}</li>" for c in order) + "</ul>" +
             '<p>Machine-readable: <a href="/data/stats-central-banks.json">/data/stats-central-banks.json</a> · Markdown: <a href="/stats/central-banks/index.md">index.md</a> · '
@@ -73,6 +77,32 @@ def build(upd, day):
     bs.write_text("/stats/central-banks/index.md", bs.md_doc("Central bank interest rate decisions: calendar and current rates", intro,
                   ["| Central bank | Policy rate | As of | Last change | Next decision | Page |", "|---|---|---|---|---|---|"] + md + ["", "## Key facts", ""] +
                   [f"- {fact(c)}" for c in order] + ["", DISCL], BASE_URL + "/stats/central-banks/", upd))
+
+    # ---- month pages (current + next month): every scheduled decision with its outcome once known
+    months = [day[:7], (today.replace(day=1) + dt.timedelta(days=32)).isoformat()[:7]]
+    for ym in months:
+        ev = sorted((m, c) for c in B for m in B[c]["meetings"] if m.startswith(ym))
+        if not ev: continue
+        mh = bs.period_h(ym)
+        mrows, mmd = [], []
+        for m, c in ev:
+            b = B[c]
+            dec = next((x for x in b.get("decisions") or [] if x["date"] == m), None)
+            res = ("not yet announced" if m > day else
+                   (f"{dec['outcome']} ({bp(dec['change_bp'])}, now {pct(dec['after'])})" if dec and "change_bp" in dec else "announced today; rate data pending" if m == day else "pending rate data"))
+            pr = b.get("latest_press_release") or {}
+            if pr.get("date") and pr["date"] >= m and pr.get("title"):
+                res += f" – official press release: “{pr['title']}”"
+            mrows.append([bs.period_h(m), f'<a href="/stats/central-banks/{slug[c]}/">{e(b["bank"])}</a>', pct(b.get("rate")), e(res)])
+            mmd.append(f"| {m} | {b['bank']} | {pct(b.get('rate'))} | {res} | {BASE_URL}/stats/central-banks/{slug[c]}/ |")
+        mslug = f"{['january','february','march','april','may','june','july','august','september','october','november','december'][int(ym[5:]) - 1]}-{ym[:4]}"
+        mi = (f"All {len(ev)} scheduled monetary policy decisions of the {len(B)} tracked central banks in {mh}, with the current policy rate and the outcome "
+              "(hike / cut / hold) once the official rate data shows it. Updated daily and several times on decision days.")
+        page(f"/stats/central-banks/{mslug}/", f"Central bank decisions {mh}: Fed, ECB, Bank of England, Bank of Japan and more – dates and results", mi[:300],
+             f'<p class="meta"><a href="/stats/central-banks/">Central bank decisions</a></p><h1>Central bank rate decisions in {e(mh)}</h1><p>{e(mi)}</p>' +
+             table(["Date", "Central bank", "Current rate", "Result"], mrows, num_cols=(2,)) + f"<p>{e(DISCL)}</p>", upd)
+        bs.write_text(f"/stats/central-banks/{mslug}/index.md", bs.md_doc(f"Central bank rate decisions in {mh}", mi,
+                      ["| Date | Central bank | Current rate | Result | Page |", "|---|---|---|---|---|"] + mmd + ["", DISCL], f"{BASE_URL}/stats/central-banks/{mslug}/", upd))
 
     # ---- per bank
     for c in order:

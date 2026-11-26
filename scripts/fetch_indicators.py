@@ -453,6 +453,26 @@ def fetch_nso_aus():
                                     "https://www.abs.gov.au/statistics/economy/price-indexes-and-inflation/consumer-price-index-australia", obs)}}
 
 
+def fetch_nso_bra():
+    """Brazil: IBGE SIDRA API: IPCA 12-month change (t1737 v2265) and PNAD unemployment, rolling quarter (t6381 v4099)."""
+    base = "https://apisidra.ibge.gov.br/values/t/{t}/n1/all/v/{v}/p/last%20{n}?formato=json"
+    out = {}
+    for ind, t, v, n, label, url in (
+        ("inflation", 1737, 2265, 30, "IBGE IPCA, 12-month change (SIDRA table 1737)", "https://sidra.ibge.gov.br/tabela/1737"),
+        ("unemployment", 6381, 4099, 30, "IBGE PNAD Contínua unemployment rate, rolling 3-month quarter labelled by its last month (SIDRA table 6381; not seasonally adjusted)", "https://sidra.ibge.gov.br/tabela/6381"),
+    ):
+        try:
+            rows = json.loads(http_get(base.format(t=t, v=v, n=n)))[1:]
+            obs = sorted([r["D3C"][:4] + "-" + r["D3C"][4:6], rnd(r["V"])] for r in rows if r.get("V") not in (None, "", "..", "-"))
+            if obs:
+                out[ind] = {"BRA": mk("NSO", label, url, obs)}
+        except Exception as e:  # noqa: BLE001
+            WARN.append(f"IBGE {ind} failed: {str(e)[:100]}")
+    if not out:
+        raise RuntimeError("IBGE returned nothing")
+    return out
+
+
 def apply_nso(new, nso):
     """Let a national series replace the OECD one only when newer (or OECD has none)."""
     for ind in ("inflation", "unemployment"):
@@ -539,7 +559,7 @@ def main():
     # National statistics offices (no key): fresher than OECD for USA, GBR, CAN, AUS, JPN
     nso = {}
     for label, fn in (("nso_usa", fetch_nso_usa), ("nso_jpn", fetch_nso_jpn), ("nso_gbr", fetch_nso_gbr),
-                      ("nso_can", fetch_nso_can), ("nso_aus", fetch_nso_aus)):
+                      ("nso_can", fetch_nso_can), ("nso_aus", fetch_nso_aus), ("nso_bra", fetch_nso_bra)):
         try:
             for ind, data in fn().items():
                 if data:

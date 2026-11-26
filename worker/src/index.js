@@ -520,6 +520,8 @@ async function handleRpc(msg, env, request) {
       const h = HANDLERS[name];
       if (!h) return rpcErr(msg.id, -32602, `Unknown tool: ${name}`);
       const args = (params.arguments && typeof params.arguments === "object") ? params.arguments : {};
+      // usage metric only: tool name + argument keys + short UA; no argument values, no IP
+      try { console.log("TOOL_CALL " + JSON.stringify({ tool: name, args: Object.keys(args).slice(0, 5), ua: String((request && request.headers.get("user-agent")) || "").slice(0, 40) })); } catch (_) {}
       try { return { jsonrpc: "2.0", id: msg.id, result: await h(args, env, request) }; }
       catch (e) { return { jsonrpc: "2.0", id: msg.id, result: toolError(`Tool failed: ${e.message}`) }; }
     }

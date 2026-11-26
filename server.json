@@ -2,8 +2,8 @@
   "$schema": "https://static.modelcontextprotocol.io/schemas/2025-12-11/server.schema.json",
   "name": "org.datacensus/agents",
   "title": "Agent Web Census",
-  "description": "Latest official inflation, rates, GDP for 60+ economies; MCP server and AI-crawler open data.",
-  "version": "0.2.0",
+  "description": "Latest official inflation, rates, GDP, FX and central bank decision calendar; MCP and AI-crawler data.",
+  "version": "0.3.0",
   "websiteUrl": "https://agents.datacensus.org",
   "repository": {
     "url": "https://github.com/jirizaloudek/agentwebcensus",

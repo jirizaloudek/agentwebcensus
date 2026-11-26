@@ -166,6 +166,14 @@ if os.path.exists("data/stats/fx.json"):
     except Exception as ex:  # noqa: BLE001
         print("fx pages skipped:", ex)
 
+# ---------- central bank decisions (data/stats/cb_rates.json) ----------
+if os.path.exists("data/stats/cb_rates.json"):
+    try:
+        import build_site_cb
+        print("central bank pages:", build_site_cb.build(upd, day))
+    except Exception as ex:  # noqa: BLE001
+        print("central bank pages skipped:", ex)
+
 # ---------- economic indicators (daily, data/stats/latest.json) ----------
 ST = None
 if os.path.exists("data/stats/latest.json"):
@@ -226,6 +234,7 @@ if ST:
         f"- [Unemployment by country]({BASE_URL}/stats/unemployment/)", f"- [GDP growth by country]({BASE_URL}/stats/gdp-growth/)",
         f"- Per country: {BASE_URL}/stats/<country-name>/ e.g. {BASE_URL}/stats/united-states/ ; per series: {BASE_URL}/stats/united-states/inflation/ (append index.md for Markdown)",
         f"- [stats-summary.json]({BASE_URL}/data/stats-summary.json): latest value of every indicator for every country in one request",
+        f"- [Central bank rate decisions: calendar of next meetings + current policy rates (Fed, ECB, BoE, BoJ, ...)]({BASE_URL}/stats/central-banks/) (JSON: {BASE_URL}/data/stats-central-banks.json)",
         f"- [Euro exchange rates today, 29 currencies, ECB reference rates]({BASE_URL}/stats/fx/) (JSON: {BASE_URL}/data/stats-fx.json)",
         f"- [New economic data releases]({BASE_URL}/stats/releases/): which countries published new inflation, rate, unemployment or GDP numbers, by day (JSON: {BASE_URL}/data/stats-releases.json)"]
 llms += ["", "## Reports", f"- [State of remote MCP servers — November 2026]({BASE_URL}/reports/mcp-health-2026-11/): liveness by age, publisher, host type; protocol versions; tools"]

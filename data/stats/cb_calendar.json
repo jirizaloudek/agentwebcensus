@@ -1,0 +1,237 @@
+{
+ "generated": "2026-11-26",
+ "banks": {
+  "USA": {
+   "bank": "Federal Reserve",
+   "rate_name": "Federal funds target range (upper bound)",
+   "calendar_url": "https://www.federalreserve.gov/monetarypolicy/fomccalendars.htm",
+   "announcement_time_local": null,
+   "meetings": [
+    "2026-12-09",
+    "2027-01-27",
+    "2027-03-17",
+    "2027-04-28",
+    "2027-06-09",
+    "2027-07-28",
+    "2027-09-15",
+    "2027-10-27",
+    "2027-11-17"
+   ],
+   "notes": "Announcement date = last day of two-day meeting. Page states each date is tentative until confirmed at the preceding meeting. 2027-10-27 is flagged as Monetary Policy Strategy Meeting."
+  },
+  "EMU": {
+   "bank": "European Central Bank",
+   "rate_name": "Deposit facility rate",
+   "calendar_url": "https://www.ecb.europa.eu/press/calendars/mgcgc/html/index.en.html",
+   "announcement_time_local": null,
+   "meetings": [
+    "2026-12-17",
+    "2027-02-04",
+    "2027-03-18",
+    "2027-04-29",
+    "2027-06-10",
+    "2027-07-22",
+    "2027-09-09",
+    "2027-10-28",
+    "2027-12-16"
+   ],
+   "notes": "Monetary policy meeting days; decision and press conference on 2nd day."
+  },
+  "GBR": {
+   "bank": "Bank of England",
+   "rate_name": "Bank Rate",
+   "calendar_url": "https://www.bankofengland.co.uk/monetary-policy/upcoming-mpc-dates",
+   "announcement_time_local": null,
+   "meetings": [
+    "2026-12-17",
+    "2027-02-04",
+    "2027-03-18",
+    "2027-04-29",
+    "2027-06-17",
+    "2027-07-29",
+    "2027-09-16",
+    "2027-11-04",
+    "2027-12-16"
+   ],
+   "notes": "Announcement time not stated on the page."
+  },
+  "JPN": {
+   "bank": "Bank of Japan",
+   "rate_name": "Uncollateralized overnight call rate target",
+   "calendar_url": "https://www.boj.or.jp/en/mopo/mpmsche_minu/index.htm",
+   "announcement_time_local": null,
+   "meetings": [
+    "2026-12-18",
+    "2027-01-22",
+    "2027-03-18",
+    "2027-04-28",
+    "2027-06-11",
+    "2027-07-22",
+    "2027-09-22",
+    "2027-10-29",
+    "2027-12-17"
+   ],
+   "notes": "Last day of two-day Monetary Policy Meeting. Page has a stray 'Jan. 27 (Wed.), 2027' entry in the 2026 table, ignored."
+  },
+  "CAN": {
+   "bank": "Bank of Canada",
+   "rate_name": "Target for the overnight rate",
+   "calendar_url": "https://www.bankofcanada.ca/core-functions/monetary-policy/key-interest-rate/",
+   "announcement_time_local": null,
+   "meetings": [
+    "2026-12-09",
+    "2027-01-27",
+    "2027-03-03",
+    "2027-04-28",
+    "2027-06-02",
+    "2027-07-21",
+    "2027-09-08",
+    "2027-10-27",
+    "2027-12-08"
+   ],
+   "notes": "Announcement time not stated on the page."
+  },
+  "AUS": {
+   "bank": "Reserve Bank of Australia",
+   "rate_name": "Cash rate target",
+   "calendar_url": "https://www.rba.gov.au/schedules-events/calendar/?topics=mone",
+   "announcement_time_local": "14:30 Australia/Sydney",
+   "meetings": [
+    "2026-12-08",
+    "2027-02-09",
+    "2027-03-23",
+    "2027-05-04",
+    "2027-06-22",
+    "2027-08-10",
+    "2027-09-28",
+    "2027-11-02",
+    "2027-12-14"
+   ],
+   "notes": "Dates are Monetary Policy Decision Statement dates (second day of meeting). Source: RBA calendar filtered to monetary policy, year 2027 view."
+  },
+  "CHE": {
+   "bank": "Swiss National Bank",
+   "rate_name": "SNB policy rate",
+   "calendar_url": "https://www.snb.ch/en/ifor/media/id/media_events",
+   "announcement_time_local": "09:30 Europe/Zurich",
+   "meetings": [
+    "2026-12-10",
+    "2027-03-18",
+    "2027-06-24",
+    "2027-09-23",
+    "2027-12-16"
+   ],
+   "notes": "Press release 09:30, news conference 10:00."
+  },
+  "SWE": {
+   "bank": "Sveriges Riksbank",
+   "rate_name": "Policy rate",
+   "calendar_url": "https://www.riksbank.se/en-gb/press-and-published/calendar/calendar-2027/",
+   "announcement_time_local": "09:30 Europe/Stockholm",
+   "meetings": [
+    "2026-12-16",
+    "2027-02-03",
+    "2027-03-24",
+    "2027-05-05",
+    "2027-06-22"
+   ],
+   "notes": "Date = publication of decision (meeting is the day before: 2026-12-15, 2027-02-02, 03-23, 05-04, 06-21). Calendar published only through June 2027 at time of reading. Dec 2026 date confirmed from official calendar page riksbank.se/.../calendar-2026/2026-12-162/."
+  },
+  "NOR": {
+   "bank": "Norges Bank",
+   "rate_name": "Policy rate",
+   "calendar_url": "https://www.norges-bank.no/en/news-events/calendar/policy-rate-decisions/",
+   "announcement_time_local": "10:00 Europe/Oslo",
+   "meetings": [
+    "2026-12-17",
+    "2027-01-21",
+    "2027-03-18",
+    "2027-05-05",
+    "2027-06-17",
+    "2027-08-19",
+    "2027-09-23",
+    "2027-11-04",
+    "2027-12-16"
+   ],
+   "notes": "Time zone not stated on page; local Oslo assumed from 10:00."
+  },
+  "CZE": {
+   "bank": "Czech National Bank",
+   "rate_name": "Two-week repo rate",
+   "calendar_url": "https://www.cnb.cz/en/cnb-news/news/Dates-of-the-CNB-Boards-meetings-in-2027/",
+   "announcement_time_local": "14:30 Europe/Prague",
+   "meetings": [
+    "2026-12-17",
+    "2027-02-04",
+    "2027-03-25",
+    "2027-05-06",
+    "2027-06-23",
+    "2027-08-05",
+    "2027-09-23",
+    "2027-11-04",
+    "2027-12-16"
+   ],
+   "notes": "Monetary policy meetings only (financial stability meetings excluded). 2026 list read at .../Dates-of-the-CNB-Boards-meetings-in-2026."
+  },
+  "IND": {
+   "bank": "Reserve Bank of India",
+   "rate_name": "Policy repo rate",
+   "calendar_url": "https://www.rbi.org.in/scripts/BS_PressReleaseDisplay.aspx?prid=62422",
+   "announcement_time_local": null,
+   "meetings": [
+    "2026-12-04",
+    "2027-02-05"
+   ],
+   "notes": "MPC meets 3 days (Dec 2-4 2026; Feb 3-5 2027); decision on last day. Schedule covers FY2026-27 only; April 2027+ not yet published on that release."
+  },
+  "ZAF": {
+   "bank": "South African Reserve Bank",
+   "rate_name": "Repurchase (repo) rate",
+   "calendar_url": "https://www.resbank.co.za/en/home/what-we-do/monetary-policy/monetary-policy-committee",
+   "announcement_time_local": null,
+   "meetings": [
+    "2027-01-28",
+    "2027-03-18",
+    "2027-05-27",
+    "2027-07-22",
+    "2027-09-29",
+    "2027-11-25"
+   ],
+   "notes": "Page lists 2027 announcement dates only; no December 2026 meeting listed (Nov 2026 meeting already held)."
+  },
+  "TUR": {
+   "bank": "Central Bank of the Republic of Turkiye",
+   "rate_name": "One-week repo auction rate",
+   "calendar_url": "https://www.tcmb.gov.tr/wps/wcm/connect/EN/TCMB+EN/Main+Menu/Core+Functions/Monetary+Policy/Monetary+Policy+Committee/2027",
+   "announcement_time_local": "14:00 Europe/Istanbul",
+   "meetings": [
+    "2026-12-10",
+    "2027-01-21",
+    "2027-03-18",
+    "2027-04-22",
+    "2027-06-10"
+   ],
+   "notes": "CBRT pages list dates in pairs (e.g. 2026-12-10 and 2026-12-17; 2027-01-21 and 2027-01-28) without labelling; first of each pair taken as the decision date (second = MPC summary, published within 5 working days), by inference. 2027 H2 not published at time of reading. Announcement time 14:00 per CBRT framework page. 2026 page: .../Monetary+Policy+Committee/2026."
+  },
+  "MEX": {
+   "bank": "Banco de Mexico",
+   "rate_name": "Overnight interbank interest rate target",
+   "calendar_url": "https://www.banxico.org.mx/politica-monetaria/d/%7B3B4BDA5B-E7E8-E414-2066-DA0CB3F7C36F%7D.pdf",
+   "announcement_time_local": "13:00 America/Mexico_City",
+   "meetings": [
+    "2026-12-17"
+   ],
+   "notes": "Official 2026 calendar PDF (8 dates); 2027 calendar not yet published at time of reading. Banxico reserves right to act off-schedule."
+  },
+  "KOR": {
+   "bank": "Bank of Korea",
+   "rate_name": "Base rate",
+   "calendar_url": "https://www.bok.or.kr/eng/main/contents.do?menuNo=400020",
+   "announcement_time_local": null,
+   "meetings": [
+    "2026-11-26"
+   ],
+   "notes": "Last 2026 policy-setting meeting is 2026-11-26 (today); no December meeting. 2027 dates exist only in a PDF/HWP attachment (press release of 2026-10-29) that could not be read, so omitted."
+  }
+ }
+}

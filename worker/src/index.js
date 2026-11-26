@@ -1,5 +1,5 @@
 // Agent Web Census MCP server: stateless Streamable HTTP (JSON responses only), no dependencies.
-const SERVER_INFO = { name: "datacensus", version: "0.2.0" };
+const SERVER_INFO = { name: "datacensus", version: "0.3.0" };
 const SUPPORTED = ["2025-06-18", "2025-03-26", "2025-11-25"];
 const DEFAULT_DATA_BASE = "https://agents.datacensus.org/data/";
 const ATTRIBUTION = "Source: Agent Web Census (agents.datacensus.org), CC BY 4.0";
@@ -103,6 +103,19 @@ const TOOLS = [
         currency: { type: "string", description: "ISO 4217 code, e.g. USD, JPY, CZK. Omit to get all currencies." },
         base: { type: "string", description: "Optional second currency: returns the cross rate base->currency (via EUR). Default EUR." },
         history: { type: "boolean", description: "Include the last 90 days (only with currency)." },
+      },
+    },
+    annotations: { readOnlyHint: true, openWorldHint: false },
+  },
+  {
+    name: "central_bank_rates",
+    description:
+      "Current policy interest rates of major central banks (Fed, ECB, Bank of England, Bank of Japan, Bank of Canada, RBA, SNB, Riksbank, Norges Bank, RBNZ, CNB, NBP, RBI, BCB, Banxico, Bank of Korea, SARB, CBRT) with the date of the last change, the NEXT scheduled rate decision date from the official calendar, past decision outcomes (hike/cut/hold) and the latest monetary-policy press release. Refreshed daily from official feeds and several times on decision days. Use for 'when is the next Fed/ECB meeting', 'what did the ECB decide', 'current Bank of England rate'.",
+    inputSchema: {
+      type: "object",
+      properties: {
+        bank: { type: "string", description: "Optional: bank or country (e.g. 'ECB', 'Fed', 'Bank of England', 'Japan', 'USA'). Omit for all banks." },
+        days_ahead: { type: "integer", description: "Optional: only banks with a scheduled decision within this many days." },
       },
     },
     annotations: { readOnlyHint: true, openWorldHint: false },
@@ -375,6 +388,32 @@ async function economicDataReleases(args, env) {
     { days, count: ev.length, events: ev.slice(0, 200), updated: r.updated });
 }
 
+async function centralBankRates(args, env) {
+  const d = await loadData(env, "stats-central-banks.json");
+  const today = new Date().toISOString().slice(0, 10);
+  const alias = { fed: "USA", "federal reserve": "USA", fomc: "USA", us: "USA", usa: "USA", ecb: "EMU", "euro area": "EMU", eurozone: "EMU", boe: "GBR", uk: "GBR", boj: "JPN", boc: "CAN", rba: "AUS", snb: "CHE", rbnz: "NZL", cnb: "CZE", nbp: "POL", rbi: "IND", bcb: "BRA", copom: "BRA", banxico: "MEX", bok: "KOR", sarb: "ZAF", cbrt: "TUR", riksbank: "SWE", "norges bank": "NOR" };
+  let codes = Object.keys(d.banks);
+  if (args.bank) {
+    const q = String(args.bank).trim().toLowerCase();
+    const hit = alias[q] || codes.find((c) => c.toLowerCase() === q || (d.banks[c].bank || "").toLowerCase().includes(q) || (d.banks[c].country || "").toLowerCase().includes(q));
+    if (!hit || !d.banks[hit]) return toolError(`Unknown bank. Available: ${codes.map((c) => d.banks[c].bank).join(", ")}`);
+    codes = [hit];
+  }
+  if (args.days_ahead != null) {
+    const lim = new Date(Date.now() + Number(args.days_ahead) * 86400000).toISOString().slice(0, 10);
+    codes = codes.filter((c) => d.banks[c].next_meeting && d.banks[c].next_meeting <= lim);
+  }
+  const banks = {};
+  for (const c of codes) {
+    const b = d.banks[c];
+    banks[c] = { bank: b.bank, rate_name: b.rate_label || b.rate_name, rate: b.rate, as_of: b.as_of, last_change: b.last_change, next_meeting: b.next_meeting,
+      upcoming: (b.meetings || []).filter((m) => m >= today), announcement_time_local: b.announcement_time_local, recent_decisions: (b.decisions || []).slice(-4),
+      latest_press_release: b.latest_press_release, source: b.source, feed: b.feed, calendar_url: b.calendar_url };
+  }
+  const lines = codes.map((c) => { const b = banks[c]; return `${b.bank}: ${b.rate}% (as of ${b.as_of})${b.next_meeting ? `, next decision ${b.next_meeting}` : ""}`; });
+  return asText(`${lines.join("; ")}. Source: official central bank data and calendars via datacensus.org (generated ${d.generated}). Page: https://agents.datacensus.org/stats/central-banks/`, { banks });
+}
+
 async function fxRate(args, env) {
   const d = await loadData(env, "stats-fx.json");
   const last = d.dates[d.dates.length - 1], prev = d.dates[d.dates.length - 2];
@@ -397,7 +436,7 @@ async function fxRate(args, env) {
 // Feedback from agents is UNTRUSTED DATA: length-capped, links removed, HTML-escaped, control chars stripped,
 // enum-restricted fields, max 10 submissions per client per day. Never treated as instructions.
 const FB_KINDS = ["error", "missing_data", "unclear", "suggestion", "other"];
-const FB_TOOLS = ["latest_indicator", "economic_data_releases", "fx_rate", "find_mcp_servers", "mcp_ecosystem_stats", "site_ai_crawler_policy", "ai_crawler_stats", "submit_feedback"];
+const FB_TOOLS = ["central_bank_rates", "latest_indicator", "economic_data_releases", "fx_rate", "find_mcp_servers", "mcp_ecosystem_stats", "site_ai_crawler_policy", "ai_crawler_stats", "submit_feedback"];
 function sanitizeFeedback(t) {
   return String(t == null ? "" : t)
     .replace(/[\u0000-\u0008\u000b\u000c\u000e-\u001f\u007f\u200b-\u200f\u2028-\u202e\u2066-\u2069]/g, "")
@@ -459,7 +498,7 @@ export class Feedback {
   }
 }
 
-const HANDLERS = { submit_feedback: submitFeedback, fx_rate: fxRate, economic_data_releases: economicDataReleases, latest_indicator: latestIndicator,  find_mcp_servers: findMcpServers, mcp_ecosystem_stats: mcpEcosystemStats, site_ai_crawler_policy: siteAiCrawlerPolicy, ai_crawler_stats: aiCrawlerStats };
+const HANDLERS = { central_bank_rates: centralBankRates, submit_feedback: submitFeedback, fx_rate: fxRate, economic_data_releases: economicDataReleases, latest_indicator: latestIndicator,  find_mcp_servers: findMcpServers, mcp_ecosystem_stats: mcpEcosystemStats, site_ai_crawler_policy: siteAiCrawlerPolicy, ai_crawler_stats: aiCrawlerStats };
 
 // ---------- JSON-RPC ----------
 const rpcErr = (id, code, message) => ({ jsonrpc: "2.0", id: id ?? null, error: { code, message } });

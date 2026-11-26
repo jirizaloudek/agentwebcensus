@@ -1,7 +1,12 @@
 name: daily-update
 on:
   schedule:
-    - cron: "17 5 * * *"      # daily 05:17 UTC
+    - cron: "17 5 * * *"      # daily 05:17 UTC (full run)
+    # Extra runs on central bank decision days only (gate job checks data/stats/cb_calendar.json):
+    - cron: "10 4 * * *"      # BoJ / RBA (Asia morning)
+    - cron: "25 12 * * *"     # Bank of England 12:00 UK
+    - cron: "40 13 * * *"     # ECB 14:15 CET
+    - cron: "30 19 * * *"     # Fed 14:00 ET
   workflow_dispatch:
     inputs:
       scans:
@@ -13,7 +18,20 @@ permissions:
   id-token: write
 concurrency: { group: update, cancel-in-progress: false }
 jobs:
+  gate:
+    runs-on: ubuntu-latest
+    outputs:
+      run: ${{ steps.g.outputs.run }}
+    steps:
+      - uses: actions/checkout@v4
+        with: { sparse-checkout: data/stats/cb_calendar.json, sparse-checkout-cone-mode: false }
+      - id: g
+        run: |
+          if [ "${{ github.event_name }}" != "schedule" ] || [ "${{ github.event.schedule }}" = "17 5 * * *" ]; then echo run=true >> "$GITHUB_OUTPUT"; exit 0; fi
+          if grep -q "\"$(date -u +%F)\"" data/stats/cb_calendar.json 2>/dev/null; then echo run=true >> "$GITHUB_OUTPUT"; else echo run=false >> "$GITHUB_OUTPUT"; fi
   update:
+    needs: gate
+    if: needs.gate.outputs.run == 'true'
     runs-on: ubuntu-latest
     environment: { name: github-pages, url: '${{ steps.deployment.outputs.page_url }}' }
     timeout-minutes: 90
@@ -51,7 +69,7 @@ jobs:
       - name: Fetch economic indicators (OECD, BIS, IMF, World Bank, Eurostat)
         continue-on-error: true
         timeout-minutes: 15
-        run: python3 scripts/fetch_fx.py; python3 scripts/fetch_indicators.py && python3 scripts/build_stats_releases.py
+        run: python3 scripts/fetch_fx.py; python3 scripts/fetch_indicators.py && python3 scripts/build_stats_releases.py; python3 scripts/fetch_cb_rates.py
       - name: Build site
         id: build
         run: python3 scripts/build_site.py
@@ -88,7 +106,7 @@ jobs:
           git config user.email "actions@users.noreply.github.com"
           # Commit ONLY files this workflow generates (never `git add data`: that would delete/revert
           # data files pushed after this run's checkout). Rebase-free, never merges JSON line-by-line.
-          GEN="data/mcp/latest.json data/mcp/history.csv data/web/latest.json data/web/history.csv data/web/domains.json data/web/tranco_meta.json data/health/latest.json data/health/servers.json data/health/history.csv data/indexnow_state.json data/stats/latest.json data/stats/releases.json data/stats/fx.json"
+          GEN="data/mcp/latest.json data/mcp/history.csv data/web/latest.json data/web/history.csv data/web/domains.json data/web/tranco_meta.json data/health/latest.json data/health/servers.json data/health/history.csv data/indexnow_state.json data/stats/latest.json data/stats/releases.json data/stats/fx.json data/stats/cb_rates.json"
           mkdir -p /tmp/gen && for f in $GEN; do [ -e "$f" ] && mkdir -p "/tmp/gen/$(dirname $f)" && cp "$f" "/tmp/gen/$f"; done
           git fetch -q origin main
           git reset -q --hard origin/main

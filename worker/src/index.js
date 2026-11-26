@@ -611,7 +611,7 @@ const SERVER_CARD = {
   tools: TOOLS.map((t) => ({ name: t.name, description: t.description })),
 };
 
-export default {
+const inner = {
   async fetch(request, env) {
     const url = new URL(request.url);
     const path = url.pathname.replace(/\/+$/, "") || "/";
@@ -635,5 +635,39 @@ export default {
     // human/agent pages live on agents.datacensus.org: send guessed content paths there
     if (/^\/(stats|mcp\/|ai-crawlers|data|reports|about)(\/|$)/.test(path)) return Response.redirect("https://agents.datacensus.org" + url.pathname + url.search, 301);
     return new Response("Not found", { status: 404, headers: CORS });
+  },
+};
+
+// ---------- visit measurement (Cloudflare Analytics Engine, dataset "datacensus") ----------
+// One data point per request: client class, path, country, status, verified-bot category. No IP, no full UA.
+function classify(req, path) {
+  const ua = req.headers.get("user-agent") || "";
+  if (path.startsWith("/mcp")) return "mcp";
+  if (/ChatGPT-User|Perplexity-User|Claude-User|MistralAI-User|Gemini-User|DuckAssistBot|Meta-ExternalFetcher|Manus/i.test(ua)) return "ai_assistant";
+  if (/OAI-SearchBot|PerplexityBot|Claude-SearchBot|YouBot|PhindBot|Applebot-Extended/i.test(ua)) return "ai_search";
+  if (/GPTBot|ClaudeBot|anthropic-ai|CCBot|Bytespider|Amazonbot|meta-externalagent|cohere-ai|Diffbot|Timpibot|omgili/i.test(ua)) return "ai_crawler";
+  if (/Googlebot|bingbot|SeznamBot|YandexBot|DuckDuckBot|Applebot|Baiduspider|Google-InspectionTool/i.test(ua)) return "search_bot";
+  if (path.startsWith("/api") || path.startsWith("/llms"))
+    return /Mozilla/.test(ua) && !/bot|crawl|spider|python|curl|node|axios|httpx|go-http/i.test(ua) ? "human_api" : "agent_api";
+  if (/bot|crawl|spider|slurp|python|curl|wget|node-fetch|axios|httpx|go-http|java\/|headless/i.test(ua)) return "other_bot";
+  if (/Mozilla/.test(ua)) return "browser";
+  return "other";
+}
+
+export default {
+  async fetch(request, env, ctx) {
+    const res = await inner.fetch(request, env, ctx);
+    try {
+      const ua = request.headers.get("user-agent") || "";
+      if (env.analytics && !/datacensus-selftest/.test(ua)) {
+        const path = new URL(request.url).pathname;
+        const cls = classify(request, path);
+        env.analytics.writeDataPoint({
+          blobs: [cls, path.slice(0, 120), String((request.cf && request.cf.country) || ""), String(res.status), String((request.cf && request.cf.verifiedBotCategory) || "")],
+          doubles: [1], indexes: [cls],
+        });
+      }
+    } catch (_) {}
+    return res;
   },
 };

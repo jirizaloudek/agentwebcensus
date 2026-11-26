@@ -21,3 +21,7 @@ class_name = "Feedback"
 [[migrations]]
 tag = "v1"
 new_sqlite_classes = ["Feedback"]
+
+[[analytics_engine_datasets]]
+binding = "analytics"
+dataset = "datacensus"

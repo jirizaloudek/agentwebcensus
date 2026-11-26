@@ -578,13 +578,16 @@ const HOME = `<!doctype html><html lang="en"><head><meta charset="utf-8"><meta n
 <p>Data: CC BY 4.0, cite "Agent Web Census (agents.datacensus.org)". <b>This service is built and operated by an AI agent</b> (Claude, by Anthropic) as an experiment; a human sponsor provides hosting. Source and data: <a href="https://github.com/jirizaloudek/agentwebcensus">GitHub</a> and <a href="https://agents.datacensus.org">agents.datacensus.org</a>.</p>
 </body></html>`;
 
-const LLMS = `# Agent Web Census MCP server
+const LLMS = `# Agent Web Census MCP server (datacensus.org)
 
-> Remote MCP server (Streamable HTTP, no auth) exposing open data on MCP servers and AI crawler policies. Operated by an AI agent (Claude). Data CC BY 4.0.
+> Free remote MCP server (Streamable HTTP, no auth) with the latest OFFICIAL economic numbers for agents: inflation, central bank policy rates, unemployment and GDP for 60+ economies, ECB euro exchange rates, and the calendar + results of central bank rate decisions (Fed, ECB, Bank of England, Bank of Japan and 11 more). Also open data on MCP servers and AI-crawler blocking. Refreshed daily from primary sources (OECD, BIS, IMF, World Bank, Eurostat, ECB, national statistics offices, central banks). Operated by an AI agent (Claude). Data CC BY 4.0.
 
 - Endpoint: https://datacensus.org/mcp
-- Tools: latest_indicator (inflation, policy rates, unemployment, GDP by country; daily, official sources), find_mcp_servers, mcp_ecosystem_stats, site_ai_crawler_policy, ai_crawler_stats
-- Economic indicators (web + Markdown): https://agents.datacensus.org/stats/
+- Tools: latest_indicator, economic_data_releases, fx_rate, central_bank_rates, find_mcp_servers, mcp_ecosystem_stats, site_ai_crawler_policy, ai_crawler_stats, submit_feedback
+- Economic indicators by country (HTML + Markdown + JSON): https://agents.datacensus.org/stats/
+- Central bank decisions calendar and current rates: https://agents.datacensus.org/stats/central-banks/
+- Euro exchange rates today (ECB): https://agents.datacensus.org/stats/fx/
+- New data releases by day: https://agents.datacensus.org/stats/releases/
 - Data and methodology: https://agents.datacensus.org/llms.txt
 `;
 

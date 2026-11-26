@@ -1,25 +1,25 @@
 {
- "generated_at": "2026-11-26T21:43:32+00:00",
+ "generated_at": "2026-11-26T22:35:32+00:00",
  "source": "https://registry.modelcontextprotocol.io/v0/servers (official MCP Registry, full crawl)",
  "license": "CC BY 4.0 \u2014 cite as: MCP Census (mcpcensus), data from the official MCP Registry",
  "totals": {
-  "servers": 75670,
-  "version_records": 296104,
-  "active": 74224,
-  "deprecated": 1130,
-  "namespaces": 45873,
+  "servers": 75689,
+  "version_records": 296195,
+  "active": 74242,
+  "deprecated": 1131,
+  "namespaces": 45883,
   "avg_versions_per_server": 3.91,
-  "median_versions_per_server": 1.0,
+  "median_versions_per_server": 1,
   "first_server_published": "2025-09-08"
  },
  "growth": {
-  "new_servers_last_24h": 1174,
-  "new_servers_last_7d": 7745,
+  "new_servers_last_24h": 1133,
+  "new_servers_last_7d": 7764,
   "new_7d_first_published_on_or_after": "2026-11-20",
-  "new_servers_last_30d": 24487,
-  "version_publishes_last_7d": 22346,
-  "version_publishes_last_30d": 112291,
-  "servers_updated_last_30d": 35281,
+  "new_servers_last_30d": 24489,
+  "version_publishes_last_7d": 22327,
+  "version_publishes_last_30d": 112290,
+  "servers_updated_last_30d": 35262,
   "last_full_month_mom_growth_pct": 37.2,
   "monthly": [
    {
@@ -94,8 +94,8 @@
    },
    {
     "month": "2026-11",
-    "new": 21981,
-    "cumulative": 75670
+    "new": 22000,
+    "cumulative": 75689
    }
   ],
   "daily_last_60": [
@@ -337,58 +337,58 @@
    },
    {
     "date": "2026-11-26",
-    "new": 1049
+    "new": 1068
    }
   ]
  },
  "deployment": {
-  "remote_servers": 51314,
+  "remote_servers": 51332,
   "remote_pct": 67.8,
-  "package_servers": 28714,
+  "package_servers": 28716,
   "package_pct": 37.9,
-  "remote_and_package": 5097,
+  "remote_and_package": 5098,
   "remote_transport": {
-   "streamable-http": 50571,
+   "streamable-http": 50589,
    "sse": 1137
   },
   "package_registry": {
-   "npm": 20003,
+   "npm": 20004,
    "pypi": 5846,
-   "oci": 2127,
+   "oci": 2128,
    "mcpb": 1977,
    "nuget": 193,
    "cargo": 166
   },
   "package_transport": {
-   "stdio": 28359,
-   "streamable-http": 675,
+   "stdio": 28360,
+   "streamable-http": 676,
    "sse": 35
   },
-  "unique_remote_hosts": 39525,
+  "unique_remote_hosts": 39538,
   "packages_requiring_env_vars": 13250,
   "packages_requiring_env_vars_pct": 46.1
  },
  "metadata_quality": {
-  "with_repository_pct": 63.2,
+  "with_repository_pct": 63.1,
   "github_hosted_repo_pct": 63.0,
   "with_icon_pct": 20.5,
   "with_website_pct": 66.1,
   "with_title_pct": 76.6,
-  "median_description_chars": 91.0
+  "median_description_chars": 91
  },
  "concentration": {
   "top10_publishers_share_pct": 17.5,
   "top100_publishers_share_pct": 25.2,
-  "publishers_with_one_server": 41563,
+  "publishers_with_one_server": 41571,
   "publishers_with_100plus": 25
  },
  "namespaces": {
   "by_kind": {
-   "io.github.*": 41019,
-   "com.*": 15064,
-   "other": 12968,
-   "ai.*": 3392,
-   "io.*": 3227
+   "io.github.*": 41023,
+   "com.*": 15066,
+   "other": 12976,
+   "ai.*": 3395,
+   "io.*": 3229
   },
   "top_25": [
    {
@@ -416,12 +416,12 @@
     "servers": 607
    },
    {
-    "namespace": "io.github.theluckystrike",
-    "servers": 433
+    "namespace": "dev.cotlet",
+    "servers": 437
    },
    {
-    "namespace": "dev.cotlet",
-    "servers": 432
+    "namespace": "io.github.theluckystrike",
+    "servers": 433
    },
    {
     "namespace": "io.github.Evozim",
@@ -497,18 +497,18 @@
   "method": "keyword match on name/title/description; a server may be in several categories",
   "counts": {
    "search & web": 9976,
-   "ai & media generation": 5820,
-   "finance & crypto": 4429,
+   "ai & media generation": 5822,
+   "finance & crypto": 4431,
    "dev tools & code": 4012,
-   "productivity & docs": 3845,
-   "marketing & seo": 3505,
+   "productivity & docs": 3844,
+   "marketing & seo": 3507,
    "memory & knowledge": 3226,
-   "commerce": 2963,
+   "commerce": 2966,
    "maps & travel": 2896,
    "security": 2853,
    "cloud & infra": 1612,
    "database": 1209
   },
-  "uncategorized": 39421
+  "uncategorized": 39433
  }
 }
